@@ -746,22 +746,40 @@ window.fbLogin = async function(email, password) {
 
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-    // load data
     try {
       const snap = await getDoc(doc(db, 'users', user.uid));
-      window._cloudData = (snap.exists() && snap.data().quizData) ? snap.data().quizData : defaultData();
-    } catch(e) { window._cloudData = defaultData(); }
+      if (snap.exists() && snap.data().quizData) {
+        window._cloudData = snap.data().quizData;
+        if (!window._cloudData.attempts)  window._cloudData.attempts  = [];
+        if (!window._cloudData.mistakes)  window._cloudData.mistakes  = {};
+        if (!window._cloudData.flagged)   window._cloudData.flagged   = {};
+        if (!window._cloudData.answered)  window._cloudData.answered  = {};
+        if (!window._cloudData.lecPerf)   window._cloudData.lecPerf   = {};
+      } else {
+        window._cloudData = defaultData();
+      }
+    } catch(e) {
+      console.error('Load error:', e);
+      window._cloudData = defaultData();
+    }
 
     window._currentUser = user;
     document.getElementById('userDisplayName').textContent = user.displayName || user.email;
     document.getElementById('userAvatar').textContent = (user.displayName || user.email)[0].toUpperCase();
     document.getElementById('authBar').style.display = 'flex';
-
-    // hide auth page, show app
     document.getElementById('page-auth').classList.remove('active');
     window._fbReady = true;
-    showPage('subjects');
-    renderSubjects();
+
+    function tryShow() {
+      if (typeof showPage === 'function' && typeof renderSubjects === 'function') {
+        showPage('subjects');
+        renderSubjects();
+      } else {
+        setTimeout(tryShow, 50);
+      }
+    }
+    tryShow();
+
   } else {
     window._currentUser = null;
     window._cloudData = defaultData();
@@ -1366,7 +1384,12 @@ const LS = {
 };
 
 function getData() { return window._cloudData || { attempts: [], mistakes: {}, flagged: {}, answered: {}, lecPerf: {} }; }
-function saveData(d) { window._cloudData = d; if(window.fbSave) fbSave(d); }
+function saveData(d) {
+  window._cloudData = d;
+  if (window.fbSave && window._currentUser) {
+    fbSave(JSON.parse(JSON.stringify(d)));
+  }
+}
 
 // ═══════════════════════════════════════════════════
 //  NAVIGATION

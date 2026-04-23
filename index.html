@@ -980,13 +980,13 @@ onAuthStateChanged(auth, async (user) => {
       <div id="formLogin">
         <div class="form-group">
           <label>البريد الإلكتروني</label>
-          <input class="form-input" id="loginEmail" type="email" placeholder="example@email.com">
+          <input class="form-input" id="loginEmail" type="email" placeholder="example@email.com" onkeydown="if(event.key==='Enter')doLogin()">
         </div>
         <div class="form-group">
           <label>كلمة المرور</label>
-          <input class="form-input" id="loginPass" type="password" placeholder="••••••••">
+          <input class="form-input" id="loginPass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
         </div>
-        <button class="btn btn-primary btn-full" onclick="doLogin()" style="margin-top:8px">دخول →</button>
+        <button class="btn btn-primary btn-full" id="loginBtn" onclick="doLogin()" style="margin-top:8px">دخول →</button>
       </div>
 
       <!-- Register Form -->
@@ -1003,7 +1003,7 @@ onAuthStateChanged(auth, async (user) => {
           <label>كلمة المرور</label>
           <input class="form-input" id="regPass" type="password" placeholder="6 أحرف على الأقل">
         </div>
-        <button class="btn btn-primary btn-full" onclick="doRegister()" style="margin-top:8px">إنشاء حساب →</button>
+        <button class="btn btn-primary btn-full" id="registerBtn" onclick="doRegister()" style="margin-top:8px">إنشاء حساب →</button>
       </div>
     </div>
   </div>
@@ -2338,10 +2338,22 @@ function showAuthError(msg) {
   el.classList.add('show');
 }
 
+function setAuthLoading(btnId, loading, originalText) {
+  const btn = document.getElementById(btnId);
+  if (!btn) return;
+  btn.disabled = loading;
+  btn.style.opacity = loading ? '0.7' : '1';
+  btn.innerHTML = loading
+    ? '<span style="display:inline-flex;align-items:center;gap:8px"><span style="width:16px;height:16px;border:2px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;display:inline-block;animation:spin .6s linear infinite"></span> جاري التحميل...</span>'
+    : originalText;
+}
+
 async function doLogin() {
   const email = document.getElementById('loginEmail').value.trim();
   const pass  = document.getElementById('loginPass').value;
   if (!email || !pass) { showAuthError('يرجى إدخال البريد وكلمة المرور'); return; }
+  document.getElementById('authError').classList.remove('show');
+  setAuthLoading('loginBtn', true, 'دخول →');
   try {
     await window.fbLogin(email, pass);
   } catch(e) {
@@ -2352,6 +2364,7 @@ async function doLogin() {
       'auth/invalid-credential': 'البيانات غير صحيحة، تحقق من البريد وكلمة المرور',
     };
     showAuthError(msgs[e.code] || 'حدث خطأ، حاول مجددًا');
+    setAuthLoading('loginBtn', false, 'دخول →');
   }
 }
 
@@ -2361,6 +2374,8 @@ async function doRegister() {
   const pass  = document.getElementById('regPass').value;
   if (!name || !email || !pass) { showAuthError('يرجى ملء جميع الحقول'); return; }
   if (pass.length < 6) { showAuthError('كلمة المرور يجب أن تكون 6 أحرف على الأقل'); return; }
+  document.getElementById('authError').classList.remove('show');
+  setAuthLoading('registerBtn', true, 'إنشاء حساب →');
   try {
     await window.fbRegister(name, email, pass);
   } catch(e) {
@@ -2370,6 +2385,7 @@ async function doRegister() {
       'auth/weak-password': 'كلمة المرور ضعيفة جدًا',
     };
     showAuthError(msgs[e.code] || 'حدث خطأ، حاول مجددًا');
+    setAuthLoading('registerBtn', false, 'إنشاء حساب →');
   }
 }
 </script>

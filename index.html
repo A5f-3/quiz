@@ -1770,34 +1770,34 @@ function pad(n) { return n < 10 ? '0' + n : n; }
 function renderQuizQuestion() {
   const q = quizState.questions[quizState.current];
   const total = quizState.questions.length;
-  const answered = Object.keys(quizState.answers).length;
   const pct = Math.round(((quizState.current) / total) * 100);
 
   document.getElementById('qProgress').textContent =
     `السؤال ${quizState.current + 1} من ${total}`;
   document.getElementById('quizProgressBar').style.width = pct + '%';
 
-  // nav dots
+  // nav dots — show correct/wrong per question immediately after answering
   const dotsEl = document.getElementById('navDots');
   dotsEl.innerHTML = quizState.questions.map((_, i) => {
     let cls = 'nav-dot';
     if (i === quizState.current) cls += ' current';
     else if (quizState.flags[i]) cls += ' flagged-dot';
     else if (quizState.answers[i] !== undefined) {
-      if (quizState.submitted) {
-        cls += quizState.answers[i] === quizState.questions[i].correct ? ' answered' : ' wrong-dot';
-      } else cls += ' answered';
+      cls += quizState.answers[i] === quizState.questions[i].correct ? ' answered' : ' wrong-dot';
     }
     return `<div class="${cls}" onclick="jumpTo(${i})">${i + 1}</div>`;
   }).join('');
 
   const opts = ['أ', 'ب', 'ج', 'د'];
   const userAns = quizState.answers[quizState.current];
+  // answered = user picked something for THIS question
+  const isAnswered = userAns !== undefined;
   const submitted = quizState.submitted;
 
   let optionsHTML = q.options.map((opt, i) => {
     let cls = 'option';
-    if (submitted) {
+    if (isAnswered) {
+      // after picking — show correct/wrong immediately
       cls += ' disabled';
       if (i === q.correct) cls += ' correct';
       else if (i === userAns && i !== q.correct) cls += ' wrong';
@@ -1810,8 +1810,27 @@ function renderQuizQuestion() {
     </div>`;
   }).join('');
 
+  // feedback badge
+  let feedbackHTML = '';
+  if (isAnswered && !submitted) {
+    const isCorrect = userAns === q.correct;
+    feedbackHTML = `
+      <div style="
+        display:flex; align-items:center; gap:10px;
+        padding:12px 16px; border-radius:10px; margin-top:14px;
+        background:${isCorrect ? 'rgba(0,184,148,0.1)' : 'rgba(231,76,60,0.1)'};
+        border:1px solid ${isCorrect ? 'var(--success)' : 'var(--danger)'};
+        font-weight:600; font-size:.95rem;
+        color:${isCorrect ? 'var(--success)' : 'var(--danger)'};">
+        ${isCorrect ? '✅ إجابة صحيحة!' : '❌ إجابة خاطئة — الصواب: ' + opts[q.correct] + '. ' + q.options[q.correct]}
+      </div>
+      ${q.explanation ? `<div class="explanation-box" style="margin-top:10px"><strong>💡 التفسير:</strong> ${q.explanation}</div>` : ''}
+    `;
+  }
+
+  // show explanation after final submit too
   let explanationHTML = '';
-  if (submitted && q.explanation) {
+  if (submitted && q.explanation && !isAnswered) {
     explanationHTML = `<div class="explanation-box"><strong>💡 التفسير:</strong> ${q.explanation}</div>`;
   }
 
@@ -1827,18 +1846,33 @@ function renderQuizQuestion() {
       </div>
     </div>
     <div class="options-list">${optionsHTML}</div>
+    ${feedbackHTML}
     ${explanationHTML}
   `;
 
-  document.getElementById('btnPrev').style.visibility = quizState.current === 0 ? 'hidden' : 'visible';
   const isLast = quizState.current === total - 1;
-  document.getElementById('btnNext').style.display = isLast && !submitted ? 'none' : (isLast ? 'none' : 'flex');
+  document.getElementById('btnPrev').style.visibility = quizState.current === 0 ? 'hidden' : 'visible';
+
+  // Show Next only after answering; show Submit on last question after answering
+  const nextBtn = document.getElementById('btnNext');
   const submitBtn = document.getElementById('btnSubmit');
-  submitBtn.style.display = (isLast && !submitted) ? 'flex' : 'none';
+
+  if (submitted) {
+    nextBtn.style.display = isLast ? 'none' : 'flex';
+    submitBtn.style.display = 'none';
+  } else if (isAnswered) {
+    nextBtn.style.display = isLast ? 'none' : 'flex';
+    submitBtn.style.display = isLast ? 'flex' : 'none';
+  } else {
+    nextBtn.style.display = 'none';
+    submitBtn.style.display = 'none';
+  }
 }
 
 function selectAnswer(i) {
   if (quizState.submitted) return;
+  // only allow answering once per question
+  if (quizState.answers[quizState.current] !== undefined) return;
   quizState.answers[quizState.current] = i;
   renderQuizQuestion();
 }

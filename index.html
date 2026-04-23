@@ -765,6 +765,92 @@
     cursor: pointer;
   }
   select:focus { outline: none; border-color: var(--accent); }
+
+  /* ══ FLASHCARDS ══ */
+  .fc-summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:14px; margin-bottom:28px; }
+  .fc-sum-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-sm); padding:18px; text-align:center; }
+  .fc-sum-num { font-size:1.8rem; font-weight:800; }
+  .fc-sum-lbl { color:var(--text2); font-size:.82rem; margin-top:4px; }
+  .fc-filter-bar { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+  .fc-actions-bar { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px; }
+
+  .fc-card-wrap { perspective:1000px; margin-bottom:24px; }
+  .fc-card {
+    width:100%; min-height:220px; position:relative;
+    transform-style:preserve-3d; transition:transform .5s cubic-bezier(.4,0,.2,1);
+    cursor:pointer;
+  }
+  .fc-card.flipped { transform:rotateY(180deg); }
+  .fc-face {
+    position:absolute; inset:0;
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:var(--radius); padding:32px;
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    text-align:center;
+  }
+  .fc-face.fc-back { transform:rotateY(180deg); }
+  .fc-face-label { font-size:.8rem; color:var(--text3); font-weight:600; margin-bottom:14px; letter-spacing:.05em; text-transform:uppercase; }
+  .fc-front-text { font-size:1.05rem; line-height:1.85; color:var(--text); font-weight:500; }
+  .fc-back-text { font-size:1.5rem; font-weight:800; color:var(--accent); }
+
+  .fc-card.easy-card .fc-face { border-color:rgba(0,184,148,.3); }
+  .fc-card.hard-card .fc-face { border-color:rgba(231,76,60,.2); }
+
+  .fc-reveal-btn {
+    width:100%; padding:14px; border-radius:var(--radius-sm);
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#fff; border:none; cursor:pointer;
+    font-family:'Tajawal',sans-serif; font-size:1rem; font-weight:700;
+    margin-bottom:16px; transition:all .2s;
+  }
+  .fc-reveal-btn:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(79,142,247,.35); }
+
+  .fc-response-btns { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:20px; }
+  .fc-btn {
+    padding:13px 8px; border-radius:var(--radius-sm); border:2px solid;
+    cursor:pointer; font-family:'Tajawal',sans-serif; font-size:.92rem; font-weight:700;
+    transition:all .2s; display:flex; flex-direction:column; align-items:center; gap:4px;
+  }
+  .fc-btn-again { background:rgba(231,76,60,.08); border-color:rgba(231,76,60,.3); color:var(--danger); }
+  .fc-btn-again:hover { background:rgba(231,76,60,.18); }
+  .fc-btn-good { background:rgba(79,142,247,.08); border-color:rgba(79,142,247,.3); color:var(--accent); }
+  .fc-btn-good:hover { background:rgba(79,142,247,.18); }
+  .fc-btn-easy { background:rgba(0,184,148,.08); border-color:rgba(0,184,148,.3); color:var(--success); }
+  .fc-btn-easy:hover { background:rgba(0,184,148,.18); }
+  .fc-btn .fc-timing { font-size:.75rem; font-weight:400; opacity:.8; }
+
+  .fc-progress-bar-wrap { background:var(--surface3); border-radius:30px; height:6px; margin-bottom:10px; overflow:hidden; }
+  .fc-progress-bar { height:100%; border-radius:30px; background:linear-gradient(90deg,var(--accent),var(--accent2)); transition:width .4s; }
+  .fc-progress-txt { display:flex; justify-content:space-between; font-size:.83rem; color:var(--text2); margin-bottom:20px; }
+
+  .fc-done-state { text-align:center; padding:60px 24px; }
+  .fc-done-state .icon { font-size:3.5rem; margin-bottom:16px; }
+  .fc-done-state h3 { font-size:1.4rem; font-weight:800; margin-bottom:8px; }
+  .fc-done-state p { color:var(--text2); margin-bottom:24px; }
+
+  .fc-list { display:flex; flex-direction:column; gap:10px; }
+  .fc-list-item {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:var(--radius-sm); padding:16px 18px;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    flex-wrap:wrap;
+  }
+  .fc-list-term { font-weight:700; font-size:.97rem; }
+  .fc-list-def { color:var(--text2); font-size:.85rem; margin-top:4px; line-height:1.6; }
+  .status-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+  .dot-new { background:var(--text3); }
+  .dot-learning { background:var(--warning); }
+  .dot-mastered { background:var(--success); }
+
+  @media(max-width:768px){
+    .fc-face { padding:22px 16px; }
+    .fc-front-text { font-size:.95rem; }
+    .fc-back-text { font-size:1.25rem; }
+    .fc-response-btns { gap:8px; }
+    .fc-btn { padding:11px 6px; font-size:.85rem; }
+    .fc-summary { grid-template-columns:repeat(2,1fr); }
+  }
 </style>
 <style>
 /* ══ AUTH PAGE ══ */
@@ -951,6 +1037,7 @@ onAuthStateChanged(auth, async (user) => {
     <button class="btn-nav" onclick="showPage('dashboard')">الرئيسية</button>
     <button class="btn-nav" onclick="showDashPage('stats')">الإحصائيات</button>
     <button class="btn-nav" onclick="showDashPage('bank')">بنك الأسئلة</button>
+    <button class="btn-nav" onclick="showDashPage('flashcards')">البطاقات التعليمية</button>
   </nav>
   <div class="auth-bar" id="authBar">
     <div class="user-avatar" id="userAvatar">؟</div>
@@ -1056,6 +1143,11 @@ onAuthStateChanged(auth, async (user) => {
         <div class="action-icon" style="background:rgba(0,212,170,0.15)">🗃️</div>
         <h3>بنك الأسئلة</h3>
         <p>استعرض جميع الأسئلة حسب المحاضرة</p>
+      </div>
+      <div class="action-card" onclick="showDashPage('flashcards')">
+        <div class="action-icon" style="background:rgba(255,181,71,0.15)">🃏</div>
+        <h3>البطاقات التعليمية</h3>
+        <p>احفظ التعاريف والمفاهيم بسرعة</p>
       </div>
       <div class="action-card danger-card" onclick="confirmReset()">
         <div class="action-icon" style="background:rgba(255,92,107,0.1)">🗑️</div>
@@ -1264,6 +1356,114 @@ onAuthStateChanged(auth, async (user) => {
     </div>
 
     <div id="bankContent"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: FLASHCARDS
+══════════════════════════════════════ -->
+<div class="page" id="page-flashcards">
+  <div class="container-sm">
+    <div class="dash-header">
+      <div class="dash-back" onclick="showPage('dashboard')">←</div>
+      <div class="dash-title">
+        <h2>🃏 البطاقات التعليمية</h2>
+        <p>الأخلاق الإسلامية وآداب المهنة</p>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="fc-summary" id="fcSummary"></div>
+
+    <!-- Action buttons -->
+    <div class="fc-actions-bar">
+      <button class="btn btn-primary" onclick="startFCSession('due')">📅 مراجعة المستحقة</button>
+      <button class="btn btn-secondary" onclick="startFCSession('all')">📚 دراسة الكل</button>
+      <button class="btn btn-secondary" onclick="startFCSession('new')">✨ البطاقات الجديدة</button>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="fc-filter-bar" id="fcFilterBar">
+      <div class="filter-tab active" data-fcf="all" onclick="setFCFilter(this,'all')">الكل</div>
+      <div class="filter-tab" data-fcf="new" onclick="setFCFilter(this,'new')">الجديدة</div>
+      <div class="filter-tab" data-fcf="learning" onclick="setFCFilter(this,'learning')">قيد المراجعة</div>
+      <div class="filter-tab" data-fcf="mastered" onclick="setFCFilter(this,'mastered')">المتقنة</div>
+    </div>
+
+    <!-- Card list -->
+    <div class="fc-list" id="fcList"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: FLASHCARD STUDY
+══════════════════════════════════════ -->
+<div class="page" id="page-fcstudy">
+  <div class="container-sm">
+    <div class="dash-header">
+      <div class="dash-back" onclick="exitFCStudy()">←</div>
+      <div class="dash-title">
+        <h2 id="fcStudyTitle">جلسة المراجعة</h2>
+        <p id="fcStudySubtitle">الأخلاق الإسلامية وآداب المهنة</p>
+      </div>
+    </div>
+
+    <!-- Progress -->
+    <div class="fc-progress-bar-wrap">
+      <div class="fc-progress-bar" id="fcProgressBar" style="width:0%"></div>
+    </div>
+    <div class="fc-progress-txt">
+      <span id="fcProgressTxt">البطاقة 1 من 10</span>
+      <span id="fcMasteredTxt" style="color:var(--success)">0 متقنة</span>
+    </div>
+
+    <!-- Card -->
+    <div id="fcStudyArea">
+      <div class="fc-card-wrap">
+        <div class="fc-card" id="fcCard" onclick="revealFC()">
+          <div class="fc-face fc-front">
+            <div class="fc-face-label">التعريف — اضغط للكشف</div>
+            <div class="fc-front-text" id="fcFrontText"></div>
+          </div>
+          <div class="fc-face fc-back">
+            <div class="fc-face-label">المصطلح</div>
+            <div class="fc-back-text" id="fcBackText"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reveal button -->
+      <button class="fc-reveal-btn" id="fcRevealBtn" onclick="revealFC()">
+        💡 اكشف الإجابة
+      </button>
+
+      <!-- Response buttons (hidden until revealed) -->
+      <div class="fc-response-btns hidden" id="fcResponseBtns">
+        <button class="fc-btn fc-btn-again" onclick="fcRespond('again')">
+          🔁 مجدداً
+          <span class="fc-timing" id="fcTimingAgain"></span>
+        </button>
+        <button class="fc-btn fc-btn-good" onclick="fcRespond('good')">
+          👍 جيد
+          <span class="fc-timing" id="fcTimingGood"></span>
+        </button>
+        <button class="fc-btn fc-btn-easy" onclick="fcRespond('easy')">
+          ⭐ سهل
+          <span class="fc-timing" id="fcTimingEasy"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Done state -->
+    <div class="fc-done-state hidden" id="fcDoneState">
+      <div class="icon">🎉</div>
+      <h3>أحسنت! انتهت الجلسة</h3>
+      <p id="fcDoneMsg">راجعت جميع البطاقات المستحقة</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="startFCSession('due')">مراجعة المستحقة مجدداً</button>
+        <button class="btn btn-secondary" onclick="exitFCStudy()">العودة للبطاقات</button>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1568,7 +1768,7 @@ function showPage(name) {
   const pg = document.getElementById('page-' + name);
   if (pg) pg.classList.add('active');
   const nav = document.getElementById('headerNav');
-  nav.style.display = (name !== 'subjects' && name !== 'quiz') ? 'flex' : 'none';
+  nav.style.display = (name !== 'subjects' && name !== 'quiz' && name !== 'fcstudy') ? 'flex' : 'none';
   window.scrollTo(0, 0);
 
   if (name === 'dashboard') renderDashboard();
@@ -1576,6 +1776,7 @@ function showPage(name) {
   if (name === 'mistakes') renderMistakes();
   if (name === 'bank') renderBank();
   if (name === 'makeQuiz') renderMakeQuiz();
+  if (name === 'flashcards') { renderFCSummary(); renderFCList(); }
 }
 
 function showDashPage(name) {
@@ -2320,6 +2521,339 @@ function toast(msg, type = '') {
 // ═══════════════════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════════════════
+
+const FLASHCARDS_DATA = [
+  { id: 'fc1', back: 'الأخلاق لغة', front: 'جمع خلق -بضم اللام وسكونها- ، اسم لسجية الإنسان وطبيعته التي خلق عليها، وهو مأخوذ من مادة (خ ل ق) التي تدل على تقدير الشيء.', difficulty: 'medium' },
+  { id: 'fc2', back: 'الخيم', front: 'هو السجية والطبيعة.', difficulty: 'easy' },
+  { id: 'fc3', back: 'الملأ', front: 'هو الخلق والعشرة.', difficulty: 'easy' },
+  { id: 'fc4', back: 'تعريف الأخلاق اصطلاحاً للجرجاني', front: 'هيئة للنفس راسخة، تصدر عنها الأفعال بسهولة ويسر، من غير حاجة إلى فكر وروية.', difficulty: 'medium' },
+  { id: 'fc5', back: 'تعريف الأخلاق اصطلاحاً عند بعض المعاصرين', front: 'صفة مستقرة في النفس فطرية أو مكتسبة، ذات آثار في السلوك محمودة أو مذمومة.', difficulty: 'medium' },
+  { id: 'fc6', back: 'القيم بالمعنى العام', front: 'مستوى أو مقياس أو معيار نحكم بمقتضاه ونقيس على أساسه المرغوب فيه والمرغوب عنه، كما صورها الإنسان والإله.', difficulty: 'medium' },
+  { id: 'fc7', back: 'القيم الإسلامية', front: 'مجموعة من المعايير والأحكام النابعة من تصورات أساسية عن الكون والإنسان والإله، كما صورها الإسلام، من الفطرة.', difficulty: 'medium' },
+  { id: 'fc8', back: 'الغريزة', front: 'هي الدافع للإنسان إلى عمل من غير فكر، وما يحمله الإنسان في الغالب ثمرة لما يحمله من فكر، وما يعتقده من معتقد، وما يدين به من دين.', difficulty: 'hard' },
+  { id: 'fc9', back: 'السلوك', front: 'مجموعة أفعال الكائن الحي استجابة للمؤثرات الداخلية والخارجية، وهو في الغالب ثمرة لما يحمله الإنسان من فكر، وما يعتقده من معتقد، وما يدين به من دين.', difficulty: 'hard' },
+  { id: 'fc10', back: 'البر', front: 'هو حسن الخلق، وبمعنى اللطف، والمرة وحسن الصحبة والعشرة، وبمعنى الطاعة، وهذه الأمور بمجامع حسن الخلق.', difficulty: 'medium' },
+  { id: 'fc11', back: 'الأخلاق الفطرية', front: 'هي مكارم جبل عليها الإنسان، فتكون سجية وطبيعية له.', difficulty: 'easy' },
+  { id: 'fc12', back: 'الأخلاق المكتسبة', front: 'يمكن تحصيلها بالتعلم والتعود عليها.', difficulty: 'easy' },
+  { id: 'fc13', back: 'الخلق مع الله', front: 'القواعد والأسس التي تحكم علاقة العبد بربه - سبحانه وتعالى - وما يفترع عنها من آداب وأخلاق وتزكية وتربية.', difficulty: 'medium' },
+  { id: 'fc14', back: 'الخلق مع النفس', front: 'ما يلتزم به المسلم من أداب وأخلاق في خاصة نفسه من أداب وأخلاق، وما يلتزمه من سوء منها تجاه نفسه.', difficulty: 'medium' },
+  { id: 'fc15', back: 'الخلق مع الخلق', front: 'ما يلتزم به المسلم من أخلاق مع غيره، والأسس والقواعد الأخلاقية التي تضبط علاقته بالآخرين.', difficulty: 'medium' },
+  { id: 'fc16', back: 'الشجاعة', front: 'هو توسط بين الجبن والتهور.', difficulty: 'easy' },
+  { id: 'fc17', back: 'الحلم', front: 'هو توسط بين الغضب والمهانة وسقوط النفس.', difficulty: 'easy' },
+  { id: 'fc18', back: 'الخصائص', front: 'جمع خاصية، وهي الصفة التي لا توجد في الشيء إلا توجد في غيره.', difficulty: 'easy' },
+  { id: 'fc19', back: 'الأخلاق الإسلامية ربانية في مصدرها', front: 'أنها في أصولها وفروعها مستمدة من الله تعالى هو الذي أمر بها وحثّ وربّ فيها، نهى عنها وأمر منها، إما في القرآن الكريم أو في سنة النبي ﷺ.', difficulty: 'hard' },
+  { id: 'fc20', back: 'الأخلاق الإسلامية ربانية الغاية والقصد', front: 'مهما تخلق بها الإنسان بالأخلاق الإسلامية، فإنها ستبقى صورة با روح، طالما لم يرد بها صاحبها وجه الله ورضاه.', difficulty: 'hard' },
+  { id: 'fc21', back: 'شمولية الأخلاق في الإسلام', front: 'أنها ما تركت خلقاً فاضلاً إلا ودعت إليه، ولا خلقاً مذموماً إلا ونهت عنه.', difficulty: 'medium' },
+  { id: 'fc22', back: 'المهاهد', front: 'هو ذلك المثيل، يبش في كف المجتمع سالماً.', difficulty: 'easy' },
+  { id: 'fc23', back: 'الأخلاق الإسلامية واقعية', front: 'أي: أنها عملية وقابلة للتطبيق، ولا يستعصي على أحد الإتيان بها والاستمرار عليها.', difficulty: 'medium' },
+  { id: 'fc24', back: 'الأخلاق الإسلامية مثالية', front: 'أنها تستجيب لتطلعات من نفسه أبيّة القوائم، وتسعى للتحلي بالفضائل والقيم، ولا يرضى أن يكون كهامة الناس، ولا يستمر عليها في ذلك.', difficulty: 'hard' },
+  { id: 'fc25', back: 'الوسطية', front: 'بمعنى العدل والخيرية والتوسط بين الإفراط والتفريط.', difficulty: 'easy' },
+  { id: 'fc26', back: 'الإلزام في اللغة', front: 'الفرض والإيجاب.', difficulty: 'easy' },
+  { id: 'fc27', back: 'الإلزام اصطلاحاً', front: 'هو تكليف صادر من الشرع بامتثال خلق محمود، أو اجتناب خلق مذموم.', difficulty: 'medium' },
+  { id: 'fc28', back: 'الضمير أو ما يسمى بالوازع الديني', front: 'هو ذلك الشعور الخفي الذي يحس به المرء في أعماق نفسه، يناديه ويدفعه إلى ممارسة فعل أو الكف عنه.', difficulty: 'medium' },
+  { id: 'fc29', back: 'المسؤولية الخلقية', front: 'تحمل الشخص نتيجة التزاماته وقراراته وأفعاله التقييمية والإيجابية من الناحية الإيجابية والسلبية أمام الله.', difficulty: 'hard' },
+  { id: 'fc30', back: 'الجزاء الخلقي', front: 'هو المكافأة أو الأثر المترتب على الفعل الخلقي، سواء أكان هذا الجزاء كأنيات كأنيات الضمير. وسواء أكان في الدنيا، أم في الآخرة، أو غيرهم تالياً.', difficulty: 'hard' },
+  { id: 'fc31', back: 'الجزاء الشرعي', front: 'تلك العقوبات التي أقرتها الشريعة الإسلامية لتأديب الأولاد الذين يتعدون حدود الله، فيظلمون بذلك أنفسهم أولاً، وغيرهم ثانياً.', difficulty: 'hard' },
+  { id: 'fc32', back: 'الحدود', front: 'هي الجزاءات التي يحددها الشارع بدقة وصرامة. وهي من حقوق الله تعالى، ولا تسقط بالعفو ولا بالصلح.', difficulty: 'medium' },
+  { id: 'fc33', back: 'التعزيرات', front: 'وهي عقوبات تأديبية يفرضها القاضي على جناية أو معصية لا حد فيها أو عقوبة غير مقدرة شرعاً، يرجع تقديرها إلى الحاكم.', difficulty: 'hard' },
+  { id: 'fc34', back: 'الشجاعة', front: 'هي: ثبات القلب عند النوازل وإن كان ضعيف البطش.', difficulty: 'easy' },
+  { id: 'fc35', back: 'صفحت عنه', front: 'أوليته صفحة جميلة.', difficulty: 'easy' },
+  { id: 'fc36', back: 'المهنة لغة', front: 'الحذق بالخدمة والعمل.', difficulty: 'easy' },
+  { id: 'fc37', back: 'المهنة في الاصطلاح المعاصر', front: 'مجموعة الأعمال والمهارات التي يقوم بها الفرد، مرتبطة بنظام معرفي أكاديمي متخصص ونظام مهاري سلوكي.', difficulty: 'medium' },
+  { id: 'fc38', back: 'المهنة اصطلاحاً', front: 'هي عمل راق يجمع بين المعرفة الأكاديمية المتخصصة، والخبرة التطبيقية لها في الميدان. كالطب، والهندسة، والتدريس، والمحاسبة، والقضاء.', difficulty: 'hard' },
+  { id: 'fc39', back: 'الحرفة', front: 'تطلق في العرف المعاصر على الأعمال اليدوية التي يحتاج إلى تدريب إلى الأعمال اليدوية التي يحتاج إلى تدريب لكن آم بكن آم بل قام لكن ألة آم بل ألة آ لله.', difficulty: 'hard' },
+  { id: 'fc40', back: 'الوظيفة', front: 'كيان نظامي يتضمن مجموعة من الواجبات والمسؤوليات التي على شاغلها الالتزامات معينة، مقابل امتعته بالحقوق والمزايا الوظيفية.', difficulty: 'hard' },
+  { id: 'fc41', back: 'العمل', front: 'ما يقوم به الإنسان من نشاط إنتاجي في حياته وتعامله مع نفسه ومع غيره.', difficulty: 'easy' },
+  { id: 'fc42', back: 'الخلق الحميد', front: 'هو السلوك القويم الذي يجب أن يتصف به المسلم في حياته وتعامله مع نفسه ومع غيره.', difficulty: 'medium' },
+  { id: 'fc43', back: 'الأمانة لغة', front: 'أخذ من «الأمن» الذي يراد به الاطمئنان ووجود الأمن وزوال الخوف.', difficulty: 'easy' },
+  { id: 'fc44', back: 'الأمانة اصطلاحاً', front: 'التعفف عما يتصرف الإنسان فيه من مال وغيره، وما يوثق به عليه من الأعراض والحرم مع القدرة عليه، ورد ما يستودع إلى مودعه.', difficulty: 'hard' },
+  { id: 'fc45', back: 'السرقة', front: 'أخذ مال محرم لله، وإخراجه من حرز مثله، لا شبهة فيه على وجه الاختفاء.', difficulty: 'medium' },
+  { id: 'fc46', back: 'الاختلاس', front: 'استيلاء العاملين والموظفين ومن في حكمهم في أماكن عملهم على ما في أماكن عملهم على الأمانات والعهد المسلمة إليهم بحكم مناصبهم في العمل، أو المشاركة أو المساعدة في ذلك.', difficulty: 'hard' },
+  { id: 'fc47', back: 'خيانة الأمانة في مجال العمل العام', front: 'استيلاء الموظفين وما في حكمهم في أماكن عملهم على ما في أماكن عملهم على الأمانات والعهد المسلمة إليهم بحكم مناصبهم في العمل، أو المشاركة أو المساعدة في ذلك.', difficulty: 'hard' },
+  { id: 'fc48', back: 'العدل المهني اصطلاحاً', front: 'الأمر المتوسط بين طرفي الإفراط والتفريط.', difficulty: 'easy' },
+  { id: 'fc49', back: 'العدل', front: 'أساس الملك، وأمر تقتضيه الحضارة والتقدم، وتشبه به كل العقول، وأصل من أصول الحكم في الإسلام.', difficulty: 'medium' },
+  { id: 'fc50', back: 'النصيحة لأئمة المسلمين', front: 'معاونتهم على الحق، وطاعتهم فيه، وتذكيرهم به، وإعلامهم بما غفلوا عنه، وتبليغهم من حقوق المسلمين.', difficulty: 'medium' },
+  { id: 'fc51', back: 'نصيحة عامة المسلمين', front: 'إرشادهم لمصالحهم في أخرتهم ودنياهم وإعانتهم وستر عوراتهم وسد خلاتهم.', difficulty: 'medium' },
+  { id: 'fc52', back: 'التواضع لغة', front: 'البذل والتنازل.', difficulty: 'easy' },
+  { id: 'fc53', back: 'التواضع اصطلاحاً', front: 'إظهار التنزل عن المرتبة لمن يراد تعظيمه.', difficulty: 'easy' },
+  { id: 'fc54', back: 'الرفق لغة', front: 'المواففة والمقاربة بلا عنف.', difficulty: 'easy' },
+  { id: 'fc55', back: 'الرفق اصطلاحاً', front: 'هو لين الجانب بالقول والفعل والأخذ بالأسهل.', difficulty: 'easy' },
+  { id: 'fc56', back: 'التعاون لغة', front: 'مأخوذ من «العون» الذي يراد به المظاهرة على الشيء، فلان عوني ومعيني وقد أعنته، والعون أيضا الظهير على الأمر.', difficulty: 'medium' },
+  { id: 'fc57', back: 'عدم الوفاء لغة', front: 'مصدر أهمل، وتأتي أيضاً وعدم استعمالها عمداً أو نسياناً.', difficulty: 'easy' },
+  { id: 'fc58', back: 'الإهمال في العمل', front: 'مصدر أهمل، وتأتي أيضاً وعدم استعمالها عمداً أو نسياناً.', difficulty: 'easy' },
+  { id: 'fc59', back: 'التربح من المهنة', front: 'قبول الموظف للهدايا والأعطيات التي تصل إليه بسبب وظيفته.', difficulty: 'easy' },
+  { id: 'fc60', back: 'الأسرار الوظيفية', front: 'هي المعلومات أو البيانات التي يطلع عليها الموظف بحكم شغله الوظيفة، والتي قد تبقى خافية عن البعيدين.', difficulty: 'medium' },
+  { id: 'fc61', back: 'الفساد في تعريف منظمة الشفافية الدولية للفساد الإداري', front: 'كل عمل ينتضم سوء استخدام المنصب العام لتحقيق مكاسب ذاتية أو جماعية.', difficulty: 'medium' },
+  { id: 'fc62', back: 'الفساد في تعريف الهيئة الوطنية لمكافحة الفساد بالمملكة العربية السعودية "نزاهة"', front: 'الفساد هو مفهوم مركب، له أبعاد متعددة، وتختلف تعريفاته باختلاف الزاوية التي ينظر من خلالها إليه. فيعد فساداً كل سلوك انتهى من القواعد والضوابط التي يفرضها النظام. كما يعد فساداً كل سلوك يهدد المصلحة العامة، وكذلك أي سلوك يُعدّ أو إساءة لاستخدام الوظيفة العامة لتحقيق مكاسب عامة لتحقيق مكاسب عامة لتحقيق مكاسب عامة. فيعد فساداً كل سلوك انتهك القواعد والضوابط التي يفرضها النظام، ككذا بعد فساداً كل سلوك يهدد المصلحة العامة، وكذلك أي سلوك يعد إساءة لاستخدام الوظيفة العامة لتحقيق مكاسب خاصة.', difficulty: 'hard' },
+  { id: 'fc63', back: 'هيئة الرقابة والتحقيق', front: 'هي هيئة مستقلة، ترتبط مباشرة برئيس مجلس الوزراء تختص بالرقابة على حسن الأداء الإداري وتطبيق الأنظمة والتحقيق في المخالفات المالية والإدارية والادعاء فيها أمام المحكمة المختصة.', difficulty: 'hard' },
+  { id: 'fc64', back: 'الأسرار الوظيفية (تعريف ثانٍ)', front: 'هي المعلومات أو البيانات التي يطلع عليها الموظف بحكم شغله الوظيفة، والتي قد تبقى خافية عن البعيدين.', difficulty: 'medium' }
+];
+
+
+// ═══════════════════════════════════════════════════
+//  FLASHCARDS ENGINE
+// ═══════════════════════════════════════════════════
+
+// Intervals in minutes per difficulty
+const FC_INTERVALS = {
+  easy:   [5, 20, 60],
+  medium: [3, 15, 45],
+  hard:   [1, 10, 30]
+};
+
+let fcSession = [];       // cards in current session
+let fcSessionIdx = 0;     // current index in session
+let fcFilter = 'all';
+let fcRevealed = false;
+
+// ── Storage ──
+function getFCData() {
+  try {
+    const raw = localStorage.getItem('quizApp_fc_' + (window._currentUser ? window._currentUser.uid : 'local'));
+    return raw ? JSON.parse(raw) : {};
+  } catch(e) { return {}; }
+}
+function saveFCData(d) {
+  try {
+    localStorage.setItem('quizApp_fc_' + (window._currentUser ? window._currentUser.uid : 'local'), JSON.stringify(d));
+  } catch(e) {}
+}
+
+function getCardState(id) {
+  const d = getFCData();
+  return d[id] || {
+    status: 'new',
+    step: 0,
+    nextReviewAt: null,
+    lastReviewedAt: null
+  };
+}
+function saveCardState(id, state) {
+  const d = getFCData();
+  d[id] = state;
+  saveFCData(d);
+}
+
+// ── Helpers ──
+function isDue(card) {
+  const s = getCardState(card.id);
+  if (s.status === 'mastered') return false;
+  if (!s.nextReviewAt) return true;
+  return Date.now() >= s.nextReviewAt;
+}
+function fmtMinutes(mins) {
+  if (mins < 60) return mins + ' دقيقة';
+  const h = Math.round(mins / 60);
+  return h + ' ساعة';
+}
+
+// ── Navigation ──
+function showFlashcards() {
+  showPage('flashcards');
+  renderFCSummary();
+  renderFCList();
+}
+
+function exitFCStudy() {
+  showPage('flashcards');
+  renderFCSummary();
+  renderFCList();
+}
+
+// ── Summary ──
+function renderFCSummary() {
+  let newCount = 0, learningCount = 0, masteredCount = 0, dueCount = 0;
+  FLASHCARDS_DATA.forEach(c => {
+    const s = getCardState(c.id);
+    if (s.status === 'new') newCount++;
+    else if (s.status === 'mastered') masteredCount++;
+    else learningCount++;
+    if (isDue(c)) dueCount++;
+  });
+  document.getElementById('fcSummary').innerHTML = `
+    <div class="fc-sum-card"><div class="fc-sum-num" style="color:var(--text2)">${FLASHCARDS_DATA.length}</div><div class="fc-sum-lbl">إجمالي البطاقات</div></div>
+    <div class="fc-sum-card"><div class="fc-sum-num" style="color:var(--accent)">${newCount}</div><div class="fc-sum-lbl">بطاقات جديدة</div></div>
+    <div class="fc-sum-card"><div class="fc-sum-num" style="color:var(--warning)">${learningCount}</div><div class="fc-sum-lbl">قيد المراجعة</div></div>
+    <div class="fc-sum-card"><div class="fc-sum-num" style="color:var(--success)">${masteredCount}</div><div class="fc-sum-lbl">متقنة</div></div>
+    <div class="fc-sum-card"><div class="fc-sum-num" style="color:var(--danger)">${dueCount}</div><div class="fc-sum-lbl">مستحقة الآن</div></div>
+  `;
+}
+
+// ── Filter ──
+function setFCFilter(el, filter) {
+  document.querySelectorAll('[data-fcf]').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  fcFilter = filter;
+  renderFCList();
+}
+
+// ── Card List ──
+function renderFCList() {
+  const list = document.getElementById('fcList');
+  let cards = FLASHCARDS_DATA.filter(c => {
+    if (fcFilter === 'all') return true;
+    const s = getCardState(c.id);
+    if (fcFilter === 'new') return s.status === 'new';
+    if (fcFilter === 'learning') return s.status === 'learning';
+    if (fcFilter === 'mastered') return s.status === 'mastered';
+    return true;
+  });
+
+  if (!cards.length) {
+    list.innerHTML = '<div class="empty-state"><div class="icon">🔍</div><h3>لا توجد بطاقات</h3><p>جرب فلتراً مختلفاً</p></div>';
+    return;
+  }
+
+  list.innerHTML = cards.map(c => {
+    const s = getCardState(c.id);
+    const dotClass = s.status === 'mastered' ? 'dot-mastered' : s.status === 'learning' ? 'dot-learning' : 'dot-new';
+    const dueTag = isDue(c) && s.status !== 'mastered' ? '<span class="badge badge-danger" style="font-size:.75rem">مستحقة</span>' : '';
+    const diffBadge = `<span class="badge ${c.difficulty==='easy'?'badge-success':c.difficulty==='hard'?'badge-danger':'badge-accent'}" style="font-size:.75rem">${c.difficulty==='easy'?'سهل':c.difficulty==='hard'?'صعب':'متوسط'}</span>`;
+    return `<div class="fc-list-item">
+      <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
+        <div class="status-dot ${dotClass}"></div>
+        <div style="min-width:0">
+          <div class="fc-list-term">${c.back}</div>
+          <div class="fc-list-def" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${c.front.substring(0,80)}${c.front.length>80?'...':''}</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center;flex-shrink:0">${dueTag}${diffBadge}</div>
+    </div>`;
+  }).join('');
+}
+
+// ── Start Session ──
+function startFCSession(mode) {
+  let cards = [];
+  if (mode === 'due') {
+    cards = FLASHCARDS_DATA.filter(c => isDue(c));
+    if (!cards.length) { toast('لا توجد بطاقات مستحقة الآن 🎉', 'success'); return; }
+  } else if (mode === 'new') {
+    cards = FLASHCARDS_DATA.filter(c => getCardState(c.id).status === 'new');
+    if (!cards.length) { toast('لا توجد بطاقات جديدة', 'error'); return; }
+  } else {
+    cards = [...FLASHCARDS_DATA];
+  }
+
+  // Shuffle
+  cards = cards.sort(() => Math.random() - 0.5);
+  fcSession = cards;
+  fcSessionIdx = 0;
+
+  const titles = { due: 'مراجعة المستحقة', all: 'دراسة الكل', new: 'البطاقات الجديدة' };
+  document.getElementById('fcStudyTitle').textContent = titles[mode] || 'جلسة المراجعة';
+
+  showPage('fcstudy');
+  showFCCard();
+}
+
+// ── Show card ──
+function showFCCard() {
+  const card = document.getElementById('fcCard');
+  const studyArea = document.getElementById('fcStudyArea');
+  const doneState = document.getElementById('fcDoneState');
+
+  if (fcSessionIdx >= fcSession.length) {
+    // Session done
+    studyArea.classList.add('hidden');
+    doneState.classList.remove('hidden');
+    const masteredCount = fcSession.filter(c => getCardState(c.id).status === 'mastered').length;
+    document.getElementById('fcDoneMsg').textContent = `أتقنت ${masteredCount} من ${fcSession.length} بطاقة في هذه الجلسة!`;
+    return;
+  }
+
+  studyArea.classList.remove('hidden');
+  doneState.classList.add('hidden');
+
+  const c = fcSession[fcSessionIdx];
+  document.getElementById('fcFrontText').textContent = c.front;
+  document.getElementById('fcBackText').textContent = c.back;
+
+  // Reset flip
+  card.classList.remove('flipped');
+  card.classList.remove('easy-card', 'hard-card');
+  if (c.difficulty === 'easy') card.classList.add('easy-card');
+  if (c.difficulty === 'hard') card.classList.add('hard-card');
+
+  // Reset buttons
+  document.getElementById('fcRevealBtn').classList.remove('hidden');
+  document.getElementById('fcResponseBtns').classList.add('hidden');
+  fcRevealed = false;
+
+  // Progress
+  const pct = Math.round((fcSessionIdx / fcSession.length) * 100);
+  document.getElementById('fcProgressBar').style.width = pct + '%';
+  document.getElementById('fcProgressTxt').textContent = 'البطاقة ' + (fcSessionIdx + 1) + ' من ' + fcSession.length;
+  const mastered = fcSession.filter(c => getCardState(c.id).status === 'mastered').length;
+  document.getElementById('fcMasteredTxt').textContent = mastered + ' متقنة';
+
+  // Set timing labels
+  const intervals = FC_INTERVALS[c.difficulty];
+  const state = getCardState(c.id);
+  const step = state.step || 0;
+  document.getElementById('fcTimingAgain').textContent = fmtMinutes(intervals[0]);
+  document.getElementById('fcTimingGood').textContent = fmtMinutes(intervals[Math.min(step + 1, intervals.length - 1)]);
+  document.getElementById('fcTimingEasy').textContent = fmtMinutes(intervals[Math.min(step + 2, intervals.length - 1)]);
+}
+
+// ── Reveal ──
+function revealFC() {
+  if (fcRevealed) return;
+  fcRevealed = true;
+  document.getElementById('fcCard').classList.add('flipped');
+  document.getElementById('fcRevealBtn').classList.add('hidden');
+  document.getElementById('fcResponseBtns').classList.remove('hidden');
+}
+
+// ── Respond ──
+function fcRespond(response) {
+  const c = fcSession[fcSessionIdx];
+  const intervals = FC_INTERVALS[c.difficulty];
+  const state = getCardState(c.id);
+  let step = state.step || 0;
+
+  let newStep;
+  if (response === 'again') {
+    newStep = 0;
+  } else if (response === 'good') {
+    newStep = step + 1;
+  } else { // easy
+    newStep = step + 2;
+  }
+
+  const now = Date.now();
+  let nextReviewAt, status;
+
+  if (newStep >= intervals.length) {
+    // Mastered
+    status = 'mastered';
+    nextReviewAt = null;
+    newStep = intervals.length - 1;
+  } else {
+    status = 'learning';
+    nextReviewAt = now + intervals[newStep] * 60 * 1000;
+  }
+
+  saveCardState(c.id, {
+    status,
+    step: newStep,
+    nextReviewAt,
+    lastReviewedAt: now
+  });
+
+  // If 'again', re-queue the card at end of session
+  if (response === 'again') {
+    fcSession.push(c);
+  }
+
+  fcSessionIdx++;
+  showFCCard();
+}
+
+// ── showPage patch for flashcards ──
+const _origShowPage = showPage;
+// We'll override showPage to handle flashcards
+window.addEventListener('DOMContentLoaded', () => {});
 
 // Auth is handled by Firebase onAuthStateChanged above
 // renderSubjects() is called after login

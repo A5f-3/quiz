@@ -1812,26 +1812,27 @@ function renderQuizQuestion() {
 
   // feedback badge
   let feedbackHTML = '';
-  if (isAnswered && !submitted) {
+  if (isAnswered) {
     const isCorrect = userAns === q.correct;
-    feedbackHTML = `
-      <div style="
-        display:flex; align-items:center; gap:10px;
-        padding:12px 16px; border-radius:10px; margin-top:14px;
-        background:${isCorrect ? 'rgba(0,184,148,0.1)' : 'rgba(231,76,60,0.1)'};
-        border:1px solid ${isCorrect ? 'var(--success)' : 'var(--danger)'};
-        font-weight:600; font-size:.95rem;
-        color:${isCorrect ? 'var(--success)' : 'var(--danger)'};">
-        ${isCorrect ? '✅ إجابة صحيحة!' : '❌ إجابة خاطئة — الصواب: ' + opts[q.correct] + '. ' + q.options[q.correct]}
-      </div>
-      ${q.explanation ? `<div class="explanation-box" style="margin-top:10px"><strong>💡 التفسير:</strong> ${q.explanation}</div>` : ''}
-    `;
+    const bg    = isCorrect ? 'rgba(0,184,148,0.1)' : 'rgba(231,76,60,0.1)';
+    const brd   = isCorrect ? '#00b894' : '#e74c3c';
+    const clr   = isCorrect ? '#00b894' : '#e74c3c';
+    const msg   = isCorrect
+      ? '✅ إجابة صحيحة!'
+      : '❌ إجابة خاطئة — الصواب: ' + opts[q.correct] + '. ' + q.options[q.correct];
+    const expTxt = q.explanation
+      ? '<div class="explanation-box" style="margin-top:10px"><strong>💡 التفسير:</strong> ' + q.explanation + '</div>'
+      : '';
+    feedbackHTML =
+      '<div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:10px;margin-top:14px;' +
+      'background:' + bg + ';border:1px solid ' + brd + ';font-weight:700;font-size:.97rem;color:' + clr + ';">' +
+      msg + '</div>' + expTxt;
   }
 
-  // show explanation after final submit too
+  // show explanation after final submit (unanswered questions)
   let explanationHTML = '';
   if (submitted && q.explanation && !isAnswered) {
-    explanationHTML = `<div class="explanation-box"><strong>💡 التفسير:</strong> ${q.explanation}</div>`;
+    explanationHTML = '<div class="explanation-box"><strong>💡 التفسير:</strong> ' + q.explanation + '</div>';
   }
 
   const flagged = quizState.flags[quizState.current];

@@ -183,6 +183,7 @@
   }
   .icon-blue { background: rgba(79,142,247,0.15); }
   .icon-purple { background: rgba(124,92,252,0.15); }
+  .icon-green { background: rgba(0,184,148,0.15); }
   .subject-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
   .subject-card p { color: var(--text2); font-size: .93rem; line-height: 1.6; }
   .subject-meta { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
@@ -375,6 +376,14 @@
     color: var(--text2);
   }
   .explanation-box strong { color: var(--accent); }
+  .show-exp-btn {
+    margin-top: 12px; padding: 9px 18px;
+    background: rgba(79,142,247,0.08); border: 1px solid rgba(79,142,247,0.25);
+    border-radius: var(--radius-sm); color: var(--accent);
+    font-family: 'Tajawal', sans-serif; font-size: .88rem; font-weight: 600;
+    cursor: pointer; transition: all .2s; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .show-exp-btn:hover { background: rgba(79,142,247,0.15); }
 
   .quiz-nav {
     display: flex; justify-content: space-between; align-items: center;
@@ -1122,7 +1131,7 @@ onAuthStateChanged(auth, async (user) => {
       <div class="dash-back" onclick="showPage('subjects')">←</div>
       <div class="dash-title">
         <h2 id="dashSubjectName"></h2>
-        <p>لوحة التحكم الشخصية</p>
+        <p id="dashSubtitle">لوحة التحكم الشخصية</p>
       </div>
     </div>
 
@@ -1756,6 +1765,385 @@ const SUBJECTS = [
     desc: 'مفاهيم ومهارات العمل التطوعي والمجتمعي',
     active: false,
     lectures: []
+  },
+  {
+    id: 'stats2',
+    name: 'Statistics (2nd Year)',
+    icon: '📊',
+    iconClass: 'icon-green',
+    desc: 'Block 2.4 — Sampling, T-test, ANOVA, Correlation, Chi-square, Regression & more',
+    active: true,
+    lang: 'en',
+    lectures: [
+      {
+        id: 'stats_ss', name: 'Sample Size', num: 1,
+        desc: 'Sample size determination, power analysis, hypothesis testing',
+        questions: [
+          {
+            id: 'ss1',
+            text: 'What is a primary consideration when determining the sample size for a study?',
+            options: [
+              'The publication date of related studies',
+              'The color scheme of the study's presentation',
+              'The expected effect size and the statistical power desired',
+              'The number of authors involved in the study'
+            ],
+            correct: 2,
+            explanation: 'Sample size calculation requires knowing the expected effect size (how big a difference you expect to detect) and the desired statistical power (probability of detecting a true effect). These two factors, along with alpha and standard deviation, are the four criteria used in power analysis.'
+          },
+          {
+            id: 'ss2',
+            text: 'In the context of sample size calculation, what does "statistical power" refer to?',
+            options: [
+              'The ability of a test to detect an effect, if there is one, at a predetermined significance level',
+              'The impact factor of the journal the study is intended for',
+              'The percentage of the population that is sampled',
+              'The power dynamics between the research team members'
+            ],
+            correct: 0,
+            explanation: 'Statistical power (1-β) is the probability of correctly finding statistical significance when a true effect exists. Common values are 80% or 90%. Higher desired power requires a larger sample size.'
+          },
+          {
+            id: 'ss3',
+            text: 'In the context of hypothesis testing, increasing the sample size will:',
+            options: [
+              'Decrease the power of the test',
+              'Increase the chance of detecting a true effect',
+              'Not affect the outcome of the test',
+              'Always lead to a conclusion of no significant difference'
+            ],
+            correct: 1,
+            explanation: 'Increasing sample size: (1) Reduces random error, (2) Increases the power of the test — meaning it improves the ability to detect a true effect or difference if it exists.'
+          },
+          {
+            id: 'ss4',
+            text: 'What is the null hypothesis in a statistical test?',
+            options: [
+              'The hypothesis that there is no effect or difference',
+              'The hypothesis that there is a significant effect or difference',
+              'The hypothesis based on sample data',
+              'The hypothesis that predicts the future outcome'
+            ],
+            correct: 0,
+            explanation: 'The null hypothesis (H₀) is the default assumption in hypothesis testing. It states there is no effect or no difference. Example: "There is no difference between drug A and drug B in treating a disease." We try to reject H₀ using the p-value.'
+          },
+          {
+            id: 'ss5',
+            text: 'What does a p-value indicate in hypothesis testing?',
+            options: [
+              'The probability that the null hypothesis is true',
+              'The probability of observing the data, or something more extreme, if the null hypothesis is true',
+              'The likelihood that the research hypothesis is true',
+              'The proportion of variance in the dependent variable predictable from the independent variable'
+            ],
+            correct: 1,
+            explanation: 'The p-value represents the probability of observing the data (or something more extreme) assuming H₀ is true. A smaller p-value (e.g., <0.05) indicates stronger evidence against the null hypothesis — it does NOT mean H₀ is true.'
+          },
+          {
+            id: 'ss6',
+            text: 'Why might an investigator choose a larger sample size than the minimum required for adequate power?',
+            options: [
+              'To compensate for potential non-response or drop-outs',
+              'To reduce the cost of the study',
+              'To make the study less time-consuming',
+              'To decrease the statistical power of the study'
+            ],
+            correct: 0,
+            explanation: 'Researchers often add extra participants to account for expected drop-outs, non-responses, or protocol deviations. If 10-20% of participants may drop out, the sample size is inflated accordingly to maintain adequate power in the final analysis.'
+          },
+          {
+            id: 'ss7',
+            text: 'Increasing the margin of error in a study will have what effect on the required sample size?',
+            options: [
+              'Increase it',
+              'Decrease it',
+              'No effect',
+              'It will initially decrease then increase'
+            ],
+            correct: 1,
+            explanation: 'In the formula n = p(1-p)(Zα/2)² / E², margin of error (E) is in the denominator. Larger E → smaller n. Margin of error is inversely related to sample size. Accepting more error means you need fewer participants.'
+          },
+          {
+            id: 'ss8',
+            text: 'What is the primary purpose of a confidence interval in inferential statistics?',
+            options: [
+              'To estimate the range within which the true population parameter lies, with a certain level of confidence',
+              'To calculate the sample mean with absolute certainty',
+              'To determine if the sample data are normally distributed',
+              'To establish the minimum and maximum values in the data set'
+            ],
+            correct: 0,
+            explanation: 'A confidence interval (e.g., 95% CI) estimates the range within which the true population parameter (e.g., mean) likely lies. It does NOT mean 95% of the data falls in that range — it means if we repeated the study 100 times, 95 intervals would contain the true parameter.'
+          },
+          {
+            id: 'ss9',
+            text: 'In which type of study would propensity score matching most likely be used?',
+            options: [
+              'Randomized controlled trials',
+              'Observational studies',
+              'Systematic reviews',
+              'Meta-analyses'
+            ],
+            correct: 1,
+            explanation: 'Propensity score matching is used in observational studies to reduce confounding bias. Since participants are not randomly assigned (unlike RCTs), propensity scores create matched groups that are similar in baseline characteristics, mimicking randomization.'
+          }
+        ]
+      },
+      {
+        id: 'stats_ttest', name: 'T-test', num: 2,
+        desc: 'Independent, paired, and one-sample t-tests',
+        questions: [
+          {
+            id: 'tt1',
+            text: 'In a regression analysis, if you want to test the significance of an individual predictor variable, which of the following would you use?',
+            options: ['T-test', 'ANOVA', 'Chi-square test', 'Z-test'],
+            correct: 0,
+            explanation: 'In regression, each predictor has a coefficient (β). To test if β is significantly different from 0, we use a t-test (equivalent to a one-sample t-test testing one value against a fixed number). H₀: β = 0 (no effect), H₁: β ≠ 0.'
+          },
+          {
+            id: 'tt2',
+            text: 'A paired samples t-test is used when:',
+            options: [
+              'You have two independent samples',
+              'You want to compare the means of more than two groups',
+              'The same subjects are measured twice under different conditions',
+              'You are comparing the frequencies of categories'
+            ],
+            correct: 2,
+            explanation: 'Paired t-test (Dependent t-test) compares the means of the SAME group before and after an intervention. Example: Measuring blood pressure in patients before and after medication. Since the same subjects are measured twice, df = n - 1 (behaves like a one-sample t-test on differences).'
+          },
+          {
+            id: 'tt3',
+            text: 'Looking at an SPSS output for an Independent Samples Test: T-value = 6.380, df = 498, Sig. (2-tailed) = .000. What is the correct decision?',
+            options: [
+              'Accept H₀ — no significant difference',
+              'Reject H₀ — there is a significant difference',
+              'Cannot determine without more information',
+              'Accept H₁ only if df > 500'
+            ],
+            correct: 1,
+            explanation: 'Decision rule: If p-value < .05 → Reject H₀ (significant difference exists). Here p < .001 (written as .000 in SPSS), which is less than .05. Therefore we REJECT H₀ and conclude there IS a significant difference between the two groups. Note: p = .000 should always be written as p < .001.'
+          },
+          {
+            id: 'tt4',
+            text: 'In an SPSS Group Statistics output, females (N=200) have mean age = 74.72 and males (N=300) have mean age = 66.60. What is the mean age for males?',
+            options: ['74.72', '66.60', '70.66', '200'],
+            correct: 1,
+            explanation: 'Directly read from the SPSS Group Statistics table: Males row → Mean = 66.60. The table clearly shows gender, N (sample size), Mean, Std. Deviation, and Std. Error Mean for each group.'
+          },
+          {
+            id: 'tt5',
+            text: 'What is the name of the statistical technique shown in an SPSS output with "Levene's Test for Equality of Variances" and "t-test for Equality of Means"?',
+            options: [
+              'One-sample t-test',
+              'Paired t-test',
+              'Independent Sample t-test',
+              'One-way ANOVA'
+            ],
+            correct: 2,
+            explanation: 'The Independent Samples Test output in SPSS always includes: (1) Levene's Test for Equality of Variances, and (2) t-test for Equality of Means. It is used when comparing two separate, unrelated groups (e.g., males vs. females). df = n₁ + n₂ - 2.'
+          }
+        ]
+      },
+      {
+        id: 'stats_anova', name: 'One-way ANOVA', num: 3,
+        desc: 'Analysis of Variance for comparing 3+ group means',
+        questions: [
+          {
+            id: 'an1',
+            text: 'ANOVA output shows: Between Groups df = 2, Within Groups df = 275, F = 10.447, Sig. = .000. How many groups are in the study?',
+            options: ['2', '3', '4', '275'],
+            correct: 1,
+            explanation: 'Number of groups = Between Groups df + 1 = 2 + 1 = 3 groups. This is because df(between) = k - 1, where k = number of groups. So k = df + 1 = 2 + 1 = 3. The df pair is written as (2, 275).'
+          },
+          {
+            id: 'an2',
+            text: 'ANOVA output: Between Groups df = 2, F = 10.447, Sig. = .000. What is the degree of freedom (df) written as an ordered pair?',
+            options: ['(10, 447)', '(2, 275)', '(3, 275)', '(2, 277)'],
+            correct: 1,
+            explanation: 'df for ANOVA is written as an ordered pair: (df Between Groups, df Within Groups) = (2, 275). The F statistic uses both: F(2, 275) = 10.447. The total df = 2 + 275 = 277 (which equals total N - 1 = 278 - 1 = 277).'
+          },
+          {
+            id: 'an3',
+            text: 'ANOVA output: Between Groups df = 4, Within Groups df = 495, F = 23.516, Sig. = .000. How many groups are in the study?',
+            options: ['4', '5', '6', '495'],
+            correct: 1,
+            explanation: 'Number of groups = Between Groups df + 1 = 4 + 1 = 5 groups. df(between) = k - 1, so k = 4 + 1 = 5. The F value of 23.516 with p < .001 indicates highly significant differences among the 5 groups.'
+          },
+          {
+            id: 'an4',
+            text: 'When should you use Tukey post-hoc test vs. Scheffé post-hoc test?',
+            options: [
+              'Tukey when p < .05, Scheffé when p > .05',
+              'Tukey when sample sizes are equal, Scheffé when sample sizes are not equal',
+              'Tukey for 2 groups, Scheffé for 3+ groups',
+              'Tukey for continuous data, Scheffé for categorical data'
+            ],
+            correct: 1,
+            explanation: 'ANOVA tells you THAT groups differ but not WHICH groups differ. Post-hoc tests identify which specific groups are different. Rule: Use Tukey if sample sizes are EQUAL (balanced design). Use Scheffé if sample sizes are NOT equal (unbalanced design). Both control for Type I error in multiple comparisons.'
+          },
+          {
+            id: 'an5',
+            text: 'What is ANOVA and when is it preferred over t-test?',
+            options: [
+              'Analysis Of Variance; used when comparing exactly two groups',
+              'Analysis Of Variance; used when comparing three or more group means',
+              'Analysis Of Variables; used for categorical outcomes',
+              'Analysis Of Variance; used only for non-normal data'
+            ],
+            correct: 1,
+            explanation: 'ANOVA (ANalysis Of VAriance) was developed by Fischer in 1919. It tests equality of three or more population means. While t-test can compare two groups, using multiple t-tests inflates Type I error. ANOVA controls this by testing all groups simultaneously. If ANOVA is significant, use post-hoc tests to find which groups differ.'
+          }
+        ]
+      },
+      {
+        id: 'stats_corr', name: 'Correlation', num: 4,
+        desc: 'Pearson and Spearman correlation analysis',
+        questions: [
+          {
+            id: 'co1',
+            text: 'The Pearson correlation coefficient is used to assess:',
+            options: [
+              'The strength and direction of the association between two categorical variables',
+              'The difference in means between two groups',
+              'The strength and direction of the linear relationship between two continuous variables',
+              'The association between two dependent variables'
+            ],
+            correct: 2,
+            explanation: 'Pearson's correlation (r) measures the LINEAR relationship between two CONTINUOUS (interval or ratio) variables. It requires: normal distribution, no outliers, and actual numerical values. Range: -1 to +1. Example: height vs. weight. For ordinal/ranked/non-normal data, use Spearman's correlation instead.'
+          },
+          {
+            id: 'co2',
+            text: 'Pearson Correlation output: r = .760, Sig. (2-tailed) = .080. What is your decision?',
+            options: [
+              'There is a significant strong positive relationship',
+              'There is no significant relationship (p > .05)',
+              'There is a significant weak relationship',
+              'Cannot determine without sample size'
+            ],
+            correct: 1,
+            explanation: 'Decision is based on p-value, NOT on the r value alone. Here p = .080 > .05 → NOT significant → there is NO statistically significant relationship, despite r = .760 appearing strong. The strength interpretation (0.75 ≤ r < 1 = strong) only matters if p < .05. With small samples, even large r can be non-significant.'
+          },
+          {
+            id: 'co3',
+            text: 'Spearman's correlation output: Correlation Coefficient = .166, Sig. (2-tailed) = .646. What is your conclusion?',
+            options: [
+              'Significant weak positive relationship',
+              'No significant relationship',
+              'Significant moderate relationship',
+              'Strong negative relationship'
+            ],
+            correct: 1,
+            explanation: 'p = .646 > .05 → NOT significant → there is no statistically significant monotonic relationship between the variables. Spearman's rho (rₛ) is used for ordinal, ranked, or non-normal data. It measures MONOTONIC relationships (not necessarily linear). Range: -1 to +1.'
+          },
+          {
+            id: 'co4',
+            text: 'Pearson output: r = -.260, p < .001. What is the correct interpretation?',
+            options: [
+              'No relationship exists',
+              'Significant positive weak relationship',
+              'Significant negative relationship exists',
+              'The test failed because r is negative'
+            ],
+            correct: 2,
+            explanation: 'p < .001 < .05 → SIGNIFICANT → there IS a relationship. The negative sign means INVERSE/INDIRECT relationship: as one variable increases, the other decreases. |r| = 0.260 → 0.25 ≤ r < 0.75 → INTERMEDIATE correlation strength. So: significant negative intermediate relationship.'
+          },
+          {
+            id: 'co5',
+            text: 'If r = 0.80, which strength category does this fall in?',
+            options: [
+              'Weak correlation (0 < r < 0.25)',
+              'Intermediate correlation (0.25 ≤ r < 0.75)',
+              'Strong correlation (0.75 ≤ r < 1)',
+              'Perfect correlation (r = 1)'
+            ],
+            correct: 2,
+            explanation: 'Strength categories: r = 0 → no correlation | 0 < r < 0.25 → weak | 0.25 ≤ r < 0.75 → intermediate | 0.75 ≤ r < 1 → strong | r = 1 → perfect. r = 0.80 falls in the strong category (0.75 ≤ 0.80 < 1). The sign tells direction, the absolute value tells strength.'
+          }
+        ]
+      },
+      {
+        id: 'stats_ci', name: 'Confidence Interval', num: 5,
+        desc: 'Confidence intervals and hypothesis testing concepts',
+        questions: [
+          {
+            id: 'ci1',
+            text: 'Which Z value (Zα/2) corresponds to a 95% confidence interval in a double-sided test?',
+            options: ['1.29', '1.65', '1.96', '2.58'],
+            correct: 2,
+            explanation: 'From the Z table for double-sided tests: 90% CI → Zα/2 = 1.65 | 95% CI → Zα/2 = 1.96 | 99% CI → Zα/2 = 2.58. For single-sided: 90% → 1.29, 95% → 1.65, 99% → 2.33. The 95% CI with Z = 1.96 is the most commonly used in medical research.'
+          },
+          {
+            id: 'ci2',
+            text: 'A researcher estimates the percentage of smokers among university freshmen. p = 25%, significance level = 0.05 (two-tailed). Using n = p(1-p)(Zα/2)² / E², what is the required sample size?',
+            options: ['144', '246', '289', '384'],
+            correct: 2,
+            explanation: 'Given: p = 0.25, E = 0.05 (default), Zα/2 = 1.96 (for 95% CI, two-tailed). n = 0.25(1-0.25)(1.96)² / (0.05)² = 0.25 × 0.75 × 3.8416 / 0.0025 = 0.7203 / 0.0025 = 288.12 → Round UP to 289. Always round up in sample size calculations!'
+          },
+          {
+            id: 'ci3',
+            text: 'If p is not given in a sample size calculation, what value should you use?',
+            options: ['0', '0.25', '0.5', '1'],
+            correct: 2,
+            explanation: 'When p (expected proportion) is unknown/not given, use p = 0.5. This is because p(1-p) is maximized at p = 0.5, giving the most conservative (largest) sample size estimate. This ensures your study is adequately powered regardless of the true proportion.'
+          }
+        ]
+      },
+      {
+        id: 'stats_ht', name: 'Hypothesis Testing', num: 6,
+        desc: 'Hypothesis testing principles and decision rules',
+        questions: [
+          {
+            id: 'ht1',
+            text: 'In hypothesis testing, what is the significance level alpha (α) = 0.05?',
+            options: [
+              'The probability that the null hypothesis is true',
+              'The probability of making a Type I error (false positive)',
+              'The power of the test',
+              'The probability of missing a true effect'
+            ],
+            correct: 1,
+            explanation: 'Alpha (α) is the Level of Significance — the threshold for statistical significance AND the probability of Type I error (saying there is an effect when there isn't one). α = 0.05 means: "I accept a 5% chance of being wrong." Smaller α → more strict → larger sample size needed. Rule: Smaller α → Larger sample size.'
+          },
+          {
+            id: 'ht2',
+            text: 'A p-value = 0.000 appears in SPSS output. How should this be correctly reported?',
+            options: [
+              'p = 0.000',
+              'p = 0',
+              'p < .001',
+              'p < .005'
+            ],
+            correct: 2,
+            explanation: 'When SPSS shows p = .000, it does NOT mean p is exactly zero — it means p is smaller than what SPSS can display (< .001). The correct scientific reporting is p < .001. This is a common exam question: "If p-value = 0.000, it should be written as p < .001."'
+          },
+          {
+            id: 'ht3',
+            text: 'What is the difference between a one-tailed and two-tailed test?',
+            options: [
+              'One-tailed tests are always more conservative',
+              'One-tailed tests are directional (↑ or ↓ only), two-tailed tests are non-directional (↑ and ↓)',
+              'Two-tailed tests require larger alpha values',
+              'One-tailed tests are used for ANOVA, two-tailed for t-tests'
+            ],
+            correct: 1,
+            explanation: 'One-tailed: Tests in ONE direction only (e.g., "Drug A is BETTER than Drug B"). α is in one tail → Higher power → may miss opposite effects. Two-tailed: Tests in BOTH directions (e.g., "Drug A and Drug B are DIFFERENT"). α is split as α/2 in each tail → More conservative → Standard use in most medical research.'
+          },
+          {
+            id: 'ht4',
+            text: 'What are the four criteria used to estimate sample size (power analysis)?',
+            options: [
+              'Mean, median, mode, range',
+              'Alpha, beta, gamma, delta',
+              'Level of significance (α), statistical power (1-β), effect size, standard deviation',
+              'Sample size, population size, confidence level, margin of error'
+            ],
+            correct: 2,
+            explanation: 'The 4 criteria for power analysis (sample size estimation): (1) Level of Significance (α) — threshold for significance; smaller α → larger n. (2) Statistical Power (1-β) — probability of detecting true effect; higher power → larger n. (3) Effect Size — expected difference; smaller effect → larger n. (4) Standard Deviation — data variability; higher SD → larger n.'
+          }
+        ]
+      }
+    ]
   }
 ];
 
@@ -1846,14 +2234,15 @@ function renderSubjects() {
         <div class="coming-soon-tag">⏳ سيتم إضافة المحتوى قريبًا</div>
       </div>`;
     }
+    const isEn = s.lang === 'en';
     return `<div class="subject-card" onclick="selectSubject('${s.id}')">
       <div class="subject-icon ${s.iconClass}">${s.icon}</div>
       <h3>${s.name}</h3>
       <p>${s.desc}</p>
       <div class="subject-meta">
-        <span class="badge badge-accent">${s.lectures.length} محاضرة</span>
-        <span class="badge badge-accent">${totalQ} سؤال</span>
-        ${attempts.length ? `<span class="badge badge-success">${best}% أفضل نتيجة</span>` : ''}
+        <span class="badge badge-accent">${s.lectures.length} ${isEn ? 'Lectures' : 'محاضرة'}</span>
+        <span class="badge badge-accent">${totalQ} ${isEn ? 'Questions' : 'سؤال'}</span>
+        ${attempts.length ? `<span class="badge badge-success">${best}% ${isEn ? 'Best Score' : 'أفضل نتيجة'}</span>` : ''}
       </div>
     </div>`;
   }).join('');
@@ -1863,6 +2252,8 @@ function selectSubject(id) {
   currentSubject = id;
   currentSubjectData = SUBJECTS.find(s => s.id === id);
   document.getElementById('dashSubjectName').textContent = currentSubjectData.name;
+  const isEn = currentSubjectData.lang === 'en';
+  document.getElementById('dashSubtitle').textContent = isEn ? 'Personal Dashboard' : 'لوحة التحكم الشخصية';
   showPage('dashboard');
 }
 
@@ -2078,16 +2469,30 @@ function renderQuizQuestion() {
     const bg    = isCorrect ? 'rgba(0,184,148,0.1)' : 'rgba(231,76,60,0.1)';
     const brd   = isCorrect ? '#00b894' : '#e74c3c';
     const clr   = isCorrect ? '#00b894' : '#e74c3c';
-    const msg   = isCorrect
-      ? '✅ إجابة صحيحة!'
-      : '❌ إجابة خاطئة — الصواب: ' + opts[q.correct] + '. ' + q.options[q.correct];
-    const expTxt = q.explanation
-      ? '<div class="explanation-box" style="margin-top:10px"><strong>💡 التفسير:</strong> ' + q.explanation + '</div>'
-      : '';
+    const isEnglish = currentSubjectData && currentSubjectData.lang === 'en';
+    const correctLabel = isEnglish
+      ? '❌ Wrong — Correct answer: '
+      : '❌ إجابة خاطئة — الصواب: ';
+    const correctMsg = isEnglish ? '✅ Correct!' : '✅ إجابة صحيحة!';
+    const msg = isCorrect
+      ? correctMsg
+      : correctLabel + opts[q.correct] + '. ' + q.options[q.correct];
+
+    // For English subjects: show "Show Explanation" button instead of auto-showing
+    let expHTML = '';
+    if (q.explanation) {
+      if (isEnglish) {
+        expHTML = '<button class="show-exp-btn" onclick="toggleExplanation(this, '' + q.id + '')" id="expBtn_' + q.id + '">💡 Show Explanation</button>' +
+          '<div class="explanation-box hidden" id="expBox_' + q.id + '" style="margin-top:10px"><strong>💡 Explanation:</strong> ' + q.explanation + '</div>';
+      } else {
+        expHTML = '<div class="explanation-box" style="margin-top:10px"><strong>💡 التفسير:</strong> ' + q.explanation + '</div>';
+      }
+    }
+
     feedbackHTML =
       '<div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:10px;margin-top:14px;' +
       'background:' + bg + ';border:1px solid ' + brd + ';font-weight:700;font-size:.97rem;color:' + clr + ';">' +
-      msg + '</div>' + expTxt;
+      msg + '</div>' + expHTML;
   }
 
   // show explanation after final submit (unanswered questions)
@@ -2137,6 +2542,14 @@ function selectAnswer(i) {
   if (quizState.answers[quizState.current] !== undefined) return;
   quizState.answers[quizState.current] = i;
   renderQuizQuestion();
+}
+
+function toggleExplanation(btn, qid) {
+  const box = document.getElementById('expBox_' + qid);
+  if (!box) return;
+  const hidden = box.classList.contains('hidden');
+  box.classList.toggle('hidden');
+  btn.textContent = hidden ? '🔼 Hide Explanation' : '💡 Show Explanation';
 }
 
 function toggleFlag() {

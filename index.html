@@ -968,6 +968,8 @@ window.fbSave = async function(data) {
 };
 
 window.fbLogout = async function() {
+  document.getElementById('headerNav').style.display = 'none';
+  document.getElementById('authBar').style.display = 'none';
   await signOut(auth);
 };
 
@@ -1021,9 +1023,11 @@ onAuthStateChanged(auth, async (user) => {
     window._currentUser = null;
     window._cloudData = defaultData();
     window._fbReady = false;
+    // Hide ALL pages and show only auth
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-auth').classList.add('active');
     document.getElementById('authBar').style.display = 'none';
+    document.getElementById('headerNav').style.display = 'none';
   }
 });
 </script>
@@ -1033,10 +1037,11 @@ onAuthStateChanged(auth, async (user) => {
 ══════════════════════════════════════ -->
 <div class="header" id="mainHeader">
   <div class="header-logo" onclick="showPage('subjects')">📚 منصة MCQ</div>
-  <nav class="header-nav" id="headerNav" style="display:none">
+  <nav class="header-nav" id="headerNav" style="display:none" aria-hidden="true">
     <button class="btn-nav" onclick="showPage('dashboard')">الرئيسية</button>
     <button class="btn-nav" onclick="showDashPage('stats')">الإحصائيات</button>
     <button class="btn-nav" onclick="showDashPage('bank')">بنك الأسئلة</button>
+    <button class="btn-nav" onclick="showFlaggedQuestions()">🚩 المميزة</button>
     <button class="btn-nav" onclick="showDashPage('flashcards')">البطاقات التعليمية</button>
   </nav>
   <div class="auth-bar" id="authBar">
@@ -1148,6 +1153,11 @@ onAuthStateChanged(auth, async (user) => {
         <div class="action-icon" style="background:rgba(255,181,71,0.15)">🃏</div>
         <h3>البطاقات التعليمية</h3>
         <p>احفظ التعاريف والمفاهيم بسرعة</p>
+      </div>
+      <div class="action-card" onclick="showFlaggedQuestions()">
+        <div class="action-icon" style="background:rgba(255,181,71,0.15)">🚩</div>
+        <h3>الأسئلة المميزة</h3>
+        <p>راجع الأسئلة التي قمت بتمييزها</p>
       </div>
       <div class="action-card danger-card" onclick="confirmReset()">
         <div class="action-icon" style="background:rgba(255,92,107,0.1)">🗑️</div>
@@ -1422,7 +1432,7 @@ onAuthStateChanged(auth, async (user) => {
       <div class="fc-card-wrap">
         <div class="fc-card" id="fcCard" onclick="revealFC()">
           <div class="fc-face fc-front">
-            <div class="fc-face-label">التعريف — اضغط للكشف</div>
+            <div class="fc-face-label" id="fcFaceLabel">التعريف — اضغط للكشف</div>
             <div class="fc-front-text" id="fcFrontText"></div>
           </div>
           <div class="fc-face fc-back">
@@ -1464,6 +1474,28 @@ onAuthStateChanged(auth, async (user) => {
         <button class="btn btn-secondary" onclick="exitFCStudy()">العودة للبطاقات</button>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE: FLAGGED QUESTIONS
+══════════════════════════════════════ -->
+<div class="page" id="page-flagged">
+  <div class="container-sm">
+    <div class="dash-header">
+      <div class="dash-back" onclick="showPage('dashboard')">←</div>
+      <div class="dash-title">
+        <h2>🚩 الأسئلة المميزة</h2>
+        <p>الأسئلة التي قمت بتمييزها أثناء الاختبارات</p>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
+      <button class="btn btn-primary btn-sm" onclick="practiceFlaged()">📝 اختبر نفسك عليها</button>
+      <button class="btn btn-danger btn-sm" onclick="clearAllFlags()">🗑️ مسح كل التمييزات</button>
+    </div>
+
+    <div id="flaggedList"></div>
   </div>
 </div>
 
@@ -1764,11 +1796,21 @@ function saveData(d) {
 // ═══════════════════════════════════════════════════
 
 function showPage(name) {
+  // Security: block navigation if not logged in
+  const protectedPages = ['dashboard','makeQuiz','quiz','results','stats','mistakes','bank','flashcards','fcstudy','flagged'];
+  if (protectedPages.includes(name) && !window._currentUser) {
+    console.warn('Blocked unauthorized access to:', name);
+    return;
+  }
+
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   const pg = document.getElementById('page-' + name);
   if (pg) pg.classList.add('active');
+
   const nav = document.getElementById('headerNav');
-  nav.style.display = (name !== 'subjects' && name !== 'quiz' && name !== 'fcstudy') ? 'flex' : 'none';
+  const hideNav = ['subjects','quiz','fcstudy','auth'].includes(name);
+  nav.style.display = (!hideNav && window._currentUser) ? 'flex' : 'none';
+
   window.scrollTo(0, 0);
 
   if (name === 'dashboard') renderDashboard();
@@ -1777,6 +1819,7 @@ function showPage(name) {
   if (name === 'bank') renderBank();
   if (name === 'makeQuiz') renderMakeQuiz();
   if (name === 'flashcards') { renderFCSummary(); renderFCList(); }
+  if (name === 'flagged') renderFlaggedList();
 }
 
 function showDashPage(name) {
@@ -2714,7 +2757,7 @@ function renderFCList() {
         <div class="status-dot ${dotClass}"></div>
         <div style="min-width:0">
           <div class="fc-list-term">${c.back}</div>
-          <div class="fc-list-def" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${c.front.substring(0,80)}${c.front.length>80?'...':''}</div>
+          <div class="fc-list-def" style="white-space:normal;line-height:1.65;margin-top:4px">${c.front}</div>
         </div>
       </div>
       <div style="display:flex;gap:6px;align-items:center;flex-shrink:0">${dueTag}${diffBadge}</div>
@@ -2772,6 +2815,8 @@ function showFCCard() {
   // Reset flip
   card.classList.remove('flipped');
   card.classList.remove('easy-card', 'hard-card');
+  const lbl = document.getElementById('fcFaceLabel');
+  if (lbl) lbl.textContent = 'التعريف — اضغط للكشف';
   if (c.difficulty === 'easy') card.classList.add('easy-card');
   if (c.difficulty === 'hard') card.classList.add('hard-card');
 
@@ -2796,13 +2841,25 @@ function showFCCard() {
   document.getElementById('fcTimingEasy').textContent = fmtMinutes(intervals[Math.min(step + 2, intervals.length - 1)]);
 }
 
-// ── Reveal ──
+// ── Reveal / Toggle flip ──
 function revealFC() {
-  if (fcRevealed) return;
-  fcRevealed = true;
-  document.getElementById('fcCard').classList.add('flipped');
-  document.getElementById('fcRevealBtn').classList.add('hidden');
-  document.getElementById('fcResponseBtns').classList.remove('hidden');
+  const card = document.getElementById('fcCard');
+  if (!fcRevealed) {
+    // First reveal: flip to back and show response buttons
+    fcRevealed = true;
+    card.classList.add('flipped');
+    document.getElementById('fcRevealBtn').classList.add('hidden');
+    document.getElementById('fcResponseBtns').classList.remove('hidden');
+    // Update label hint
+    document.getElementById('fcFaceLabel').textContent = 'التعريف — اضغط للعودة';
+  } else {
+    // Toggle flip back and forth
+    card.classList.toggle('flipped');
+    const isShowingBack = card.classList.contains('flipped');
+    document.getElementById('fcFaceLabel').textContent = isShowingBack
+      ? 'المصطلح — اضغط لرؤية التعريف'
+      : 'التعريف — اضغط للعودة';
+  }
 }
 
 // ── Respond ──
@@ -2854,6 +2911,113 @@ function fcRespond(response) {
 const _origShowPage = showPage;
 // We'll override showPage to handle flashcards
 window.addEventListener('DOMContentLoaded', () => {});
+
+// ═══════════════════════════════════════════════════
+//  FLAGGED QUESTIONS
+// ═══════════════════════════════════════════════════
+
+function showFlaggedQuestions() {
+  showPage('flagged');
+  renderFlaggedList();
+}
+
+function renderFlaggedList() {
+  const d = getData();
+  const flagged = d.flagged || {};
+  const opts = ['أ', 'ب', 'ج', 'د'];
+  const container = document.getElementById('flaggedList');
+
+  // Collect all flagged questions
+  const flaggedQs = [];
+  currentSubjectData.lectures.forEach(lec => {
+    lec.questions.forEach(q => {
+      if (flagged[q.id]) {
+        flaggedQs.push({ ...q, lecId: lec.id, lecName: lec.name });
+      }
+    });
+  });
+
+  if (!flaggedQs.length) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="icon">🚩</div>
+        <h3>لا توجد أسئلة مميزة</h3>
+        <p>أثناء الاختبار اضغط زر "تمييز" على أي سؤال تريد مراجعته لاحقاً</p>
+      </div>`;
+    return;
+  }
+
+  container.innerHTML = flaggedQs.map((q, idx) => {
+    const isAnswered = d.answered && d.answered[q.id];
+    const isMistake  = d.mistakes && d.mistakes[q.id] && !d.mistakes[q.id].mastered;
+    return `<div class="card" style="margin-bottom:16px;border-right:4px solid var(--warning)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px">
+        <div>
+          <div style="font-size:.82rem;color:var(--text2);margin-bottom:6px">
+            السؤال ${idx+1} | ${q.lecName}
+          </div>
+          <div style="font-weight:600;font-size:1rem;line-height:1.6">${q.text}</div>
+        </div>
+        <button onclick="unflagQuestion('${q.id}')" style="
+          padding:5px 10px;border-radius:8px;font-size:.78rem;
+          background:rgba(255,181,71,0.15);border:1px solid var(--warning);
+          color:var(--warning);cursor:pointer;white-space:nowrap;flex-shrink:0;
+          font-family:'Tajawal',sans-serif;
+        ">إلغاء التمييز</button>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        ${q.options.map((opt, i) => `
+          <div style="
+            padding:10px 14px;border-radius:8px;font-size:.9rem;
+            border:1.5px solid ${i === q.correct ? 'var(--success)' : 'var(--border)'};
+            background:${i === q.correct ? 'rgba(0,184,148,0.07)' : 'var(--surface2)'};
+            color:${i === q.correct ? 'var(--success)' : 'var(--text2)'};
+            font-weight:${i === q.correct ? '700' : '400'};
+          ">
+            ${opts[i]}. ${opt} ${i === q.correct ? '✓' : ''}
+          </div>`).join('')}
+      </div>
+      ${q.explanation ? `<div class="explanation-box" style="margin-top:12px"><strong>💡 التفسير:</strong> ${q.explanation}</div>` : ''}
+      <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+        ${isAnswered ? '<span class="badge badge-success">تمت الإجابة</span>' : '<span class="badge" style="background:var(--surface3);color:var(--text3)">لم يُجب</span>'}
+        ${isMistake ? '<span class="badge badge-danger">خطأ سابق</span>' : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function unflagQuestion(qid) {
+  const d = getData();
+  if (d.flagged) d.flagged[qid] = false;
+  saveData(d);
+  toast('تم إلغاء التمييز', 'success');
+  renderFlaggedList();
+}
+
+function clearAllFlags() {
+  showModal('مسح جميع التمييزات', 'هل تريد إلغاء تمييز جميع الأسئلة؟', () => {
+    const d = getData();
+    d.flagged = {};
+    saveData(d);
+    closeModal();
+    toast('تم مسح جميع التمييزات', 'success');
+    renderFlaggedList();
+  });
+}
+
+function practiceFlaged() {
+  const d = getData();
+  const flagged = d.flagged || {};
+  const qs = [];
+  currentSubjectData.lectures.forEach(lec => {
+    lec.questions.forEach(q => {
+      if (flagged[q.id]) qs.push({ ...q, lecId: lec.id, lecName: lec.name });
+    });
+  });
+  if (!qs.length) { toast('لا توجد أسئلة مميزة', 'error'); return; }
+  lastQuizQuestions = qs;
+  initQuiz(qs);
+}
 
 // Auth is handled by Firebase onAuthStateChanged above
 // renderSubjects() is called after login

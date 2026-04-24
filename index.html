@@ -992,7 +992,7 @@ const auth = getAuth(app);
 const db  = getFirestore(app);
 
 function defaultData() {
-  return { attempts: [], mistakes: {}, flagged: {}, answered: {}, lecPerf: {} };
+  return { attempts: [], mistakes: {}, flagged: {}, answered: {}, lecPerf: {}, incompleteQuizzes: {} };
 }
 
 window._fbReady = false;
@@ -1035,7 +1035,8 @@ onAuthStateChanged(auth, async (user) => {
         if (!window._cloudData.mistakes)  window._cloudData.mistakes  = {};
         if (!window._cloudData.flagged)   window._cloudData.flagged   = {};
         if (!window._cloudData.answered)  window._cloudData.answered  = {};
-        if (!window._cloudData.lecPerf)   window._cloudData.lecPerf   = {};
+        if (!window._cloudData.lecPerf)          window._cloudData.lecPerf          = {};
+        if (!window._cloudData.incompleteQuizzes) window._cloudData.incompleteQuizzes = {};
       } else {
         window._cloudData = defaultData();
       }
@@ -1428,7 +1429,7 @@ onAuthStateChanged(auth, async (user) => {
     <div class="fc-summary" id="fcSummary"></div>
 
     <!-- Action buttons -->
-    <div class="fc-actions-bar">
+    <div class="fc-actions-bar" id="fcActionsBar">
       <button class="btn btn-primary" onclick="startFCSession('due')">📅 مراجعة المستحقة</button>
       <button class="btn btn-secondary" onclick="startFCSession('all')">📚 دراسة الكل</button>
       <button class="btn btn-secondary" onclick="startFCSession('new')">✨ البطاقات الجديدة</button>
@@ -2998,6 +2999,40 @@ function renderDashboard() {
 //  MAKE A QUIZ
 // ═══════════════════════════════════════════════════
 
+function resumeIncompleteQuiz() {
+  const d = getData();
+  const saved = d.incompleteQuizzes && d.incompleteQuizzes[currentSubject];
+  if (!saved) return;
+  // Build question map from all lectures
+  const qMap = {};
+  currentSubjectData.lectures.forEach(lec => {
+    lec.questions.forEach(q => qMap[q.id] = { ...q, lecId: lec.id, lecName: lec.name });
+  });
+  const questions = saved.questionIds.map(id => qMap[id]).filter(Boolean);
+  if (!questions.length) { toast('لا يمكن استعادة الاختبار', 'error'); return; }
+  clearInterval(timerInterval);
+  lastQuizQuestions = questions;
+  quizState = {
+    questions,
+    current: Math.min(saved.current, questions.length - 1),
+    answers: saved.answers || {},
+    flags: saved.flags || {},
+    startTime: Date.now() - (saved.elapsed || 0),
+    elapsed: saved.elapsed || 0,
+    submitted: false
+  };
+  showPage('quiz');
+  renderQuizQuestion();
+  startTimer();
+}
+
+function dismissIncompleteQuiz() {
+  const d = getData();
+  if (d.incompleteQuizzes) delete d.incompleteQuizzes[currentSubject];
+  saveData(d);
+  renderMakeQuiz();
+}
+
 function renderMakeQuiz() {
   selectedLectures = new Set();
   quizMode = 'all';
@@ -3005,6 +3040,45 @@ function renderMakeQuiz() {
   document.querySelector('.mode-card[data-mode="all"]').classList.add('active');
 
   const d = getData();
+
+  // ── Incomplete quiz banner ──
+  const setup = document.querySelector('.quiz-setup');
+  const existingBanner = document.getElementById('incompleteQuizBanner');
+  if (existingBanner) existingBanner.remove();
+
+  const saved = d.incompleteQuizzes && d.incompleteQuizzes[currentSubject];
+  if (saved) {
+    const savedDate = new Date(saved.savedAt);
+    const timeAgo = (() => {
+      const mins = Math.round((Date.now() - saved.savedAt) / 60000);
+      if (mins < 60) return `منذ ${mins} دقيقة`;
+      const hrs = Math.round(mins / 60);
+      if (hrs < 24) return `منذ ${hrs} ساعة`;
+      return `منذ ${Math.round(hrs/24)} يوم`;
+    })();
+    const elapsedSec = Math.floor((saved.elapsed || 0) / 1000);
+    const mm = String(Math.floor(elapsedSec / 60)).padStart(2,'0');
+    const ss = String(elapsedSec % 60).padStart(2,'0');
+    const banner = document.createElement('div');
+    banner.id = 'incompleteQuizBanner';
+    banner.className = 'card';
+    banner.style.cssText = 'border-right: 4px solid var(--warning); margin-bottom: 0;';
+    banner.innerHTML = `
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+        <span style="font-size:1.5rem">⏸️</span>
+        <div>
+          <div style="font-weight:700;font-size:1rem">اختبار غير مكتمل</div>
+          <div style="color:var(--text2);font-size:.85rem">${timeAgo} • أجبت على ${saved.answeredCount} من ${saved.totalQ} سؤال • الوقت المنقضي: ${mm}:${ss}</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn btn-primary btn-sm" onclick="resumeIncompleteQuiz()">▶ استمر من حيث توقفت</button>
+        <button class="btn btn-danger btn-sm" onclick="dismissIncompleteQuiz()">🗑 تجاهل</button>
+      </div>
+    `;
+    setup.insertBefore(banner, setup.firstChild);
+  }
+
   const list = document.getElementById('lectureList');
   list.innerHTML = currentSubjectData.lectures.map(lec => {
     const totalQ = lec.questions.length;
@@ -3340,14 +3414,35 @@ function finalSubmit() {
     d.lecPerf[lid].correct += lecGroups[lid].correct;
   });
 
+  // Clear incomplete quiz on submit
+  if (d.incompleteQuizzes && d.incompleteQuizzes[currentSubject]) {
+    delete d.incompleteQuizzes[currentSubject];
+  }
+
   saveData(d);
   renderQuizQuestion();
   showResults(quizState, correct, pct, lecGroups);
 }
 
 function exitQuiz() {
-  showModal('الخروج من الاختبار', 'هل تريد الخروج؟ لن يتم حفظ تقدمك.', () => {
+  showModal('الخروج من الاختبار', 'هل تريد الخروج؟ سيتم حفظ تقدمك لتتمكن من الاستمرار لاحقاً.', () => {
     clearInterval(timerInterval);
+    // Save incomplete quiz if user answered at least one question
+    if (!quizState.submitted && Object.keys(quizState.answers).length > 0) {
+      const d = getData();
+      if (!d.incompleteQuizzes) d.incompleteQuizzes = {};
+      d.incompleteQuizzes[currentSubject] = {
+        questionIds: quizState.questions.map(q => q.id),
+        current: quizState.current,
+        answers: quizState.answers,
+        flags: quizState.flags || {},
+        elapsed: quizState.elapsed || 0,
+        savedAt: Date.now(),
+        totalQ: quizState.questions.length,
+        answeredCount: Object.keys(quizState.answers).length
+      };
+      saveData(d);
+    }
     closeModal();
     showPage('dashboard');
   });
@@ -3831,6 +3926,20 @@ function exitFCStudy() {
 
 // ── Summary ──
 function renderFCSummary() {
+  const actionsBar = document.getElementById('fcActionsBar');
+  const filterBar  = document.getElementById('fcFilterBar');
+
+  // Only ethics subject has flashcards
+  if (currentSubject !== 'ethics') {
+    document.getElementById('fcSummary').innerHTML = '';
+    if (actionsBar) actionsBar.style.display = 'none';
+    if (filterBar)  filterBar.style.display  = 'none';
+    return;
+  }
+
+  if (actionsBar) actionsBar.style.display = '';
+  if (filterBar)  filterBar.style.display  = '';
+
   let newCount = 0, learningCount = 0, masteredCount = 0, dueCount = 0;
   FLASHCARDS_DATA.forEach(c => {
     const s = getCardState(c.id);
@@ -3859,6 +3968,12 @@ function setFCFilter(el, filter) {
 // ── Card List ──
 function renderFCList() {
   const list = document.getElementById('fcList');
+
+  if (currentSubject !== 'ethics') {
+    list.innerHTML = '<div class="empty-state"><div class="icon">🃏</div><h3>لا توجد بطاقات تعليمية</h3><p>لم تتم إضافة أي بطاقات لهذه المادة بعد</p></div>';
+    return;
+  }
+
   let cards = FLASHCARDS_DATA.filter(c => {
     if (fcFilter === 'all') return true;
     const s = getCardState(c.id);
@@ -3893,6 +4008,7 @@ function renderFCList() {
 
 // ── Start Session ──
 function startFCSession(mode) {
+  if (currentSubject !== 'ethics') { toast('لا توجد بطاقات تعليمية لهذه المادة', 'error'); return; }
   let cards = [];
   if (mode === 'due') {
     cards = FLASHCARDS_DATA.filter(c => isDue(c));

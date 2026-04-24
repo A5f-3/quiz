@@ -1054,8 +1054,42 @@ onAuthStateChanged(auth, async (user) => {
 
     function tryShow() {
       if (typeof showPage === 'function' && typeof renderSubjects === 'function') {
-        showPage('subjects');
-        renderSubjects();
+
+        // ── Restore last visited page on refresh ──
+        const lastPage    = sessionStorage.getItem('mcq_lastPage');
+        const lastSubject = sessionStorage.getItem('mcq_lastSubject');
+
+        // Pages with volatile state: redirect to a stable fallback
+        const redirectMap = { quiz: 'makeQuiz', results: 'dashboard', fcstudy: 'flashcards' };
+        const targetPage  = redirectMap[lastPage] || lastPage;
+
+        // Pages that require a subject to be selected
+        const needsSubject = ['dashboard','makeQuiz','stats','mistakes','bank','flashcards','flagged'];
+
+        if (targetPage && targetPage !== 'auth' && targetPage !== 'subjects' && document.getElementById('page-' + targetPage)) {
+          // Restore subject context if needed
+          if (needsSubject.includes(targetPage) && lastSubject) {
+            const sd = SUBJECTS.find(s => s.id === lastSubject);
+            if (sd) {
+              currentSubject     = lastSubject;
+              currentSubjectData = sd;
+              const isEn = sd.lang === 'en';
+              document.getElementById('dashSubjectName').textContent = sd.name;
+              document.getElementById('dashSubtitle').textContent    = isEn ? 'Personal Dashboard' : 'لوحة التحكم الشخصية';
+            }
+          }
+          // If we need a subject but couldn't restore it, fall back to subjects page
+          if (needsSubject.includes(targetPage) && !currentSubject) {
+            showPage('subjects'); renderSubjects();
+          } else {
+            showPage(targetPage);
+            if (targetPage === 'subjects') renderSubjects();
+          }
+        } else {
+          showPage('subjects');
+          renderSubjects();
+        }
+
       } else {
         setTimeout(tryShow, 50);
       }
@@ -2912,6 +2946,12 @@ function showPage(name) {
   const nav = document.getElementById('headerNav');
   const hideNav = ['subjects','quiz','fcstudy','auth'].includes(name);
   nav.style.display = (!hideNav && window._currentUser) ? 'flex' : 'none';
+
+  // ── Remember last page for refresh restoration ──
+  if (name !== 'auth') {
+    sessionStorage.setItem('mcq_lastPage', name);
+    sessionStorage.setItem('mcq_lastSubject', currentSubject || '');
+  }
 
   window.scrollTo(0, 0);
 

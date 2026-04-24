@@ -1339,6 +1339,8 @@ onAuthStateChanged(auth, async (user) => {
     document.getElementById('authBar').style.display = 'none';
     document.getElementById('headerNav').style.display = 'none';
     document.getElementById('mainHeader').style.display = 'none';
+    setAuthLoading('loginBtn', false, 'دخول →');
+    setAuthLoading('registerBtn', false, 'إنشاء حساب →');
     hideLoader();
     initLanding();
   }
@@ -3499,6 +3501,12 @@ function showPage(name) {
 
   // Init landing animations when navigating to it
   if (name === 'landing') { initLanding(); window.scrollTo(0,0); return; }
+  if (name === 'auth') {
+    setAuthLoading('loginBtn', false, 'دخول →');
+    setAuthLoading('registerBtn', false, 'إنشاء حساب →');
+    const errEl = document.getElementById('authError');
+    if (errEl) errEl.classList.remove('show');
+  }
 
   // ── Remember last page for refresh restoration ──
   if (name !== 'auth') {

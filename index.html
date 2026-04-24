@@ -3849,16 +3849,52 @@ function showModal(title, body, onConfirm) {
 function closeModal() { document.getElementById('modalOverlay').classList.add('hidden'); }
 
 function confirmReset() {
-  showModal('إعادة تعيين البيانات', 'سيتم حذف جميع بياناتك وسجل الاختبارات نهائياً. هل أنت متأكد؟', () => {
-    const fresh = defaultData();
-    window._cloudData = fresh;
-    LS.remove('data');
-    if (window.fbSave && window._currentUser) window.fbSave(fresh);
-    closeModal();
-    toast('تم إعادة تعيين جميع البيانات', 'success');
-    renderDashboard();
-    renderSubjects();
-  });
+  if (!currentSubject || !currentSubjectData) { toast('لم يتم تحديد مادة', 'error'); return; }
+  const subjectName = currentSubjectData.name || currentSubject;
+  showModal(
+    'إعادة تعيين البيانات',
+    `سيتم حذف جميع تقدمك في مادة "${subjectName}" نهائياً. هل أنت متأكد؟`,
+    () => {
+      const d = getData();
+
+      // 1. حذف المحاولات الخاصة بالمادة
+      if (d.attempts) {
+        d.attempts = d.attempts.filter(a => a.subjectId !== currentSubject);
+      }
+
+      // 2. تجميع معرّفات أسئلة المادة الحالية
+      const subjectQIds = new Set();
+      const subjectLecIds = new Set();
+      currentSubjectData.lectures.forEach(l => {
+        subjectLecIds.add(l.id);
+        l.questions.forEach(q => subjectQIds.add(q.id));
+      });
+
+      // 3. حذف الأخطاء والمجاب والمعلّم للمادة الحالية فقط
+      ['mistakes', 'answered', 'flagged'].forEach(key => {
+        if (d[key]) {
+          subjectQIds.forEach(qid => delete d[key][qid]);
+        }
+      });
+
+      // 4. حذف أداء المحاضرات للمادة الحالية
+      if (d.lecPerf) {
+        subjectLecIds.forEach(lid => delete d.lecPerf[lid]);
+      }
+
+      // 5. حذف الكويز الناقص للمادة الحالية
+      if (d.incompleteQuizzes) {
+        delete d.incompleteQuizzes[currentSubject];
+      }
+
+      window._cloudData = d;
+      LS.remove('data');
+      if (window.fbSave && window._currentUser) window.fbSave(d);
+      closeModal();
+      toast(`تم إعادة تعيين تقدمك في ${subjectName}`, 'success');
+      renderDashboard();
+    }
+  );
 }
 
 // ═══════════════════════════════════════════════════

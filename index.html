@@ -2397,6 +2397,464 @@ const SUBJECTS = [
             explanation: 'The 4 criteria for power analysis (sample size estimation): (1) Level of Significance (α) — threshold for significance; smaller α → larger n. (2) Statistical Power (1-β) — probability of detecting true effect; higher power → larger n. (3) Effect Size — expected difference; smaller effect → larger n. (4) Standard Deviation — data variability; higher SD → larger n.'
           }
         ]
+      },
+      {
+        id: 'stats_best', name: 'Best Statistical Approach', num: 9,
+        desc: 'How to choose the best statistical test for each scenario',
+        questions: [
+          {
+            id: 'best1',
+            text: 'Which statistical test is used to compare the means of two independent groups?',
+            options: ['Chi-square test', 'T-test', 'ANOVA', 'Pearson correlation'],
+            correct: 1,
+            explanation: 'Independent Samples T-test compares the means of TWO separate, unrelated groups (e.g., males vs. females, treatment vs. control). Requirements: outcome is continuous, groups are independent, data is normally distributed. For 3+ groups use ANOVA. For paired data (same subjects measured twice) use paired t-test.'
+          },
+          {
+            id: 'best2',
+            text: 'Which test would be most appropriate for comparing the means of more than two groups?',
+            options: [
+              'Independent samples t-test',
+              'Paired samples t-test',
+              'Analysis of Variance (ANOVA)',
+              'Mann-Whitney U test'
+            ],
+            correct: 2,
+            explanation: 'ANOVA (Analysis of Variance) is designed for comparing 3+ group means. Using multiple t-tests inflates Type I error (false positives). ANOVA controls this by testing all groups simultaneously. If ANOVA is significant, use post-hoc tests (Tukey/Scheffé) to identify which specific groups differ.'
+          },
+          {
+            id: 'best3',
+            text: 'Which test is used to determine if there are significant differences between the means of three or more independent groups?',
+            options: ['T-test', 'Chi-square test', 'ANOVA', 'Pearson correlation'],
+            correct: 2,
+            explanation: 'One-way ANOVA is specifically used for 3+ independent groups with a continuous outcome. H₀: all group means are equal. H₁: at least one mean differs. If data is not normally distributed, use Kruskal-Wallis (non-parametric alternative to ANOVA).'
+          },
+          {
+            id: 'best4',
+            text: 'What does the Mann-Whitney U test compare?',
+            options: [
+              'Variance between two groups',
+              'Means of two dependent groups',
+              'Correlation between two variables',
+              'Median values between two independent groups'
+            ],
+            correct: 3,
+            explanation: 'Mann-Whitney U compares MEDIANS (not means) between two INDEPENDENT groups. It is the non-parametric alternative to Independent Samples t-test. Use it when: data is not normally distributed, small sample size, or ordinal data. Instead of comparing averages, it compares ranks to determine which group tends to have higher values.'
+          },
+          {
+            id: 'best5',
+            text: 'The Kruskal-Wallis test is the non-parametric alternative to which parametric test?',
+            options: [
+              'Paired samples t-test',
+              'One-way ANOVA',
+              'Independent samples t-test',
+              'Pearson correlation'
+            ],
+            correct: 1,
+            explanation: 'Kruskal-Wallis ↔ One-way ANOVA (non-parametric equivalent). Use Kruskal-Wallis for 3+ independent groups when data is NOT normally distributed or is ordinal. Summary of parametric ↔ non-parametric pairs: Independent t-test ↔ Mann-Whitney U | Paired t-test ↔ Wilcoxon signed-rank | One-way ANOVA ↔ Kruskal-Wallis | Pearson ↔ Spearman.'
+          },
+          {
+            id: 'best6',
+            text: 'A researcher wants to know if there is a significant difference in the mean scores of four groups. What test should be used?',
+            options: [
+              'Independent samples t-test',
+              'Paired samples t-test',
+              'One-way ANOVA',
+              'Two-way ANOVA'
+            ],
+            correct: 2,
+            explanation: 'FOUR groups with ONE grouping variable → One-way ANOVA. Rules: 2 independent groups → Independent t-test. 2 related groups → Paired t-test. 3+ independent groups with ONE factor → One-way ANOVA. 3+ groups with TWO factors → Two-way ANOVA (e.g., comparing groups by both gender AND age category).'
+          },
+          {
+            id: 'best7',
+            text: 'When analyzing paired data where the difference scores are not normally distributed, which test is most appropriate?',
+            options: [
+              'Paired samples t-test',
+              'Independent samples t-test',
+              'Wilcoxon signed-rank test',
+              'Kruskal-Wallis test'
+            ],
+            correct: 2,
+            explanation: 'Wilcoxon Signed-Rank Test is the non-parametric alternative to the Paired t-test. Use when: paired/related data (before-after), but differences are NOT normally distributed. It ranks the absolute differences and tests whether they tend to be positive or negative, instead of requiring normally distributed differences.'
+          },
+          {
+            id: 'best8',
+            text: 'A researcher wants to test if there is an association between two categorical variables. Which test should be used?',
+            options: [
+              'T-test',
+              'ANOVA',
+              'Chi-square test of independence',
+              'Pearson correlation'
+            ],
+            correct: 2,
+            explanation: 'Two categorical variables → Chi-square test of independence. Examples: gender vs. disease status, smoking vs. lung cancer, blood type vs. race. Tests whether the variables are independent (no association) or associated. Requires: each cell expected frequency ≥ 5 (otherwise use Fisher\'s Exact Test).'
+          },
+          {
+            id: 'best9',
+            text: 'When is it appropriate to use the Spearman rank correlation?',
+            options: [
+              'When assessing the association between two categorical variables',
+              'When comparing the means of two groups',
+              'When both variables are not normally distributed',
+              'Always'
+            ],
+            correct: 2,
+            explanation: 'Spearman\'s rank correlation (rₛ) is used when: data is NOT normally distributed, OR data is ordinal/ranked, OR there are outliers. It measures monotonic relationships by ranking the data first, then correlating the ranks. Pearson\'s r requires normally distributed continuous data. For categorical data, use Chi-square (not correlation).'
+          },
+          {
+            id: 'best10',
+            text: 'The Wilcoxon signed-rank test is used for:',
+            options: [
+              'Comparing two related samples',
+              'Determining if two independent samples come from the same distribution',
+              'Comparing means of two independent groups',
+              'Testing the correlation between two variables'
+            ],
+            correct: 0,
+            explanation: 'Wilcoxon signed-rank test compares TWO RELATED/PAIRED samples when differences are not normally distributed (e.g., before-after measurements on same subjects). It is the non-parametric equivalent of the Paired t-test. For two INDEPENDENT samples that are non-normal, use Mann-Whitney U instead.'
+          },
+          {
+            id: 'best11',
+            text: 'What statistical test is best for comparing the means of two groups when the data are not normally distributed?',
+            options: [
+              'Mann-Whitney U test',
+              'One-way ANOVA',
+              'Independent samples t-test',
+              'Paired samples t-test'
+            ],
+            correct: 0,
+            explanation: 'Two independent groups + non-normal data = Mann-Whitney U test. This is the non-parametric alternative to Independent Samples t-test. It compares medians (via ranking) instead of means. If you have 3+ non-normal groups, use Kruskal-Wallis instead.'
+          },
+          {
+            id: 'best12',
+            text: 'The Shapiro-Wilk test is used for assessing:',
+            options: [
+              'The equality of variances',
+              'The normality of data distribution',
+              'The correlation between two variables',
+              'The independence of two variables'
+            ],
+            correct: 1,
+            explanation: 'Shapiro-Wilk tests NORMALITY of distribution. H₀: data is normally distributed. If p > .05 → fail to reject H₀ → data IS normal → use parametric tests. If p < .05 → reject H₀ → data is NOT normal → use non-parametric tests. Other normality tests: Kolmogorov-Smirnov. For equality of variances, use Levene\'s test.'
+          },
+          {
+            id: 'best13',
+            text: 'Scenario: There is a significant relationship between age and height (both continuous, normally distributed). What is the best statistical approach?',
+            options: [
+              'Chi-square test',
+              'Independent samples t-test',
+              'Pearson correlation',
+              'One-way ANOVA'
+            ],
+            correct: 2,
+            explanation: 'Relationship between TWO CONTINUOUS variables + NORMAL distribution → Pearson correlation. If the same variables were skewed/non-normal → use Spearman correlation instead. Key rule: "relationship/association between two continuous variables" = correlation. "Difference between groups" = t-test/ANOVA.'
+          },
+          {
+            id: 'best14',
+            text: 'Scenario: There is a significant relationship between sex (male/female) and smoking status (smoker/non-smoker). What is the best statistical approach?',
+            options: [
+              'Pearson correlation',
+              'T-test',
+              'Chi-square test',
+              'ANOVA'
+            ],
+            correct: 2,
+            explanation: 'BOTH variables are categorical (sex: 2 categories, smoking: 2 categories) → Chi-square test. This tests whether there is an association between the two categorical variables. Creates a 2×2 contingency table. If expected frequencies < 5, use Fisher\'s Exact Test instead.'
+          },
+          {
+            id: 'best15',
+            text: 'Scenario: There is a significant relationship between smoking (yes/no) and use of insulin (yes/no). What is the best statistical approach?',
+            options: [
+              'Pearson correlation',
+              'Spearman correlation',
+              'Chi-square test',
+              'Independent t-test'
+            ],
+            correct: 2,
+            explanation: 'Two categorical (binary) variables → Chi-square test. Both smoking and insulin use are categorical yes/no variables. Pattern: any time BOTH variables are categorical → Chi-square. Remember: 2×2 table is the simplest contingency table (df = 1).'
+          },
+          {
+            id: 'best16',
+            text: 'Scenario: There is a significant relationship between Math grades (A+, A, B+,..) and overall Grades (A+, A, B+,..). Both are ORDINAL. What is the best statistical approach?',
+            options: [
+              'Pearson correlation',
+              'Spearman correlation',
+              'Chi-square test',
+              'T-test'
+            ],
+            correct: 1,
+            explanation: 'BOTH variables are ORDINAL (ranked categories with natural order: A+ > A > B+ > B...) → Spearman correlation. Pearson requires continuous normally distributed data. Spearman works with ranks and is ideal for ordinal-ordinal relationships. Chi-square would work but loses the ordering information.'
+          },
+          {
+            id: 'best17',
+            text: 'Scenario: There is a significant relationship between blood pressure and heart rate (both continuous). Data is NOT normally distributed. What is the best statistical approach?',
+            options: [
+              'Pearson correlation',
+              'Spearman correlation',
+              'Chi-square test',
+              'T-test'
+            ],
+            correct: 1,
+            explanation: 'Two CONTINUOUS variables + NOT normally distributed → Spearman correlation (non-parametric). If the data were normal → Pearson. Rule of thumb for correlations: Normal → Pearson | Skewed/non-normal/ordinal → Spearman. Always check normality first (Shapiro-Wilk test).'
+          },
+          {
+            id: 'best18',
+            text: 'Scenario: There is a significant difference in the mean of age between KFU colleges (e.g., Medicine, Engineering, Arts, Science). Data is normally distributed. What is the best statistical approach?',
+            options: [
+              'Independent t-test',
+              'One-way ANOVA',
+              'Kruskal-Wallis',
+              'Chi-square'
+            ],
+            correct: 1,
+            explanation: '3+ independent groups (multiple colleges) + continuous outcome (age) + NORMAL distribution → One-way ANOVA. If age were NOT normally distributed → Kruskal-Wallis (non-parametric alternative). Always identify: (1) how many groups? (2) continuous or categorical outcome? (3) normal or not?'
+          },
+          {
+            id: 'best19',
+            text: 'Scenario: There is a significant difference between smoking groups (non-smoker, light, heavy) in mean Age. Data is SKEWED (non-parametric). What is the best statistical approach?',
+            options: [
+              'One-way ANOVA',
+              'Independent t-test',
+              'Kruskal-Wallis',
+              'Mann-Whitney U'
+            ],
+            correct: 2,
+            explanation: '3+ independent groups (non-smoker, light, heavy) + continuous outcome (age) + NON-NORMAL → Kruskal-Wallis. It is the non-parametric alternative to one-way ANOVA. If there were only 2 smoking groups (smoker vs non-smoker) with non-normal data → Mann-Whitney U.'
+          },
+          {
+            id: 'best20',
+            text: 'Scenario: There is a significant difference in the mean BMI between Males and Females. Data is normally distributed. What is the best statistical approach?',
+            options: [
+              'One-way ANOVA',
+              'Independent samples t-test',
+              'Paired t-test',
+              'Mann-Whitney U'
+            ],
+            correct: 1,
+            explanation: 'TWO independent groups (males vs females) + continuous outcome (BMI) + NORMAL distribution → Independent samples t-test. If data were non-normal → Mann-Whitney U. If the same subjects were measured twice (paired) → paired t-test. The key is: 2 groups, independent, normal, continuous = Independent t-test.'
+          },
+          {
+            id: 'best21',
+            text: 'Scenario: There is a significant difference in the mean Age between Males and Females, assuming the data is NON-PARAMETRIC. What is the best statistical approach?',
+            options: [
+              'Independent samples t-test',
+              'One-way ANOVA',
+              'Mann-Whitney U test',
+              'Chi-square test'
+            ],
+            correct: 2,
+            explanation: 'TWO independent groups (males vs females) + continuous outcome (age) + NON-PARAMETRIC (skewed/not normal) → Mann-Whitney U test. It compares medians via ranking. If data were normal → Independent t-test. Remember the conversion pairs: t-test → Mann-Whitney, ANOVA → Kruskal-Wallis, Paired t-test → Wilcoxon, Pearson → Spearman.'
+          }
+        ]
+      },
+      {
+        id: 'stats_norm', name: 'Normality Tests', num: 10,
+        desc: 'Kolmogorov-Smirnov and Shapiro-Wilk normality tests',
+        questions: [
+          {
+            id: 'nt1',
+            text: 'A researcher wants to check whether her continuous data follow a normal distribution. The sample size is 32 participants. Which test is most appropriate?',
+            options: [
+              'Kolmogorov-Smirnov test',
+              'Shapiro-Wilk test',
+              'Chi-square test',
+              'Mann-Whitney U test'
+            ],
+            correct: 1,
+            explanation: 'Shapiro-Wilk is preferred for small samples (n < 50). For larger samples (n ≥ 50), Kolmogorov-Smirnov is commonly used. With 32 participants, Shapiro-Wilk is the most appropriate choice.'
+          },
+          {
+            id: 'nt2',
+            text: 'A researcher wants to check whether her continuous data follow a normal distribution. The sample size is 97 participants. Which test is most appropriate?',
+            options: [
+              'Kolmogorov-Smirnov test',
+              'Shapiro-Wilk test',
+              'Chi-square test',
+              'Mann-Whitney U test'
+            ],
+            correct: 0,
+            explanation: 'Kolmogorov-Smirnov is commonly used for large samples (n ≥ 50). With 97 participants, K-S test is the most appropriate choice. Shapiro-Wilk is preferred for smaller samples (n < 50).'
+          },
+          {
+            id: 'nt3',
+            text: 'In a normality test, the p-value is 0.02. What is the correct interpretation?',
+            options: [
+              'The data are normally distributed',
+              'The data are not normally distributed',
+              'The mean equals the median',
+              'The data are symmetrical'
+            ],
+            correct: 1,
+            explanation: 'p-value = 0.02 < 0.05 → Reject H₀ → The data are NOT normally distributed. Rule: If p < 0.05 → reject normality (data is not normal). If p > 0.05 → fail to reject normality (data is normal). Use non-parametric tests when normality is violated.'
+          },
+          {
+            id: 'nt4',
+            text: 'Which of the following statements about normality testing is TRUE?',
+            options: [
+              'A p-value greater than 0.05 means the data are skewed',
+              'Shapiro-Wilk is only valid for sample sizes >100',
+              'Kolmogorov-Smirnov is commonly used for large samples',
+              'Normality testing is not required before ANOVA'
+            ],
+            correct: 2,
+            explanation: 'Kolmogorov-Smirnov (K-S) is designed for larger samples. Shapiro-Wilk is preferred for small samples (n < 50). A p-value > 0.05 means the data ARE normally distributed (fail to reject H₀). Normality IS often checked before parametric tests like ANOVA.'
+          },
+          {
+            id: 'nt5',
+            text: 'A dataset of 120 observations is tested for normality using the Kolmogorov-Smirnov test. The p-value is 0.21. What should the researcher conclude?',
+            options: [
+              'The data are not normally distributed',
+              'The data are normally distributed',
+              'The sample size is too small for this test',
+              'Normality cannot be assessed using p-value'
+            ],
+            correct: 1,
+            explanation: 'p-value = 0.21 > 0.05 → Fail to reject H₀ → The data ARE normally distributed. The researcher can proceed with parametric tests (e.g., t-test, ANOVA). The K-S test is appropriate here given the large sample size (n=120).'
+          }
+        ]
+      },
+      {
+        id: 'stats_rv', name: 'Reliability and Validity', num: 11,
+        desc: 'Concepts of reliability, validity, and measurement consistency',
+        questions: [
+          {
+            id: 'rv1',
+            text: 'Test-retest reliability refers to:',
+            options: [
+              'The degree to which different raters give consistent estimates of the same behavior.',
+              'The consistency of measurement when different tests are used.',
+              'The similarity of scores when a test is repeated under identical conditions.',
+              'The accuracy of a test at predicting future performance.'
+            ],
+            correct: 2,
+            explanation: 'Test-retest reliability measures stability over time — the same test is given to the same group at two different time points, and scores are compared. High correlation between the two administrations = high test-retest reliability.'
+          },
+          {
+            id: 'rv2',
+            text: 'The reliability of a psychological test ensures which of the following?',
+            options: [
+              'That the test measures what it intends to measure.',
+              'That the test yields consistent results over time.',
+              'That the test results can be generalized to the broader population.',
+              'That the test can accurately predict future outcomes.'
+            ],
+            correct: 1,
+            explanation: 'Reliability = consistency. A reliable test produces the same results when administered under the same conditions. Note: Option A describes validity (does it measure what it claims?). Reliability and validity are related but distinct concepts.'
+          },
+          {
+            id: 'rv3',
+            text: 'When measuring the reliability of a test over time, which of the following best represents a measure of stability?',
+            options: [
+              'Inter-rater reliability',
+              'Internal consistency',
+              'Test-retest reliability',
+              'Parallel-forms reliability'
+            ],
+            correct: 2,
+            explanation: 'Test-retest reliability is the classic measure of stability — it assesses whether scores are consistent across time. Inter-rater reliability measures agreement between observers. Internal consistency measures whether items within a test correlate with each other (e.g., Cronbach\'s alpha).'
+          },
+          {
+            id: 'rv4',
+            text: 'The degree to which different observers give consistent estimates of the same phenomenon is known as:',
+            options: [
+              'Test-retest reliability',
+              'Split-half reliability',
+              'Internal consistency',
+              'Inter-rater reliability'
+            ],
+            correct: 3,
+            explanation: 'Inter-rater reliability (also called inter-observer reliability) measures the degree of agreement between different raters/observers assessing the same phenomenon. Example: Two doctors independently rating patient anxiety on a 0-10 scale — if they give very similar ratings, inter-rater reliability is high.'
+          }
+        ]
+      },
+      {
+        id: 'stats_surv', name: 'Survival Analysis', num: 12,
+        desc: 'Kaplan-Meier, censoring, hazard ratio, and log-rank test',
+        questions: [
+          {
+            id: 'sv1',
+            text: 'What is the primary focus of survival analysis?',
+            options: [
+              'To predict the future sales of a product',
+              'To determine the average time until the occurrence of an event',
+              'To calculate the mean difference between two groups',
+              'To analyze the variance within a single group'
+            ],
+            correct: 1,
+            explanation: 'Survival analysis focuses on time-to-event data — how long until something happens (death, relapse, recovery, failure, etc.). It accounts for censoring (when the event hasn\'t occurred yet for some participants by study end).'
+          },
+          {
+            id: 'sv2',
+            text: 'Which function is commonly used in survival analysis to estimate the survival probability over time?',
+            options: [
+              'Linear regression function',
+              'Kaplan-Meier estimator',
+              'Pearson correlation coefficient',
+              'Chi-square test function'
+            ],
+            correct: 1,
+            explanation: 'The Kaplan-Meier estimator produces a step-function survival curve showing the probability of surviving beyond each time point. It handles censored data effectively and is the most widely used non-parametric method in survival analysis.'
+          },
+          {
+            id: 'sv3',
+            text: 'In survival analysis, what is censoring?',
+            options: [
+              'A method to estimate missing data',
+              'The occurrence of an event that ends the observation period for a subject',
+              'Data for an individual is incomplete, because the event of interest has not yet occurred',
+              'Adjusting survival rates for various factors'
+            ],
+            correct: 2,
+            explanation: 'Censoring occurs when a participant\'s event status is unknown by the end of the study — either they left the study early, were lost to follow-up, or the study ended before their event occurred. Censored individuals contribute partial information (they survived up to their censoring time).'
+          },
+          {
+            id: 'sv4',
+            text: 'What does the hazard ratio in survival analysis represent?',
+            options: [
+              'The ratio of the hazard rates in two groups',
+              'The probability that an individual survives from the beginning to the end of a study',
+              'The change in survival probability over time',
+              'The ratio of survival probabilities at two different time points'
+            ],
+            correct: 0,
+            explanation: 'The Hazard Ratio (HR) compares the hazard rates between two groups. HR = 1 → no difference. HR > 1 → higher risk in the treatment/exposed group. HR < 1 → lower risk (protective effect). It is the primary output of Cox proportional hazards regression.'
+          },
+          {
+            id: 'sv5',
+            text: 'Which term describes an event that does not occur during the study period for a participant in a survival analysis?',
+            options: [
+              'Hazard',
+              'Censoring',
+              'Kaplan-Meier curve',
+              'Risk ratio'
+            ],
+            correct: 1,
+            explanation: 'Censoring describes a participant for whom the event of interest did NOT occur during the study period. The participant is "censored" — we know they survived up to a certain point but don\'t know their ultimate outcome. This is a key feature that distinguishes survival analysis from other methods.'
+          },
+          {
+            id: 'sv6',
+            text: 'What does the log-rank test compare?',
+            options: [
+              'Mean survival times between two or more groups',
+              'The effect size of treatment on survival',
+              'Survival distributions of two or more groups',
+              'The proportionality of hazards between groups'
+            ],
+            correct: 2,
+            explanation: 'The log-rank test compares the overall survival distributions (Kaplan-Meier curves) between two or more groups. It tests H₀: no difference in survival between groups. It is non-parametric and does not assume a specific distribution. A significant result (p < 0.05) means the survival curves differ significantly.'
+          },
+          {
+            id: 'sv7',
+            text: 'What does the term "median survival time" refer to in survival analysis?',
+            options: [
+              'The time by which half of the study population is expected to have survived',
+              'The average time to event for the population',
+              'The maximum time recorded in the study before censoring occurs',
+              'The point at which the survival probability is 50%'
+            ],
+            correct: 0,
+            explanation: 'Median survival time is the time point at which 50% of the study population has experienced the event (e.g., death). It is equivalent to the point where S(t) = 0.50 on the Kaplan-Meier curve. It is preferred over mean survival time because survival data is often skewed.'
+          }
+        ]
       }
     ]
   }

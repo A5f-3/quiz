@@ -1037,6 +1037,17 @@ onAuthStateChanged(auth, async (user) => {
         if (!window._cloudData.answered)  window._cloudData.answered  = {};
         if (!window._cloudData.lecPerf)          window._cloudData.lecPerf          = {};
         if (!window._cloudData.incompleteQuizzes) window._cloudData.incompleteQuizzes = {};
+
+        // ── Prune orphaned question IDs (questions removed from SUBJECTS) ──
+        const validQIds = new Set();
+        SUBJECTS.forEach(s => s.lectures.forEach(l => l.questions.forEach(q => validQIds.add(q.id))));
+        ['mistakes','answered','flagged'].forEach(key => {
+          if (window._cloudData[key]) {
+            Object.keys(window._cloudData[key]).forEach(k => {
+              if (!validQIds.has(k)) delete window._cloudData[key][k];
+            });
+          }
+        });
       } else {
         window._cloudData = defaultData();
       }
@@ -2928,6 +2939,25 @@ function saveData(d) {
 }
 
 // ═══════════════════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════════════════
+
+/** Escape HTML special chars to prevent XSS in plain-text contexts */
+function esc(str) {
+  if (str == null) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+/** Guard: returns true if subject context is ready, else redirects to subjects */
+function requireSubject() {
+  if (!currentSubject || !currentSubjectData) {
+    showPage('subjects');
+    return false;
+  }
+  return true;
+}
+
+// ═══════════════════════════════════════════════════
 //  NAVIGATION
 // ═══════════════════════════════════════════════════
 
@@ -2937,6 +2967,12 @@ function showPage(name) {
   if (protectedPages.includes(name) && !window._currentUser) {
     console.warn('Blocked unauthorized access to:', name);
     return;
+  }
+
+  // Stop quiz timer when leaving quiz page
+  if (name !== 'quiz' && name !== 'fcstudy' && timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
   }
 
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -3016,6 +3052,7 @@ function selectSubject(id) {
 // ═══════════════════════════════════════════════════
 
 function renderDashboard() {
+  if (!requireSubject()) return;
   const d = getData();
   const attempts = d.attempts.filter(a => a.subjectId === currentSubject);
   const totalQ = currentSubjectData.lectures.reduce((sum, l) => sum + l.questions.length, 0);
@@ -3074,6 +3111,7 @@ function dismissIncompleteQuiz() {
 }
 
 function renderMakeQuiz() {
+  if (!requireSubject()) return;
   selectedLectures = new Set();
   quizMode = 'all';
   document.querySelectorAll('.mode-card').forEach(m => m.classList.remove('active'));
@@ -3219,6 +3257,7 @@ function startQuiz() {
 }
 
 function initQuiz(qs) {
+  if (!qs || !qs.length) { toast('لا توجد أسئلة للاختبار', 'error'); return; }
   clearInterval(timerInterval);
   quizState = {
     questions: qs,
@@ -3245,6 +3284,11 @@ function startTimer() {
 }
 
 function pad(n) { return n < 10 ? '0' + n : n; }
+
+// Stop timer if user closes/refreshes tab while quiz is running
+window.addEventListener('beforeunload', () => {
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+});
 
 function renderQuizQuestion() {
   const q = quizState.questions[quizState.current];
@@ -3585,6 +3629,7 @@ function retryQuiz(wrongOnly) {
 // ═══════════════════════════════════════════════════
 
 function renderStats() {
+  if (!requireSubject()) return;
   const d = getData();
   const attempts = d.attempts ? d.attempts.filter(a => a.subjectId === currentSubject) : [];
   const best = attempts.length ? Math.max(...attempts.map(a => a.pct)) : 0;
@@ -3648,6 +3693,7 @@ function renderStats() {
 // ═══════════════════════════════════════════════════
 
 function renderMistakes() {
+  if (!requireSubject()) return;
   const d = getData();
   const opts = ['أ', 'ب', 'ج', 'د'];
 
@@ -3673,8 +3719,8 @@ function renderMistakes() {
 
   container.innerHTML = allMistakes.map(qid => {
     const q = findQuestion(qid);
-    if (!q) return '';
     const m = d.mistakes[qid];
+    if (!q || !m) return '';
     const mastered = m.mastered;
     const yourAns = m.yourAns;
     return `<div class="mistake-card ${mastered ? 'mastered' : ''}" id="mc_${qid}">
@@ -3722,6 +3768,7 @@ function setBankFilter(el, filter) {
 }
 
 function renderBank() {
+  if (!requireSubject()) return;
   const d = getData();
   const search = document.getElementById('bankSearch').value.toLowerCase().trim();
   const content = document.getElementById('bankContent');
@@ -3802,8 +3849,11 @@ function showModal(title, body, onConfirm) {
 function closeModal() { document.getElementById('modalOverlay').classList.add('hidden'); }
 
 function confirmReset() {
-  showModal('إعادة تعيين البيانات', 'سيتم حذف جميع بياناتك وسجل الاختبارات. هل أنت متأكد؟', () => {
+  showModal('إعادة تعيين البيانات', 'سيتم حذف جميع بياناتك وسجل الاختبارات نهائياً. هل أنت متأكد؟', () => {
+    const fresh = defaultData();
+    window._cloudData = fresh;
     LS.remove('data');
+    if (window.fbSave && window._currentUser) window.fbSave(fresh);
     closeModal();
     toast('تم إعادة تعيين جميع البيانات', 'success');
     renderDashboard();
@@ -4204,6 +4254,7 @@ function showFlaggedQuestions() {
 }
 
 function renderFlaggedList() {
+  if (!requireSubject()) return;
   const d = getData();
   const flagged = d.flagged || {};
   const opts = ['أ', 'ب', 'ج', 'د'];

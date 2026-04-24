@@ -1784,7 +1784,7 @@ const SUBJECTS = [
             text: 'What is a primary consideration when determining the sample size for a study?',
             options: [
               'The publication date of related studies',
-              'The color scheme of the study's presentation',
+              'The color scheme of the study\'s presentation',
               'The expected effect size and the statistical power desired',
               'The number of authors involved in the study'
             ],
@@ -1933,7 +1933,7 @@ const SUBJECTS = [
           },
           {
             id: 'tt5',
-            text: 'What is the name of the statistical technique shown in an SPSS output with "Levene's Test for Equality of Variances" and "t-test for Equality of Means"?',
+            text: 'What is the name of the statistical technique shown in an SPSS output with "Levene\'s Test for Equality of Variances" and "t-test for Equality of Means"?',
             options: [
               'One-sample t-test',
               'Paired t-test',
@@ -1941,7 +1941,7 @@ const SUBJECTS = [
               'One-way ANOVA'
             ],
             correct: 2,
-            explanation: 'The Independent Samples Test output in SPSS always includes: (1) Levene's Test for Equality of Variances, and (2) t-test for Equality of Means. It is used when comparing two separate, unrelated groups (e.g., males vs. females). df = n₁ + n₂ - 2.'
+            explanation: 'The Independent Samples Test output in SPSS always includes: (1) Levene\'s Test for Equality of Variances, and (2) t-test for Equality of Means. It is used when comparing two separate, unrelated groups (e.g., males vs. females). df = n₁ + n₂ - 2.'
           }
         ]
       },
@@ -2010,7 +2010,7 @@ const SUBJECTS = [
               'The association between two dependent variables'
             ],
             correct: 2,
-            explanation: 'Pearson's correlation (r) measures the LINEAR relationship between two CONTINUOUS (interval or ratio) variables. It requires: normal distribution, no outliers, and actual numerical values. Range: -1 to +1. Example: height vs. weight. For ordinal/ranked/non-normal data, use Spearman's correlation instead.'
+            explanation: 'Pearson\'s correlation (r) measures the LINEAR relationship between two CONTINUOUS (interval or ratio) variables. It requires: normal distribution, no outliers, and actual numerical values. Range: -1 to +1. Example: height vs. weight. For ordinal/ranked/non-normal data, use Spearman\'s correlation instead.'
           },
           {
             id: 'co2',
@@ -2026,7 +2026,7 @@ const SUBJECTS = [
           },
           {
             id: 'co3',
-            text: 'Spearman's correlation output: Correlation Coefficient = .166, Sig. (2-tailed) = .646. What is your conclusion?',
+            text: 'Spearman\'s correlation output: Correlation Coefficient = .166, Sig. (2-tailed) = .646. What is your conclusion?',
             options: [
               'Significant weak positive relationship',
               'No significant relationship',
@@ -2034,7 +2034,7 @@ const SUBJECTS = [
               'Strong negative relationship'
             ],
             correct: 1,
-            explanation: 'p = .646 > .05 → NOT significant → there is no statistically significant monotonic relationship between the variables. Spearman's rho (rₛ) is used for ordinal, ranked, or non-normal data. It measures MONOTONIC relationships (not necessarily linear). Range: -1 to +1.'
+            explanation: 'p = .646 > .05 → NOT significant → there is no statistically significant monotonic relationship between the variables. Spearman\'s rho (rₛ) is used for ordinal, ranked, or non-normal data. It measures MONOTONIC relationships (not necessarily linear). Range: -1 to +1.'
           },
           {
             id: 'co4',
@@ -2103,7 +2103,7 @@ const SUBJECTS = [
               'The probability of missing a true effect'
             ],
             correct: 1,
-            explanation: 'Alpha (α) is the Level of Significance — the threshold for statistical significance AND the probability of Type I error (saying there is an effect when there isn't one). α = 0.05 means: "I accept a 5% chance of being wrong." Smaller α → more strict → larger sample size needed. Rule: Smaller α → Larger sample size.'
+            explanation: 'Alpha (α) is the Level of Significance — the threshold for statistical significance AND the probability of Type I error (saying there is an effect when there isn\'t one). α = 0.05 means: "I accept a 5% chance of being wrong." Smaller α → more strict → larger sample size needed. Rule: Smaller α → Larger sample size.'
           },
           {
             id: 'ht2',
@@ -2482,9 +2482,9 @@ function renderQuizQuestion() {
     let expHTML = '';
     if (q.explanation) {
       if (isEnglish) {
-        expHTML = '<button class="show-exp-btn" onclick="toggleExplanation(this, '' + q.id + '')" id="expBtn_' + q.id + '">💡 Show Explanation</button>' +
-          '<div class="explanation-box hidden" id="expBox_' + q.id + '" style="margin-top:10px"><strong>💡 Explanation:</strong> ' + q.explanation + '</div>';
-      } else {
+        expHTML = '<button class="show-exp-btn" onclick="(function(b){var d=document.getElementById(\"expBox_'+q.id+'\");d.classList.toggle(\"hidden\");b.textContent=d.classList.contains(\"hidden\")?(\"💡 Show Explanation\"):(\"🔼 Hide Explanation\")})(this)">💡 Show Explanation</button>' +
+          '<div class="explanation-box hidden" id="expBox_'+q.id+'" style="margin-top:10px"><strong>💡 Explanation:</strong> ' + q.explanation + '</div>';
+            } else {
         expHTML = '<div class="explanation-box" style="margin-top:10px"><strong>💡 التفسير:</strong> ' + q.explanation + '</div>';
       }
     }

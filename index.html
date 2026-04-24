@@ -338,6 +338,39 @@
   }
   .q-num { color: var(--text2); font-size: .88rem; flex-shrink: 0; }
   .q-text { font-size: 1.1rem; font-weight: 600; line-height: 1.7; flex: 1; }
+
+  /* SPSS-style output tables in questions */
+  .spss-table {
+    margin: 16px auto 12px auto; border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, sans-serif; font-size: .88rem;
+    background: #fff; border: 1px solid #aaa; max-width: 100%;
+    direction: ltr; text-align: center;
+  }
+  .spss-table caption {
+    font-weight: 700; font-size: .95rem; padding: 8px;
+    background: #f0f0f5; border: 1px solid #aaa; border-bottom: none;
+    color: #222;
+  }
+  .spss-table th, .spss-table td {
+    border: 1px solid #aaa; padding: 6px 12px;
+    font-weight: 400; color: #222;
+  }
+  .spss-table th {
+    background: #f4f4f8; font-weight: 600; font-size: .84rem;
+  }
+  .spss-table tr.header-row th { background: #e8e8f0; }
+  .spss-table .row-label {
+    text-align: left; font-weight: 500;
+    background: #fafafa;
+  }
+  .spss-wrap {
+    overflow-x: auto; margin: 14px 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  @media(max-width:640px){
+    .spss-table { font-size: .75rem; }
+    .spss-table th, .spss-table td { padding: 4px 6px; }
+  }
   .q-flag {
     padding: 6px 12px; border-radius: 8px; font-size: .82rem;
     background: var(--surface3); border: 1px solid var(--border);
@@ -1914,7 +1947,7 @@ const SUBJECTS = [
           },
           {
             id: 'tt3',
-            text: 'Looking at an SPSS output for an Independent Samples Test: T-value = 6.380, df = 498, Sig. (2-tailed) = .000. What is the correct decision?',
+            text: 'Looking at this SPSS Independent Samples Test output, what is the correct decision?<div class="spss-wrap"><table class="spss-table"><caption>Independent Samples Test</caption><tr><th rowspan="2"></th><th colspan="2">Levene\'s Test</th><th colspan="5">t-test for Equality of Means</th></tr><tr class="header-row"><th>F</th><th>Sig.</th><th>t</th><th>df</th><th>Sig. (2-tailed)</th><th>Mean Diff.</th><th>Std. Error</th></tr><tr><td class="row-label">Equal variances assumed</td><td>13.608</td><td>.000</td><td>6.380</td><td>498</td><td>.000</td><td>8.123</td><td>1.273</td></tr></table></div>',
             options: [
               'Accept H₀ — no significant difference',
               'Reject H₀ — there is a significant difference',
@@ -1926,7 +1959,7 @@ const SUBJECTS = [
           },
           {
             id: 'tt4',
-            text: 'In an SPSS Group Statistics output, females (N=200) have mean age = 74.72 and males (N=300) have mean age = 66.60. What is the mean age for males?',
+            text: 'From this SPSS Group Statistics output, what is the mean age for males?<div class="spss-wrap"><table class="spss-table"><caption>Group Statistics</caption><tr class="header-row"><th>Gender</th><th>N</th><th>Mean</th><th>Std. Deviation</th><th>Std. Error Mean</th></tr><tr><td class="row-label">Age at hospital admission</td><td>female: 200</td><td>74.72</td><td>12.301</td><td>.870</td></tr><tr><td class="row-label"></td><td>male: 300</td><td>66.60</td><td>14.943</td><td>.863</td></tr></table></div>',
             options: ['74.72', '66.60', '70.66', '200'],
             correct: 1,
             explanation: 'Directly read from the SPSS Group Statistics table: Males row → Mean = 66.60. The table clearly shows gender, N (sample size), Mean, Std. Deviation, and Std. Error Mean for each group.'
@@ -1951,21 +1984,21 @@ const SUBJECTS = [
         questions: [
           {
             id: 'an1',
-            text: 'ANOVA output shows: Between Groups df = 2, Within Groups df = 275, F = 10.447, Sig. = .000. How many groups are in the study?',
+            text: 'How many groups are in this ANOVA study?<div class="spss-wrap"><table class="spss-table"><caption>ANOVA — age (years)</caption><tr class="header-row"><th></th><th>Sum of Squares</th><th>df</th><th>Mean Square</th><th>F</th><th>Sig.</th></tr><tr><td class="row-label">Between Groups</td><td>2697.388</td><td>2</td><td>1348.694</td><td>10.447</td><td>.000</td></tr><tr><td class="row-label">Within Groups</td><td>35501.464</td><td>275</td><td>129.096</td><td></td><td></td></tr><tr><td class="row-label">Total</td><td>38198.853</td><td>277</td><td></td><td></td><td></td></tr></table></div>',
             options: ['2', '3', '4', '275'],
             correct: 1,
             explanation: 'Number of groups = Between Groups df + 1 = 2 + 1 = 3 groups. This is because df(between) = k - 1, where k = number of groups. So k = df + 1 = 2 + 1 = 3. The df pair is written as (2, 275).'
           },
           {
             id: 'an2',
-            text: 'ANOVA output: Between Groups df = 2, F = 10.447, Sig. = .000. What is the degree of freedom (df) written as an ordered pair?',
+            text: 'From this ANOVA output, what is the degree of freedom (df) written as an ordered pair?<div class="spss-wrap"><table class="spss-table"><caption>ANOVA</caption><tr class="header-row"><th></th><th>Sum of Squares</th><th>df</th><th>Mean Square</th><th>F</th><th>Sig.</th></tr><tr><td class="row-label">Between Groups</td><td>2697.388</td><td>2</td><td>1348.694</td><td>10.447</td><td>.000</td></tr><tr><td class="row-label">Within Groups</td><td>35501.464</td><td>275</td><td>129.096</td><td></td><td></td></tr><tr><td class="row-label">Total</td><td>38198.853</td><td>277</td><td></td><td></td><td></td></tr></table></div>',
             options: ['(10, 447)', '(2, 275)', '(3, 275)', '(2, 277)'],
             correct: 1,
             explanation: 'df for ANOVA is written as an ordered pair: (df Between Groups, df Within Groups) = (2, 275). The F statistic uses both: F(2, 275) = 10.447. The total df = 2 + 275 = 277 (which equals total N - 1 = 278 - 1 = 277).'
           },
           {
             id: 'an3',
-            text: 'ANOVA output: Between Groups df = 4, Within Groups df = 495, F = 23.516, Sig. = .000. How many groups are in the study?',
+            text: 'How many groups are in this ANOVA study?<div class="spss-wrap"><table class="spss-table"><caption>ANOVA — bmi</caption><tr class="header-row"><th></th><th>Sum of Squares</th><th>df</th><th>Mean Square</th><th>F</th><th>Sig.</th></tr><tr><td class="row-label">Between Groups</td><td>2328.369</td><td>4</td><td>582.092</td><td>23.516</td><td>.000</td></tr><tr><td class="row-label">Within Groups</td><td>12252.964</td><td>495</td><td>24.753</td><td></td><td></td></tr><tr><td class="row-label">Total</td><td>14581.333</td><td>499</td><td></td><td></td><td></td></tr></table></div>',
             options: ['4', '5', '6', '495'],
             correct: 1,
             explanation: 'Number of groups = Between Groups df + 1 = 4 + 1 = 5 groups. df(between) = k - 1, so k = 4 + 1 = 5. The F value of 23.516 with p < .001 indicates highly significant differences among the 5 groups.'
@@ -2014,7 +2047,7 @@ const SUBJECTS = [
           },
           {
             id: 'co2',
-            text: 'Pearson Correlation output: r = .760, Sig. (2-tailed) = .080. What is your decision?',
+            text: 'Based on this Pearson Correlation output, what is your decision?<div class="spss-wrap"><table class="spss-table"><caption>Correlations</caption><tr class="header-row"><th></th><th></th><th>years</th><th>kg</th></tr><tr><td rowspan="3" class="row-label">years</td><td class="row-label">Pearson Correlation</td><td>1</td><td>.760</td></tr><tr><td class="row-label">Sig. (2-tailed)</td><td></td><td>.080</td></tr><tr><td class="row-label">N</td><td>6</td><td>6</td></tr><tr><td rowspan="3" class="row-label">kg</td><td class="row-label">Pearson Correlation</td><td>.760</td><td>1</td></tr><tr><td class="row-label">Sig. (2-tailed)</td><td>.080</td><td></td></tr><tr><td class="row-label">N</td><td>6</td><td>6</td></tr></table></div>',
             options: [
               'There is a significant strong positive relationship',
               'There is no significant relationship (p > .05)',
@@ -2026,7 +2059,7 @@ const SUBJECTS = [
           },
           {
             id: 'co3',
-            text: 'Spearman\'s correlation output: Correlation Coefficient = .166, Sig. (2-tailed) = .646. What is your conclusion?',
+            text: 'Based on this Spearman\'s correlation output, what is your conclusion?<div class="spss-wrap"><table class="spss-table"><caption>Correlations</caption><tr class="header-row"><th></th><th></th><th>X</th><th>Y</th></tr><tr><td rowspan="6" class="row-label">Spearman\'s rho</td><td class="row-label">X — Correlation Coefficient</td><td>1.000</td><td>.166</td></tr><tr><td class="row-label">Sig. (2-tailed)</td><td>.</td><td>.646</td></tr><tr><td class="row-label">N</td><td>10</td><td>10</td></tr><tr><td class="row-label">Y — Correlation Coefficient</td><td>.166</td><td>1.000</td></tr><tr><td class="row-label">Sig. (2-tailed)</td><td>.646</td><td>.</td></tr><tr><td class="row-label">N</td><td>10</td><td>10</td></tr></table></div>',
             options: [
               'Significant weak positive relationship',
               'No significant relationship',
@@ -2038,7 +2071,7 @@ const SUBJECTS = [
           },
           {
             id: 'co4',
-            text: 'Pearson output: r = -.260, p < .001. What is the correct interpretation?',
+            text: 'Based on this Pearson Correlation output, what is the correct interpretation?<div class="spss-wrap"><table class="spss-table"><caption>Correlations</caption><tr class="header-row"><th></th><th></th><th>Variable 1</th><th>Variable 2</th></tr><tr><td rowspan="3" class="row-label">Variable 1</td><td class="row-label">Pearson Correlation</td><td>1</td><td>-.260</td></tr><tr><td class="row-label">Sig. (2-tailed)</td><td></td><td>.000</td></tr><tr><td class="row-label">N</td><td>500</td><td>500</td></tr></table></div>',
             options: [
               'No relationship exists',
               'Significant positive weak relationship',
@@ -2197,7 +2230,7 @@ const SUBJECTS = [
           },
           {
             id: 'chi12',
-            text: 'Chi-square SPSS output shows: Pearson Chi-Square = 14.926, df = 1, Asymp. Sig. = .000, N = 278. What is the p-value and decision?',
+            text: 'Based on this Chi-Square Tests output, what is the p-value and decision?<div class="spss-wrap"><table class="spss-table"><caption>Chi-Square Tests</caption><tr class="header-row"><th></th><th>Value</th><th>df</th><th>Asymp. Sig. (2-sided)</th><th>Exact Sig. (2-sided)</th><th>Exact Sig. (1-sided)</th></tr><tr><td class="row-label">Pearson Chi-Square</td><td>14.926</td><td>1</td><td>.000</td><td></td><td></td></tr><tr><td class="row-label">Continuity Correction</td><td>13.881</td><td>1</td><td>.000</td><td></td><td></td></tr><tr><td class="row-label">Likelihood Ratio</td><td>15.125</td><td>1</td><td>.000</td><td></td><td></td></tr><tr><td class="row-label">Fisher\'s Exact Test</td><td></td><td></td><td></td><td>.000</td><td>.000</td></tr><tr><td class="row-label">Linear-by-Linear Association</td><td>14.872</td><td>1</td><td>.000</td><td></td><td></td></tr><tr><td class="row-label">N of Valid Cases</td><td>278</td><td></td><td></td><td></td><td></td></tr></table></div>',
             options: [
               'p = .000, Accept H0 — no association',
               'p < .001, Reject H0 — significant association exists',
@@ -2263,7 +2296,7 @@ const SUBJECTS = [
           },
           {
             id: 'reg5',
-            text: 'From a regression Coefficients table: Constant = -24.609, Age β = -.295 (p < .001), Height β = .733 (p < .001), Cholesterol β = .426 (p = .422). What are the SIGNIFICANT predictors only?',
+            text: 'Based on this Coefficients table, what are the SIGNIFICANT predictors only?<div class="spss-wrap"><table class="spss-table"><caption>Coefficients — Dependent Variable: weight (kg)</caption><tr><th rowspan="2">Model</th><th colspan="2">Unstandardized Coefficients</th><th>Standardized Coefficients</th><th rowspan="2">t</th><th rowspan="2">Sig.</th><th colspan="2">95.0% CI for B</th></tr><tr class="header-row"><th>B</th><th>Std. Error</th><th>Beta</th><th>Lower</th><th>Upper</th></tr><tr><td class="row-label">(Constant)</td><td>-24.609</td><td>16.048</td><td></td><td>-1.533</td><td>.126</td><td>-56.202</td><td>6.984</td></tr><tr><td class="row-label">age (years)</td><td>-.295</td><td>.062</td><td>-.248</td><td>-4.769</td><td>.000</td><td>-.417</td><td>-.173</td></tr><tr><td class="row-label">height (cm)</td><td>.733</td><td>.080</td><td>.466</td><td>9.172</td><td>.000</td><td>.576</td><td>.890</td></tr><tr><td class="row-label">total cholesterol</td><td>.426</td><td>.529</td><td>.040</td><td>.804</td><td>.422</td><td>-.617</td><td>1.468</td></tr></table></div>',
             options: [
               'Age only',
               'Height only',
@@ -2275,7 +2308,7 @@ const SUBJECTS = [
           },
           {
             id: 'reg6',
-            text: 'Using the regression table: Constant = -24.609, Age = -.295, Height = .733. What is the predicted weight for age = 70 years, height = 170 cm? (Ignore non-significant predictors)',
+            text: 'Using this Coefficients table (ignore non-significant predictors), what is the predicted weight for age = 70 years, height = 170 cm?<div class="spss-wrap"><table class="spss-table"><caption>Coefficients — Dependent Variable: weight (kg)</caption><tr class="header-row"><th>Model</th><th>B (Unstandardized)</th><th>Std. Error</th><th>Sig.</th></tr><tr><td class="row-label">(Constant)</td><td>-24.609</td><td>16.048</td><td>.126</td></tr><tr><td class="row-label">age (years)</td><td>-.295</td><td>.062</td><td>.000</td></tr><tr><td class="row-label">height (cm)</td><td>.733</td><td>.080</td><td>.000</td></tr><tr><td class="row-label">total cholesterol</td><td>.426</td><td>.529</td><td>.422</td></tr></table></div>',
             options: [
               '55.35 kg',
               '79.35 kg',
@@ -2287,7 +2320,7 @@ const SUBJECTS = [
           },
           {
             id: 'reg7',
-            text: 'Model Summary shows: R = .587, R² = .344. What does R² = .344 mean?',
+            text: 'Based on this Model Summary, what does R² = .344 mean?<div class="spss-wrap"><table class="spss-table"><caption>Model Summary — Predictors: (Constant), total cholesterol, height (cm), age (years)</caption><tr class="header-row"><th>Model</th><th>R</th><th>R Square</th><th>Adjusted R Square</th><th>Std. Error of the Estimate</th></tr><tr><td>1</td><td>.587</td><td>.344</td><td>.337</td><td>11.388</td></tr></table></div>',
             options: [
               'The model predicts 58.7% of weight variation',
               'The correlation between predicted and actual values is 34.4%',
@@ -2299,7 +2332,7 @@ const SUBJECTS = [
           },
           {
             id: 'reg8',
-            text: 'ANOVA table for regression: Regression df = 3, Residual df = 274, F = 47.917, Sig. = .000. Is the model fit?',
+            text: 'Based on this ANOVA table for regression, is the model fit?<div class="spss-wrap"><table class="spss-table"><caption>ANOVA — Dependent Variable: weight (kg)</caption><tr class="header-row"><th>Model</th><th>Sum of Squares</th><th>df</th><th>Mean Square</th><th>F</th><th>Sig.</th></tr><tr><td class="row-label">Regression</td><td>18642.664</td><td>3</td><td>6214.221</td><td>47.917</td><td>.000</td></tr><tr><td class="row-label">Residual</td><td>35534.298</td><td>274</td><td>129.687</td><td></td><td></td></tr><tr><td class="row-label">Total</td><td>54176.962</td><td>277</td><td></td><td></td><td></td></tr></table></div>',
             options: [
               'No, because F is too large',
               'No, because df = 3',

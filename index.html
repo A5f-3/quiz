@@ -2090,6 +2090,233 @@ const SUBJECTS = [
         ]
       },
       {
+        id: 'stats_chi', name: 'Chi-square', num: 7,
+        desc: 'Chi-square test for independence and goodness of fit',
+        questions: [
+          {
+            id: 'chi1',
+            text: 'The expected frequencies in a chi-square test _____.',
+            options: [
+              'Are always whole numbers',
+              'Can contain fractions or decimal values',
+              'Can contain both positive and negative values',
+              'Can contain fractions and negative numbers'
+            ],
+            correct: 1,
+            explanation: 'Expected frequencies in chi-square = (Row Total × Column Total) / Grand Total. This division often produces decimal values. Only OBSERVED frequencies must be whole numbers (you cannot observe half a person). Expected frequencies can be any positive number including decimals.'
+          },
+          {
+            id: 'chi2',
+            text: 'A basic assumption for a chi-square hypothesis test is _____.',
+            options: [
+              'The population distribution(s) must be normal',
+              'The scores must come from an interval or ratio scale',
+              'The observations must be independent',
+              'None of the other choices are assumptions for chi-square'
+            ],
+            correct: 2,
+            explanation: 'Chi-square assumptions: (1) Observations must be INDEPENDENT — each subject contributes to only one cell. (2) Data must be CATEGORICAL. (3) Expected frequency in each cell ≥ 5 (if not, use Fisher\'s Exact Test). Unlike t-test and ANOVA, chi-square does NOT require normal distribution or interval/ratio scale.'
+          },
+          {
+            id: 'chi3',
+            text: 'What type of data do you need for a chi-square test?',
+            options: ['Categorical', 'Scales', 'Ratio', 'Parametric'],
+            correct: 0,
+            explanation: 'Chi-square is a NON-PARAMETRIC test used for CATEGORICAL (nominal or ordinal) data. Examples: gender (male/female), disease status (yes/no), blood type (A/B/AB/O). It tests whether there is an association between two categorical variables. For continuous data, use t-test, ANOVA, or correlation.'
+          },
+          {
+            id: 'chi4',
+            text: 'Which tests could be used if your expected cases were fewer than 5?',
+            options: [
+              'Fisher\'s Exact Probability Test or Yates' Continuity Correction',
+              'Anova or Manova',
+              'Cronbach\'s alpha or content analysis',
+              'Pearson or Spearman\'s correlations'
+            ],
+            correct: 0,
+            explanation: 'When expected frequency in any cell < 5, chi-square assumptions are violated. Solutions: (1) Fisher\'s Exact Test — most accurate for 2×2 tables with small samples. (2) Yates' Continuity Correction — adjusts chi-square formula for small samples. Both are visible in SPSS chi-square output.'
+          },
+          {
+            id: 'chi5',
+            text: 'By which other name is a chi-square contingency table analysis known?',
+            options: [
+              'Directional chi-square test',
+              'Independent samples chi-square test',
+              'Chi-square test for independence',
+              'Paired samples chi-square test'
+            ],
+            correct: 2,
+            explanation: 'The chi-square test for a contingency table (cross-tabulation) is also called "Chi-square test for independence." It tests whether two categorical variables are INDEPENDENT (no association) or DEPENDENT (associated). H₀: The two variables are independent. H₁: The two variables are associated.'
+          },
+          {
+            id: 'chi6',
+            text: 'What symbol is used to represent chi-square?',
+            options: ['R', 'π', 'χ2', 'F'],
+            correct: 2,
+            explanation: 'Chi-square is represented by χ² (chi-squared). Other test symbols: t = t-test, F = ANOVA/Regression F-test, r = Pearson correlation, rₛ = Spearman correlation, R = multiple correlation coefficient, R² = coefficient of determination.'
+          },
+          {
+            id: 'chi7',
+            text: 'In a Chi-Square Test, the Observed Frequencies are always whole numbers. True or False?',
+            options: ['True', 'False'],
+            correct: 0,
+            explanation: 'TRUE. Observed frequencies are actual counts of people/items in each category — you cannot observe 2.5 people. They must be whole numbers. EXPECTED frequencies, however, can be decimals (calculated as Row Total × Column Total / Grand Total).'
+          },
+          {
+            id: 'chi8',
+            text: 'A large value for chi-square will tend to NOT reject the null hypothesis. True or False?',
+            options: ['True', 'False'],
+            correct: 1,
+            explanation: 'FALSE. A LARGE chi-square value means a LARGE difference between observed and expected frequencies → stronger evidence AGAINST H₀ → we REJECT H₀. Small chi-square → observed ≈ expected → fail to reject H₀. Decision rule: if p < .05 → reject H₀ (significant association exists).'
+          },
+          {
+            id: 'chi9',
+            text: 'The value of df for a chi-square test does not depend on the sample size (n). True or False?',
+            options: ['True', 'False'],
+            correct: 0,
+            explanation: 'TRUE. For chi-square test of independence: df = (rows - 1) × (columns - 1). This depends ONLY on the number of categories, NOT on sample size (n). Example: 2×2 table → df = (2-1)(2-1) = 1, regardless of whether n = 50 or n = 5000.'
+          },
+          {
+            id: 'chi10',
+            text: 'We can use chi-square test when we have two quantitative variables. True or False?',
+            options: ['True', 'False'],
+            correct: 1,
+            explanation: 'FALSE. Chi-square requires CATEGORICAL variables. For two quantitative (continuous) variables, use Pearson or Spearman CORRELATION. For one categorical and one quantitative, use t-test or ANOVA. Chi-square examples: gender vs. disease status, smoking vs. lung cancer (both categorical).'
+          },
+          {
+            id: 'chi11',
+            text: 'In chi-square test, if the p value = .053, what will be the conclusion?',
+            options: [
+              'Reject H0 because p value is < .05',
+              'Accept H0 (null hypothesis) because p value is > .05',
+              'Reject H0 because chi-square is large',
+              'Cannot determine without knowing chi-square value'
+            ],
+            correct: 1,
+            explanation: 'p = .053 > .05 → FAIL TO REJECT H₀ → Accept H₀ (null hypothesis). Conclusion: there is NO significant association between the two variables. Note: p = .053 is very close to significance — sometimes called "borderline" or "trend toward significance" but the formal decision at α = .05 is to accept H₀.'
+          },
+          {
+            id: 'chi12',
+            text: 'Chi-square SPSS output shows: Pearson Chi-Square = 14.926, df = 1, Asymp. Sig. = .000, N = 278. What is the p-value and decision?',
+            options: [
+              'p = .000, Accept H0 — no association',
+              'p < .001, Reject H0 — significant association exists',
+              'p = 14.926, Reject H0',
+              'p = .000, cannot determine'
+            ],
+            correct: 1,
+            explanation: 'From output: Test = Chi-square test for independence, χ²(1) = 14.926, p < .001 (reported as .000 in SPSS → always write p < .001). Since p < .05 → REJECT H₀ → there IS a significant association. The value read from "Pearson Chi-Square" row is the main test statistic. df = 1 means 2×2 contingency table.'
+          }
+        ]
+      },
+      {
+        id: 'stats_reg', name: 'Regression', num: 8,
+        desc: 'Simple, multiple linear, and logistic regression',
+        questions: [
+          {
+            id: 'reg1',
+            text: 'Which regression type is appropriate to predict Disease status (Diseased/Not diseased) by using age?',
+            options: [
+              'Simple linear regression',
+              'Multiple linear regression',
+              'Binary logistic regression',
+              'Ordinal logistic regression'
+            ],
+            correct: 2,
+            explanation: 'Binary Logistic Regression is used when the outcome (dependent variable) is BINARY/DICHOTOMOUS — only 2 categories (Yes/No, Diseased/Not diseased, Alive/Dead). Age is the predictor (independent variable). If outcome had 3+ ordered categories (A+, A, B+...), use Ordinal Logistic Regression.'
+          },
+          {
+            id: 'reg2',
+            text: 'Which regression type is appropriate to predict Students' grades (A+, A, B+,...) by using age and sex?',
+            options: [
+              'Simple linear regression',
+              'Multiple linear regression',
+              'Binary logistic regression',
+              'Ordinal logistic regression'
+            ],
+            correct: 3,
+            explanation: 'Ordinal Logistic Regression is used when the outcome has 3+ ORDERED categories (A+, A, B+, B, C... — these have a natural order). Two predictors (age + sex) = multiple predictors, but the type is determined by the outcome. If outcome were just Pass/Fail → Binary logistic.'
+          },
+          {
+            id: 'reg3',
+            text: 'Which regression type is appropriate to predict Age by using Height only?',
+            options: [
+              'Simple linear regression',
+              'Multiple linear regression',
+              'Binary logistic regression',
+              'Ordinal logistic regression'
+            ],
+            correct: 0,
+            explanation: 'Simple Linear Regression: ONE continuous outcome (age) predicted by ONE continuous predictor (height). Formula: Y = a + bX. If we add more predictors (height + weight) → Multiple Linear Regression. The outcome must be continuous/quantitative for linear regression.'
+          },
+          {
+            id: 'reg4',
+            text: 'Which regression type is appropriate to predict Age by using Height and Weight?',
+            options: [
+              'Simple linear regression',
+              'Multiple linear regression',
+              'Binary logistic regression',
+              'Ordinal logistic regression'
+            ],
+            correct: 1,
+            explanation: 'Multiple Linear Regression: ONE continuous outcome (age) predicted by TWO OR MORE predictors (height + weight). Formula: Y = a + b₁X₁ + b₂X₂ + ... Each predictor has its own coefficient (b). The significance of each predictor is tested with a t-test (H₀: b = 0).'
+          },
+          {
+            id: 'reg5',
+            text: 'From a regression Coefficients table: Constant = -24.609, Age β = -.295 (p < .001), Height β = .733 (p < .001), Cholesterol β = .426 (p = .422). What are the SIGNIFICANT predictors only?',
+            options: [
+              'Age only',
+              'Height only',
+              'Age and Height',
+              'Age, Height, and Cholesterol'
+            ],
+            correct: 2,
+            explanation: 'A predictor is significant if p < .05. Age: p < .001 → SIGNIFICANT. Height: p < .001 → SIGNIFICANT. Cholesterol: p = .422 > .05 → NOT significant. Therefore only Age and Height are significant predictors of weight. Cholesterol does not contribute significantly when age and height are already in the model.'
+          },
+          {
+            id: 'reg6',
+            text: 'Using the regression table: Constant = -24.609, Age = -.295, Height = .733. What is the predicted weight for age = 70 years, height = 170 cm? (Ignore non-significant predictors)',
+            options: [
+              '55.35 kg',
+              '79.35 kg',
+              '65.20 kg',
+              '89.10 kg'
+            ],
+            correct: 1,
+            explanation: 'Formula: Predicted weight = a + b₁(Age) + b₂(Height)
+= -24.609 + (-0.295 × 70) + (0.733 × 170)
+= -24.609 + (-20.65) + (124.61)
+= -24.609 - 20.65 + 124.61
+= 79.35 kg
+Note: Cholesterol is excluded as it was non-significant (p = .422).'
+          },
+          {
+            id: 'reg7',
+            text: 'Model Summary shows: R = .587, R² = .344. What does R² = .344 mean?',
+            options: [
+              'The model predicts 58.7% of weight variation',
+              'The correlation between predicted and actual values is 34.4%',
+              'Age, cholesterol, and height together explain 34.4% of the variation in weight',
+              'The model has 65.6% accuracy'
+            ],
+            correct: 2,
+            explanation: 'R² (Coefficient of Determination) = .344 means the predictors (age, total cholesterol, height) explain 34.4% of the variation in weight. The remaining 65.6% is due to other factors not in the model + random error. R = .587 = moderate positive correlation between predicted and actual values. Adjusted R² = .337 is more accurate (penalizes for number of predictors).'
+          },
+          {
+            id: 'reg8',
+            text: 'ANOVA table for regression: Regression df = 3, Residual df = 274, F = 47.917, Sig. = .000. Is the model fit?',
+            options: [
+              'No, because F is too large',
+              'No, because df = 3',
+              'Yes, because p-value < .05 so the model is fit',
+              'Cannot determine from this output'
+            ],
+            correct: 2,
+            explanation: 'In regression, the ANOVA table tests overall model fit: H₀: None of the predictors are useful (all β = 0). F = 47.917, p < .001 → REJECT H₀ → the model IS fit/significant. This means at least one predictor significantly predicts the outcome. Number of predictors = Regression df = 3 (age, height, cholesterol).'
+          }
+        ]
+      },
+      {
         id: 'stats_ht', name: 'Hypothesis Testing', num: 6,
         desc: 'Hypothesis testing principles and decision rules',
         questions: [

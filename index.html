@@ -449,13 +449,12 @@
     background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59,124,244,0.07) 0%, transparent 70%);
   }
   .score-ring {
-    width: 160px; height: 160px; border-radius: 50%;
-    border: 8px solid var(--surface3);
+    width: 176px; height: 176px; border-radius: 50%;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     margin: 0 auto 24px;
     position: relative;
   }
-  .score-ring canvas { position: absolute; top: -8px; left: -8px; }
+  .score-ring canvas { position: absolute; top: 0; left: 0; width: 176px; height: 176px; }
   .score-pct { font-size: 2.6rem; font-weight: 900; color: var(--accent); }
   .score-sub { color: var(--text2); font-size: .85rem; }
   .results-grade { font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; }
@@ -727,8 +726,8 @@
 
     /* ── RESULTS ── */
     .results-hero { padding: 24px 14px 16px; }
-    .score-ring { width: 120px; height: 120px; }
-    .score-ring canvas { width: 136px; height: 136px; top: -8px; left: -8px; }
+    .score-ring { width: 176px; height: 176px; }
+    .score-ring canvas { width: 176px; height: 176px; top: 0; left: 0; }
     .score-pct { font-size: 1.8rem; }
     .results-grade { font-size: 1.2rem; }
     .results-stats { grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 16px 0; }
@@ -1345,6 +1344,7 @@ onAuthStateChanged(auth, async (user) => {
     setAuthLoading('registerBtn', false, 'إنشاء حساب →');
     hideLoader();
     initLanding();
+    window.scrollTo(0, 0);
   }
 });
 
@@ -1472,9 +1472,9 @@ function hideLoader() {
   <div class="l-nav" id="landingNav">
     <div class="l-logo">اختبر<span>+</span></div>
     <ul class="l-nav-links">
-      <li><a href="#l-features">المميزات</a></li>
-      <li><a href="#l-how">كيف تعمل</a></li>
-      <li><a href="#l-reviews">آراء الطلاب</a></li>
+      <li><a onclick="document.getElementById('l-features').scrollIntoView({behavior:'smooth'});return false;" href="#">المميزات</a></li>
+      <li><a onclick="document.getElementById('l-how').scrollIntoView({behavior:'smooth'});return false;" href="#">كيف تعمل</a></li>
+      <li><a onclick="document.getElementById('l-reviews').scrollIntoView({behavior:'smooth'});return false;" href="#">آراء الطلاب</a></li>
     </ul>
     <button class="l-nav-cta" onclick="showPage('auth')">ابدأ الآن ←</button>
   </div>
@@ -1489,7 +1489,7 @@ function hideLoader() {
     <p>منصة اختبارات تفاعلية مصممة خصيصاً لمساعدتك على إتقان مقرراتك بطريقة ممتعة وفعّالة — اختبارات، بطاقات تعليمية، وتحليل شامل لأدائك.</p>
     <div class="hero-btns">
       <button class="btn-hero-primary" onclick="showPage('auth')">ابدأ الدراسة الآن ←</button>
-      <a class="btn-hero-secondary" href="#l-features">تعرف أكثر ↓</a>
+      <a class="btn-hero-secondary" onclick="document.getElementById('l-features').scrollIntoView({behavior:'smooth'});return false;" href="#">تعرف أكثر ↓</a>
     </div>
     <div class="preview-wrap">
       <div class="preview-glow"></div>
@@ -3428,6 +3428,37 @@ const SUBJECTS = [
           { id: 'qb60', text: 'A hospital compares the proportion of complications (yes/no) between patients undergoing laparoscopic vs open surgery.', options: ['t-test','ANOVA','Chi-square test','Mann–Whitney test'], correct: 2, explanation: 'Binary outcome (complications: yes/no) + two independent groups → Chi-square test (2×2 contingency table). The outcome is categorical (proportion), not continuous. t-test and ANOVA compare continuous means. Mann-Whitney U compares rank distributions of continuous/ordinal outcomes, not proportions.' },
           { id: 'qb61', text: 'A study compares hemoglobin levels between two independent groups of patients, but the sample size is small and data is not normal.', options: ['Independent t-test','Mann–Whitney U test','Paired t-test','ANOVA'], correct: 1, explanation: 'Two independent groups + small sample size + non-normal data → Mann-Whitney U test. With small samples, the Central Limit Theorem cannot rescue normality violations, making non-parametric tests essential. Independent t-test requires normality, especially with small n. Paired t-test is for related groups only.' }
         ]
+      },
+      {
+        id: 'stats_med224', name: 'med224 (deletions group)', num: 14,
+        questions: [
+          { id: 'del1', text: 'What test is used to determine the relationship between age and height?', options: ['Spearman','Pearson','Chi-square','Logistic Regression'], correct: 1, explanation: 'Age and height are both continuous variables with an assumed linear relationship → Pearson correlation. Spearman is the non-parametric alternative used when data is not normally distributed or ordinal. Chi-square is for categorical variables. Logistic Regression is used to predict a categorical outcome.' },
+          { id: 'del2', text: 'What test is used to determine the relationship between sex and use of insulin (nominal variables)?', options: ['Pearson','Spearman','Chi-square','Simple Linear Regression'], correct: 2, explanation: 'Both sex and use of insulin are nominal (categorical) variables → Chi-square test. Chi-square assesses whether there is a significant association between two categorical variables. Pearson and Spearman are correlation tests for continuous/ordinal data. Simple Linear Regression predicts a continuous outcome.' },
+          { id: 'del3', text: 'What test is used to predict the occurrence of a disease by using age and height?', options: ['Simple Linear Regression','Multiple Linear Regression','Logistic Regression','Pearson Correlation'], correct: 2, explanation: 'Predicting a binary outcome (disease: yes/no) using multiple predictors → Logistic Regression. The outcome is categorical (occurrence of disease), not continuous, so linear regression is inappropriate. Pearson Correlation measures the relationship between two continuous variables, not prediction of a categorical outcome.' },
+          { id: 'del4', text: 'What test is used to predict weight by using a single variable like height?', options: ['Simple Linear Regression','Multiple Linear Regression','Logistic Regression','Paired t-test'], correct: 0, explanation: 'Predicting one continuous variable (weight) from one continuous predictor (height) → Simple Linear Regression. "Simple" means one predictor. Multiple Linear Regression uses two or more predictors. Logistic Regression is for binary/categorical outcomes. Paired t-test compares means before and after in the same group.' },
+          { id: 'del5', text: 'What test is used to predict a variable (like weight) by using multiple factors (like height and age)?', options: ['Simple Linear Regression','Multiple Linear Regression','Logistic Regression','ANOVA'], correct: 1, explanation: 'Predicting one continuous outcome (weight) using two or more predictors (height + age) → Multiple Linear Regression. Simple Linear Regression uses only one predictor. Logistic Regression is for categorical outcomes. ANOVA tests differences between group means, not prediction.' },
+          { id: 'del6', text: 'What test is used for the relationship between age and height if you are strictly using a non-parametric test?', options: ['Pearson','Spearman','Chi-square','Kruskal-Wallis'], correct: 1, explanation: 'Non-parametric correlation between two continuous variables → Spearman rank correlation. Spearman does not assume normality and works on ranked data. Pearson is the parametric version requiring normality. Chi-square is for categorical associations. Kruskal-Wallis compares distributions of three or more independent groups.' },
+          { id: 'del7', text: 'What test is used for the relationship between two ordinal variables (e.g., BMI category and severity of a disease)?', options: ['Pearson','Spearman','Chi-square','Independent t-test'], correct: 1, explanation: 'Two ordinal variables → Spearman correlation. Ordinal data has rank order but unequal intervals, making Spearman the appropriate correlation test. Pearson requires continuous normally distributed data. Chi-square tests association between categorical variables but does not measure the strength/direction of correlation. Independent t-test compares group means.' },
+          { id: 'del8', text: 'What test is used to compare a continuous variable (like mean weight) across three or more independent groups?', options: ['Independent sample t-test','Paired t-test','One-way ANOVA','Kruskal-Wallis'], correct: 2, explanation: 'Continuous outcome + three or more independent groups + normal data → One-way ANOVA. ANOVA (Analysis of Variance) extends the t-test to handle more than two groups simultaneously, reducing Type I error risk. Independent t-test can only compare two groups. Paired t-test is for related/repeated measurements. Kruskal-Wallis is the non-parametric alternative when data is not normal.' },
+          { id: 'del9', text: 'What test is used to compare a continuous variable across three or more independent groups if the data is non-parametric?', options: ['One-way ANOVA','Kruskal-Wallis','Mann-Whitney U test','Spearman'], correct: 1, explanation: 'Three or more independent groups + non-normal (non-parametric) data → Kruskal-Wallis test. It is the non-parametric equivalent of One-way ANOVA, comparing rank distributions. Mann-Whitney U compares only two independent groups. Spearman measures correlation, not group differences. ANOVA requires normality.' },
+          { id: 'del10', text: 'Which statistical test is used to compare measurements taken from the same subject before and after an intervention?', options: ['Independent t-test','Paired sample t-test','One-way ANOVA','Chi-square test'], correct: 1, explanation: 'Same subjects measured twice (before and after) → Paired sample t-test. The "paired" design accounts for within-subject correlation, increasing statistical power. Independent t-test is for two separate unrelated groups. ANOVA is for three or more groups. Chi-square is for categorical outcomes.' },
+          { id: 'del11', text: 'What is the appropriate test to use when comparing the means of more than two independent groups?', options: ['Paired t-test','Independent t-test','One-way ANOVA','Kruskal-Wallis test'], correct: 2, explanation: 'More than two independent groups + continuous outcome → One-way ANOVA. Running multiple t-tests inflates Type I error (false positives); ANOVA handles all groups simultaneously. Paired t-test is for related measurements. Independent t-test is limited to two groups. Kruskal-Wallis is used when normality is violated.' },
+          { id: 'del12', text: 'Which non-parametric test serves as the alternative to the One-way ANOVA for comparing three or more groups?', options: ['Mann-Whitney U test','Wilcoxon signed-rank test','Kruskal-Wallis test','Friedman test'], correct: 2, explanation: 'Non-parametric alternative to ANOVA for three or more independent groups → Kruskal-Wallis test. Mann-Whitney U compares only two independent groups (non-parametric alternative to independent t-test). Wilcoxon signed-rank is the non-parametric alternative to paired t-test. Friedman test is for three or more related/repeated measurements.' },
+          { id: 'del13', text: 'To determine the linear relationship between two continuous variables, such as Systolic Blood Pressure (SBP) and Diastolic Blood Pressure (DBP), which test should be used?', options: ['Spearman correlation','Pearson correlation','Linear regression','Chi-square test'], correct: 1, explanation: 'Two continuous variables + assessing linear relationship + normal data → Pearson correlation. Pearson measures the strength and direction of the linear relationship (−1 to +1). Spearman is the non-parametric alternative for non-normal or ordinal data. Linear regression predicts one variable from another. Chi-square is for categorical associations.' },
+          { id: 'del14', text: 'When analyzing the relationship between two categorical or ordinal variables (e.g., BMI categories and SBP categories), which correlation test is most suitable?', options: ['Pearson correlation','Spearman correlation','Logistic regression','Independent t-test'], correct: 1, explanation: 'Two ordinal/categorical variables → Spearman correlation. Categorized variables (like BMI categories: underweight/normal/overweight) are ordinal, so Spearman rank correlation is appropriate. Pearson requires continuous normally distributed data. Logistic regression predicts a binary outcome. Independent t-test compares means of two groups.' },
+          { id: 'del15', text: 'Which test is appropriate when comparing the mean of two independent groups with continuous data and the assumption of normality is met?', options: ['Chi-square','Independent sample t-test','Paired sample t-test','Mann-Whitney test'], correct: 1, explanation: 'Two independent groups + continuous outcome + normality met → Independent sample t-test. This is the classic parametric test for two-group comparisons. Chi-square is for categorical outcomes. Paired t-test requires the same subjects measured twice. Mann-Whitney is the non-parametric alternative when normality is violated.' },
+          { id: 'del16', text: 'Which statistical test is suitable for examining the relationship between two continuous variables (numbers)?', options: ['Pearson correlation coefficient','Chi-square','ANOVA','Mann-Whitney test'], correct: 0, explanation: 'Relationship between two continuous variables → Pearson correlation coefficient. Pearson quantifies both the strength and direction of the linear association. Chi-square tests association between categorical variables. ANOVA compares means across groups. Mann-Whitney compares distributions of two independent groups (non-parametric).' },
+          { id: 'del17', text: 'If you have data on the preference of two groups (e.g., Brand A or Brand B) and want to assess if there is a significant relationship between them, which test is used?', options: ['Chi-square','Mann-Whitney test','Pearson correlation','ANOVA'], correct: 0, explanation: 'Categorical preference data (Brand A/B) between two groups → Chi-square test. This is an association test for categorical variables arranged in a contingency table. Mann-Whitney compares ranks of continuous/ordinal data. Pearson is for continuous linear relationships. ANOVA compares continuous means across groups.' },
+          { id: 'del18', text: 'Which test should be used when analyzing data with one continuous dependent variable and one independent categorical variable with two or more levels?', options: ['ANOVA','Paired sample t-test','Chi-square','Spearman correlation'], correct: 0, explanation: 'One continuous dependent variable + one categorical independent variable with 2+ groups → ANOVA. ANOVA handles any number of group levels (2, 3, 4, etc.). Paired t-test is for related measurements from the same subjects. Chi-square is for categorical outcomes. Spearman measures correlation between ordinal/continuous variables.' },
+          { id: 'del19', text: 'Which test is used when comparing the mean of three or more groups using a non-parametric test?', options: ['Kruskal-Wallis test','One-way ANOVA','Mann-Whitney test','Wilcoxon test'], correct: 0, explanation: 'Three or more groups + non-parametric → Kruskal-Wallis test. It ranks all values across groups and compares the rank sums. One-way ANOVA is the parametric equivalent requiring normally distributed data. Mann-Whitney U compares only two groups. Wilcoxon signed-rank is for paired/related samples.' },
+          { id: 'del20', text: 'What is the appropriate test for understanding if there is a significant difference in means between several groups?', options: ['ANOVA','T-test','Chi-square','Pearson correlation'], correct: 0, explanation: 'Significant difference in means across several (3+) groups → ANOVA. ANOVA partitions total variance into between-group and within-group components to test if at least one group mean differs. T-test is limited to two groups. Chi-square is for categorical outcomes. Pearson measures correlation, not group differences.' },
+          { id: 'del21', text: 'Which test is used when comparing the mean of three or more groups with the assumption of normality?', options: ['One-way ANOVA','Kruskal-Wallis test','Mann-Whitney test','Wilcoxon test'], correct: 0, explanation: 'Three or more groups + continuous outcome + normality assumed → One-way ANOVA. ANOVA is the standard parametric test for this design. Kruskal-Wallis is used when normality is violated. Mann-Whitney compares only two independent groups. Wilcoxon is for two paired/related samples.' },
+          { id: 'del22', text: 'In which situation is the Wilcoxon test most appropriate?', options: ['Comparing means of two independent groups','Comparing two paired groups (non-parametric)','Comparing three or more independent groups','Comparing proportions'], correct: 1, explanation: 'Wilcoxon signed-rank test → comparing two paired/related groups when data is not normally distributed. It is the non-parametric equivalent of the paired t-test. For two independent groups: Mann-Whitney U. For three or more groups: Kruskal-Wallis. For proportions: Chi-square.' },
+          { id: 'del23', text: 'What test should be used when you have a single continuous dependent variable and three independent categorical variables?', options: ['ANOVA','Chi-square','Pearson correlation','Spearman correlation'], correct: 0, explanation: 'One continuous dependent variable + three (or more) categorical independent variables → ANOVA (specifically factorial/multi-way ANOVA). Chi-square is for categorical dependent variables. Pearson/Spearman measure correlation between two variables, not group differences across multiple categorical factors.' },
+          { id: 'del24', text: 'If you want to compare the mean of two independent groups but the data is heavily skewed (not normal), which test should you use?', options: ['Mann-Whitney test','Independent sample t-test','One-way ANOVA','Kruskal-Wallis test'], correct: 0, explanation: 'Two independent groups + heavily skewed/non-normal data → Mann-Whitney U test. It compares the rank distributions instead of means, requiring no normality assumption. Independent t-test requires normality. One-way ANOVA is for three or more groups. Kruskal-Wallis is the non-parametric test for three or more groups.' },
+          { id: 'del25', text: 'To assess a significant difference in the mean of a continuous variable between two paired groups (before and after) where the data is not normal, use:', options: ['Wilcoxon test','Paired t-test','Mann-Whitney test','Chi-square'], correct: 0, explanation: 'Two paired/related groups (before vs after) + non-normal data → Wilcoxon signed-rank test. It is the non-parametric alternative to the paired t-test, comparing signed ranks of differences. Paired t-test requires normality. Mann-Whitney is for two independent (not paired) groups. Chi-square is for categorical outcomes.' },
+          { id: 'del26', text: 'What is the correct test to assess a significant relationship between two categorical variables?', options: ['Chi-square','Independent sample t-test','Pearson correlation','ANOVA'], correct: 0, explanation: 'Significant relationship between two categorical variables → Chi-square test. It tests whether the observed frequencies in a contingency table differ from expected frequencies under the null hypothesis of no association. Independent t-test and ANOVA compare continuous means. Pearson measures linear correlation between continuous variables.' }
+        ]
       }
     ]
   }
@@ -4144,22 +4175,32 @@ function showResults(state, correct, pct, lecGroups) {
 function drawScoreRing(pct) {
   const canvas = document.getElementById('scoreCanvas');
   if (!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  const size = 176;
+  canvas.width = size * dpr;
+  canvas.height = size * dpr;
+  canvas.style.width = size + 'px';
+  canvas.style.height = size + 'px';
   const ctx = canvas.getContext('2d');
-  const cx = 88, cy = 88, r = 72;
-  ctx.clearRect(0, 0, 176, 176);
+  ctx.scale(dpr, dpr);
+  const cx = size / 2, cy = size / 2, r = 72;
+  // track ring
   ctx.beginPath();
   ctx.arc(cx, cy, r, 0, Math.PI * 2);
-  ctx.strokeStyle = '#2a3050';
-  ctx.lineWidth = 8;
+  ctx.strokeStyle = 'rgba(0,0,0,0.08)';
+  ctx.lineWidth = 10;
   ctx.stroke();
-  const angle = (pct / 100) * Math.PI * 2 - Math.PI / 2;
-  const color = pct >= 75 ? '#00d4aa' : pct >= 50 ? '#4f8ef7' : '#ff5c6b';
-  ctx.beginPath();
-  ctx.arc(cx, cy, r, -Math.PI / 2, angle);
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 8;
-  ctx.lineCap = 'round';
-  ctx.stroke();
+  // colored arc
+  if (pct > 0) {
+    const angle = (pct / 100) * Math.PI * 2 - Math.PI / 2;
+    const color = pct >= 75 ? '#00d4aa' : pct >= 50 ? '#4f8ef7' : '#ff5c6b';
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, -Math.PI / 2, angle);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 10;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+  }
 }
 
 function retryQuiz(wrongOnly) {
@@ -4826,6 +4867,8 @@ function fcRespond(response) {
 // ── showPage patch for flashcards ──
 const _origShowPage = showPage;
 // We'll override showPage to handle flashcards
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (location.hash) history.replaceState(null, '', location.pathname + location.search);
 window.addEventListener('DOMContentLoaded', () => {});
 
 // ═══════════════════════════════════════════════════

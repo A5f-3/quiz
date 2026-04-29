@@ -1931,11 +1931,22 @@ function hideLoader() {
       <div class="dash-title"><h2>مراجعة الأخطاء</h2><p>تمرن على الأسئلة التي أخطأت فيها</p></div>
     </div>
 
-    <div style="display:flex;gap:12px;align-items:center;margin-bottom:20px;flex-wrap:wrap">
+    <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap">
       <select id="mistakeFilter" onchange="renderMistakes()">
         <option value="all">كل المحاضرات</option>
       </select>
-      <button class="btn btn-primary btn-sm" onclick="practiceAllMistakes()">تدريب على الكل</button>
+      <button class="btn btn-primary btn-sm" onclick="togglePracticePanel()">🎯 تدريب على الأخطاء</button>
+    </div>
+
+    <!-- Practice lecture selector panel -->
+    <div id="practiceSelectorPanel" style="display:none;background:var(--card);border-radius:14px;padding:18px 20px;margin-bottom:18px;border:1.5px solid var(--border);box-shadow:var(--shadow)">
+      <div style="font-weight:700;font-size:1rem;margin-bottom:14px;color:var(--text1)">اختر المحاضرات للتدريب</div>
+      <div id="practiceCheckboxList" style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button class="btn btn-sm" style="background:var(--surface);color:var(--text2);border:1px solid var(--border)" onclick="toggleSelectAllPractice()">تحديد الكل / إلغاء الكل</button>
+        <button class="btn btn-primary btn-sm" onclick="startSelectedPractice()">▶ ابدأ التدريب</button>
+        <button class="btn btn-sm" style="background:transparent;color:var(--text3);border:none" onclick="togglePracticePanel()">إلغاء</button>
+      </div>
     </div>
 
     <div id="mistakesList"></div>
@@ -1976,7 +1987,7 @@ function hideLoader() {
       <div class="dash-back" onclick="showPage('dashboard')">←</div>
       <div class="dash-title">
         <h2>🃏 البطاقات التعليمية</h2>
-        <p>الأخلاق الإسلامية وآداب المهنة</p>
+        <p id="fcSubjectName"></p>
       </div>
     </div>
 
@@ -5203,6 +5214,1323 @@ Choice B: Asthma severity is assessed with peak flow measurements, FEV1, and cli
 Educational Objective: Epworth Sleepiness Scale = OSA screening/monitoring tool. Score >10 = excessive daytime sleepiness → investigate for OSA with sleep study. CURB-65 = pneumonia. Wells score = DVT/PE. GINA = asthma.`
         }
       ]
+    },
+    {
+      id: 'final24_med219_cb',
+      name: 'Med219 Closed Book Questions',
+      num: 5,
+      questions: [
+        {
+          id: 'c1',
+          text: `Which one of the following conditions is most likely associated with Asthma?`,
+          options: [`Atopic dermatitis`, `Lichen planus`, `Psoriasis`, `Vitiligo`],
+          correct: 0,
+          explanation: `Asthma is part of the atopic triad alongside atopic dermatitis and allergic rhinitis.
+
+Choice A: Correct. Atopic dermatitis shares the same TH2-driven, IgE-mediated immunological background as asthma. Both are part of the 'atopic march.' Patients with atopic dermatitis have a significantly increased risk of developing asthma.
+Choice B: Lichen planus is a T-cell-mediated inflammatory skin condition with no association with atopy or asthma.
+Choice C: Psoriasis is a TH1/TH17-driven autoinflammatory skin disease — not associated with the atopic phenotype.
+Choice D: Vitiligo is an autoimmune depigmentation disorder — not associated with asthma.
+
+Educational Objective: Asthma is most closely associated with atopic dermatitis (and allergic rhinitis). All three are TH2-mediated atopic diseases forming the 'atopic triad.'`
+        },
+        {
+          id: 'c2',
+          text: `Which of the following is NOT related to asthma?`,
+          options: [`[Option text missing in PDF]`, `Constitutional eczema`, `Psoriasis`, `Urticaria`],
+          correct: 2,
+          alert: true,
+          explanation: `Asthma belongs to the atopic disease spectrum — understanding which skin conditions are atopic is key.
+
+Choice A: Option text was missing in the source PDF — flagged for review.
+Choice B: Constitutional eczema (atopic dermatitis) IS related to asthma — both are atopic TH2-driven conditions sharing the same immunological pathway.
+Choice C: Correct. Psoriasis is NOT related to asthma. It is a TH1/TH17-mediated autoinflammatory disease with no association with atopy, IgE, or the atopic triad.
+Choice D: Urticaria (especially allergic urticaria) IS related to asthma — both involve IgE-mediated mast cell activation.
+
+Note: Option A text was missing in the source PDF. This question has been flagged for review.
+
+Educational Objective: Atopic conditions (related to asthma): atopic dermatitis, allergic rhinitis, urticaria. NOT atopic: psoriasis, lichen planus, vitiligo.`
+        },
+        {
+          id: 'c3',
+          text: `Antagonist of which chemical mediator is most effective in the treatment of Hereditary Angioedema?`,
+          options: [`Bradykinin`, `Histamine`, `Leukotriene`, `Prostaglandin`],
+          correct: 0,
+          explanation: `Hereditary Angioedema (HAE) has a distinct pathophysiology from allergic angioedema.
+
+Choice A: Correct. HAE is caused by C1-inhibitor deficiency → uncontrolled kallikrein-kinin activation → excess bradykinin production. Bradykinin (not histamine) is the key mediator causing vascular permeability and angioedema in HAE. Treatment: icatibant (bradykinin B2 receptor antagonist), C1-inhibitor concentrate, ecallantide.
+Choice B: HAE does NOT respond to antihistamines — this is a critical clinical point. Histamine drives allergic angioedema; bradykinin drives HAE.
+Choice C: Leukotrienes are involved in asthma and allergic rhinitis — not HAE.
+Choice D: Prostaglandins are involved in inflammation and pain — not the primary mediator of HAE.
+
+Educational Objective: HAE = C1-inhibitor deficiency → excess bradykinin → angioedema. Does NOT respond to antihistamines or epinephrine. Treat with icatibant (bradykinin antagonist) or C1-inhibitor concentrate.`
+        },
+        {
+          id: 'c4',
+          text: `A patient has severe itching and generalized wheals for 3 days after eating seafood. Which drug can provide symptomatic relief?`,
+          options: [`Loratadine`, `Amoxicillin`, `Acyclovir`],
+          correct: 0,
+          explanation: `Wheals (urticaria) after seafood exposure represent an allergic (IgE-mediated) reaction.
+
+Choice A: Correct. Loratadine is a second-generation antihistamine (H1-receptor antagonist). Urticaria is primarily driven by histamine release from mast cells. Antihistamines are the first-line symptomatic treatment for allergic urticaria — they block H1 receptors, reducing itch, wheal formation, and erythema.
+Choice B: Amoxicillin is a penicillin antibiotic — has no role in treating urticaria and could itself trigger allergic reactions.
+Choice C: Acyclovir is an antiviral (for HSV/VZV) — no role in allergic urticaria.
+
+Educational Objective: Urticaria (wheals/hives) = histamine-mediated. First-line treatment: H1 antihistamines (cetirizine, loratadine, fexofenadine). Severe cases: systemic corticosteroids. Anaphylaxis: epinephrine.`
+        },
+        {
+          id: 'c5',
+          text: `Which of the following is an antibody-mediated hypersensitivity?`,
+          options: [`Systemic lupus erythematosus`, `Reactive arthritis`, `Serum sickness`, `Pemphigus vulgaris`],
+          correct: 3,
+          explanation: `Antibody-mediated (Type II) hypersensitivity involves IgG/IgM directed against specific cell-surface or tissue antigens.
+
+Choice A: SLE involves multiple mechanisms — immune complex (Type III) is dominant in lupus nephritis. Anti-dsDNA immune complexes deposit in tissues.
+Choice B: Reactive arthritis is T-cell mediated (Type IV) — triggered by molecular mimicry after enteric/urogenital infections.
+Choice C: Serum sickness is Type III (immune complex-mediated) — soluble antigen-antibody complexes deposit in tissues.
+Choice D: Correct. Pemphigus vulgaris is a classic Type II (antibody-mediated) hypersensitivity. IgG autoantibodies target desmoglein-3 (and desmoglein-1) on keratinocyte surfaces, disrupting cell-cell adhesion and causing acantholysis → painful blistering of skin and mucosa.
+
+Educational Objective: Pemphigus vulgaris = Type II hypersensitivity. IgG anti-desmoglein antibodies → acantholysis → flaccid blisters. Nikolsky sign positive. Treat with systemic corticosteroids ± rituximab.`
+        },
+        {
+          id: 'c6',
+          text: `Cellular dysfunction is the underlying pathological mechanism of which of the following disorders?`,
+          options: [`Goodpasture syndrome`, `Graves' disease`, `Pemphigus vulgaris`, `Blood transfusion reaction`],
+          correct: 1,
+          explanation: `Type II hypersensitivity can cause either cell destruction OR receptor dysfunction.
+
+Choice A: Goodpasture syndrome involves IgG against glomerular and alveolar basement membrane (Type II) causing cell destruction and complement activation — not receptor stimulation.
+Choice B: Correct. Graves' disease is caused by stimulatory autoantibodies (TSI — thyroid-stimulating immunoglobulins) that activate TSH receptors on thyroid follicular cells, causing hyperthyroidism. This is Type II hypersensitivity causing CELLULAR DYSFUNCTION (overstimulation) rather than destruction.
+Choice C: Pemphigus vulgaris causes cell-cell adhesion disruption — dysfunction of desmosomal proteins, not receptor stimulation.
+Choice D: Blood transfusion reactions involve Type II antibody-mediated RBC destruction — cell lysis, not receptor stimulation.
+
+Educational Objective: Type II hypersensitivity subtypes: (1) Cell destruction (hemolytic anemia, Goodpasture), (2) Receptor stimulation (Graves' disease), (3) Receptor blockade (Myasthenia gravis). Graves' = stimulatory antibody causing cellular dysfunction (hyperthyroidism).`
+        },
+        {
+          id: 'c7',
+          text: `What is the favorite site of deposition in Type III hypersensitivity?`,
+          options: [`Joints`, `Liver`, `Heart`, `Brain`],
+          correct: 0,
+          explanation: `Immune complex deposition in Type III hypersensitivity has predilection for certain sites.
+
+Choice A: Correct. Joints (synovium) are among the most common sites of immune complex deposition in Type III hypersensitivity. Immune complexes tend to deposit in sites with turbulent blood flow and high hydrostatic pressure — including joints, kidneys (glomeruli), and blood vessel walls. Classic examples: rheumatoid arthritis, serum sickness arthritis, SLE arthritis.
+Choice B: The liver can be affected but is not the 'favorite' site for immune complex deposition.
+Choice C: The heart is involved in some conditions (Libman-Sacks endocarditis in SLE) but not the primary deposition site.
+Choice D: The brain is relatively protected by the blood-brain barrier from immune complex deposition.
+
+Educational Objective: Type III immune complex deposition favors: kidneys (glomerulonephritis), joints (arthritis), skin (vasculitis), blood vessel walls. Driven by complement activation and neutrophil recruitment.`
+        },
+        {
+          id: 'c8',
+          text: `Which of the following disorders is a Type IV hypersensitivity reaction?`,
+          options: [`Bronchial asthma`, `Systemic lupus erythematosus`, `Glomerulonephritis`, `Rheumatoid arthritis`],
+          correct: 3,
+          explanation: `Type IV (delayed-type) hypersensitivity is T-cell mediated — no antibody involvement.
+
+Choice A: Bronchial asthma is Type I (IgE-mediated) — mast cell degranulation triggered by allergen cross-linking IgE.
+Choice B: SLE is primarily Type III (immune complex) with some Type II features — not Type IV.
+Choice C: Glomerulonephritis is usually Type III (immune complex deposition) or Type II (anti-GBM in Goodpasture).
+Choice D: Correct. Rheumatoid arthritis has a significant Type IV (T-cell mediated) component. CD4+ TH1 and TH17 cells drive synovial inflammation, activate macrophages, and stimulate fibroblasts causing joint destruction. (Note: RF and anti-CCP antibodies make Type III also contributory, but T-cell mediation is the primary pathological mechanism.)
+
+Educational Objective: Type IV examples: RA, contact dermatitis, tuberculin reaction, transplant rejection, granulomatous diseases. All involve T-cell activation without antibody as the primary effector.`
+        },
+        {
+          id: 'c9',
+          text: `Asthma can be classified as which of the following hypersensitivity reactions?`,
+          options: [`Immune-mediated`, `T-cell mediated`, `Immediate`, `Immune-complex mediated`],
+          correct: 2,
+          explanation: `Understanding the hypersensitivity classification of asthma is important.
+
+Choice A: 'Immune-mediated' is too broad — many diseases are immune-mediated. This is not the specific classification.
+Choice B: T-cell mediated is Type IV (delayed) — asthma's acute bronchospasm is not T-cell mediated (though TH2 cells drive the chronic inflammatory background).
+Choice C: Correct. Allergic asthma is classified as Type I (immediate) hypersensitivity — IgE-mediated. Allergen cross-links IgE on mast cells → immediate degranulation within minutes → histamine, leukotrienes → bronchoconstriction. This is the 'immediate' or 'anaphylactic' type.
+Choice D: Immune complex (Type III) is not the mechanism of asthma.
+
+Educational Objective: Asthma = Type I (immediate/anaphylactic) hypersensitivity. IgE-mediated mast cell degranulation → immediate bronchoconstriction. Early phase: histamine. Late phase: leukotrienes and eosinophil products.`
+        },
+        {
+          id: 'c10',
+          text: `What pathological mechanism is responsible for airway obstruction in bronchial asthma?`,
+          options: [`TH1 activation`, `Mast cell cytokines`, `Smooth muscle relaxation`, `Smooth muscle hyperactivity`],
+          correct: 3,
+          explanation: `The structural changes driving airway obstruction in asthma need to be understood.
+
+Choice A: TH1 activation opposes TH2 — TH2 drives asthma. TH1 cells produce IFN-γ which actually counteracts the asthmatic response.
+Choice B: Mast cell cytokines contribute to inflammation but the direct mechanical cause of obstruction is smooth muscle contraction, not cytokines per se.
+Choice C: Smooth muscle RELAXATION would open airways — bronchodilators (beta-2 agonists) work by causing smooth muscle relaxation to RELIEVE obstruction.
+Choice D: Correct. Smooth muscle HYPERACTIVITY (bronchial hyperresponsiveness) is the hallmark mechanical mechanism of airway obstruction in asthma. Inflammatory mediators (histamine, leukotrienes, acetylcholine) cause excessive bronchoconstriction. Structural remodeling (smooth muscle hypertrophy/hyperplasia) worsens this in chronic disease.
+
+Educational Objective: Asthma airway obstruction = smooth muscle hyperactivity (bronchospasm) + mucosal edema + mucus hypersecretion. Bronchial hyperresponsiveness is the key pathophysiological feature.`
+        },
+        {
+          id: 'c11',
+          text: `Which of the following dermatological findings is found at the beginning of anaphylaxis?`,
+          options: [`Exanthema`, `Ecchymosis`, `Urticaria`, `Ulceration`],
+          correct: 2,
+          explanation: `Recognizing the early cutaneous signs of anaphylaxis is life-saving.
+
+Choice A: Exanthema (maculopapular rash) suggests viral infections or drug hypersensitivity reactions — not the initial cutaneous finding in anaphylaxis.
+Choice B: Ecchymosis (bruising) suggests coagulation disorders or trauma — not associated with anaphylaxis onset.
+Choice C: Correct. Urticaria (wheals/hives) with erythema and pruritus is typically the FIRST cutaneous manifestation of anaphylaxis. Mast cell degranulation releases histamine causing rapid wheal formation. Flushing also occurs early. This is followed by angioedema, then systemic features (hypotension, bronchospasm).
+Choice D: Ulceration occurs in chronic skin diseases — not in acute anaphylaxis.
+
+Educational Objective: Anaphylaxis progression: urticaria/flushing (earliest) → angioedema → bronchospasm → hypotension → cardiovascular collapse. Recognize early cutaneous signs to intervene before systemic collapse. Treat: IM epinephrine immediately.`
+        },
+        {
+          id: 'c12',
+          text: `In hyposensitization, the allergen is given by which route to counteract hypersensitivity?`,
+          options: [`Intradermal`, `Subcutaneous`, `Intramuscular`, `Intravenous`],
+          correct: 1,
+          explanation: `Allergen immunotherapy (hyposensitization/desensitization) requires a specific administration route.
+
+Choice A: Intradermal route is used for DIAGNOSTIC skin testing (Mantoux test, allergy skin tests) — not for immunotherapy.
+Choice B: Correct. Subcutaneous allergen immunotherapy (SCIT) is the standard route for hyposensitization. Gradually increasing doses of allergen are injected subcutaneously, inducing immune tolerance by shifting from TH2 to TH1 response, promoting regulatory T cells, and shifting from IgE to IgG4 production.
+Choice C: Intramuscular is not the standard route for allergen immunotherapy.
+Choice D: Intravenous allergen administration would risk severe systemic anaphylaxis — never used for immunotherapy.
+
+Educational Objective: Allergen hyposensitization (SCIT) = subcutaneous injections of increasing allergen doses. Mechanism: TH2→TH1 shift, IgE→IgG4 switch, Treg induction. Sublingual immunotherapy (SLIT) is an alternative for some allergens.`
+        },
+        {
+          id: 'c13',
+          text: `Which of the following antitubercular drugs does NOT belong to the first-line drugs?`,
+          options: [`Pyrazinamide`, `Rifampicin`, `Ethambutol`, `Ciprofloxacin`],
+          correct: 3,
+          explanation: `First-line TB drugs must be memorized — the mnemonic RIPE helps.
+
+Choice A: Pyrazinamide IS first-line — 'P' in RIPE. Active against dormant intracellular bacilli in acidic environments.
+Choice B: Rifampicin IS first-line — 'R' in RIPE. Most potent sterilizing agent; inhibits RNA polymerase.
+Choice C: Ethambutol IS first-line — 'E' in RIPE. Inhibits arabinosyl transferase (cell wall). Prevents resistance.
+Choice D: Correct. Ciprofloxacin is NOT first-line. It is a fluoroquinolone used as a SECOND-LINE agent in drug-resistant TB (MDR-TB). Preferred fluoroquinolones for TB: moxifloxacin, levofloxacin (more active against M. tuberculosis than ciprofloxacin).
+
+Educational Objective: First-line TB = RIPE (Rifampicin, Isoniazid, Pyrazinamide, Ethambutol). Ciprofloxacin = second-line. Isoniazid = most bactericidal for actively dividing bacilli.`
+        },
+        {
+          id: 'c14',
+          text: `Azithromycin inhibits bacteria through which one of the following mechanisms?`,
+          options: [`Inhibition of protein synthesis`, `Inhibition of metabolic enzyme`, `Inhibition of cell wall synthesis`, `Inhibition of nucleic acid transcription and replication`],
+          correct: 0,
+          explanation: `Macrolide antibiotics have a specific and well-defined mechanism.
+
+Choice A: Correct. Azithromycin (a macrolide) inhibits bacterial protein synthesis by binding reversibly to the 50S ribosomal subunit, specifically the 23S rRNA. This blocks translocation of the peptide chain, preventing elongation. It is generally bacteriostatic (bactericidal at high concentrations).
+Choice B: Inhibition of metabolic enzymes is the mechanism of sulfonamides (dihydropteroate synthase) and trimethoprim (dihydrofolate reductase).
+Choice C: Cell wall synthesis inhibition is the mechanism of beta-lactams and glycopeptides (vancomycin).
+Choice D: Nucleic acid transcription inhibition is rifampicin's mechanism. Replication inhibition is done by fluoroquinolones.
+
+Educational Objective: 50S inhibitors: macrolides (azithromycin, clarithromycin), chloramphenicol, linezolid, clindamycin. 30S inhibitors: aminoglycosides (bactericidal), tetracyclines (bacteriostatic).`
+        },
+        {
+          id: 'c15',
+          text: `Which of the following antibiotics is bactericidal and works by inhibiting the 30S subunit?`,
+          options: [`Aminoglycosides`, `Beta-lactams`, `Quinolones`, `Tetracyclines`],
+          correct: 0,
+          explanation: `The 30S ribosomal subunit is targeted by two antibiotic classes with different effects.
+
+Choice A: Correct. Aminoglycosides (gentamicin, amikacin, tobramycin) are BACTERICIDAL 30S inhibitors. They irreversibly bind to the 30S subunit causing misreading of mRNA, production of aberrant proteins, membrane disruption, and cell death.
+Choice B: Beta-lactams target cell wall synthesis (PBPs) — not ribosomal subunits.
+Choice C: Quinolones (fluoroquinolones) target DNA gyrase and topoisomerase IV — not ribosomes.
+Choice D: Tetracyclines are bacteriostatic 30S inhibitors — they block aminoacyl-tRNA from binding to the ribosome but are NOT bactericidal (unlike aminoglycosides).
+
+Educational Objective: 30S inhibitors: Aminoglycosides (BACTERICIDAL — irreversible binding) vs Tetracyclines (bacteriostatic — reversible binding). This distinction is clinically important for serious infections requiring bactericidal therapy.`
+        },
+        {
+          id: 'c16',
+          text: `Which of the following inhibits beta-lactamase?`,
+          options: [`Ascorbic acid`, `Clavulanic acid`, `Para-aminobenzoic acid`],
+          correct: 1,
+          explanation: `Beta-lactamase inhibitors protect antibiotics from enzymatic degradation.
+
+Choice A: Ascorbic acid (Vitamin C) is an antioxidant — no beta-lactamase inhibitory activity.
+Choice B: Correct. Clavulanic acid is a beta-lactamase inhibitor combined with amoxicillin (Augmentin/co-amoxiclav). Other inhibitors: sulbactam (with ampicillin) and tazobactam (with piperacillin). They have weak intrinsic antibacterial activity but expand the spectrum by protecting the beta-lactam antibiotic partner from enzymatic hydrolysis.
+Choice C: Para-aminobenzoic acid (PABA) is the substrate competed against by sulfonamides in folate synthesis — it has no beta-lactamase inhibitory activity.
+
+Educational Objective: Beta-lactamase inhibitors: Clavulanic acid, Sulbactam, Tazobactam. Combined with amoxicillin, ampicillin, piperacillin respectively. Overcome ESBL and AmpC beta-lactamase producing bacteria.`
+        },
+        {
+          id: 'c17',
+          text: `The most common microorganism in community-acquired pneumonia is:`,
+          options: [`Streptococcus pneumoniae`, `Haemophilus influenzae`, `Legionella`],
+          correct: 0,
+          explanation: `Community-acquired pneumonia (CAP) has a well-established microbiology profile.
+
+Choice A: Correct. Streptococcus pneumoniae (pneumococcus) is the most common cause of CAP in all age groups and settings worldwide. It causes typical lobar pneumonia with acute onset, high fever, rusty sputum, and lobar consolidation on CXR. Risk groups: elderly, asplenic, immunocompromised.
+Choice B: Haemophilus influenzae is a common cause of CAP especially in elderly and COPD patients — but is second to S. pneumoniae.
+Choice C: Legionella is an important cause of atypical/severe CAP (especially in outbreaks, travel, immunocompromised) but is not the most common overall.
+
+Educational Objective: Most common CAP pathogen: S. pneumoniae. Atypical CAP: Mycoplasma (most common atypical), Legionella, Chlamydophila. Elderly/COPD: H. influenzae. Alcoholics: Klebsiella. Post-influenza: S. aureus.`
+        },
+        {
+          id: 'c18',
+          text: `For isolation of Legionella causing Legionnaires disease, which culture medium is most appropriate?`,
+          options: [`Buffered charcoal yeast extract (BCYE) agar`, `MacConkey agar`, `Mannitol salt agar`, `Nutritional agar`],
+          correct: 0,
+          explanation: `Legionella requires a specialized culture medium due to its fastidious nature.
+
+Choice A: Correct. BCYE (Buffered Charcoal Yeast Extract) agar is the gold standard culture medium for Legionella. It provides essential nutrients (cysteine, iron) that Legionella requires for growth. It is incubated at 35-37°C for up to 5-7 days. Regular blood agar cannot support Legionella growth.
+Choice B: MacConkey agar selects for gram-negative enteric bacteria (Enterobacteriaceae) — Legionella does not grow on MacConkey.
+Choice C: Mannitol salt agar is selective for Staphylococci — not Legionella.
+Choice D: Nutritional (blood) agar does not support Legionella growth due to its cysteine requirement.
+
+Educational Objective: Legionella culture = BCYE agar (cysteine-dependent). Urine antigen test is the fastest diagnostic method. Treat with azithromycin or levofloxacin.`
+        },
+        {
+          id: 'c19',
+          text: `Which of the following is the most appropriate diagnostic test for Q fever?`,
+          options: [`Gram staining`, `Urine antigen test`, `Paired serum antibody titer`, `Culture on Mannitol salt agar`],
+          correct: 2,
+          explanation: `Q fever diagnosis requires understanding of Coxiella burnetii's unique biology.
+
+Choice A: Gram staining is useless for Coxiella burnetii — it is an obligate intracellular pathogen that stains poorly and cannot be seen on standard Gram stain.
+Choice B: Urine antigen test is used for Legionella pneumophila (serogroup 1) — not Q fever.
+Choice C: Correct. Paired serum antibody titers (Phase I and Phase II IgM/IgG) using complement fixation or ELISA are the gold standard for Q fever diagnosis. A 4-fold rise in titers between acute and convalescent serum (2-4 weeks apart) confirms diagnosis. Phase II antibodies dominate in acute Q fever; Phase I in chronic Q fever/endocarditis.
+Choice D: Coxiella cannot be cultured on standard bacteriological media — requires cell cultures (BSL-3 conditions).
+
+Educational Objective: Q fever diagnosis = paired serology (Phase I and II antibodies). Phase II IgG > Phase I IgG = acute Q fever. Phase I IgG > Phase II IgG = chronic Q fever/endocarditis. Culture is hazardous (BSL-3).`
+        },
+        {
+          id: 'c20',
+          text: `Community-acquired pneumonia with CURB-65 score of 5 should be treated at:`,
+          options: [`Home`, `Hospital (non-ICU)`, `Intensive care unit`],
+          correct: 2,
+          explanation: `CURB-65 guides site-of-care decisions in CAP management.
+
+Choice A: Score 0-1 → outpatient/home management. Score 5 is too severe for home treatment.
+Choice B: Score 2 → hospital admission (non-ICU). Score 5 requires more intensive care.
+Choice C: Correct. CURB-65 score of 3-5 indicates severe CAP requiring hospital admission with consideration for ICU. Score 5 (maximum) indicates very high mortality risk (>50%) and mandates ICU admission for close monitoring, vasopressors, and potentially mechanical ventilation.
+
+CURB-65: Confusion (1), Urea >7mmol/L (1), Respiratory rate ≥30 (1), BP <90/60 (1), Age ≥65 (1).
+
+Educational Objective: CURB-65: 0-1 = home, 2 = hospital ward, 3-5 = ICU consideration. Score 5 = ICU mandatory. Maximum score = most severe CAP with highest mortality.`
+        },
+        {
+          id: 'c21',
+          text: `What type of pneumonia causes erythema multiforme?`,
+          options: [`Mycoplasma pneumonia`],
+          correct: 0,
+          explanation: `Extrapulmonary manifestations are important in atypical pneumonia.
+
+Choice A: Correct. Mycoplasma pneumoniae is classically associated with erythema multiforme (target lesions) as an extrapulmonary complication. It is also associated with cold agglutinins (causing hemolytic anemia), bullous myringitis, Stevens-Johnson syndrome, encephalitis, and polyarthritis. Mycoplasma triggers these complications through immune cross-reactivity.
+
+Educational Objective: Mycoplasma pneumonia extrapulmonary features: cold agglutinins (hemolytic anemia), erythema multiforme, bullous myringitis, encephalitis, pericarditis. Classic 'walking pneumonia' — patient looks better than CXR suggests.`
+        },
+        {
+          id: 'c22',
+          text: `A patient with right-sided chest pain, trachea shifted to the left, and dull percussion. Most likely diagnosis?`,
+          options: [`Left pleural effusion`, `Right pleural effusion`],
+          correct: 1,
+          explanation: `Pleural effusion presents with characteristic clinical signs — matching side to signs is key.
+
+Choice A: LEFT pleural effusion would cause dullness on the LEFT, with trachea shifted to the RIGHT (away from a large left effusion). This does not match the scenario.
+Choice B: Correct. RIGHT pleural effusion: right-sided chest pain, stony dull percussion on RIGHT (fluid is dense), and trachea shifted to the LEFT (large effusion pushes mediastinum away from the effusion side). All signs are consistent with right-sided effusion.
+
+Educational Objective: Pleural effusion signs: stony dull percussion + absent/reduced breath sounds + trachea deviated AWAY from large effusion. Collapse: trachea deviated TOWARD the pathology. Pneumothorax: hyper-resonant + trachea away.`
+        },
+        {
+          id: 'c23',
+          text: `Which anatomical lung lobe is the most common site of aspiration pneumonia?`,
+          options: [`Left lower lobe`, `Middle lobe`, `Right lower lobe / right middle lobe`, `Lingula`],
+          correct: 1,
+          explanation: `Aspiration pneumonia location depends on posture and anatomy.
+
+Choice A: The left lower lobe can be affected but is less common than right-sided lobes due to the anatomy of the right main bronchus.
+Choice B: Correct. In the supine patient, aspiration most commonly affects the posterior segments of the upper lobes and the superior segments of the lower lobes. However, in the upright/semi-recumbent patient, the RIGHT lower lobe and right middle lobe are most commonly affected because the right main bronchus is wider, shorter and more vertical — offering less angulation as a barrier to aspirated material.
+Choice C: Right-sided lobes are most commonly affected overall.
+Choice D: The lingula (left upper lobe equivalent to the right middle lobe) can be affected in left-lateral decubitus position.
+
+Educational Objective: Aspiration pneumonia: right-sided predominance (right bronchus wider + more vertical). Upright: right lower lobe most common. Supine: posterior upper lobe segments and superior lower lobe segments.`
+        },
+        {
+          id: 'c24',
+          text: `Which of the following is a long-acting β2-agonist?`,
+          options: [`Salmeterol`, `Salbutamol`, `Ipratropium`],
+          correct: 0,
+          explanation: `Distinguishing short-acting from long-acting bronchodilators is essential for asthma/COPD management.
+
+Choice A: Correct. Salmeterol is a LABA (Long-Acting Beta-2 Agonist) — duration 12 hours. Used as add-on maintenance therapy with inhaled corticosteroids in persistent asthma. NEVER used as sole reliever — must always be combined with ICS.
+Choice B: Salbutamol (albuterol) is a SABA (Short-Acting Beta-2 Agonist) — onset within minutes, duration 4-6 hours. First-line reliever/rescue inhaler.
+Choice C: Ipratropium is a SAMA (Short-Acting Muscarinic Antagonist) — anticholinergic, not a beta-2 agonist. Used in COPD and as add-on in acute severe asthma.
+
+Educational Objective: LABA: Salmeterol, Formoterol (12h). SABA: Salbutamol, Terbutaline (4-6h). LABAs must NEVER be used without ICS in asthma (increased mortality risk). LABAs are first-line in COPD without ICS.`
+        },
+        {
+          id: 'c25',
+          text: `Which drug causes bronchodilation by inhibiting the phosphodiesterase enzyme?`,
+          options: [`Theophylline`],
+          correct: 0,
+          explanation: `Theophylline has a unique and specific bronchodilator mechanism.
+
+Choice A: Correct. Theophylline is a methylxanthine that inhibits phosphodiesterase (PDE) — the enzyme that breaks down cyclic AMP (cAMP). By inhibiting PDE, cAMP accumulates, causing bronchial smooth muscle relaxation and bronchodilation. It also has anti-inflammatory effects and stimulates the respiratory center. Narrow therapeutic index requires drug level monitoring.
+
+Educational Objective: Theophylline = PDE inhibitor → ↑cAMP → bronchodilation. Narrow therapeutic index (toxic levels cause seizures, arrhythmias). Roflumilast is a selective PDE-4 inhibitor used in COPD. Both work via the cAMP pathway.`
+        },
+        {
+          id: 'c26',
+          text: `Although atropine works as a bronchodilator, it is not used in asthma because it:`,
+          options: [`Causes allergic reaction`, `Releases histamine`, `Dries mucus secretion`, `Blocks adenosine receptor`],
+          correct: 2,
+          explanation: `Atropine's side effect profile makes it unsuitable for asthma despite its bronchodilator properties.
+
+Choice A: Atropine does not commonly cause allergic reactions — this is not the reason it is avoided in asthma.
+Choice B: Atropine does not release histamine — antihistamine effects are sometimes attributed to anticholinergics but this is not the mechanism.
+Choice C: Correct. Atropine's anticholinergic effect dries ALL secretions — including bronchial mucus. In asthma, where mucus plugging is already a problem (Curschmann spirals, mucus plugs), drying secretions makes mucus thicker and harder to clear, worsening obstruction. Ipratropium (quaternary ammonium) is preferred as it is inhaled with minimal systemic anticholinergic effects.
+Choice D: Adenosine receptor blockade is the mechanism of theophylline — not atropine.
+
+Educational Objective: Atropine avoided in asthma because it dries bronchial secretions → worsens mucus plugging. Ipratropium (inhaled anticholinergic) is preferred — quaternary structure limits systemic absorption.`
+        },
+        {
+          id: 'c27',
+          text: `A 45-year-old man has dry cough for 6 months, clubbing and fine basal crackles. Which investigation confirms the diagnosis?`,
+          options: [`Sputum analysis`, `HRCT scan`, `Bronchoscopy`],
+          correct: 1,
+          explanation: `This presentation is classic idiopathic pulmonary fibrosis (IPF) — the confirmatory test matters.
+
+Choice A: Sputum analysis does not diagnose IPF — it may show nonspecific changes and is used for infections and malignancy.
+Choice B: Correct. HRCT (High-Resolution CT) of the chest is the gold standard for confirming IPF. The typical UIP (Usual Interstitial Pneumonia) pattern shows: bilateral subpleural, basal-predominant reticular opacities with honeycombing ± traction bronchiectasis. A confident HRCT diagnosis of UIP in appropriate clinical context avoids surgical lung biopsy.
+Choice C: Bronchoscopy with BAL may exclude other diagnoses but is not diagnostic of IPF — it typically shows nonspecific findings.
+
+Educational Objective: IPF confirmation = HRCT showing UIP pattern (subpleural basal honeycombing + reticulation). Classic clinical triad: dry cough + bilateral basal fine crackles + finger clubbing in patient >60 years.`
+        },
+        {
+          id: 'c28',
+          text: `Which one is a restrictive lung function disease?`,
+          options: [`Bronchial asthma`, `Chronic bronchitis`, `Idiopathic pulmonary fibrosis`],
+          correct: 2,
+          explanation: `Lung function diseases are classified as obstructive or restrictive.
+
+Choice A: Bronchial asthma is an OBSTRUCTIVE disease — airways are narrowed, FEV1 reduced, FEV1/FVC ratio <0.7, reversible with bronchodilator.
+Choice B: Chronic bronchitis is an OBSTRUCTIVE disease — part of COPD. FEV1/FVC <0.7, not significantly reversible.
+Choice C: Correct. Idiopathic pulmonary fibrosis (IPF) is a RESTRICTIVE disease — fibrosis stiffens the lung, reducing lung volumes. PFTs show: reduced FVC, reduced TLC, reduced RV, FEV1/FVC ratio PRESERVED (often >0.7 or even elevated). DLCO (gas transfer) is markedly reduced.
+
+Educational Objective: Obstructive: asthma, COPD, bronchiectasis — FEV1/FVC <0.7. Restrictive: IPF, sarcoidosis, pleural disease, neuromuscular — FVC↓, TLC↓, FEV1/FVC normal or elevated.`
+        },
+        {
+          id: 'c29',
+          text: `When bacteria spread through the blood in tuberculosis, it is known as:`,
+          options: [`Primary tuberculosis`, `Secondary tuberculosis`, `Miliary tuberculosis`],
+          correct: 2,
+          explanation: `Understanding the different forms of TB and how they arise is fundamental.
+
+Choice A: Primary tuberculosis is the initial infection in a non-sensitized individual — localized to the lung (Ghon focus) with hilar node involvement (Ghon complex).
+Choice B: Secondary (post-primary/reactivation) tuberculosis occurs in previously sensitized individuals — upper lobe cavitation, more severe localized lung disease.
+Choice C: Correct. Miliary tuberculosis results from hematogenous (blood-borne) spread of M. tuberculosis from a primary or reactivated focus throughout the body. It produces tiny millet seed-like granulomas in multiple organs simultaneously — lungs, liver, spleen, bone marrow, meninges. CXR shows the classic 'miliary' pattern of fine bilateral nodules.
+
+Educational Objective: Miliary TB = hematogenous spread → multi-organ seeding. Millet seed nodules on CXR. High risk: immunocompromised, infants, elderly. Presents with fever, weight loss, night sweats, hepatosplenomegaly.`
+        },
+        {
+          id: 'c30',
+          text: `Which statement is correct regarding a person with latent TB?`,
+          options: [`He is infectious`, `He is infected but not infectious`, `He should start full anti-TB treatment`, `He is not infected`],
+          correct: 1,
+          explanation: `Distinguishing latent from active TB is essential for public health and clinical management.
+
+Choice A: FALSE. A person with LATENT TB is NOT infectious — they have contained the infection in granulomas. No sputum bacilli, normal CXR, no symptoms.
+Choice B: Correct. Latent TB = infected (positive TST or IGRA) but NOT infectious. No symptoms, normal CXR, negative sputum. The bacteria are dormant inside macrophage granulomas. Risk of reactivation: ~10% lifetime (higher with HIV, immunosuppression, diabetes, malnutrition).
+Choice C: Full 4-drug TB treatment is for ACTIVE disease. Latent TB is treated with isoniazid preventive therapy (IPT) for 6-9 months (or rifampicin ×4 months) — NOT full RIPE regimen.
+Choice D: He IS infected — just not with active disease.
+
+Educational Objective: Latent TB: infected, not infectious, asymptomatic, normal CXR, positive TST/IGRA. Treatment: isoniazid monotherapy 6-9 months or rifampicin 4 months. NOT the full RIPE regimen.`
+        },
+        {
+          id: 'c31',
+          text: `Regarding primary tuberculosis, the usual site of the Ghon focus is:`,
+          options: [`Upper part of upper lobe`, `Upper part of lower lobe`, `Lower part of lower lobe`, `No specific site`],
+          correct: 1,
+          explanation: `The Ghon focus has a characteristic anatomical location in primary TB.
+
+Choice A: The upper part of the upper lobe is the typical site of SECONDARY (reactivation) TB — high oxygen tension favors mycobacterial replication there.
+Choice B: Correct. The Ghon focus of PRIMARY tuberculosis is classically located in the UPPER PART OF THE LOWER LOBE (or lower part of the upper lobe) — the mid-lung zone, subpleural. This area receives the most ventilation relative to perfusion in primary infection. It is a subpleural caseating granuloma.
+Choice C: The lower part of the lower lobe is not the classical site.
+Choice D: There IS a specific and characteristic site for the Ghon focus.
+
+Educational Objective: Primary TB (Ghon focus) = upper part of lower lobe or lower part of upper lobe (mid-zone, subpleural). Secondary TB = upper lobe (apicoposterior segments) — higher O2 tension favors reactivation.`
+        },
+        {
+          id: 'c32',
+          text: `Which correctly describes the features of tuberculous lymphadenitis?`,
+          options: [`Firm, non-tender, with central necrosis`, `Soft, tender, without central necrosis`, `Hard, non-tender, with central necrosis`, `Firm, tender, without central necrosis`],
+          correct: 0,
+          explanation: `The clinical characteristics of TB lymphadenitis differ from bacterial lymphadenitis.
+
+Choice A: Correct. Tuberculous lymphadenitis (scrofula) presents as firm (rubbery consistency, NOT fluctuant initially), non-tender (painless — distinguishes from acute bacterial lymphadenitis which is tender), with central caseous necrosis pathologically. Nodes are often matted together. Late disease: fluctuant cold abscess → collar-stud abscess → skin breakdown.
+Choice B: Soft, tender nodes suggest acute pyogenic lymphadenitis.
+Choice C: Hard nodes suggest malignancy (stone-hard) or late calcified TB — not early TB lymphadenitis.
+Choice D: Tender nodes suggest active bacterial infection — TB nodes are characteristically NON-tender.
+
+Educational Objective: TB lymphadenitis: firm, matted, painless (non-tender) cervical lymph nodes with central caseous necrosis. 'Cold abscess' = no warmth/tenderness. Biopsy shows caseating granulomas. Most common extrapulmonary TB site.`
+        },
+        {
+          id: 'c33',
+          text: `A 47-year-old man has positive tuberculin skin test, no symptoms, normal CXR and normal examination. What is the diagnosis?`,
+          options: [`Pulmonary TB`, `Extra-pulmonary TB`, `Latent TB`, `Not infected or diseased`],
+          correct: 2,
+          explanation: `This scenario defines the classic presentation of latent tuberculosis infection.
+
+Choice A: Pulmonary TB requires symptoms (cough, hemoptysis, fever, night sweats) AND abnormal CXR showing infiltrates, cavitation, or adenopathy.
+Choice B: Extra-pulmonary TB would present with organ-specific symptoms (lymphadenopathy, meningitis, bone pain) — not an asymptomatic man.
+Choice C: Correct. Latent TB infection (LTBI) = positive TST (or IGRA) + no symptoms + normal CXR + normal examination. The bacteria are dormant, contained in granulomas. The positive TST shows prior sensitization to M. tuberculosis antigens.
+Choice D: The positive TST confirms infection has occurred — the immune system has been exposed to TB antigens.
+
+Educational Objective: LTBI = positive TST/IGRA + NO symptoms + normal CXR. Not infectious. 10% lifetime risk of reactivation (50% with HIV). Treat with isoniazid preventive therapy to reduce reactivation risk.`
+        },
+        {
+          id: 'c34',
+          text: `Which of the following microorganisms is the cause of TB?`,
+          options: [`Anaerobic organisms`, `Obligatory extracellular pathogen`, `Acid-fast bacilli`, `Rapid-growing organisms`],
+          correct: 2,
+          explanation: `The microbiological characteristics of Mycobacterium tuberculosis are essential knowledge.
+
+Choice A: M. tuberculosis is an AEROBE — it requires oxygen, which is why it has a predilection for well-oxygenated upper lung lobes. It cannot survive in anaerobic conditions.
+Choice B: M. tuberculosis is an OBLIGATE INTRACELLULAR pathogen (within macrophages) — NOT extracellular. It survives inside macrophage phagolysosomes by inhibiting phagolysosomal fusion.
+Choice C: Correct. M. tuberculosis is an acid-fast bacillus (AFB). The acid-fast property is due to its mycolic acid-rich cell wall, which resists decolorization with acid-alcohol in Ziehl-Neelsen staining. This is the basis of AFB smear diagnosis.
+Choice D: M. tuberculosis is a SLOW-GROWING organism — doubling time ~15-20 hours. Culture takes 3-6 weeks on solid media (Lowenstein-Jensen).
+
+Educational Objective: M. tuberculosis: aerobe, obligate intracellular (macrophages), acid-fast bacillus (mycolic acid wall), slow-growing (3-6 weeks culture). ZN stain or auramine fluorescence for AFB detection.`
+        },
+        {
+          id: 'c35',
+          text: `Bronchiectasis is characterized by:`,
+          options: [`Vicious circle of neutrophilic inflammation`, `Vicious circle of basophilic inflammation`, `Vicious circle of eosinophilic inflammation`, `Vicious circle of lymphocytic inflammation`],
+          correct: 0,
+          explanation: `Bronchiectasis pathophysiology involves a self-perpetuating cycle of inflammation and infection.
+
+Choice A: Correct. Bronchiectasis is characterized by the 'vicious circle' of NEUTROPHILIC inflammation: infection → neutrophil recruitment → release of proteases (elastase, matrix metalloproteinases) → airway wall destruction and dilation → impaired mucociliary clearance → more infection → more inflammation. Neutrophil-derived elastase is a key mediator causing irreversible airway dilation.
+Choice B: Basophilic inflammation is not a feature of bronchiectasis.
+Choice C: Eosinophilic inflammation is characteristic of allergic asthma — not bronchiectasis.
+Choice D: Lymphocytic inflammation characterizes certain interstitial lung diseases and viral infections — not bronchiectasis.
+
+Educational Objective: Bronchiectasis = vicious cycle: infection → neutrophilic inflammation → protease-mediated wall destruction → impaired clearance → more infection. Pseudomonas aeruginosa colonization perpetuates this cycle in chronic disease.`
+        },
+        {
+          id: 'c36',
+          text: `Which of the following describes a defect in maturation of BOTH B and T lymphocytes?`,
+          options: [`DiGeorge syndrome`, `Severe Combined Immunodeficiency (SCID)`, `X-linked agammaglobulinemia`],
+          correct: 1,
+          explanation: `Primary immunodeficiencies are classified by the immune compartment affected.
+
+Choice A: DiGeorge syndrome (22q11 deletion) primarily causes T-cell deficiency (thymic aplasia/hypoplasia) — B cells are present but T-cell help is absent. Pure T-cell defect.
+Choice B: Correct. Severe Combined Immunodeficiency (SCID) involves defects in both T and B cell maturation/function — the most severe primary immunodeficiency. Causes: ADA deficiency (adenosine deaminase), common gamma chain mutation (X-linked SCID), JAK3 deficiency. Results in profound susceptibility to ALL pathogens (bacteria, viruses, fungi, protozoa). 'Bubble boy disease.'
+Choice C: X-linked agammaglobulinemia (Bruton's) is a pure B-cell defect (Btk mutation) — T cells are normal.
+
+Educational Objective: SCID = combined B+T cell defect → susceptibility to ALL infections. DiGeorge = T-cell only. Bruton's = B-cell only. SCID requires HSCT for cure.`
+        },
+        {
+          id: 'c37',
+          text: `Which of the following is the most common primary immune deficiency?`,
+          options: [`Common variable immunodeficiency`, `Selective IgA deficiency`, `Severe combined immunodeficiency`, `X-linked hyper IgM`],
+          correct: 1,
+          explanation: `The prevalence of different primary immunodeficiencies must be known.
+
+Choice A: Common variable immunodeficiency (CVID) is the most common symptomatic primary immunodeficiency — but selective IgA deficiency is more common overall.
+Choice B: Correct. Selective IgA deficiency is the MOST COMMON primary immunodeficiency overall — prevalence ~1:500-700. Many patients are asymptomatic (incidental finding) or have mild recurrent sinopulmonary infections. IgA deficiency is important to recognize before giving blood products containing IgA (risk of anaphylaxis in some patients with anti-IgA antibodies).
+Choice C: SCID is rare (~1:100,000) — the most severe but not most common.
+Choice D: X-linked hyper IgM is uncommon (~1:500,000).
+
+Educational Objective: Most common primary immunodeficiency: Selective IgA deficiency (~1:500). Most common symptomatic: CVID. Most severe: SCID. Know the distinction.`
+        },
+        {
+          id: 'c38',
+          text: `Which of the following drugs produces immunosuppression?`,
+          options: [`Antibiotics`, `Anticholinergics`, `Antiepileptics`, `Antimetabolites`],
+          correct: 3,
+          explanation: `Recognizing immunosuppressive drug classes is important for clinical care.
+
+Choice A: Antibiotics target bacteria — they do not suppress the immune system (though they may alter the microbiome indirectly).
+Choice B: Anticholinergics (atropine, ipratropium) block muscarinic receptors — no direct immunosuppressive effect.
+Choice C: Antiepileptics primarily act on neuronal membranes/ion channels — some (phenytoin) can cause lupus-like syndrome but are not primarily immunosuppressive.
+Choice D: Correct. Antimetabolites (azathioprine, methotrexate, mycophenolate mofetil, 6-mercaptopurine) inhibit nucleotide synthesis, blocking rapidly dividing cells including lymphocytes. They are used as immunosuppressants in organ transplantation, autoimmune diseases, and inflammatory conditions.
+
+Educational Objective: Immunosuppressive drugs: antimetabolites (azathioprine, methotrexate, MMF), calcineurin inhibitors (cyclosporine, tacrolimus), corticosteroids, biological agents (anti-TNF, anti-CD20). Antimetabolites inhibit lymphocyte proliferation.`
+        },
+        {
+          id: 'c39',
+          text: `Which of the following is the most common cause of traveler's diarrhea?`,
+          options: [`Staphylococcus aureus`, `Escherichia coli`, `Clostridium difficile`, `Rotavirus`],
+          correct: 1,
+          explanation: `Traveler's diarrhea has a well-defined predominant etiology.
+
+Choice A: S. aureus causes preformed-toxin food poisoning with rapid-onset vomiting (1-6 hours) — not the typical traveler's diarrhea profile.
+Choice B: Correct. Enterotoxigenic Escherichia coli (ETEC) is the most common cause of traveler's diarrhea, accounting for >50% of cases. It produces heat-labile (LT) and heat-stable (ST) enterotoxins causing watery diarrhea 1-3 days after arrival in developing countries.
+Choice C: C. difficile causes antibiotic-associated colitis — not typical traveler's diarrhea.
+Choice D: Rotavirus causes viral gastroenteritis predominantly in children — not the leading cause of traveler's diarrhea in adults.
+
+Educational Objective: Traveler's diarrhea = ETEC (most common). Prevention: food/water hygiene. Treatment: oral rehydration ± azithromycin. Azithromycin is preferred (fluoroquinolone resistance rising in SE Asia).`
+        },
+        {
+          id: 'c40',
+          text: `What is the typical appearance of stool in cholera?`,
+          options: [`Bloody`, `Anchovy sauce`, `Rice water`, `Apple jelly`],
+          correct: 2,
+          explanation: `Classic stool descriptions in diarrheal disease are diagnostically important.
+
+Choice A: Bloody stool = invasive colitis (Shigella, EHEC, C. difficile, IBD) — NOT cholera.
+Choice B: Anchovy sauce = amoebic colitis/liver abscess pus.
+Choice C: Correct. Rice water stool is the pathognomonic appearance of cholera (Vibrio cholerae). Profuse, watery, odorless stool containing mucus flecks resembling water used to wash rice. The cholera toxin activates adenylate cyclase → ↑cAMP → massive Cl⁻ secretion → water follows → profound secretory diarrhea without mucosal invasion.
+Choice D: Red currant jelly/apple jelly stool = intussusception or amoebic colitis.
+
+Educational Objective: Cholera = rice water stools. Massive secretory diarrhea (up to 20L/day). Treat with oral/IV rehydration (primary) + doxycycline/azithromycin (secondary). Vaccine available.`
+        },
+        {
+          id: 'c41',
+          text: `Which of the following is an alarming sign for careful evaluation of a patient with acute diarrhea?`,
+          options: [`Diarrhea with mucus`, `Watery diarrhea`, `Bloody diarrhea`, `Diarrhea with undigested food`],
+          correct: 2,
+          explanation: `Identifying alarm features in acute diarrhea helps distinguish serious from benign causes.
+
+Choice A: Mucus in stool may suggest IBS or mild colitis — not a specific alarm feature requiring urgent evaluation.
+Choice B: Watery diarrhea suggests secretory/osmotic cause (viral gastroenteritis, cholera, ETEC) — usually self-limiting.
+Choice C: Correct. Bloody diarrhea (dysentery) is an alarm feature indicating invasive infection (Shigella, Salmonella, EHEC O157, Campylobacter, C. difficile, E. histolytica), inflammatory bowel disease, or ischemic colitis. Requires prompt evaluation, stool cultures, and possible antibiotic therapy.
+Choice D: Undigested food suggests malabsorption or rapid transit — not an acute alarm feature.
+
+Educational Objective: Acute diarrhea alarm features: bloody stool, fever >38.5°C, >6 stools/day, dehydration, immunosuppression, age extremes, recent hospitalization/antibiotics. Bloody diarrhea = most important alarm sign.`
+        },
+        {
+          id: 'c42',
+          text: `[Question content not available in source material]`,
+          options: [`Not available — see lecture notes`],
+          correct: 0,
+          alert: true,
+          explanation: `This question was marked as 'Missing' in the source question bank — no content was available.
+
+Choice A: This is a placeholder. The original question content was not included in the source document.
+
+Educational Objective: Please refer to your lecture notes or course materials for this question's content.`
+        },
+        {
+          id: 'c43',
+          text: `A 35-year-old patient was treated for TB 2 years ago. He is now sputum culture positive. What is the most probable cause of reactivation?`,
+          options: [`HIV infection`, `Liver disease`],
+          correct: 0,
+          explanation: `TB reactivation has specific and important risk factors that must be recognized.
+
+Choice A: Correct. HIV infection is the single most important risk factor for TB reactivation. HIV depletes CD4+ T cells, which are essential for macrophage activation and granuloma maintenance. Without adequate CD4+ cells, the immune containment of latent TB breaks down, allowing dormant bacilli to replicate and cause active disease. HIV-positive individuals have a 5-10% ANNUAL risk of TB reactivation (vs 10% lifetime in HIV-negative).
+Choice B: Liver disease can impair the immune response but is not the most important cause of TB reactivation. Note: liver disease is important for drug management (rifampicin is hepatotoxic) but not the primary reactivation trigger.
+
+Educational Objective: TB reactivation risk factors (in order): HIV (most important), TNF-alpha inhibitors, diabetes, malnutrition, end-stage renal disease, corticosteroids, age extremes, silicosis.`
+        },
+        {
+          id: 'c44',
+          text: `When fighting TB, CD4 T-helper cells use interferon-gamma to recruit which type of cell?`,
+          options: [`Goblet cells`, `Macrophages`, `Fibroblasts`],
+          correct: 1,
+          explanation: `The cellular immune response to TB involves a specific and critical pathway.
+
+Choice A: Goblet cells are mucus-secreting cells in airway and GI epithelium — they are not immune effector cells recruited by IFN-γ.
+Choice B: Correct. CD4+ TH1 cells produce IFN-γ (interferon-gamma), which is the key cytokine that activates macrophages. Activated macrophages gain enhanced bactericidal capacity (increased reactive oxygen species, lysosomal enzymes, nitric oxide) to kill intracellular M. tuberculosis. IFN-γ is also required for granuloma formation and maintenance.
+Choice C: Fibroblasts are recruited in the healing/fibrosis phase — not directly by IFN-γ from TH1 cells as the primary anti-TB mechanism.
+
+Educational Objective: TB immunity: CD4+ TH1 cells → IFN-γ → macrophage activation → bactericidal killing. This is why HIV (CD4 depletion) dramatically increases TB risk. IGRA tests (QuantiFERON) measure IFN-γ response to TB antigens.`
+        },
+        {
+          id: 'c45',
+          text: `Which subtype of tuberculosis develops in a previously unexposed and unsensitized person?`,
+          options: [`Latent infection`, `Primary infection`, `Progressive primary TB`, `Secondary infection`],
+          correct: 1,
+          explanation: `TB classification by prior exposure and sensitization status is important.
+
+Choice A: Latent infection occurs AFTER the initial primary infection is contained — the person has been exposed and developed an immune response.
+Choice B: Correct. PRIMARY infection is the initial encounter of M. tuberculosis with an UNEXPOSED, UNSENSITIZED individual who has no prior immunity. It produces the Ghon focus and Ghon complex. Usually self-limited and contained by the immune system. The person becomes sensitized (TST converts positive).
+Choice C: Progressive primary TB occurs when the primary infection is not controlled — the immune system fails to contain it. Occurs in immunocompromised, infants, malnourished.
+Choice D: Secondary (reactivation) TB occurs in a PREVIOUSLY SENSITIZED individual — reactivation of dormant bacilli.
+
+Educational Objective: Primary TB = first exposure in unsensitized person. Secondary TB = reactivation in previously sensitized person. Progressive primary = uncontrolled primary infection.`
+        },
+        {
+          id: 'c46',
+          text: `Which pathological process is a common complication of untreated obstructive pneumonia?`,
+          options: [`Allergic reaction`, `Abscess`, `Granuloma`, `Mild infection`],
+          correct: 1,
+          explanation: `Obstructive pneumonia has characteristic complications when untreated.
+
+Choice A: Allergic reactions are not a complication of obstructive pneumonia.
+Choice B: Correct. Lung abscess is a common complication of untreated obstructive pneumonia. When an obstructing lesion (tumor, foreign body, mucus plug) prevents drainage, secretions pool and become infected. Anaerobic bacteria from aspirated oropharyngeal flora predominate, leading to tissue necrosis and cavitation (abscess formation). Clinically: high fever, putrid sputum, cavitation on CXR.
+Choice C: Granulomas are formed in response to persistent antigens (TB, fungi, sarcoidosis) — not a typical complication of obstructive pneumonia.
+Choice D: 'Mild infection' is not a complication — it is the primary process.
+
+Educational Objective: Obstructive pneumonia complications: atelectasis → retained secretions → abscess formation. Abscess = foul-smelling sputum + cavity on CXR. Treat: prolonged antibiotics (covering anaerobes) + postural drainage ± drainage.`
+        },
+        {
+          id: 'c47',
+          text: `A patient has recurrent infections since childhood, developed DM, bilateral cysts on CXR, and sweat test of 90. What is the diagnosis?`,
+          options: [`Cystic fibrosis`, `Post-infectious bronchiectasis`],
+          correct: 0,
+          explanation: `The sweat test result is the key diagnostic clue here.
+
+Choice A: Correct. Cystic fibrosis (CF) fits all findings: recurrent respiratory infections since childhood (CFTR dysfunction → thick mucus → infection), exocrine pancreatic insufficiency causing malabsorption and eventually CF-related diabetes (CFRD), bronchiectasis (bilateral cysts on CXR), and sweat chloride of 90 mmol/L (diagnostic threshold ≥60 mmol/L). CF is caused by CFTR gene mutations (most common: ΔF508).
+Choice B: Post-infectious bronchiectasis would cause similar chest findings but would NOT explain the diabetes, recurrent childhood infections from birth, and markedly elevated sweat chloride.
+
+Educational Objective: CF diagnosis: sweat chloride ≥60 mmol/L + 2 CFTR mutations. Triad: recurrent respiratory infections + pancreatic insufficiency + male infertility. Most common lethal genetic disease in Caucasians. Treat: chest physiotherapy, DNase (pulmozyme), ivacaftor/lumacaftor.`
+        },
+        {
+          id: 'c48',
+          text: `A patient has productive cough and fever. What would be the finding on HRCT scan?`,
+          options: [`Tram-track sign with airway tapering`],
+          correct: 0,
+          explanation: `HRCT findings in bronchiectasis are characteristic and diagnostic.
+
+Choice A: Correct. The tram-track sign on HRCT represents thickened, dilated bronchial walls seen in longitudinal section — like railway tracks running parallel. The signet ring sign (on cross-section) shows a dilated bronchus (ring) larger than the adjacent pulmonary artery (the signet). These are the diagnostic HRCT findings of bronchiectasis. Productive cough with fever suggests bronchiectasis with superimposed infection.
+
+Educational Objective: HRCT findings in bronchiectasis: tram-track sign (longitudinal — parallel bronchial wall thickening), signet ring sign (cross-sectional — bronchus diameter > pulmonary artery). HRCT is the gold standard for bronchiectasis diagnosis.`
+        },
+        {
+          id: 'c49',
+          text: `[Question content not available in source material]`,
+          options: [`Not available — see lecture notes`],
+          correct: 0,
+          alert: true,
+          explanation: `This question was marked as 'Missing' in the source question bank — no content was available.
+
+Choice A: This is a placeholder. The original question content was not included in the source document.
+
+Educational Objective: Please refer to your lecture notes or course materials for this question's content.`
+        },
+        {
+          id: 'c50',
+          text: `Which of the following is known to cause immunosuppression?`,
+          options: [`Cold weather`, `Blood loss`, `Irradiation`],
+          correct: 2,
+          explanation: `Understanding causes of secondary immunosuppression is clinically important.
+
+Choice A: Cold weather does not cause immunosuppression — the association between cold and respiratory infections is due to behavioral factors (indoor crowding) and rhinovirus preference for cooler temperatures, not immune suppression.
+Choice B: Blood loss causes anemia and volume depletion but does not directly suppress the immune system (unless severe chronic blood loss leads to malnutrition/deficiency).
+Choice C: Correct. Irradiation (ionizing radiation) causes immunosuppression by damaging rapidly dividing cells including lymphocytes and bone marrow stem cells. It reduces lymphocyte counts and impairs both cellular and humoral immunity. Used therapeutically in conditioning regimens before bone marrow transplantation and in cancer treatment.
+
+Educational Objective: Immunosuppression causes: irradiation, cytotoxic drugs, corticosteroids, HIV, malnutrition, diabetes, splenectomy, extremes of age. Radiation directly kills lymphocytes and bone marrow precursors.`
+        },
+        {
+          id: 'c51',
+          text: `The most common sign in Obstructive Sleep Apnea is:`,
+          options: [`Restless sleep`, `Unrefreshed sleep`, `Daytime sleepiness`, `Loud snoring`],
+          correct: 3,
+          explanation: `OSA has characteristic clinical features that must be recognized.
+
+Choice A: Restless sleep occurs in OSA but is less specific and less commonly cited as the most prominent feature.
+Choice B: Unrefreshed sleep is a characteristic complaint in OSA (non-restorative sleep) but is not the most common presenting symptom.
+Choice C: Excessive daytime sleepiness (EDS) is a major consequence of OSA — but the most common SIGN (observable finding) is snoring.
+Choice D: Correct. LOUD SNORING is the most common and characteristic symptom/sign of OSA, reported in virtually all patients. It results from vibration of the soft palate and pharyngeal walls during partial airway obstruction. Often the bed partner reports witnessed apneas. Snoring is the hallmark presenting complaint.
+
+Educational Objective: OSA hallmarks: loud snoring + witnessed apneas + excessive daytime sleepiness. Risk factors: obesity (BMI>30), male, age >40, large neck circumference (>40cm), retrognathia. Diagnose with polysomnography. Treat: weight loss + CPAP.`
+        },
+        {
+          id: 'c52',
+          text: `ESS is an assessment scale for:`,
+          options: [`Pneumonia`, `Obstructive sleep apnea`, `Bronchial asthma`, `Pulmonary embolism`],
+          correct: 1,
+          explanation: `Clinical scoring systems in respiratory medicine must be matched to their specific conditions.
+
+Choice A: Pneumonia uses CURB-65 (or PSI) for severity assessment.
+Choice B: Correct. ESS = Epworth Sleepiness Scale — an 8-item self-administered questionnaire assessing daytime somnolence. Used to screen for and monitor Obstructive Sleep Apnea. Score >10 = excessive daytime sleepiness suggesting possible OSA → refer for polysomnography.
+Choice C: Asthma severity uses ACQ (Asthma Control Questionnaire), GINA criteria, PEF/FEV1.
+Choice D: Pulmonary embolism uses Wells score (probability) and PESI score (severity).
+
+Educational Objective: ESS = Epworth Sleepiness Scale = OSA screening. CURB-65 = CAP severity. Wells = PE/DVT probability. PESI = PE severity. GINA = asthma control. ACQ = asthma control questionnaire.`
+        },
+        {
+          id: 'c53',
+          text: `A 21-year-old male has acute right-sided chest pain. Examination shows hyperresonance and trachea shifted to the left. The diagnosis is:`,
+          options: [`Pleural effusion`, `Pleurisy`, `Pneumothorax`, `Empyema`],
+          correct: 2,
+          explanation: `Hyperresonance with tracheal deviation is a critical diagnostic combination.
+
+Choice A: Pleural effusion shows STONY DULL percussion (fluid is dense) — not hyperresonant. Trachea deviates away from large effusion.
+Choice B: Pleurisy (pleural inflammation) causes pleuritic chest pain with a pleural rub — no significant percussion change and no tracheal deviation.
+Choice C: Correct. Pneumothorax (air in pleural space) causes HYPERRESONANCE (air is less dense than normal lung) on the affected side. Trachea deviates to the OPPOSITE side (LEFT) if it is a TENSION pneumothorax (right-sided). Young male + acute onset + hyperresonance + tracheal deviation = tension pneumothorax. EMERGENCY — needle decompression immediately.
+Choice D: Empyema (pus in pleural space) would be DULL on percussion — similar to effusion.
+
+Educational Objective: Pneumothorax: hyperresonant percussion + reduced/absent breath sounds + tracheal deviation away (tension). Tension pneumothorax = medical emergency. Diagnose clinically and treat immediately — do NOT delay for CXR.`
+        },
+        {
+          id: 'c54',
+          text: `Which of the following are grouped in COPD?`,
+          options: [`Emphysema and chronic bronchitis`],
+          correct: 0,
+          explanation: `COPD is a collective term for specific obstructive airway diseases.
+
+Choice A: Correct. COPD (Chronic Obstructive Pulmonary Disease) encompasses two conditions: Emphysema (destruction of alveolar walls → airspace enlargement → loss of elastic recoil) and Chronic bronchitis (chronic productive cough ≥3 months/year for ≥2 consecutive years with airway inflammation and mucus hypersecretion). In practice, most COPD patients have features of both ('pink puffers' = emphysema dominant; 'blue bloaters' = chronic bronchitis dominant).
+
+Educational Objective: COPD = Emphysema + Chronic bronchitis (often coexisting). Spirometry defines COPD: post-bronchodilator FEV1/FVC <0.7. Primary cause: cigarette smoking. Alpha-1 antitrypsin deficiency = genetic cause of early-onset emphysema.`
+        },
+        {
+          id: 'c55',
+          text: `Abnormal permanent enlargement of the air spaces distal to the terminal bronchiole is present in which disease?`,
+          options: [`[Option text missing in PDF]`, `Emphysema`, `Pneumonia`, `Sarcoidosis`],
+          correct: 1,
+          alert: true,
+          explanation: `This is the pathological definition of a specific lung disease.
+
+Choice A: Option text was missing in the source PDF — flagged for review.
+Choice B: Correct. This is the classic pathological definition of EMPHYSEMA: 'abnormal, permanent enlargement of the air spaces distal to the terminal bronchiole, accompanied by destruction of their walls and without obvious fibrosis.' The destruction of alveolar walls reduces the surface area for gas exchange and eliminates elastic recoil, causing air trapping and hyperinflation.
+Choice C: Pneumonia is alveolar filling with exudate — not air space enlargement.
+Choice D: Sarcoidosis causes non-caseating granulomas — not emphysematous air space enlargement.
+
+Note: Option A text was missing in the source PDF.
+
+Educational Objective: Emphysema = permanent destructive enlargement of airspaces distal to terminal bronchiole. Types: centrilobular (smoking), panacinar (alpha-1 AT deficiency). Results in: barrel chest, hyperinflation, reduced DLCO.`
+        },
+        {
+          id: 'c56',
+          text: `Which mineral dust causes pulmonary anthracosis?`,
+          options: [`Silica`, `Iron`, `Coal`, `Asbestos`],
+          correct: 2,
+          explanation: `Each inhaled mineral dust causes a specific type of pneumoconiosis.
+
+Choice A: Silica causes silicosis — nodular fibrosis with egg-shell lymph node calcification; associated with TB.
+Choice B: Iron (iron oxide) causes siderosis — generally benign, minimal fibrosis.
+Choice C: Correct. Coal dust causes ANTHRACOSIS (pulmonary anthracosis / coal workers' pneumoconiosis). Carbon deposits appear as black pigmentation in lung parenchyma. Simple CWP causes black macules; Progressive Massive Fibrosis (PMF) is the severe form with massive fibrotic nodules in upper lobes.
+Choice D: Asbestos causes asbestosis (interstitial fibrosis), pleural plaques, and mesothelioma — NOT anthracosis.
+
+Educational Objective: Pneumoconioses: Coal → anthracosis (CWP). Silica → silicosis (+ TB risk). Asbestos → asbestosis + mesothelioma + lung cancer. Iron → siderosis (benign). Coal is the 'black' lung disease.`
+        },
+        {
+          id: 'c57',
+          text: `What is the cell involved in the pathogenesis of sarcoidosis?`,
+          options: [`CD4+ T cell`, `CD8+ T cell`, `CD4+ B cell`, `CD8+ B cell`],
+          correct: 0,
+          explanation: `Sarcoidosis has a specific cellular immunological mechanism.
+
+Choice A: Correct. CD4+ T helper cells (specifically TH1 subtype) are the central cells in sarcoidosis pathogenesis. Unknown antigen(s) activate CD4+ TH1 cells which produce IFN-γ and IL-2, activating macrophages to form the characteristic non-caseating granulomas. The BAL in sarcoidosis shows markedly elevated CD4:CD8 ratio (normal ~2:1, in sarcoidosis often >4:1).
+Choice B: CD8+ T cells (cytotoxic T cells) are not the primary cell in sarcoidosis — though they are present in granulomas peripherally.
+Choice C: There is no 'CD4+ B cell' — this is not a recognized immune cell classification.
+Choice D: There is no 'CD8+ B cell' — this is not a recognized immune cell classification.
+
+Educational Objective: Sarcoidosis: CD4+ TH1 cells → IFN-γ/IL-2 → macrophage activation → non-caseating granuloma. Elevated BAL CD4:CD8 ratio is characteristic. ACE produced by granuloma macrophages.`
+        },
+        {
+          id: 'c58',
+          text: `A 56-year-old chronic smoker has worsening dyspnea. Trachea shifted to the RIGHT, absent air entry, DULL percussion. Most likely diagnosis?`,
+          options: [`Pneumothorax`, `Pleural effusion`, `Collapsed lung`, `Pneumonia`],
+          correct: 2,
+          explanation: `The clinical triad — tracheal deviation, absent air entry, and percussion note — must be matched correctly.
+
+Choice A: Pneumothorax = HYPERRESONANT percussion — the opposite of dull. Trachea deviates away from the pneumothorax.
+Choice B: Pleural effusion = STONY DULL + trachea deviates AWAY from the effusion. If effusion is on LEFT, trachea shifts RIGHT. But the dullness here and history of chronic smoker suggests collapse.
+Choice C: Correct. COLLAPSED LUNG (atelectasis): dull percussion (dense/airless lung), absent breath sounds, and trachea deviated TOWARD the collapsed side. Chronic smoker + trachea shifted RIGHT + absent right air entry + dull = right lung collapse. In smokers, collapse is often due to endobronchial tumor or mucus plugging.
+Choice D: Pneumonia = dull percussion but bronchial breath sounds (transmitted through consolidated lung) + central trachea.
+
+Educational Objective: Collapse: dull percussion + absent breath sounds + trachea toward the lesion. Effusion: stony dull + absent sounds + trachea away. Pneumothorax: hyperresonant + absent sounds + trachea away.`
+        },
+        {
+          id: 'c59',
+          text: `A newly diagnosed asthmatic is advised to record at home to monitor disease activity. Which investigation does the doctor mean?`,
+          options: [`FEV1`, `FVC`, `Peak expiratory flow rate (PEFR)`, `Total lung capacity (TLC)`],
+          correct: 2,
+          explanation: `Home monitoring in asthma requires a portable, reproducible measurement.
+
+Choice A: FEV1 requires a spirometer — not suitable for home monitoring by patients.
+Choice B: FVC also requires spirometry — not for home use.
+Choice C: Correct. Peak Expiratory Flow Rate (PEFR) measured with a handheld peak flow meter is the standard home monitoring tool for asthma. Patients record PEFR morning and evening, plot it on a chart, and identify diurnal variation (>20% AM-PM variation is diagnostic of asthma). Declining PEFR indicates deterioration requiring treatment adjustment.
+Choice D: TLC requires full body plethysmography — impossible for home monitoring.
+
+Educational Objective: PEFR diary = standard home asthma monitoring. Diurnal variation >20% = characteristic of asthma. Use peak flow meter (portable, cheap). 'Traffic light' action plans guide patients: Green (>80% predicted) = continue, Yellow (50-80%) = step up, Red (<50%) = emergency.`
+        },
+        {
+          id: 'c60',
+          text: `All of the following are common adverse effects of HAART therapy EXCEPT:`,
+          options: [`Pancreatitis`, `Lipodystrophy`, `Optic neuritis`, `GI disturbance`],
+          correct: 2,
+          explanation: `HAART (Highly Active Antiretroviral Therapy) has characteristic adverse effect profiles.
+
+Choice A: Pancreatitis IS a recognized adverse effect of HAART — especially with older NRTIs like didanosine and stavudine (mitochondrial toxicity).
+Choice B: Lipodystrophy (fat redistribution — central adiposity, buffalo hump, lipoatrophy) IS a recognized metabolic complication of HAART, especially with older NRTIs and PIs.
+Choice C: Correct (EXCEPT answer). Optic neuritis is NOT a recognized adverse effect of standard HAART. It can be caused by ethambutol (anti-TB) and some other drugs, but is NOT associated with ARV therapy.
+Choice D: GI disturbances (nausea, vomiting, diarrhea) ARE the most common adverse effects of HAART — virtually all ARV classes can cause GI symptoms.
+
+Educational Objective: HAART adverse effects: GI disturbances (all classes), lipodystrophy/metabolic syndrome (NRTIs, PIs), lactic acidosis (NRTIs), nephrotoxicity (tenofovir), hepatotoxicity (NVP), rash. Optic neuritis = ethambutol (anti-TB) — NOT HAART.`
+        }
+      ]
+    },
+    {
+      id: 'final24_med219_ob',
+      name: 'Med219 Open Book Questions',
+      num: 6,
+      questions: [
+        {
+          id: 'o1',
+          text: `A patient has recurrent lip edema and breathing difficulty since early childhood with no wheals. Which investigation finding is most likely?`,
+          options: [`Increased IgE levels`, `Leukopenia`, `Reduced C4 levels`, `Thrombocytosis`],
+          correct: 2,
+          explanation: `Recurrent angioedema WITHOUT wheals since childhood points to a hereditary rather than allergic cause.
+
+Choice A: Elevated IgE is characteristic of allergic (IgE-mediated) angioedema — which presents WITH urticaria/wheals. No wheals = not IgE-mediated.
+Choice B: Leukopenia is not associated with hereditary angioedema.
+Choice C: Correct. Hereditary Angioedema (HAE) is caused by C1-inhibitor (C1-INH) deficiency → uninhibited complement activation → C4 consumption → REDUCED C4 levels (C4 is the most reliably reduced complement component in HAE, low even between attacks). C4 is the best screening test for HAE. C2 is also reduced during attacks.
+Choice D: Thrombocytosis is not associated with HAE.
+
+Educational Objective: HAE screening = serum C4 level (chronically low, even between attacks). Confirm with C1-INH quantitative level and functional assay. No wheals = not allergic. Treat attacks with icatibant (bradykinin antagonist) or C1-INH concentrate.`
+        },
+        {
+          id: 'o2',
+          text: `In the treatment of anaphylaxis, the preferred mode of administration of epinephrine is:`,
+          options: [`Intradermal`, `Intramuscular`, `Intravenous`, `Sub-cutaneous`],
+          correct: 1,
+          explanation: `The route of epinephrine administration in anaphylaxis is critically important for efficacy and safety.
+
+Choice A: Intradermal route is used for diagnostic skin testing — delivers tiny volumes superficially; not appropriate for systemic anaphylaxis treatment.
+Choice B: Correct. Intramuscular injection into the OUTER THIGH (vastus lateralis) is the preferred route for epinephrine in anaphylaxis. IM into the thigh achieves faster and more reliable peak plasma concentrations than subcutaneous injection due to better muscle perfusion. Auto-injectors (EpiPen) deliver IM.
+Choice C: IV epinephrine is reserved for cardiac arrest or refractory anaphylaxis in ICU — carries high risk of fatal arrhythmias if used without cardiac monitoring in non-arrest situations.
+Choice D: Subcutaneous injection has slower and less reliable absorption than IM — previously used but no longer recommended as first-line.
+
+Educational Objective: Anaphylaxis: epinephrine 0.3-0.5 mg IM into outer thigh (anterolateral). NOT IV unless cardiac arrest/refractory. IM thigh > IM deltoid > subcutaneous. Carry auto-injector. Can repeat in 5-15 minutes.`
+        },
+        {
+          id: 'o3',
+          text: `A 5-year-old girl has recurrent breathing difficulty, chest tightness and wheezing. All of the following are known triggers EXCEPT:`,
+          options: [`β2-Adrenoceptor agonists`, `Cigarette smoke`, `Dermatophagoides pteronyssinus`, `Sulphur dioxide`],
+          correct: 0,
+          explanation: `Asthma triggers must be distinguished from asthma treatments.
+
+Choice A: Correct (EXCEPT). β2-Adrenoceptor agonists (e.g., salbutamol) are BRONCHODILATORS used to TREAT asthma — they cause smooth muscle relaxation and are reliever medications. They do NOT trigger asthma attacks.
+Choice B: Cigarette smoke IS a major asthma trigger — it directly irritates airway epithelium, releases inflammatory mediators, and sensitizes airways.
+Choice C: Dermatophagoides pteronyssinus (house dust mite) IS the most common indoor allergen trigger for allergic asthma — exposure to mite proteins induces IgE sensitization.
+Choice D: Sulphur dioxide (SO₂ — air pollutant) IS a non-specific airway irritant that triggers bronchoconstriction in asthmatics.
+
+Educational Objective: Asthma triggers: allergens (HDM, pollen, pets), air pollutants (SO₂, ozone), exercise, cold air, NSAIDs/aspirin, beta-blockers, viral URTIs. Beta-2 agonists are TREATMENTS, not triggers.`
+        },
+        {
+          id: 'o4',
+          text: `Which of the following is NOT a known trigger for asthma?`,
+          options: [`Cold air`, `Corticosteroids`, `Cigarette smoke`, `Grass pollen`],
+          correct: 1,
+          explanation: `Corticosteroids play a specific role in asthma management that distinguishes them from triggers.
+
+Choice A: Cold air IS a trigger — it causes reflex bronchoconstriction through airway cooling and drying of the mucosa.
+Choice B: Correct. Corticosteroids (inhaled and systemic) are ANTI-INFLAMMATORY TREATMENTS for asthma — they are not triggers. In fact, they are the most important controller medications. They reduce airway inflammation, mucus production, and bronchial hyperresponsiveness.
+Choice C: Cigarette smoke IS a trigger — direct irritant and sensitizer.
+Choice D: Grass pollen IS a trigger — a major seasonal allergen causing Type I IgE-mediated bronchoconstriction.
+
+Educational Objective: NOT asthma triggers: corticosteroids (anti-inflammatory treatment), beta-2 agonists (bronchodilator treatment), leukotriene antagonists. Common triggers include allergens, cold air, exercise, NSAIDs, beta-blockers (contraindicated in asthma), SO₂, viral infections.`
+        },
+        {
+          id: 'o5',
+          text: `Which cytokine is responsible for activation of macrophages in Type IV (delayed) hypersensitivity?`,
+          options: [`Interferon-γ`, `Interleukin-4`, `TGF-β`, `Interleukin-17`],
+          correct: 0,
+          explanation: `Macrophage activation in Type IV hypersensitivity has a specific cytokine mediator.
+
+Choice A: Correct. IFN-γ (Interferon-gamma) produced by CD4+ TH1 cells is the KEY cytokine that activates macrophages in Type IV hypersensitivity. Activated macrophages gain enhanced phagocytic and bactericidal capacity, produce pro-inflammatory cytokines (TNF, IL-12), and form granulomas. This is critical in immunity against intracellular pathogens (TB, Listeria, fungi).
+Choice B: IL-4 is produced by TH2 cells — drives IgE class switching and is important in Type I hypersensitivity, NOT Type IV macrophage activation.
+Choice C: TGF-β is a regulatory/fibrogenic cytokine — promotes Treg differentiation and fibrosis, not macrophage activation for Type IV hypersensitivity.
+Choice D: IL-17 is produced by TH17 cells — important in neutrophil recruitment and autoimmunity (psoriasis, IBD), not the primary macrophage activator in Type IV hypersensitivity.
+
+Educational Objective: Type IV hypersensitivity: CD4+ TH1 → IFN-γ → macrophage activation → tissue damage. IFN-γ = the master macrophage activating cytokine. Basis of IGRA tests for TB.`
+        },
+        {
+          id: 'o6',
+          text: `Individuals with B-cell defects are more likely to develop frequent infections with which microorganisms?`,
+          options: [`Candida species`, `Extracellular bacteria`, `Mycobacteria`, `Viruses`],
+          correct: 1,
+          explanation: `B cells produce antibodies — understanding which pathogens antibodies primarily defend against is key.
+
+Choice A: Candida and other fungal infections are primarily defended by T-cell (cell-mediated) immunity — patients with T-cell defects (HIV, DiGeorge) are susceptible, not primarily B-cell deficient patients.
+Choice B: Correct. B cells produce immunoglobulins (opsonins, complement activators) that are essential for defense against EXTRACELLULAR bacteria, especially encapsulated bacteria (Streptococcus pneumoniae, Haemophilus influenzae, Neisseria meningitidis). Patients with B-cell defects (agammaglobulinemia, CVID) suffer recurrent sinopulmonary infections with encapsulated organisms.
+Choice C: Mycobacteria are intracellular — defended by T-cells (especially CD4+ TH1) and macrophages. B-cell deficient patients are not particularly susceptible.
+Choice D: Viral immunity relies primarily on cytotoxic T cells (CD8+) and NK cells — B-cell deficiency causes relative susceptibility to some viruses (especially enteroviruses) but extracellular bacteria are the main concern.
+
+Educational Objective: B-cell deficiency → susceptible to extracellular (encapsulated) bacteria. T-cell deficiency → susceptible to intracellular pathogens (viruses, mycobacteria, fungi). Combined (SCID) → susceptible to all.`
+        },
+        {
+          id: 'o7',
+          text: `A 25-year-old farmer has afternoon fever, dyspnea and cough. Labs show precipitating antibodies, biopsy shows non-caseating granulomas. Diagnosis?`,
+          options: [`Rhinitis`, `Bronchial asthma`, `Farmer's lung`, `Pneumonia`],
+          correct: 2,
+          explanation: `The combination of occupational exposure, timing, serology, and pathology points to a specific diagnosis.
+
+Choice A: Rhinitis is an upper airway condition — does not cause granulomas or precipitating antibodies.
+Choice B: Bronchial asthma is IgE-mediated (Type I) — precipitating antibodies (IgG) and granulomas are NOT features of asthma.
+Choice C: Correct. Farmer's lung is a classic HYPERSENSITIVITY PNEUMONITIS (extrinsic allergic alveolitis) — Type III (precipitating IgG antibodies) + Type IV (granulomatous inflammation) hypersensitivity. Caused by Micropolyspora faeni in moldy hay. Features: symptoms 4-8 hours after exposure (afternoon timing for morning hay handling), precipitating antibodies in serum, non-caseating granulomas on biopsy.
+Choice D: Pneumonia would show an exudative process — not granulomas and precipitating antibodies.
+
+Educational Objective: Farmer's lung = Hypersensitivity pneumonitis. Cause: Micropolyspora faeni (moldy hay). Mechanism: Type III + IV. Symptoms 4-8h post-exposure. Precipitating IgG antibodies + non-caseating granulomas. Avoid allergen + corticosteroids.`
+        },
+        {
+          id: 'o8',
+          text: `A 7-year-old asthmatic boy has frequent cough, mucus secretion and dyspnea. Which mediator is responsible for his symptoms?`,
+          options: [`Tumor necrosis factor`, `Leukotriene B4`, `Protease`, `Histamine`],
+          correct: 3,
+          explanation: `Identifying the primary mediator of acute asthmatic symptoms determines appropriate treatment.
+
+Choice A: TNF is a pro-inflammatory cytokine involved in chronic inflammation — not the primary mediator of acute bronchoconstriction and mucus production.
+Choice B: Leukotriene B4 (LTB4) is a potent chemoattractant for neutrophils — important in non-allergic inflammation. LTC4, LTD4, LTE4 (cysteinyl leukotrienes) cause bronchoconstriction in asthma — not LTB4 specifically.
+Choice C: Proteases from mast cells and eosinophils contribute to airway remodeling — not the primary acute symptom mediator.
+Choice D: Correct. Histamine, released from mast cell degranulation (Type I IgE-mediated reaction), is the primary mediator of acute asthmatic symptoms: bronchoconstriction (H1 receptor on smooth muscle), increased vascular permeability (mucosal edema), and stimulation of mucus secretion. This explains why antihistamines have some but limited role in asthma.
+
+Educational Objective: Acute asthma symptoms (immediate phase) = histamine + prostaglandins. Late phase = leukotrienes + eosinophil products. Cysteinyl leukotrienes (LTC4, LTD4) = most potent bronchoconstriction, 1000x more than histamine. Montelukast blocks leukotriene receptors.`
+        },
+        {
+          id: 'o9',
+          text: `Which is the pharmacological basis of combining ritonavir with lopinavir in HIV treatment?`,
+          options: [`Pharmaceutical compatibility`, `Potentiation of lopinavir's action`, `Prolonged elimination half-life of ritonavir`, `Counteracting side effects of lopinavir`],
+          correct: 1,
+          explanation: `The lopinavir/ritonavir (Kaletra) combination is based on a specific pharmacokinetic principle.
+
+Choice A: Pharmaceutical compatibility is not the reason — this is a pharmacokinetic interaction, not a formulation issue.
+Choice B: Correct. Ritonavir is a potent inhibitor of CYP3A4 (the hepatic enzyme that metabolizes lopinavir). By inhibiting CYP3A4, ritonavir BOOSTS lopinavir plasma levels — increasing its bioavailability, prolonging its half-life, and maintaining therapeutic drug concentrations. This 'pharmacokinetic boosting' allows lower doses of lopinavir to be used effectively. Ritonavir is used as a 'booster' rather than for its own antiviral activity.
+Choice C: Ritonavir's own half-life is not the basis — it is lopinavir's metabolism that is affected.
+Choice D: The combination does not counteract side effects — ritonavir adds its own GI side effects.
+
+Educational Objective: Pharmacokinetic boosting: ritonavir inhibits CYP3A4 → increases lopinavir levels → enhances therapeutic effect. Also used to boost darunavir, atazanavir. Cobicistat is a newer non-antiretroviral CYP3A4 inhibitor used for the same purpose.`
+        },
+        {
+          id: 'o10',
+          text: `Which mechanism is responsible for resistance to long-term zidovudine in HIV treatment?`,
+          options: [`Mutation at reverse transcriptase`, `Increased efflux of drug from the cell`, `Increased rate of drug metabolism`, `Decreased absorption of zidovudine`],
+          correct: 0,
+          explanation: `HIV resistance mechanisms vary by drug class — understanding this drives treatment strategies.
+
+Choice A: Correct. Zidovudine (ZDV/AZT) is an NRTI that is incorporated into viral DNA by reverse transcriptase (RT), acting as a chain terminator. Long-term use selects for HIV strains with mutations in the reverse transcriptase gene (thymidine analog mutations: M41L, D67N, K70R, L210W, T215F/Y, K219Q/E). These TAMs reduce ZDV incorporation and cause resistance.
+Choice B: Efflux pump resistance is important for NNRTIs and PIs — not the primary mechanism for NRTI resistance.
+Choice C: Increased drug metabolism is not the mechanism of HIV resistance to zidovudine.
+Choice D: Absorption problems do not explain acquired resistance during treatment.
+
+Educational Objective: NRTI resistance = mutations in reverse transcriptase gene. ZDV resistance: thymidine analog mutations (TAMs). NNRTI resistance: K103N mutation (broad cross-resistance). PI resistance: protease gene mutations. Combination therapy prevents resistance by targeting multiple steps simultaneously.`
+        },
+        {
+          id: 'o11',
+          text: `Which antituberculous drug penetrates well into caseous tuberculous lesions?`,
+          options: [`Isoniazid`, `Pyrazinamide`, `Streptomycin`, `Ethambutol`],
+          correct: 0,
+          explanation: `Drug penetration into TB lesions is critical for sterilizing activity.
+
+Choice A: Correct. Isoniazid has the best penetration into caseous TB lesions due to its small molecular size and lipophilicity. It maintains bactericidal activity within the caseous material. This is one reason isoniazid is the most bactericidal drug for actively multiplying M. tuberculosis.
+Choice B: Pyrazinamide is active in the ACIDIC intracellular environment of macrophages (pH <6) — it targets slowly metabolizing dormant bacilli. Good CNS penetration but less specific for caseous lesions.
+Choice C: Streptomycin (an aminoglycoside) has POOR penetration into caseous lesions and CNS — it only works in the alkaline extracellular environment.
+Choice D: Ethambutol has moderate CNS penetration but is not specifically noted for caseous lesion penetration.
+
+Educational Objective: TB drug penetration: Isoniazid = best caseous lesion penetration, bactericidal. Pyrazinamide = best acidic/intracellular penetration. Streptomycin = poor caseous/CNS penetration. Rifampicin = excellent tissue distribution including CNS.`
+        },
+        {
+          id: 'o12',
+          text: `A 36-year-old dairy factory worker has abrupt high-grade fever, headache and myalgia. Cultured on tissue cells, indirect immunofluorescence antibody positive. Most probable diagnosis?`,
+          options: [`Chlamydia infection`, `Q fever`, `Legionnaires disease`, `Pneumococcal pneumonia`],
+          correct: 1,
+          explanation: `The occupational history and laboratory findings are key diagnostic clues.
+
+Choice A: Chlamydia pneumoniae causes atypical pneumonia but is not specifically linked to dairy factory work and would not be cultured exclusively in tissue cells with this presentation.
+Choice B: Correct. Q fever (Coxiella burnetii) fits perfectly: dairy factory worker (cattle/dairy exposure), abrupt high-grade fever, headache, myalgia (flu-like); Coxiella is an OBLIGATE INTRACELLULAR pathogen requiring tissue cell culture (BSL-3); detected by indirect immunofluorescence. Serology (Phase I/II antibodies) is the standard diagnostic test.
+Choice C: Legionnaires disease is acquired from contaminated water systems — not dairy/animal contact. Urine antigen test is the rapid diagnostic method.
+Choice D: Pneumococcal pneumonia grows on standard blood agar — not requiring tissue cell culture.
+
+Educational Objective: Q fever = Coxiella burnetii. Risk: farmers, veterinarians, dairy workers (cattle contact). Obligate intracellular (tissue cell culture, BSL-3). Diagnose by Phase I/II serology. Treat with doxycycline.`
+        },
+        {
+          id: 'o13',
+          text: `Which of the following has BOTH bronchodilator AND anti-inflammatory effects?`,
+          options: [`Cromolyn sodium`, `Ipratropium`, `Roflumilast`, `Zafirlukast`],
+          correct: 2,
+          explanation: `This question tests knowledge of specific drug mechanisms in respiratory disease.
+
+Choice A: Cromolyn sodium (sodium cromoglicate) is a mast cell stabilizer — anti-inflammatory only. It prevents mast cell degranulation but has NO bronchodilator effect.
+Choice B: Ipratropium is an anticholinergic bronchodilator — bronchodilator effect only (no anti-inflammatory activity).
+Choice C: Correct. Roflumilast is a selective PDE-4 (phosphodiesterase-4) inhibitor used in severe COPD. PDE-4 inhibition raises intracellular cAMP in both smooth muscle (→ bronchodilation) AND in inflammatory cells (neutrophils, macrophages, T cells → anti-inflammatory). It reduces exacerbations in COPD with chronic bronchitis.
+Choice D: Zafirlukast (leukotriene receptor antagonist) is anti-inflammatory only — blocks CysLT1 receptors reducing airway inflammation, but has minimal direct bronchodilator effect.
+
+Educational Objective: Roflumilast = PDE-4 inhibitor → dual bronchodilator + anti-inflammatory. Used in severe COPD (FEV1<50%) with chronic bronchitis and frequent exacerbations. Theophylline (PDE inhibitor) also has both effects but non-selective.`
+        },
+        {
+          id: 'o14',
+          text: `Which mechanism mainly terminates penicillin's action in the body?`,
+          options: [`Enzymatic hydrolysis`, `Metabolism in liver`, `Secretion in bile`, `Tubular secretion in kidney`],
+          correct: 3,
+          explanation: `Understanding penicillin pharmacokinetics is important for clinical dosing.
+
+Choice A: Enzymatic hydrolysis (by beta-lactamases) is how bacteria RESIST penicillin — this is not how the human body eliminates it.
+Choice B: Penicillin undergoes minimal hepatic metabolism — it is not primarily eliminated by liver metabolism.
+Choice C: Biliary secretion occurs for some drugs (rifampicin, erythromycin) — but not the main route for penicillin.
+Choice D: Correct. Active tubular secretion in the kidney is the primary route of penicillin elimination. Penicillin is secreted by organic anion transporters in the proximal tubule. This is why probenecid (which blocks tubular secretion) prolongs penicillin's action. Renal impairment requires dose reduction.
+
+Educational Objective: Penicillin elimination: active RENAL tubular secretion (organic anion transporter). Probenecid blocks this → prolongs penicillin levels. Dose reduce in renal impairment. Compare: rifampicin → biliary; aminoglycosides → glomerular filtration.`
+        },
+        {
+          id: 'o15',
+          text: `Which antimicrobial is the drug of choice for Mycoplasma pneumoniae infection in children?`,
+          options: [`Azithromycin`, `Ciprofloxacin`, `Tetracycline`],
+          correct: 0,
+          explanation: `Treatment of Mycoplasma pneumoniae must account for age-specific drug contraindications.
+
+Choice A: Correct. Azithromycin (macrolide) is the drug of choice for Mycoplasma pneumoniae in CHILDREN. Mycoplasma has no cell wall, so beta-lactams are ineffective. Azithromycin inhibits protein synthesis (50S binding), has good intracellular penetration, and is safe in all age groups.
+Choice B: Ciprofloxacin is not recommended in children (cartilage toxicity concern) — not first-line for Mycoplasma in pediatric patients.
+Choice C: Tetracyclines (doxycycline, tetracycline) are effective against Mycoplasma and used in ADULTS — but are CONTRAINDICATED in children <8 years (causes permanent tooth discoloration and bone growth impairment). Safe in adults; first alternative after macrolides.
+
+Educational Objective: Mycoplasma pneumoniae treatment: Adults = doxycycline or azithromycin. Children = azithromycin (tetracyclines contraindicated <8 years). All macrolides effective. Fluoroquinolones: alternative in adults when macrolide-resistant.`
+        },
+        {
+          id: 'o16',
+          text: `In primary pulmonary tuberculosis, which cells have surface receptors recognizing mycobacterial cell wall components?`,
+          options: [`Eosinophils`, `Macrophages`, `Neutrophils`, `Plasma cells`],
+          correct: 1,
+          explanation: `The initial cellular response to M. tuberculosis involves innate immune pattern recognition.
+
+Choice A: Eosinophils are primarily involved in anti-parasitic and allergic responses — they do not have the pattern recognition receptors for mycobacterial cell wall components.
+Choice B: Correct. Alveolar MACROPHAGES are the first cells to encounter inhaled M. tuberculosis. They express pattern recognition receptors — including Toll-like receptors (TLR2, TLR4, TLR9), Dectin-1, CD14, and mannose receptors — that recognize mycobacterial cell wall components (lipoarabinomannan, peptidoglycan, mycolic acids). However, M. tuberculosis has evolved to survive inside macrophages by inhibiting phagolysosomal fusion.
+Choice C: Neutrophils are early responders to extracellular bacteria — they do not play the primary recognition role for intracellular mycobacteria.
+Choice D: Plasma cells are mature B cells that secrete antibodies — they require prior antigen presentation and T-cell help; not the initial recognition cell.
+
+Educational Objective: M. tuberculosis initial recognition: alveolar macrophages (via TLRs, mannose receptors, CD14). Bacilli survive intracellularly by blocking phagolysosomal fusion. This triggers T-cell response and eventual granuloma formation.`
+        },
+        {
+          id: 'o17',
+          text: `A 60-year-old patient with pneumonia received inadequate antibiotic therapy. Lung biopsy showed fibrinosuppurative exudate with lysed red cells in alveoli. Which pathologic stage is this?`,
+          options: [`Lung abscess`, `Empyema`, `Red hepatization`, `Grey hepatization`],
+          correct: 3,
+          explanation: `Lobar pneumonia progresses through four pathological stages.
+
+Choice A: Lung abscess is a complication of pneumonia (cavitation with central necrosis) — not a stage of lobar pneumonia.
+Choice B: Empyema is pus in the pleural space — a complication external to the lung parenchyma.
+Choice C: Red hepatization (days 2-4): alveoli packed with red blood cells, neutrophils, and fibrin — lungs are red and airless (liver-like). Red cells are INTACT.
+Choice D: Correct. Grey hepatization (days 4-8): Red blood cells are LYSED (karyolysis), leaving a grey-brown appearance. Alveoli contain fibrinosuppurative exudate — fibrin + degenerating neutrophils + lysed red cells. Lung remains airless and consolidated. The biopsy description of 'lysed red cells' specifically identifies grey hepatization.
+
+Educational Objective: Lobar pneumonia: Congestion → Red hepatization (intact RBCs + fibrin) → Grey hepatization (lysed RBCs + fibrinosuppurative exudate) → Resolution. Grey = RBC lysis is the key distinguishing feature from red hepatization.`
+        },
+        {
+          id: 'o18',
+          text: `Which criterion must be present to diagnose chronic bronchitis?`,
+          options: [`Productive cough for minimum 1 month out of 5 consecutive years`, `Productive cough for 15 days out of the year for 3 consecutive years`, `Productive cough for at least 3 months per year for 2 consecutive years`],
+          correct: 2,
+          explanation: `Chronic bronchitis has a specific clinical definition that must be memorized.
+
+Choice A: '1 month out of 5 years' is not the standard criterion.
+Choice B: '15 days for 3 years' is not the standard definition.
+Choice C: Correct. Chronic bronchitis is defined clinically as: PRODUCTIVE COUGH for AT LEAST 3 MONTHS PER YEAR for AT LEAST 2 CONSECUTIVE YEARS, in a patient where other causes of chronic cough have been excluded. This definition emphasizes chronicity and excludes acute episodes or other diagnoses.
+
+Educational Objective: Chronic bronchitis definition: productive cough ≥3 months/year for ≥2 consecutive years. Not a spirometric diagnosis (unlike COPD/emphysema). Pathology: goblet cell hyperplasia, mucus hypersecretion, Reid index >0.5 (mucous gland thickness). Cause: smoking (90%).`
+        },
+        {
+          id: 'o19',
+          text: `Which type of emphysema is common in patients with Alpha-1 antitrypsin deficiency?`,
+          options: [`Centrilobular`, `Distal acinar`, `Irregular acinar`, `Panlobular`],
+          correct: 3,
+          explanation: `Different emphysema types have distinct pathogeneses and anatomical distributions.
+
+Choice A: Centrilobular (centriacinar) emphysema affects RESPIRATORY BRONCHIOLES — strongly associated with CIGARETTE SMOKING, upper lobe predominance.
+Choice B: Distal acinar (paraseptal) emphysema affects alveolar ducts and sacs near pleura and septa — associated with spontaneous pneumothorax in young adults.
+Choice C: Irregular acinar emphysema is associated with SCARRING (post-infection) — irregular distribution without uniform acinar involvement.
+Choice D: Correct. Panlobular (panacinar) emphysema affects the ENTIRE acinus from respiratory bronchioles to alveoli uniformly — strongly associated with ALPHA-1 ANTITRYPSIN DEFICIENCY. Distribution: lower lobe predominance. Alpha-1 AT normally inhibits neutrophil elastase; deficiency allows unrestricted elastolytic destruction.
+
+Educational Objective: Centrilobular (smoking) = upper lobes, respiratory bronchioles. Panlobular (alpha-1 AT deficiency) = ALL acinus, lower lobes. Alpha-1 AT test for patients with COPD who are young or non-smokers.`
+        },
+        {
+          id: 'o20',
+          text: `A 60-year-old retired glass factory worker has chronic cough with suspected occupation-related lung disease. Which CXR abnormality is expected?`,
+          options: [`Pleural plaques`, `Egg-shell calcification`, `Caplan nodules`, `Pleural thickening`],
+          correct: 1,
+          explanation: `Glass factory workers are exposed to silica — recognizing silicosis' radiological features is key.
+
+Choice A: Pleural plaques are the most common radiological finding in ASBESTOSIS — not silicosis.
+Choice B: Correct. Egg-shell calcification (rim calcification of hilar and mediastinal lymph nodes) is the characteristic radiological sign of SILICOSIS. The calcium deposits form a shell-like outline around the lymph nodes on CXR. Silica dust from glass/sandblasting/mining causes this pattern.
+Choice C: Caplan nodules (large necrotic nodules) are seen in COAL WORKERS with co-existing rheumatoid arthritis (Caplan syndrome).
+Choice D: Pleural thickening is characteristic of ASBESTOSIS and mesothelioma — not silicosis.
+
+Educational Objective: Silicosis CXR: nodular opacities (upper lobe) + hilar lymphadenopathy with egg-shell calcification. Asbestosis: lower lobe fibrosis + pleural plaques + pleural thickening. CWP: upper lobe opacities (progressive massive fibrosis).`
+        },
+        {
+          id: 'o21',
+          text: `A 50-year-old shipyard worker has dyspnea for 6 months. Spirometry shows decreased FEV1, FVC with decreased RV and TLC. Most likely diagnosis?`,
+          options: [`Bronchiectasis`, `Chronic bronchitis`, `Occupational asthma`, `Interstitial lung disease`],
+          correct: 3,
+          explanation: `The spirometry pattern determines the class of lung disease.
+
+Choice A: Bronchiectasis causes an OBSTRUCTIVE pattern (FEV1/FVC <0.7, FVC may be reduced but TLC and RV usually elevated due to air trapping).
+Choice B: Chronic bronchitis is an OBSTRUCTIVE disease — FEV1/FVC <0.7; TLC may be elevated, not reduced.
+Choice C: Occupational asthma is OBSTRUCTIVE — reversible airflow limitation with normal or elevated lung volumes.
+Choice D: Correct. RESTRICTIVE pattern: FEV1↓, FVC↓, TLC↓, RV↓, FEV1/FVC ratio PRESERVED or elevated. This is the pattern of INTERSTITIAL LUNG DISEASE (ILD). Shipyard work = asbestos exposure → ASBESTOSIS (asbestos-induced ILD). Spirometry shows restriction because stiff fibrotic lungs have reduced volume capacity.
+
+Educational Objective: Restrictive PFTs: FEV1↓ + FVC↓ + TLC↓ + FEV1/FVC normal. Causes: ILD (IPF, asbestosis, sarcoidosis), pleural disease, neuromuscular. Shipyard worker = asbestos → asbestosis (ILD) = restrictive pattern.`
+        },
+        {
+          id: 'o22',
+          text: `Which drug has shown benefit in reducing lung function deterioration in idiopathic pulmonary fibrosis?`,
+          options: [`Steroids`, `Pirfenidone`, `Azathioprine`, `Cyclophosphamide`],
+          correct: 1,
+          explanation: `IPF management has changed significantly with the availability of targeted anti-fibrotic therapy.
+
+Choice A: Corticosteroids were historically used in IPF but clinical trials (PANTHER-IPF) showed NO benefit and possible harm — they are no longer recommended for IPF.
+Choice B: Correct. Pirfenidone (and nintedanib) are the two approved anti-fibrotic drugs for IPF that have demonstrated slowing of FVC decline in clinical trials. Pirfenidone inhibits TGF-β-stimulated collagen synthesis and fibroblast proliferation. It reduces lung function deterioration, acute exacerbations, and mortality.
+Choice C: Azathioprine (immunosuppressant) — the PANTHER-IPF trial showed azathioprine + prednisone + NAC was HARMFUL in IPF (increased mortality) — NOT recommended.
+Choice D: Cyclophosphamide has no proven benefit in IPF and is NOT used.
+
+Educational Objective: IPF treatment: Pirfenidone (anti-fibrotic) + Nintedanib (tyrosine kinase inhibitor) — both slow disease progression. Steroids = NOT recommended (PANTHER-IPF showed harm). Lung transplantation for end-stage IPF.`
+        },
+        {
+          id: 'o23',
+          text: `A 25-year-old asymptomatic diabetic male had a pre-employment TB assessment. Normal CXR, TST induration = 2mm. Which statement is true?`,
+          options: [`He has latent TB — start isoniazid`, `He has latent TB — no treatment needed`, `He has active TB`, `He is normal without active or latent TB`],
+          correct: 3,
+          explanation: `Tuberculin skin test interpretation requires knowledge of the appropriate cut-off thresholds.
+
+Choice A: An induration of only 2mm is BELOW the diagnostic threshold — even for high-risk individuals.
+Choice B: A 2mm result does NOT diagnose latent TB in this patient.
+Choice C: With no symptoms and normal CXR, active TB cannot be diagnosed — and TST is 2mm (negative).
+Choice D: Correct. TST interpretation thresholds: ≥5mm = positive in HIV+, immunocompromised, close TB contacts. ≥10mm = positive in high-risk groups (diabetics, healthcare workers, migrants from high-prevalence areas). ≥15mm = positive in low-risk individuals. A DIABETIC requires ≥10mm for a positive result. 2mm is NEGATIVE — this person does NOT have latent or active TB.
+
+Educational Objective: TST thresholds: ≥5mm (HIV/immunocompromised/recent close contact), ≥10mm (high-risk groups incl. DM, HCW, migrants), ≥15mm (low-risk). Diabetics need ≥10mm. 2mm = NEGATIVE = no latent TB.`
+        },
+        {
+          id: 'o24',
+          text: `Regarding CNS tuberculosis, which feature is INCORRECT?`,
+          options: [`CSF protein may be very high (>2-3 g/L)`, `CSF glucose < half of blood glucose`, `CSF shows eosinophilia`, `CSF shows lymphocytosis`],
+          correct: 2,
+          explanation: `TB meningitis has characteristic but specific CSF findings.
+
+Choice A: TRUE — CSF protein IS very high in TB meningitis (often >2-3 g/L) due to the intense inflammatory exudate and fibrin deposition that can cause a CSF 'clot on standing.' Correct finding.
+Choice B: TRUE — CSF glucose IS less than half of blood glucose in TB meningitis (low glucose due to consumption by bacteria/inflammatory cells and impaired transport). Correct finding.
+Choice C: Correct (INCORRECT answer). TB meningitis characteristically shows LYMPHOCYTOSIS in CSF — NOT eosinophilia. Eosinophilia in CSF suggests parasitic meningitis (Angiostrongylus, cysticercosis) or fungal infection. Bacterial meningitis shows neutrophilia; viral and TB meningitis show lymphocytosis.
+Choice D: TRUE — CSF lymphocytosis IS characteristic of TB meningitis (as well as viral meningitis). Correct finding.
+
+Educational Objective: TB meningitis CSF: HIGH protein (>2g/L), LOW glucose (<50% blood), LYMPHOCYTOSIS (NOT eosinophilia), AFB smear positive in 20-40%. CSF eosinophilia = parasitic/fungal meningitis.`
+        },
+        {
+          id: 'o25',
+          text: `A 35-year-old male (165cm, 125kg) has frequent falling asleep during driving. Pulmonary exam is normal. Most appropriate investigation?`,
+          options: [`Echocardiography`, `CT scan`, `Pulmonary function tests`, `Polysomnography`],
+          correct: 3,
+          explanation: `Excessive daytime sleepiness in an obese patient points to a specific diagnosis requiring a specific test.
+
+Choice A: Echocardiography assesses cardiac function — would be indicated if cor pulmonale or cardiac cause suspected, but not the primary investigation here.
+Choice B: CT scan of the chest or brain is not the appropriate first investigation for sleepiness in an obese patient.
+Choice C: PFTs assess airflow and lung volumes — useful for COPD/asthma diagnosis but not for sleep-disordered breathing.
+Choice D: Correct. POLYSOMNOGRAPHY (sleep study) is the gold standard for diagnosing Obstructive Sleep Apnea. Falling asleep during driving (severe EDS) + obese male (BMI = 125/(1.65)² ≈ 46 kg/m²) = high pre-test probability for OSA. Polysomnography records: EEG, EOG, EMG, airflow, SpO2, EKG, body position overnight.
+
+Educational Objective: OSA investigation: Polysomnography (gold standard). Screen with Epworth Sleepiness Scale + STOP-BANG questionnaire. High risk: obese, male, large neck, retrognathia. AHI ≥15/hour = moderate-severe OSA → CPAP therapy.`
+        },
+        {
+          id: 'o26',
+          text: `Light's criteria are used to differentiate between which of the following?`,
+          options: [`Community and hospital acquired pneumonia`, `Thrombotic and fat pulmonary embolism`, `Exudative and transudative pleural effusion`, `Active and latent tuberculosis`],
+          correct: 2,
+          explanation: `Light's criteria have a specific diagnostic application in respiratory medicine.
+
+Choice A: CAP vs HAP distinction is based on clinical criteria (timing of onset, healthcare exposure) — not Light's criteria.
+Choice B: Pulmonary embolism subtypes are classified by imaging and clinical findings — not Light's criteria.
+Choice C: Correct. Light's criteria are used to classify pleural effusions as EXUDATE or TRANSUDATE. An effusion is exudative if ANY ONE criterion is met: (1) Pleural protein / Serum protein ratio >0.5, (2) Pleural LDH / Serum LDH ratio >0.6, (3) Pleural LDH > 2/3 upper limit of normal serum LDH. Accurate classification guides further investigation and management.
+Choice D: Active vs latent TB distinction uses clinical, radiological, and microbiological criteria — not Light's criteria.
+
+Educational Objective: Light's criteria = exudate vs transudate differentiation. Exudate (any 1 criterion): pleural:serum protein >0.5, pleural:serum LDH >0.6, pleural LDH >2/3 normal. Transudate: all criteria absent. Transudate causes: HF, cirrhosis, nephrotic syndrome.`
+        },
+        {
+          id: 'o27',
+          text: `Which cytokine is responsible for B-cell switching to IgE immunoglobulin in Type I hypersensitivity?`,
+          options: [`IL-4`, `IL-5`, `IL-11`, `IL-13`],
+          correct: 0,
+          explanation: `IgE class switching is driven by specific cytokines from TH2 cells.
+
+Choice A: Correct. IL-4 is the PRIMARY cytokine responsible for class switching from IgM to IgE in B cells. IL-4 activates STAT6 signaling, inducing B cells to switch their antibody production to IgE. This IgE then binds to FcεRI receptors on mast cells and basophils, sensitizing them for subsequent allergen-triggered degranulation. IL-13 also drives IgE switching but IL-4 is the PRIMARY signal.
+Choice B: IL-5 is responsible for eosinophil production, maturation, and activation — not IgE class switching.
+Choice C: IL-11 is a cytokine involved in thrombopoiesis — not specifically related to IgE class switching.
+Choice D: IL-13 ALSO promotes IgE switching (shares the IL-4Rα chain signaling) but IL-4 is the primary/master IgE switch cytokine.
+
+Educational Objective: IgE class switch: IL-4 (primary) + IL-13 (secondary) → B cells switch to IgE production. IL-5 = eosinophil activation. TH2 cytokines (IL-4, IL-5, IL-13) = drivers of Type I hypersensitivity. Dupilumab blocks IL-4Rα shared by IL-4 and IL-13.`
+        },
+        {
+          id: 'o28',
+          text: `All of the following are common adverse effects of HAART therapy EXCEPT:`,
+          options: [`Pancreatitis`, `Lipodystrophy`, `Optic neuritis`, `GI disturbances`],
+          correct: 2,
+          explanation: `HAART adverse effects must be distinguished from those of other medications used in HIV-positive patients.
+
+Choice A: Pancreatitis IS a recognized adverse effect — especially with older NRTIs (didanosine, stavudine) causing mitochondrial toxicity.
+Choice B: Lipodystrophy IS a recognized metabolic complication — fat redistribution (central adiposity, facial lipoatrophy) associated with NRTIs and PIs.
+Choice C: Correct (EXCEPT). Optic neuritis is NOT a recognized HAART adverse effect. It is associated with ETHAMBUTOL (anti-TB drug — causes optic neuritis with color vision loss, requires regular ophthalmologic monitoring). Standard ARV drugs do not cause optic neuritis.
+Choice D: GI disturbances (nausea, vomiting, diarrhea) ARE the most common adverse effects of HAART — virtually all ARV drug classes cause them.
+
+Educational Objective: HAART adverse effects: GI symptoms, lipodystrophy, lactic acidosis (NRTIs), hepatotoxicity, rash (NVP), nephrotoxicity (TDF). Optic neuritis = ethambutol (anti-TB) — monitored with visual acuity and color vision testing.`
+        },
+        {
+          id: 'o29',
+          text: `All of the following are recognized extra-intestinal manifestations of IBD EXCEPT:`,
+          options: [`Erythema nodosum`, `Pyoderma gangrenosum`, `Erythema marginatum`, `Sclerosing cholangitis`],
+          correct: 2,
+          explanation: `IBD has well-defined extra-intestinal manifestations that must be distinguished from unrelated conditions.
+
+Choice A: Erythema nodosum (tender subcutaneous nodules on shins) IS a recognized cutaneous extra-intestinal manifestation of IBD — correlates with disease activity.
+Choice B: Pyoderma gangrenosum (ulcerating skin lesions) IS a recognized dermatological EIM of IBD — does NOT correlate with bowel activity.
+Choice C: Correct (EXCEPT). Erythema marginatum is a skin rash associated with ACUTE RHEUMATIC FEVER — NOT inflammatory bowel disease. It is a migratory, ring-shaped rash seen after streptococcal infection.
+Choice D: Primary sclerosing cholangitis (PSC) IS a hepatobiliary EIM of IBD — strongly associated with ulcerative colitis (UC). PSC may be present even when UC is quiescent.
+
+Educational Objective: IBD extra-intestinal manifestations: eyes (uveitis, episcleritis), joints (arthropathy), skin (EN, PG, aphthous ulcers), liver (PSC, autoimmune hepatitis), bones (osteoporosis). Erythema marginatum = rheumatic fever, NOT IBD.`
+        },
+        {
+          id: 'o30',
+          text: `A 2-year-old girl with chronic constipation since birth has nausea, vomiting, abdominal distension, and rectal biopsy shows absent ganglion cells. Most likely diagnosis?`,
+          options: [`Acquired megacolon`, `Hirschsprung disease`, `Imperforate anus`, `Rectal atresia`],
+          correct: 1,
+          explanation: `Absent ganglion cells on rectal biopsy is pathognomonic for a specific condition.
+
+Choice A: Acquired megacolon occurs in adults — causes include Chagas disease, chronic constipation, or metabolic disorders. Ganglion cells are present.
+Choice B: Correct. Hirschsprung disease (congenital aganglionic megacolon) is caused by failure of neural crest cell migration → ABSENCE OF GANGLION CELLS in the enteric nervous system of the rectum/colon. Presents from birth with constipation, failure to pass meconium, and later bowel obstruction. Rectal biopsy showing absent ganglion cells is DIAGNOSTIC.
+Choice C: Imperforate anus is an anatomical defect of the anal opening — ganglion cells would be present.
+Choice D: Rectal atresia is a structural atresia — ganglion cells would be present.
+
+Educational Objective: Hirschsprung disease = absent ganglion cells (aganglionic segment) + constipation from birth + failure to pass meconium + abdominal distension. Biopsy is diagnostic. Treatment: surgical resection of aganglionic segment (pull-through procedure).`
+        },
+        {
+          id: 'o31',
+          text: `A 3-year-old child with splenomegaly and anemia, suspected thalassemia. What would you expect on blood smear?`,
+          options: [`Hyperchromic macrocytic cells`, `Hyperchromic microcytic cells`, `Hypochromic microcytic cells`, `Normochromic normocytic cells`],
+          correct: 2,
+          explanation: `Thalassemia has a characteristic peripheral blood film appearance.
+
+Choice A: Hyperchromic macrocytic cells describe megaloblastic anemia (B12/folate deficiency) or hemolytic anemia — not thalassemia.
+Choice B: Hyperchromic microcytic cells are not a recognized pattern — high hemoglobin concentration is not seen in thalassemia.
+Choice C: Correct. Thalassemia causes HYPOCHROMIC MICROCYTIC anemia — the same peripheral smear pattern as iron deficiency anemia. In thalassemia, reduced globin chain synthesis leads to less hemoglobin per red cell → microcytosis (small cells) and hypochromia (pale cells). Additional features: target cells, teardrop cells, nucleated RBCs. Distinguished from IDA by: normal/elevated ferritin, elevated HbA2 (beta-thal trait), hemoglobin electrophoresis.
+Choice D: Normochromic normocytic is the pattern of anemia of chronic disease (early) or aplastic anemia.
+
+Educational Objective: Thalassemia smear: hypochromic microcytic RBCs + target cells + teardrop cells + nucleated RBCs. Distinguish from IDA: serum ferritin (normal in thal), HbA2 elevated in beta-thal trait, hemoglobin electrophoresis.`
+        },
+        {
+          id: 'o32',
+          text: `Which medication could cause sideroblastic anemia?`,
+          options: [`Amoxicillin`, `Methyldopa`, `Isoniazid`, `Primaquine`],
+          correct: 2,
+          explanation: `Sideroblastic anemia has drug-induced causes that must be recognized.
+
+Choice A: Amoxicillin does not cause sideroblastic anemia — it can rarely cause hemolytic anemia or immune-mediated anemia.
+Choice B: Methyldopa causes AUTOIMMUNE HEMOLYTIC ANEMIA (warm antibody type) — not sideroblastic anemia.
+Choice C: Correct. Isoniazid (anti-TB) causes sideroblastic anemia by interfering with pyridoxine (Vitamin B6) metabolism. Isoniazid inhibits pyridoxal phosphate — a cofactor for ALA synthase, the rate-limiting enzyme in heme synthesis. Iron accumulates in mitochondria of developing RBCs ('ringed sideroblasts'). Prevented by pyridoxine (B6) supplementation given with isoniazid.
+Choice D: Primaquine causes HEMOLYTIC ANEMIA in G6PD-deficient individuals — not sideroblastic anemia.
+
+Educational Objective: Drug-induced sideroblastic anemia: isoniazid (pyridoxine antagonism), chloramphenicol, lead poisoning. Isoniazid → always give pyridoxine B6 supplement. Ringed sideroblasts on bone marrow iron stain (Prussian blue).`
+        },
+        {
+          id: 'o33',
+          text: `A 35-year-old woman develops GI symptoms 1 day after a picnic where egg-salad sandwiches were eaten, affecting multiple people. Most likely organism?`,
+          options: [`Staphylococcal aureus`, `Clostridium botulinum`, `Salmonella species`, `Clostridium perfringens`],
+          correct: 2,
+          explanation: `Food poisoning outbreaks require identifying the causative organism based on incubation period and food vehicle.
+
+Choice A: S. aureus food poisoning has incubation of 1-6 HOURS (preformed toxin) and predominantly causes vomiting — the 1-DAY incubation here is too long.
+Choice B: C. botulinum causes neurological symptoms (descending flaccid paralysis) — not typical GI symptoms; food vehicle is canned/preserved foods.
+Choice C: Correct. Salmonella species: incubation 6-72 hours (typically ~24 hours / 1 day), classic association with EGGS and poultry products, group outbreak, causes inflammatory gastroenteritis (fever + diarrhea + abdominal cramps). Egg salad + ~1 day incubation + group outbreak = Salmonella.
+Choice D: C. perfringens: incubation 8-24 hours, from COOKED MEAT left at room temperature — not egg salad.
+
+Educational Objective: Egg salad + 6-72h incubation + group outbreak = Salmonella. S. aureus = 1-6h + vomiting + preformed toxin. C. perfringens = 8-24h + meat. Botulinum = canned food + neurological. Salmonella = usually self-limiting; treat if severe/bacteremic.`
+        },
+        {
+          id: 'o34',
+          text: `Which interleukin is responsible for activation of eosinophils in asthma?`,
+          options: [`IL-1`, `IL-4`, `IL-5`, `IL-13`],
+          correct: 2,
+          explanation: `Eosinophil activation in asthma is driven by a specific interleukin.
+
+Choice A: IL-1 is a pro-inflammatory cytokine from macrophages — involved in acute phase response and fever, not specifically eosinophil activation.
+Choice B: IL-4 drives IgE class switching and TH2 differentiation — important in atopy but not the primary eosinophil activator.
+Choice C: Correct. IL-5 is THE key cytokine for eosinophil PRODUCTION (bone marrow), MOBILIZATION into circulation, TISSUE RECRUITMENT, and ACTIVATION. In asthma, TH2 cells and ILC2s produce IL-5, driving eosinophilic airway inflammation. This is why anti-IL-5 biologics (mepolizumab, reslizumab, benralizumab) are highly effective in severe eosinophilic asthma.
+Choice D: IL-13 drives IgE class switching and mucus hypersecretion — but not primarily eosinophil activation.
+
+Educational Objective: IL-5 = eosinophil activation in asthma. Anti-IL-5 (mepolizumab/reslizumab) and anti-IL-5Rα (benralizumab) reduce blood and tissue eosinophils. Used in severe eosinophilic asthma uncontrolled on standard therapy.`
+        },
+        {
+          id: 'o35',
+          text: `Hospital-acquired pneumonia is pneumonia that occurs after:`,
+          options: [`12 hours of hospital admission`, `24 hours of hospital admission`, `36 hours of hospital admission`, `48 hours of hospital admission`],
+          correct: 3,
+          explanation: `The time threshold for hospital-acquired pneumonia has a specific definition.
+
+Choice A: 12 hours is not the standard threshold.
+Choice B: 24 hours is not the defining threshold — pneumonia within 24 hours likely reflects community acquisition.
+Choice C: 36 hours is not the standard criterion.
+Choice D: Correct. Hospital-Acquired Pneumonia (HAP/nosocomial pneumonia) is defined as pneumonia occurring ≥48 HOURS after hospital admission in a patient who was not intubated at the time of admission. This time threshold ensures the infection was acquired in the hospital rather than in the community. Ventilator-Associated Pneumonia (VAP) is a subtype occurring ≥48-72 hours after endotracheal intubation.
+
+Educational Objective: HAP = pneumonia ≥48h post-admission, not intubated. VAP = ≥48-72h post-intubation. Pathogens: gram-negatives (Pseudomonas, Klebsiella, Acinetobacter), MRSA. More resistant than CAP — treat with broader-spectrum antibiotics.`
+        }
+      ]
     }
     ]
   }
@@ -5371,9 +6699,12 @@ function renderDashboard() {
   const d = getData();
   const attempts = d.attempts.filter(a => a.subjectId === currentSubject);
   const totalQ = currentSubjectData.lectures.reduce((sum, l) => sum + l.questions.length, 0);
+  const subjectQidSet = new Set();
+  currentSubjectData.lectures.forEach(l => l.questions.forEach(q => subjectQidSet.add(q.id)));
   const mistakesCount = Object.keys(d.mistakes).filter(k => {
-    const q = findQuestion(k);
-    return q && d.mistakes[k] && !d.mistakes[k].mastered;
+    const m = d.mistakes[k];
+    if (!m || m.mastered) return false;
+    return m.subjectId ? m.subjectId === currentSubject : subjectQidSet.has(k);
   }).length;
   const best = attempts.length ? Math.max(...attempts.map(a => a.pct)) : 0;
   const avg = attempts.length ? Math.round(attempts.reduce((s, a) => s + a.pct, 0) / attempts.length) : 0;
@@ -5595,13 +6926,15 @@ function startTimer() {
     const s = Math.floor(quizState.elapsed / 1000);
     document.getElementById('quizTimer').textContent =
       pad(Math.floor(s / 60)) + ':' + pad(s % 60);
+    if (s > 0 && s % 30 === 0) autoSaveQuiz(); // periodic background save every 30s
   }, 1000);
 }
 
 function pad(n) { return n < 10 ? '0' + n : n; }
 
-// Stop timer if user closes/refreshes tab while quiz is running
+// Stop timer and save progress if user closes/refreshes tab while quiz is running
 window.addEventListener('beforeunload', () => {
+  autoSaveQuiz(); // final save on page close/refresh
   if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
 });
 
@@ -5797,6 +7130,24 @@ function selectAnswer(i) {
   if (quizState.answers[quizState.current] !== undefined) return;
   quizState.answers[quizState.current] = i;
   renderQuizQuestion();
+  autoSaveQuiz(); // silent background save after each answer
+}
+
+function autoSaveQuiz() {
+  if (!quizState || quizState.submitted || !currentSubject) return;
+  const d = getData();
+  if (!d.incompleteQuizzes) d.incompleteQuizzes = {};
+  d.incompleteQuizzes[currentSubject] = {
+    questionIds: quizState.questions.map(q => q.id),
+    current: quizState.current,
+    answers: { ...quizState.answers },
+    flags: { ...(quizState.flags || {}) },
+    elapsed: quizState.elapsed || 0,
+    savedAt: Date.now(),
+    totalQ: quizState.questions.length,
+    answeredCount: Object.keys(quizState.answers).length
+  };
+  saveData(d);
 }
 
 function toggleExplanation(btn, qid) {
@@ -5860,6 +7211,7 @@ function finalSubmit() {
       if (!d.mistakes[q.id]) d.mistakes[q.id] = { mastered: false, count: 0 };
       d.mistakes[q.id].count = (d.mistakes[q.id].count || 0) + 1;
       d.mistakes[q.id].yourAns = ans;
+      d.mistakes[q.id].subjectId = currentSubject;   // ← tag with subject
     }
   });
 
@@ -6055,8 +7407,12 @@ function renderStats() {
     <div class="big-stat"><div class="icon">🎯</div><div class="val" style="color:var(--warning)">${acc}%</div><div class="desc">الدقة الإجمالية</div></div>
   `;
 
-  // Bar chart per lecture
-  const lecPerf = d.lecPerf || {};
+  // Bar chart per lecture — only current subject's lectures
+  const allLecPerf = d.lecPerf || {};
+  const subjectLecIds = new Set(currentSubjectData.lectures.map(l => l.id));
+  const lecPerf = {};
+  Object.keys(allLecPerf).forEach(lid => { if (subjectLecIds.has(lid)) lecPerf[lid] = allLecPerf[lid]; });
+
   const barChart = document.getElementById('lecBarChart');
   if (!Object.keys(lecPerf).length) {
     barChart.innerHTML = `<div class="empty-state" style="padding:30px"><div class="icon">📊</div><h3>لا توجد بيانات بعد</h3><p>أنجز اختبارًا أولاً</p></div>`;
@@ -6108,15 +7464,28 @@ function renderMistakes() {
   const isEn = currentSubjectData && currentSubjectData.lang === 'en';
   const opts = isEn ? ['A','B','C','D'] : ['أ','ب','ج','د'];
 
-  // populate filter
+  // Build a Set of question IDs that belong to the current subject (fallback for old records)
+  const subjectQids = new Set();
+  currentSubjectData.lectures.forEach(l => l.questions.forEach(q => subjectQids.add(q.id)));
+
+  // Close practice panel on re-render (subject may have changed)
+  document.getElementById('practiceSelectorPanel').style.display = 'none';
+
+  // populate filter — preserve existing selection
   const sel = document.getElementById('mistakeFilter');
+  const prevFilter = sel.value;
   sel.innerHTML = '<option value="all">كل المحاضرات</option>' +
     currentSubjectData.lectures.map(l => `<option value="${l.id}">${l.name}</option>`).join('');
+  if (prevFilter) sel.value = prevFilter;
 
   const filterVal = sel.value;
   const container = document.getElementById('mistakesList');
 
   const allMistakes = Object.keys(d.mistakes || {}).filter(qid => {
+    const m = d.mistakes[qid];
+    // Primary: use stored subjectId. Fallback: check question ID set (for old records)
+    const belongsHere = m.subjectId ? m.subjectId === currentSubject : subjectQids.has(qid);
+    if (!belongsHere) return false;
     const q = findQuestion(qid);
     if (!q) return false;
     if (filterVal !== 'all' && q.lecId !== filterVal) return false;
@@ -6124,7 +7493,7 @@ function renderMistakes() {
   });
 
   if (!allMistakes.length) {
-    container.innerHTML = `<div class="empty-state"><div class="icon">✅</div><h3>لا توجد أخطاء!</h3><p>أحسنت، لم تُسجَّل أي أخطاء حتى الآن</p></div>`;
+    container.innerHTML = `<div class="empty-state"><div class="icon">✅</div><h3>${isEn ? 'No mistakes!' : 'لا توجد أخطاء!'}</h3><p>${isEn ? 'Great job, no mistakes recorded yet' : 'أحسنت، لم تُسجَّل أي أخطاء حتى الآن'}</p></div>`;
     return;
   }
 
@@ -6161,10 +7530,91 @@ function markMastered(qid) {
   toast('تم تمييز السؤال كمُتقَن ✓', 'success');
 }
 
+function togglePracticePanel() {
+  const panel = document.getElementById('practiceSelectorPanel');
+  const isVisible = panel.style.display !== 'none';
+  if (isVisible) { panel.style.display = 'none'; return; }
+
+  // Build checkbox list — one per lecture that has unmastered mistakes
+  const d = getData();
+  const subjectQids = new Set();
+  currentSubjectData.lectures.forEach(l => l.questions.forEach(q => subjectQids.add(q.id)));
+
+  const lecMistakeCounts = {};
+  Object.keys(d.mistakes || {}).forEach(qid => {
+    const m = d.mistakes[qid];
+    if (m.mastered) return;
+    const belongsHere = m.subjectId ? m.subjectId === currentSubject : subjectQids.has(qid);
+    if (!belongsHere) return;
+    const q = findQuestion(qid);
+    if (!q) return;
+    lecMistakeCounts[q.lecId] = (lecMistakeCounts[q.lecId] || 0) + 1;
+  });
+
+  const list = document.getElementById('practiceCheckboxList');
+  const lecturesWithMistakes = currentSubjectData.lectures.filter(l => lecMistakeCounts[l.id]);
+
+  if (!lecturesWithMistakes.length) {
+    toast('لا توجد أخطاء للتدريب عليها', 'error');
+    return;
+  }
+
+  list.innerHTML = lecturesWithMistakes.map(l => `
+    <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 14px;border-radius:10px;background:var(--surface);border:1.5px solid var(--border);transition:border-color .2s"
+      onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+      <input type="checkbox" class="practice-lec-cb" value="${l.id}" checked
+        style="width:17px;height:17px;accent-color:var(--accent);cursor:pointer">
+      <span style="flex:1;font-weight:600;color:var(--text1)">${l.name}</span>
+      <span style="background:var(--danger);color:#fff;border-radius:20px;padding:2px 10px;font-size:.8rem;font-weight:700">${lecMistakeCounts[l.id]} خطأ</span>
+    </label>`).join('');
+
+  panel.style.display = 'block';
+}
+
+function toggleSelectAllPractice() {
+  const cbs = document.querySelectorAll('.practice-lec-cb');
+  const allChecked = Array.from(cbs).every(cb => cb.checked);
+  cbs.forEach(cb => cb.checked = !allChecked);
+}
+
+function startSelectedPractice() {
+  const selected = new Set(
+    Array.from(document.querySelectorAll('.practice-lec-cb:checked')).map(cb => cb.value)
+  );
+  if (!selected.size) { toast('اختر محاضرة واحدة على الأقل', 'error'); return; }
+
+  const d = getData();
+  const subjectQids = new Set();
+  if (currentSubjectData) currentSubjectData.lectures.forEach(l => l.questions.forEach(q => subjectQids.add(q.id)));
+
+  const qs = Object.keys(d.mistakes || {})
+    .filter(qid => {
+      const m = d.mistakes[qid];
+      if (m.mastered) return false;
+      const belongsHere = m.subjectId ? m.subjectId === currentSubject : subjectQids.has(qid);
+      if (!belongsHere) return false;
+      const q = findQuestion(qid);
+      return q && selected.has(q.lecId);
+    })
+    .map(qid => findQuestion(qid))
+    .filter(Boolean);
+
+  if (!qs.length) { toast('لا توجد أخطاء في المحاضرات المختارة', 'error'); return; }
+  document.getElementById('practiceSelectorPanel').style.display = 'none';
+  lastQuizQuestions = qs;
+  initQuiz(qs);
+}
+
 function practiceAllMistakes() {
   const d = getData();
+  const subjectQids = new Set();
+  if (currentSubjectData) currentSubjectData.lectures.forEach(l => l.questions.forEach(q => subjectQids.add(q.id)));
   const qs = Object.keys(d.mistakes || {})
-    .filter(qid => !d.mistakes[qid].mastered)
+    .filter(qid => {
+      const m = d.mistakes[qid];
+      const belongsHere = m.subjectId ? m.subjectId === currentSubject : subjectQids.has(qid);
+      return belongsHere && !m.mastered;
+    })
     .map(qid => findQuestion(qid))
     .filter(Boolean);
   if (!qs.length) { toast('لا توجد أخطاء للتدريب عليها', 'error'); return; }
@@ -6473,9 +7923,18 @@ function renderFCSummary() {
   const actionsBar = document.getElementById('fcActionsBar');
   const filterBar  = document.getElementById('fcFilterBar');
 
+  // Update subtitle to current subject name
+  const subjectNameEl = document.getElementById('fcSubjectName');
+  if (subjectNameEl && currentSubjectData) subjectNameEl.textContent = currentSubjectData.name;
+
   // Only ethics subject has flashcards
   if (currentSubject !== 'ethics') {
-    document.getElementById('fcSummary').innerHTML = '';
+    document.getElementById('fcSummary').innerHTML = `
+      <div style="text-align:center;padding:3rem 1rem;color:var(--text2)">
+        <div style="font-size:3rem;margin-bottom:1rem">🃏</div>
+        <div style="font-size:1.1rem;font-weight:600;margin-bottom:.5rem">لا توجد بطاقات تعليمية</div>
+        <div style="font-size:.9rem">لم يتم إضافة أي بطاقات لهذه المادة بعد</div>
+      </div>`;
     if (actionsBar) actionsBar.style.display = 'none';
     if (filterBar)  filterBar.style.display  = 'none';
     return;

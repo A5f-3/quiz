@@ -3844,7 +3844,1366 @@ const SUBJECTS = [
           { id: 'n99', text: 'Which of the following antimicrobial isn\'t effective against anaerobes?', options: ['Aminoglycosides', 'Beta lactams', 'Macrolides'], correct: 0, explanation: 'Aminoglycosides are NOT effective against anaerobic bacteria. Mechanism of aminoglycoside uptake: Aminoglycosides require oxygen-dependent active transport across bacterial membrane to enter the cell (oxidative phosphorylation drives the drug uptake). Anaerobes lack oxidative phosphorylation → cannot transport aminoglycosides intracellularly → intrinsic resistance. Antibiotics effective against anaerobes: Metronidazole (drug of choice), Clindamycin, Carbapenems (imipenem, meropenem), Beta-lactams + beta-lactamase inhibitors (ampicillin-sulbactam, piperacillin-tazobactam), Chloramphenicol, Macrolides (active against some anaerobes). Beta-lactams: have activity against many anaerobes (especially with beta-lactamase inhibitors). Educational Objective: Aminoglycosides = INACTIVE against anaerobes (require O2-dependent transport); metronidazole = drug of choice for anaerobes.' },
           { id: 'n100', text: 'Which of the following is CORRECT regarding penicillin?', options: ['Inhibits Beta lactamase', 'Inhibits of cell wall synthesis', 'Inhibits protein synthesis', 'Inhibits DNA synthesis'], correct: 1, explanation: 'Penicillin mechanism of action: Inhibits cell wall (peptidoglycan) synthesis. Specifically: Binds to Penicillin-Binding Proteins (PBPs — transpeptidases). Inhibits transpeptidation step → prevents cross-linking of peptidoglycan chains → weakened cell wall → osmotic lysis → bactericidal. Structure: Beta-lactam ring (essential for antibacterial activity). Resistance mechanisms: Beta-lactamases (break the beta-lactam ring — penicillin does NOT inhibit these; beta-lactamase inhibitors like clavulanate do). PBP mutations (MRSA). Beta-lactams also include: Cephalosporins, Carbapenems, Monobactams — all same mechanism. Educational Objective: Penicillin = inhibits cell wall synthesis by binding PBPs → blocks peptidoglycan transpeptidation; NOT an inhibitor of beta-lactamase (that\'s clavulanate/sulbactam).' }
         ]
-      }
+      },
+    {
+      id: 'final24_med220',
+      name: 'Med220 Final Exam Questions',
+      num: 4,
+      questions: [
+        {
+          id: 'p1',
+          text: `Anti-dsDNA is the most specific test for:`,
+          options: [`RA`, `SLE`, `Scleroderma`],
+          correct: 1,
+          explanation: `Anti-double stranded DNA (anti-dsDNA) antibodies are highly specific for SLE and their titers correlate with disease activity, especially lupus nephritis flares.
+
+Choice A: RA is associated with Rheumatoid Factor (RF) and Anti-CCP antibodies — not anti-dsDNA.
+Choice B: Correct. Anti-dsDNA has ~70% sensitivity and >95% specificity for SLE. It is used for both diagnosis and monitoring disease activity.
+Choice C: Scleroderma is associated with Anti-Scl-70 (topoisomerase I) and Anti-centromere antibodies.
+
+Educational Objective: Anti-dsDNA antibodies are highly specific for SLE. Rising titers correlate with lupus nephritis activity.`
+        },
+        {
+          id: 'p2',
+          text: `All of the following are features of SLE EXCEPT:`,
+          options: [`Malar rash`, `Psychosis`, `Discoid rash`, `Leukocytosis`],
+          correct: 3,
+          explanation: `SLE is a systemic autoimmune disease with multiorgan involvement. Understanding which features are typical versus atypical is key.
+
+Choice A: Malar rash (butterfly rash) is a classic finding in SLE — seen in about 50% of patients.
+Choice B: Psychosis is a recognized neuropsychiatric manifestation of SLE (NPSLE).
+Choice C: Discoid rash is one of the ACR diagnostic criteria for SLE.
+Choice D: Correct. SLE typically causes leukopenia (low WBC), not leukocytosis. Lymphopenia is especially common and is an SLE criterion.
+
+Educational Objective: SLE causes leukopenia/lymphopenia — NOT leukocytosis. Leukocytosis would suggest infection or a steroid effect.`
+        },
+        {
+          id: 'p3',
+          text: `A 31-year-old woman has malar rash, photosensitivity and joint pain. What is the characteristic joint affection in this disease?`,
+          options: [`Jaccoud's arthropathy`],
+          correct: 0,
+          explanation: `The clinical picture describes SLE. The arthropathy in SLE is characteristically non-erosive and non-deforming, known as Jaccoud's arthropathy.
+
+Choice A: Correct. Jaccoud's arthropathy is a reducible, non-erosive deformity caused by capsular and periarticular inflammation rather than joint destruction. It is characteristic of SLE and differs from the erosive destructive arthritis of RA.
+
+Educational Objective: SLE arthropathy = Jaccoud's arthropathy — non-erosive, reducible deformity. This distinguishes it from the erosive arthritis of rheumatoid arthritis.`
+        },
+        {
+          id: 'p4',
+          text: `A 27-year-old female has wrist, elbow and knee pain, painless oral ulcers, hair fall, malar rash and a history of seizure. Which is the most specific diagnostic test for her disease?`,
+          options: [`Antinuclear antibody`, `Anti-histone antibody`, `Anti-ribonucleoprotein antibody`, `Anti-double stranded DNA antibody`],
+          correct: 3,
+          explanation: `This presentation is classic SLE: arthritis, oral ulcers, alopecia, malar rash, and neuropsychiatric involvement (seizure).
+
+Choice A: ANA is highly sensitive (~95%) for SLE but not specific — it is also positive in other autoimmune conditions and even in healthy individuals.
+Choice B: Anti-histone antibodies are associated with drug-induced lupus, not primary SLE.
+Choice C: Anti-RNP antibodies are elevated in Mixed Connective Tissue Disease (MCTD).
+Choice D: Correct. Anti-dsDNA is the most specific antibody for SLE (>95% specificity) and correlates with disease activity.
+
+Educational Objective: Anti-dsDNA = most specific for SLE. ANA = most sensitive but not specific. Anti-histone = drug-induced lupus.`
+        },
+        {
+          id: 'p5',
+          text: `For diagnosis of SLE, Antinuclear Antibody (ANA) is considered:`,
+          options: [`Highly sensitive`, `Highly specific`, `Both specific and sensitive`, `Neither specific nor sensitive`],
+          correct: 0,
+          explanation: `ANA testing is the cornerstone screening test for SLE, but its diagnostic utility must be understood in context.
+
+Choice A: Correct. ANA is highly sensitive (~95%) for SLE, meaning a negative ANA makes SLE very unlikely. However, it is NOT specific — positive ANA is found in RA, Sjogren's, other autoimmune diseases, infections, and even normal individuals (especially at low titers).
+Choice B: ANA is not specific — false positives are common.
+Choice C: ANA is sensitive but NOT specific.
+Choice D: ANA has good sensitivity, so this is incorrect.
+
+Educational Objective: ANA = highly sensitive, NOT specific for SLE. A positive ANA warrants further testing with more specific antibodies (anti-dsDNA, anti-Sm).`
+        },
+        {
+          id: 'p6',
+          text: `A 33-year-old female has repeated abortions and left lower limb DVT. What is the most helpful laboratory investigation for diagnosing antiphospholipid syndrome?`,
+          options: [`ANCA`, `Anti-CCP antibody`, `Anti-centromere antibody`, `Anti-cardiolipin antibody`],
+          correct: 3,
+          explanation: `The clinical picture — recurrent pregnancy loss and thrombosis — is classic antiphospholipid syndrome (APS).
+
+Choice A: ANCA (antineutrophil cytoplasmic antibody) is associated with vasculitides such as GPA and MPA — not APS.
+Choice B: Anti-CCP is specific for rheumatoid arthritis.
+Choice C: Anti-centromere antibodies are associated with limited systemic sclerosis (CREST syndrome).
+Choice D: Correct. Anti-cardiolipin antibody is one of the three laboratory criteria for APS (along with anti-β2 glycoprotein I and lupus anticoagulant). Must be positive on 2 occasions ≥12 weeks apart.
+
+Educational Objective: APS = recurrent thrombosis + pregnancy loss. Lab criteria include anti-cardiolipin, anti-β2GPI, and lupus anticoagulant — must be persistently positive.`
+        },
+        {
+          id: 'p7',
+          text: `Diagnostic method of Antiphospholipid Syndrome:`,
+          options: [`2 Clinical manifestations`, `2 Positive laboratory results`, `2 Clinical manifestations + 1 Positive laboratory`, `1 Clinical manifestation + 1 Persistent positive laboratory`],
+          correct: 3,
+          explanation: `The Sapporo/Sydney criteria for APS require both clinical AND laboratory criteria.
+
+Choice A: Clinical criteria alone are insufficient — laboratory confirmation is required.
+Choice B: Laboratory findings alone are insufficient — at least one clinical event is needed.
+Choice C: 2 clinical + 1 laboratory is not the standard criterion.
+Choice D: Correct. APS diagnosis requires at least 1 clinical criterion (vascular thrombosis OR pregnancy morbidity) AND at least 1 laboratory criterion (positive antiphospholipid antibody on 2 or more occasions at least 12 weeks apart).
+
+Educational Objective: APS requires 1 clinical (thrombosis or pregnancy loss) + 1 laboratory criterion (positive antiphospholipid antibody ×2, ≥12 weeks apart).`
+        },
+        {
+          id: 'p8',
+          text: `Classification of systemic vasculitis is according to vessel size and the presence or absence of:`,
+          options: [`Anti-neutrophilic cytoplasmic antibodies (ANCA)`],
+          correct: 0,
+          explanation: `The Chapel Hill Consensus Classification of systemic vasculitis uses two key parameters: vessel size (large, medium, small) and ANCA status.
+
+Choice A: Correct. ANCA status is crucial — ANCA-associated vasculitides (AAV) include GPA, MPA, and EGPA (Churg-Strauss). ANCA helps distinguish small-vessel vasculitides from immune complex-mediated ones.
+
+Educational Objective: Vasculitis classification = vessel size + ANCA status. ANCA-associated vasculitides (GPA, MPA, EGPA) are an important small-vessel group.`
+        },
+        {
+          id: 'p9',
+          text: `A 60-year-old male has headache, fever, temporal tenderness and scalp sensitivity while brushing his hair. What is the diagnosis?`,
+          options: [`SLE`, `Giant cell arteritis`],
+          correct: 1,
+          alert: true,
+          explanation: `This is a classic presentation of Giant Cell Arteritis (GCA / temporal arteritis), a large-vessel vasculitis predominantly affecting those >50 years.
+
+Choice A: SLE typically presents in younger women with multisystem features (rash, arthritis, nephritis) — not isolated temporal headache with scalp tenderness.
+Choice B: Correct. GCA presents with new-onset headache, temporal artery tenderness, jaw claudication, and scalp sensitivity in patients >50. ESR is markedly elevated. Immediate high-dose corticosteroids are needed to prevent irreversible vision loss.
+
+Note: Option A was missing from the source PDF — this question has been flagged for review.
+
+Educational Objective: GCA = temporal headache + scalp tenderness + age >50 + elevated ESR. Treat immediately with steroids to prevent blindness.`
+        },
+        {
+          id: 'p10',
+          text: `A 45-year-old female has pain and swelling in both ankles and knees with morning stiffness >1 hour. Which feature suggests inflammatory arthritis?`,
+          options: [`Morning stiffness lasting more than one hour`, `Gender`, `Arthritis of knees and ankles`, `Being over 40`],
+          correct: 0,
+          explanation: `Distinguishing inflammatory from mechanical arthritis is essential in rheumatology.
+
+Choice A: Correct. Morning stiffness lasting >1 hour is a hallmark of inflammatory arthritis (RA, SpA, etc.). Mechanical arthritis improves with rest and worsens with activity; inflammatory arthritis is worse with inactivity.
+Choice B: Gender alone is not a diagnostic criterion for inflammatory arthritis, though females are more commonly affected by RA.
+Choice C: Arthritis of knees and ankles can occur in both inflammatory and degenerative disease.
+Choice D: Age >40 is more suggestive of degenerative (osteoarthritis), not inflammatory arthritis.
+
+Educational Objective: Morning stiffness >1 hour = key indicator of inflammatory arthritis. Mechanical arthritis has stiffness <30 minutes that worsens with activity.`
+        },
+        {
+          id: 'p11',
+          text: `A 35-year-old male has low back pain worse in the morning. Tenderness over sacroiliac joints. Plain X-ray is normal. What is the appropriate next step?`,
+          options: [`Repeat plain X-ray after a month`, `MRI of the sacroiliac joint`, `Ultrasound of the sacroiliac joint`, `CT scan of the sacroiliac joint`],
+          correct: 1,
+          explanation: `This presentation suggests early ankylosing spondylitis (axial spondyloarthropathy). Early disease often shows no changes on plain X-ray.
+
+Choice A: Repeating plain X-ray after one month will not show early sacroiliitis — radiographic changes take years to develop.
+Choice B: Correct. MRI of the sacroiliac joint is the investigation of choice for detecting early sacroiliitis (bone marrow edema / active inflammation) before radiographic changes appear. It is the gold standard for early axial SpA.
+Choice C: Ultrasound cannot adequately image the sacroiliac joint due to its deep location.
+Choice D: CT can show structural changes but delivers high radiation and is less sensitive for early active inflammation than MRI.
+
+Educational Objective: Normal X-ray + clinical sacroiliitis → MRI sacroiliac joints is the next step. MRI detects early active inflammation before structural damage is visible.`
+        },
+        {
+          id: 'p12',
+          text: `Which one of the following inflammatory diseases is more associated with males?`,
+          options: [`RA`, `Gout`, `SLE`, `Scleroderma`],
+          correct: 1,
+          explanation: `Sex predisposition varies among rheumatic diseases and is an important epidemiological fact.
+
+Choice A: RA has a female:male ratio of approximately 3:1.
+Choice B: Correct. Gout is predominantly a disease of males (>90% before menopause), due to the uricosuric effect of estrogen in premenopausal women. After menopause, the gender gap narrows.
+Choice C: SLE has a striking female predominance — female:male ratio of 9:1.
+Choice D: Scleroderma (systemic sclerosis) is also more common in females (3-4:1 ratio).
+
+Educational Objective: Gout is predominantly male (especially before age 50). RA, SLE, and scleroderma are all more common in females.`
+        },
+        {
+          id: 'p13',
+          text: `A patient underwent CT pulmonary angiography. Within minutes of contrast injection, he developed itching, skin flushing, urticaria and difficulty breathing. What likely developed?`,
+          options: [`T-cell mediated reaction`, `Anaphylactoid reaction`, `Immune complex reaction`],
+          correct: 1,
+          explanation: `Contrast media reactions are an important clinical scenario.
+
+Choice A: T-cell mediated (Type IV) reactions are delayed — occurring 48-72 hours after exposure. This rapid onset rules out T-cell mediation.
+Choice B: Correct. Anaphylactoid reactions (now called non-immunologic anaphylaxis) to contrast media mimic anaphylaxis but are NOT IgE-mediated — they are direct mast cell activation by contrast media. They occur on first exposure (no prior sensitization needed) and are treated the same as anaphylaxis.
+Choice C: Immune complex (Type III) reactions cause serum sickness-like illness days to weeks after exposure.
+
+Educational Objective: Contrast media reactions = anaphylactoid (non-IgE mediated). They can occur on first exposure. Treatment: epinephrine, antihistamines, corticosteroids.`
+        },
+        {
+          id: 'p14',
+          text: `Which cytokine is responsible for recruitment and activation of eosinophils in Type I hypersensitivity?`,
+          options: [`IL-5`, `TNF`, `IFN-γ`],
+          correct: 0,
+          explanation: `Type I hypersensitivity involves IgE-mediated mast cell degranulation with subsequent eosinophil recruitment.
+
+Choice A: Correct. IL-5 is the principal cytokine responsible for eosinophil production in bone marrow, recruitment to sites of allergic inflammation, and activation. It is a key mediator of the late-phase allergic response.
+Choice B: TNF is a pro-inflammatory cytokine important in sepsis, cachexia, and granuloma formation — not specifically eosinophil recruitment.
+Choice C: IFN-γ is produced by TH1 cells and activates macrophages — it is important in Type IV (delayed) hypersensitivity, not Type I.
+
+Educational Objective: IL-5 = key cytokine for eosinophil recruitment/activation in Type I hypersensitivity. Anti-IL-5 therapy (mepolizumab) is used in severe eosinophilic asthma.`
+        },
+        {
+          id: 'p15',
+          text: `What is the mediator responsible for the late-phase reaction in hypersensitivity?`,
+          options: [`Bradykinin`, `Histamine`, `TNF`, `Prostaglandin`],
+          correct: 2,
+          explanation: `Allergic reactions have two phases: early (immediate) and late. Different mediators drive each phase.
+
+Choice A: Bradykinin is a mediator of pain and vasodilation, important in angioedema (especially ACE inhibitor-induced) — not specifically the late-phase driver.
+Choice B: Histamine is the primary mediator of the EARLY (immediate) phase — released within seconds from mast cell granules.
+Choice C: Correct. TNF (and other cytokines like IL-4, IL-5, IL-13) are key mediators of the LATE-phase reaction, which occurs 4-8 hours after initial exposure and is dominated by eosinophil and T-cell recruitment.
+Choice D: Prostaglandins (especially PGD2) contribute to both phases but are not the principal late-phase mediator.
+
+Educational Objective: Early phase = histamine (immediate). Late phase = cytokines (TNF, IL-4, IL-5) + eosinophil infiltration, 4-8 hours after allergen exposure.`
+        },
+        {
+          id: 'p16',
+          text: `Which cells are seen in the CENTER of a granuloma in Type IV hypersensitivity?`,
+          options: [`Epithelioid cells`, `Fibroblasts`, `Lymphocytes`, `Mast cells`],
+          correct: 0,
+          explanation: `Granuloma formation is the hallmark of Type IV (cell-mediated) hypersensitivity.
+
+Choice A: Correct. The center of a granuloma contains epithelioid cells (activated macrophages with abundant pale cytoplasm) and multinucleated giant cells (from macrophage fusion). CD4+ TH1 lymphocytes surround the periphery.
+Choice B: Fibroblasts are seen at the periphery of granulomas and contribute to fibrosis — not at the center.
+Choice C: Lymphocytes (CD4+ T cells) surround the granuloma periphery but are not the central cells.
+Choice D: Mast cells are involved in Type I hypersensitivity, not granuloma formation.
+
+Educational Objective: Granuloma structure = center (epithelioid macrophages + giant cells) surrounded by CD4+ T lymphocytes. Seen in TB, sarcoidosis, Crohn's disease, fungal infections.`
+        },
+        {
+          id: 'p17',
+          text: `A 45-year-old male develops difficulty breathing and dizziness within 5 minutes of penicillin injection. BP = 80/60 mmHg. Which type of hypersensitivity?`,
+          options: [`Type IV`, `Type III`, `Type II`, `Type I`],
+          correct: 3,
+          explanation: `This is a classic anaphylaxis presentation — rapid onset after drug injection with cardiovascular collapse.
+
+Choice A: Type IV (T-cell mediated / delayed) takes 48-72 hours — incompatible with onset within 5 minutes.
+Choice B: Type III (immune complex) causes serum sickness-like illness over days to weeks — not minutes.
+Choice C: Type II (cytotoxic) causes cell destruction over hours (e.g., hemolytic anemia, transfusion reactions) — not anaphylaxis.
+Choice D: Correct. Type I hypersensitivity (IgE-mediated) is the mechanism of anaphylaxis. On first sensitization, IgE is produced against penicillin. On re-exposure, penicillin cross-links IgE on mast cells causing immediate degranulation → histamine release → vasodilation, bronchospasm, hypotension.
+
+Educational Objective: Anaphylaxis within minutes of drug exposure = Type I (IgE-mediated). Treat with IM epinephrine. Penicillin is a classic trigger.`
+        },
+        {
+          id: 'p18',
+          text: `Bronchial asthma is caused by release of chemical mediators from:`,
+          options: [`Epithelial cells`, `Stem cells`, `Mast cells`, `Macrophages`],
+          correct: 2,
+          alert: true,
+          explanation: `In bronchial asthma, allergen exposure triggers a specific cellular response leading to bronchoconstriction.
+
+Choice A: Epithelial cells form the airway lining and can produce cytokines (IL-25, IL-33, TSLP) but are not the primary source of the chemical mediators causing acute bronchoconstriction.
+Choice B: Stem cells give rise to immune cells but do not directly release the chemical mediators of asthma.
+Choice C: Correct. Mast cells are the primary effector cells in IgE-mediated asthma. When allergen cross-links IgE on mast cell surfaces, mast cells degranulate releasing histamine, leukotrienes (LTC4, LTD4), prostaglandins, and tryptase — causing bronchoconstriction, mucus secretion and airway edema.
+Choice D: Macrophages play a role in chronic inflammation and late-phase responses but are not the primary source of early bronchospasm mediators.
+
+Note: This question had duplicate 'A' labels in the source PDF — options have been standardized.
+
+Educational Objective: Bronchial asthma = mast cell degranulation (IgE-mediated) → histamine + leukotrienes → bronchoconstriction, airway edema, mucus hypersecretion.`
+        },
+        {
+          id: 'p19',
+          text: `Predisposing factors of asthma:`,
+          options: [`Genetic`, `Environmental`, `Genetic and environmental`, `None of them`],
+          correct: 2,
+          explanation: `Asthma is a complex multifactorial disease with both genetic and environmental contributions.
+
+Choice A: Genetics alone — a positive family history and atopic genes (IL-4, IL-13, ADAM33) increase susceptibility but asthma does not develop in a purely genetic vacuum.
+Choice B: Environmental factors alone (allergens, pollution, smoking, infections) can trigger asthma in susceptible individuals but do not fully explain it.
+Choice C: Correct. Asthma results from the interaction of genetic predisposition (atopy, immune dysregulation) AND environmental triggers (allergens, air pollution, respiratory infections, occupational exposures). This is the hygiene hypothesis and gene-environment interaction.
+Choice D: Both genetic and environmental factors are clearly established.
+
+Educational Objective: Asthma etiology = gene-environment interaction. Atopic individuals with genetic susceptibility who are exposed to environmental triggers develop asthma.`
+        },
+        {
+          id: 'p20',
+          text: `A patient has a history of asthma. Which laboratory finding is most likely?`,
+          options: [`Elevated total leukocytes`, `Elevated absolute neutrophils`, `Elevated absolute eosinophils`],
+          correct: 2,
+          explanation: `Asthma is an allergic/atopic condition driven by TH2-mediated immune responses.
+
+Choice A: Total leukocytosis is non-specific and suggests infection or stress — not a characteristic finding of asthma per se.
+Choice B: Neutrophilia suggests bacterial infection or non-allergic asthma. Allergic asthma is not characterized by neutrophilia.
+Choice C: Correct. Eosinophilia (elevated absolute eosinophil count) is the characteristic finding in allergic asthma. Eosinophils are recruited by IL-5 from TH2 cells and are key effector cells in the asthmatic airway. Sputum and blood eosinophilia are used to guide biologic therapy (anti-IL-5).
+
+Educational Objective: Asthma (allergic) = blood and sputum eosinophilia. Elevated eosinophils reflect TH2-driven, IgE-mediated inflammation. Anti-IL-5 biologics target this pathway.`
+        },
+        {
+          id: 'p21',
+          text: `Myasthenia gravis is an autoimmune disease also classified as hypersensitivity type:`,
+          options: [`Type I`, `Type II`, `Type III`],
+          correct: 1,
+          explanation: `Understanding the hypersensitivity type helps explain the mechanism of myasthenia gravis.
+
+Choice A: Type I is IgE-mediated immediate hypersensitivity (anaphylaxis, allergic rhinitis) — not the mechanism in MG.
+Choice B: Correct. Myasthenia gravis is Type II (antibody-mediated / cytotoxic) hypersensitivity. Autoantibodies against nicotinic acetylcholine receptors (AChR) at the neuromuscular junction block signal transmission, causing fatigable muscle weakness. Anti-AChR IgG activates complement and causes receptor degradation.
+Choice C: Type III is immune complex-mediated (serum sickness, SLE nephritis) — not applicable to MG.
+
+Educational Objective: Myasthenia gravis = Type II hypersensitivity. Anti-AChR IgG autoantibodies block neuromuscular transmission. Diagnosis: anti-AChR antibodies, Tensilon test, repetitive nerve stimulation.`
+        },
+        {
+          id: 'p22',
+          text: `In an animal experiment, antigen injected into previously immunized animal skin causes edema, ulceration, hemorrhage, and immune complex deposits. This reaction is:`,
+          options: [`T-cell mediated reaction`, `Arthus reaction`],
+          correct: 1,
+          explanation: `The description — local immune complex deposition after antigen injection — is the hallmark of the Arthus reaction.
+
+Choice A: T-cell mediated (Type IV) reactions cause delayed hypersensitivity without immune complex deposition. The histology shows T lymphocytes and macrophages, not immune complexes.
+Choice B: Correct. The Arthus reaction is a local Type III (immune complex-mediated) hypersensitivity reaction. Pre-formed IgG antibodies react with injected antigen forming immune complexes that deposit in vessel walls → complement activation → neutrophil recruitment → local tissue damage (edema, hemorrhage, necrosis).
+
+Educational Objective: Arthus reaction = local Type III hypersensitivity. Immune complex deposition → complement activation → neutrophil-mediated tissue damage. Occurs in previously immunized (antibody-positive) individuals.`
+        },
+        {
+          id: 'p23',
+          text: `A 15-year-old African male with appetite loss, nausea, abdominal pain, and jaundice. Liver biopsy shows parasite lesion surrounded by epithelioid cells, CD4+ TH1 lymphocytes. What type of hypersensitivity?`,
+          options: [`Delayed hypersensitivity`, `Immediate hypersensitivity`, `Antibody-mediated hypersensitivity`, `Immune complex hypersensitivity`],
+          correct: 0,
+          explanation: `The pathological findings — granuloma with epithelioid cells and CD4+ TH1 lymphocytes — define the mechanism.
+
+Choice A: Correct. This is Type IV (delayed-type / cell-mediated) hypersensitivity. CD4+ TH1 cells recognize parasite antigens, release IFN-γ activating macrophages to form granulomas. This pattern is seen in schistosomiasis, tuberculosis, and fungal infections.
+Choice B: Immediate hypersensitivity (Type I) is IgE-mediated with rapid onset and eosinophil involvement — no granulomas.
+Choice C: Antibody-mediated (Type II) involves IgG/IgM against cell surface antigens — not granuloma formation.
+Choice D: Immune complex (Type III) deposits in vessel walls causing vasculitis — not the granulomatous pattern described.
+
+Educational Objective: Granuloma with CD4+ TH1 cells = Type IV delayed hypersensitivity. Schistosomiasis causes hepatic granulomas via this mechanism.`
+        },
+        {
+          id: 'p24',
+          text: `A 10-year-old male has blackish discolouration of his hand with mild itching. Biopsy shows fungal lesion with epithelioid cells, lymphocytes, giant cells, and CD4+ TH1 cells. This is:`,
+          options: [`Acute inflammatory lesion`, `Subacute type lesion`, `Granulomatous lesion`, `Neoplastic lesion`],
+          correct: 2,
+          explanation: `The biopsy findings define the type of inflammatory reaction.
+
+Choice A: Acute inflammation is characterized by neutrophils and vascular changes — not epithelioid cells and giant cells.
+Choice B: Subacute inflammation features mixed cells but is not defined by granuloma formation with giant cells.
+Choice C: Correct. Granulomatous inflammation is characterized by aggregates of activated macrophages (epithelioid cells), multinucleated giant cells, and surrounding CD4+ TH1 lymphocytes. This is a Type IV hypersensitivity response to a persistent antigen (here, fungal infection).
+Choice D: Neoplastic lesions show abnormal cell proliferation, mitoses, and architectural disruption — not inflammatory cells.
+
+Educational Objective: Granulomatous lesion = epithelioid macrophages + multinucleated giant cells + CD4+ TH1 lymphocytes. Caused by persistent antigens (fungi, TB, foreign bodies).`
+        },
+        {
+          id: 'p25',
+          text: `A 30-year-old female has itching and raised erythematous lesions on her hands that worsen with soap washing. Most likely diagnosis?`,
+          options: [`Urticaria`, `Irritant contact dermatitis`, `Atopic dermatitis`, `Allergic contact dermatitis`],
+          correct: 1,
+          explanation: `The key here is the worsening with soap — a classic irritant, not an allergen.
+
+Choice A: Urticaria presents as transient wheals (hives) with dermal edema — typically triggered by allergens or physical stimuli, not specifically worsened by soap.
+Choice B: Correct. Irritant contact dermatitis (ICD) is the most common type of contact dermatitis. Soap and detergents damage the skin barrier directly (not via immune mechanism), causing eczematous eruption. It affects anyone with sufficient exposure, not requiring prior sensitization.
+Choice C: Atopic dermatitis occurs in atopic individuals with skin barrier dysfunction — it's chronic and flexural, not specifically triggered by soap contact.
+Choice D: Allergic contact dermatitis requires prior sensitization and is caused by a specific allergen — patch test would be positive. Classic example is latex or nickel allergy.
+
+Educational Objective: Soap-induced hand dermatitis = irritant contact dermatitis (most common type). It is NOT immune-mediated; direct chemical barrier damage. No patch test positivity required.`
+        },
+        {
+          id: 'p26',
+          text: `A 45-year-old surgeon has itching, scaling and pruritus in both hands after wearing latex gloves. Patch test is positive to latex. What type of contact dermatitis?`,
+          options: [`Allergic contact dermatitis`, `Contact urticaria`, `Atopic dermatitis`, `Irritant contact dermatitis`],
+          correct: 0,
+          explanation: `A positive patch test to latex confirms immune-mediated sensitization.
+
+Choice A: Correct. Allergic contact dermatitis (ACD) is a Type IV (delayed) hypersensitivity reaction. On first exposure, the patient was sensitized to latex antigen. On re-exposure, CD4+ T cells recognize latex and cause eczematous inflammation 48-72 hours later. Patch test is the gold standard for diagnosis.
+Choice B: Contact urticaria is an immediate IgE-mediated reaction (Type I) — wheals appear within minutes. Latex can cause both ACD and contact urticaria, but the positive PATCH TEST here confirms delayed Type IV ACD.
+Choice C: Atopic dermatitis is not caused by specific allergen sensitization diagnosed by patch test.
+Choice D: Irritant contact dermatitis is not immune-mediated and patch test would be negative.
+
+Educational Objective: Positive patch test = Allergic contact dermatitis (Type IV delayed hypersensitivity). Latex ACD is occupational hazard for healthcare workers.`
+        },
+        {
+          id: 'p27',
+          text: `What testing should be done in a patient suspected with contact dermatitis?`,
+          options: [`Patch test`, `Prick test`, `Skin biopsy`, `No testing should be done`],
+          correct: 0,
+          explanation: `Identifying the causative allergen is essential for managing contact dermatitis.
+
+Choice A: Correct. Patch test is the gold standard investigation for allergic contact dermatitis. A standardized battery of allergens is applied to the patient's back under occlusion for 48 hours. Readings are taken at 48 and 96 hours. A positive result (eczematous reaction at the test site) confirms Type IV sensitization to that specific allergen.
+Choice B: Prick test (skin prick/scratch test) is used to diagnose Type I IgE-mediated immediate hypersensitivity (allergic rhinitis, food allergy, latex urticaria) — not appropriate for contact dermatitis.
+Choice C: Skin biopsy may show eczematous changes but cannot identify the specific causative allergen.
+Choice D: Testing should always be done to identify and avoid the causative allergen.
+
+Educational Objective: Patch test = investigation of choice for allergic contact dermatitis. Identifies specific Type IV allergens. Prick test is for Type I (IgE-mediated) allergies.`
+        },
+        {
+          id: 'p28',
+          text: `Which of the following is a type of ENDOGENOUS eczema?`,
+          options: [`Contact dermatitis`, `Radiation dermatitis`, `Photodermatitis`, `Atopic dermatitis`],
+          correct: 3,
+          explanation: `Eczema is classified as endogenous (intrinsic — arising from within) or exogenous (extrinsic — caused by external factors).
+
+Choice A: Contact dermatitis is EXOGENOUS — caused by external irritants or allergens.
+Choice B: Radiation dermatitis is EXOGENOUS — caused by external radiation exposure.
+Choice C: Photodermatitis is EXOGENOUS — triggered by ultraviolet light exposure.
+Choice D: Correct. Atopic dermatitis is ENDOGENOUS — driven by intrinsic factors including genetic predisposition, skin barrier dysfunction (filaggrin mutations), and immune dysregulation (TH2 dominance). It is not caused by external contact with a specific agent.
+
+Educational Objective: Endogenous eczemas: atopic dermatitis, seborrheic dermatitis, nummular eczema, dyshidrotic eczema. Exogenous eczemas: contact dermatitis, radiation dermatitis, photodermatitis.`
+        },
+        {
+          id: 'p29',
+          text: `Which of the following is an example of EXOGENOUS dermatitis?`,
+          options: [`Contact dermatitis`, `Seborrheic dermatitis`, `Atopic dermatitis`, `Nummular eczema`],
+          correct: 0,
+          explanation: `Understanding the classification of dermatitis into endogenous vs. exogenous categories is important.
+
+Choice A: Correct. Contact dermatitis (both irritant and allergic) is EXOGENOUS — caused by external substances coming in contact with the skin. It requires external trigger.
+Choice B: Seborrheic dermatitis is ENDOGENOUS — driven by Malassezia yeast on genetically susceptible skin and abnormal sebaceous gland activity.
+Choice C: Atopic dermatitis is ENDOGENOUS — genetic skin barrier dysfunction with TH2 immune skewing.
+Choice D: Nummular eczema (coin-shaped patches) is generally considered endogenous, though dry skin and external triggers can worsen it.
+
+Educational Objective: Contact dermatitis = exogenous eczema (external causative agent). Atopic, seborrheic, and nummular eczemas = endogenous.`
+        },
+        {
+          id: 'p30',
+          text: `A 6-month-old child has symmetrical eczematous eruption on cheeks, elbows and anterior knees. It responds to mild steroid cream and flares when stopped. What is the diagnosis?`,
+          options: [`Atopic dermatitis`, `Contact dermatitis with steroid cream`, `Psoriasis`, `Seborrheic dermatitis`],
+          correct: 0,
+          explanation: `The age, distribution, and steroid-responsive pattern are key diagnostic clues.
+
+Choice A: Correct. Atopic dermatitis (infantile type) classically begins in infancy with eczematous eruption on the cheeks and extensor surfaces (later flexural in older children). It is pruritic, relapsing, and responds to topical corticosteroids with flares upon cessation. A positive family history of atopy is common.
+Choice B: Contact dermatitis at 6 months is unusual and would require a specific contactant — steroid cream itself causing dermatitis is a different scenario.
+Choice C: Psoriasis presents as well-demarcated silvery scaly plaques, not eczematous eruptions, and is uncommon in infants.
+Choice D: Seborrheic dermatitis in infants (cradle cap) affects the scalp and face with greasy yellowish scales — not the bilateral cheek/elbow/knee pattern described.
+
+Educational Objective: Infantile atopic dermatitis = cheeks + extensor surfaces, age 2 months onward. Pruritic, relapsing, responds to steroids, associated with family atopy.`
+        },
+        {
+          id: 'p31',
+          text: `Which antibody is most commonly found in patients with atopic dermatitis?`,
+          options: [`IgE`, `IgA`, `IgM`, `IgG`],
+          correct: 0,
+          explanation: `Atopic dermatitis is driven by TH2 immune dysregulation with characteristic immunological findings.
+
+Choice A: Correct. IgE is markedly elevated in atopic dermatitis. TH2 cells produce IL-4 and IL-13 which drive B cells to class-switch to IgE production. Elevated total IgE and specific IgE to environmental allergens are hallmarks of atopic disease (atopic dermatitis, allergic rhinitis, asthma).
+Choice B: IgA is the predominant mucosal immunoglobulin — not specifically elevated in atopic dermatitis.
+Choice C: IgM is the first antibody produced in a primary immune response — not characteristic of atopic disease.
+Choice D: IgG is the main circulating antibody providing long-term immunity — not the hallmark of atopic dermatitis.
+
+Educational Objective: Atopic dermatitis = elevated IgE. IL-4 and IL-13 from TH2 cells drive IgE class switching. Anti-IL-4/IL-13 therapy (dupilumab) is highly effective.`
+        },
+        {
+          id: 'p32',
+          text: `A 6-year-old child has itching, scaling and erythema over limb flexures. He also has allergic rhinitis. Which condition is most relevant to this case?`,
+          options: [`Seborrhea`, `Contact dermatitis`, `Hair loss`, `Bronchial asthma`],
+          correct: 3,
+          explanation: `This child has features of the atopic triad — understanding the association is key.
+
+Choice A: Seborrhea involves greasy scales on sebaceous areas (scalp, face, chest) — not flexural eczema in an atopic child.
+Choice B: Contact dermatitis is exogenously triggered and not part of the atopic march.
+Choice C: Hair loss is not part of the atopic triad.
+Choice D: Correct. The atopic triad consists of atopic dermatitis, allergic rhinitis, and bronchial asthma. A child presenting with flexural eczema AND allergic rhinitis is highly likely to also have or develop bronchial asthma. This progression is known as the 'atopic march.'
+
+Educational Objective: Atopic march: Atopic dermatitis → Allergic rhinitis → Bronchial asthma. A child with 2 components of the atopic triad is at high risk for the third.`
+        },
+        {
+          id: 'p33',
+          text: `A 23-year-old male who had unprotected sex has penile lesions and lymph node enlargement. Most likely diagnosis:`,
+          options: [`Herpes simplex infection`],
+          correct: 0,
+          explanation: `Penile lesions with lymphadenopathy in a sexually active young male requires STI evaluation.
+
+Choice A: Correct. Herpes simplex virus (HSV-2 mainly) causes painful grouped vesicles/ulcers on the genitalia with tender inguinal lymphadenopathy. Primary HSV infection is often the most severe presentation. Other possibilities in the differential include syphilis (painless chancre) and chancroid (painful ulcer with suppurative nodes), but HSV is the most common cause of genital ulcers globally.
+
+Educational Objective: Genital vesicles/ulcers + lymphadenopathy after unprotected sex = HSV (most common). Syphilis = painless chancre. Chancroid = painful ulcer with fluctuant nodes. HSV confirmed by viral PCR or culture.`
+        },
+        {
+          id: 'p34',
+          text: `Which of the following is the general mechanism of aminoglycosides?`,
+          options: [`Inhibition of nucleic acid transcription`, `Inhibition of protein synthesis through binding to 50S subunit`, `Inhibition of protein synthesis through binding to 30S subunit`],
+          correct: 2,
+          explanation: `Aminoglycosides are bactericidal antibiotics with a specific mechanism of action.
+
+Choice A: Inhibition of nucleic acid transcription is the mechanism of rifampicin (RNA polymerase inhibitor) and fluoroquinolones (DNA gyrase inhibitor) — not aminoglycosides.
+Choice B: Binding to the 50S ribosomal subunit is the mechanism of macrolides (erythromycin), chloramphenicol, and linezolid — not aminoglycosides.
+Choice C: Correct. Aminoglycosides (gentamicin, amikacin, tobramycin) irreversibly bind to the 30S ribosomal subunit, causing misreading of mRNA, production of aberrant proteins, and cell membrane disruption — leading to bactericidal activity.
+
+Educational Objective: 30S inhibitors: aminoglycosides (bactericidal) + tetracyclines (bacteriostatic). 50S inhibitors: macrolides, chloramphenicol, linezolid, clindamycin.`
+        },
+        {
+          id: 'p35',
+          text: `Aminoglycosides are ineffective against anaerobic organisms because:`,
+          options: [`Anaerobic organisms have altered binding sites`, `They are rapidly destroyed by beta-lactamase`, `They are rapidly effluxed by anaerobic bacteria`, `They penetrate bacteria by oxygen-dependent mechanisms`],
+          correct: 3,
+          explanation: `Aminoglycosides have a specific limitation with anaerobes that relates to their uptake mechanism.
+
+Choice A: Altered binding sites (target modification) is a resistance mechanism seen with some organisms but is not the main reason for anaerobic inefficacy.
+Choice B: Beta-lactamases destroy beta-lactam antibiotics, not aminoglycosides.
+Choice C: Active efflux is a resistance mechanism in some gram-negative bacteria but not the primary explanation for anaerobic resistance.
+Choice D: Correct. Aminoglycosides require an oxygen-dependent active transport system (electron transport chain-driven proton motive force) to cross the bacterial cell membrane. Anaerobic organisms lack this oxygen-dependent transport, so aminoglycosides cannot penetrate and accumulate intracellularly in anaerobes.
+
+Educational Objective: Aminoglycosides require aerobic metabolism for bacterial uptake — ineffective against anaerobes. Also ineffective in acidic/low oxygen environments (abscesses, empyema).`
+        },
+        {
+          id: 'p36',
+          text: `Co-trimoxazole is a combination between sulfamethoxazole and:`,
+          options: [`Macrolides`, `Trimethoprim`],
+          correct: 1,
+          explanation: `Co-trimoxazole is a fixed-dose combination antibiotic targeting sequential steps in folate synthesis.
+
+Choice A: Macrolides are a separate class of antibiotics (erythromycin, azithromycin) that bind 50S ribosomes — they are not part of co-trimoxazole.
+Choice B: Correct. Co-trimoxazole = Trimethoprim + Sulfamethoxazole (TMP-SMX). Sulfamethoxazole inhibits dihydropteroate synthase (blocks PABA incorporation). Trimethoprim inhibits dihydrofolate reductase. Together they create synergistic sequential blockade of the folate synthesis pathway, resulting in bactericidal activity.
+
+Educational Objective: Co-trimoxazole = TMP + SMX. Sequential folate pathway blockade. Used for UTIs, PCP prophylaxis/treatment, Pneumocystis jirovecii, Toxoplasma, Nocardia.`
+        },
+        {
+          id: 'p37',
+          text: `Which of the following statements is TRUE about ciprofloxacin?`,
+          options: [`It is a macrolide antibiotic`, `It is a bacteriostatic antibiotic`, `It inhibits protein synthesis by binding to 50S`, `It is used to treat gram-negative bacteria`],
+          correct: 3,
+          explanation: `Ciprofloxacin is a fluoroquinolone — knowing its mechanism and spectrum is essential.
+
+Choice A: Ciprofloxacin is a fluoroquinolone, NOT a macrolide. Macrolides are azithromycin, erythromycin, clarithromycin.
+Choice B: Fluoroquinolones are BACTERICIDAL (DNA gyrase inhibition causes double-strand DNA breaks and bacterial death).
+Choice C: Ciprofloxacin does NOT inhibit protein synthesis. It inhibits DNA gyrase (topoisomerase II) and topoisomerase IV, preventing DNA replication and repair.
+Choice D: Correct. Ciprofloxacin has excellent gram-negative coverage (Pseudomonas, Enterobacteriaceae, Salmonella, Neisseria). It is used for gram-negative infections including UTIs, respiratory tract infections, and GI infections.
+
+Educational Objective: Ciprofloxacin = fluoroquinolone, bactericidal, inhibits DNA gyrase/topoisomerase IV. Excellent gram-negative coverage including Pseudomonas aeruginosa.`
+        },
+        {
+          id: 'p38',
+          text: `Which one of the following statements is correct?`,
+          options: [`Bacterial resistance to penicillin is very rare`, `A patient allergic to penicillin can take cephalosporin safely`, `Penicillin and cephalosporin have the same mechanism of action`, `Ototoxicity is the main side effect of penicillin`],
+          correct: 2,
+          explanation: `Understanding beta-lactam antibiotics is fundamental to clinical pharmacology.
+
+Choice A: FALSE. Penicillin resistance is very common — mediated by beta-lactamases, altered PBPs (e.g., MRSA), and efflux pumps. Resistance is a major clinical challenge.
+Choice B: FALSE. Cross-reactivity between penicillin and cephalosporins exists (~1-2%). Penicillin-allergic patients (especially those with severe reactions like anaphylaxis) should use cephalosporins cautiously or avoid them.
+Choice C: Correct. Both penicillins and cephalosporins are beta-lactam antibiotics that inhibit cell wall synthesis by binding to Penicillin-Binding Proteins (PBPs), preventing peptidoglycan cross-linking.
+Choice D: FALSE. Ototoxicity is the main side effect of aminoglycosides and vancomycin — NOT penicillin. Penicillin's main adverse effects are allergic reactions and neurotoxicity at high doses.
+
+Educational Objective: Penicillins + Cephalosporins = same mechanism (beta-lactam, PBP binding, cell wall inhibition). Ototoxicity = aminoglycosides/vancomycin, NOT penicillin.`
+        },
+        {
+          id: 'p39',
+          text: `Which of the following inhibits beta-lactamase?`,
+          options: [`Ascorbic acid`, `Clavulanic acid`, `Para-aminobenzoic acid`],
+          correct: 1,
+          explanation: `Beta-lactamase inhibitors are combined with beta-lactams to overcome resistance.
+
+Choice A: Ascorbic acid (vitamin C) is an antioxidant with no beta-lactamase inhibitory activity.
+Choice B: Correct. Clavulanic acid is a beta-lactamase inhibitor combined with amoxicillin (co-amoxiclav/Augmentin) to protect the antibiotic from enzymatic degradation. Other beta-lactamase inhibitors include sulbactam and tazobactam. They have weak intrinsic antibiotic activity but expand the spectrum by protecting the beta-lactam partner.
+Choice C: Para-aminobenzoic acid (PABA) is a substrate for bacterial folate synthesis — it is blocked by sulfonamides. It has no beta-lactamase inhibitory activity.
+
+Educational Objective: Beta-lactamase inhibitors: clavulanic acid, sulbactam, tazobactam. Combined with amoxicillin, ampicillin, piperacillin respectively to overcome beta-lactamase-producing bacteria.`
+        },
+        {
+          id: 'p40',
+          text: `Which symptom is more suggestive of pyelonephritis rather than cystitis?`,
+          options: [`Nausea and vomiting`, `Bloody urine`, `Dysuria`, `Loin pain`],
+          correct: 3,
+          explanation: `Distinguishing upper from lower urinary tract infection is clinically important.
+
+Choice A: Nausea and vomiting can occur in pyelonephritis (systemic illness) but are not the most distinguishing symptom.
+Choice B: Bloody urine (hematuria) occurs in both cystitis and pyelonephritis — not specific to either.
+Choice C: Dysuria (painful urination) is the hallmark of LOWER UTI (cystitis) — not specific to pyelonephritis.
+Choice D: Correct. Loin (flank) pain with costovertebral angle tenderness is the hallmark of pyelonephritis (upper UTI). Other features of pyelonephritis include fever, rigors, systemic illness, and nausea/vomiting — suggesting renal parenchymal involvement.
+
+Educational Objective: Pyelonephritis vs cystitis — loin/flank pain + fever + systemic illness = pyelonephritis (upper UTI). Dysuria + frequency + urgency without fever = cystitis (lower UTI).`
+        },
+        {
+          id: 'p41',
+          text: `What is the standard investigation for diagnosis of UTI?`,
+          options: [`Urine microscopy`, `Dipstick testing`, `Urine culture`, `Nitrate test`],
+          correct: 2,
+          explanation: `Confirmation of UTI requires identifying the causative organism and its antibiotic sensitivities.
+
+Choice A: Urine microscopy (pyuria, bacteriuria) is suggestive of UTI but cannot identify the organism or guide treatment.
+Choice B: Dipstick testing (leukocyte esterase + nitrites) is a quick screening test but has limited specificity and cannot identify the causative organism.
+Choice C: Correct. Urine culture (midstream clean-catch) is the gold standard for UTI diagnosis. It identifies the causative organism, determines antimicrobial sensitivity, and confirms the diagnosis. A count of ≥10⁵ CFU/mL of a single uropathogen is diagnostic.
+Choice D: Nitrate test on dipstick is a screening tool only — bacteria that don't produce nitrate-reductase will give false negatives.
+
+Educational Objective: Urine culture = gold standard for UTI diagnosis and antibiotic guidance. Dipstick and microscopy are screening tools only.`
+        },
+        {
+          id: 'p42',
+          text: `What is the most common microorganism causing traveler's diarrhea?`,
+          options: [`Staphylococcus aureus`, `Escherichia coli`, `Clostridium difficile`],
+          correct: 1,
+          explanation: `Traveler's diarrhea is a well-defined clinical syndrome with a predominant causative organism.
+
+Choice A: Staphylococcus aureus causes food poisoning (preformed toxin) with rapid onset vomiting — typically from contaminated processed foods, not the typical traveler's diarrhea profile.
+Choice B: Correct. Enterotoxigenic E. coli (ETEC) is the most common cause of traveler's diarrhea (>50% of cases). It produces heat-labile (LT) and heat-stable (ST) enterotoxins causing watery diarrhea, cramps, and nausea in travelers to developing countries. Onset is typically 1-3 days after arrival.
+Choice C: Clostridium difficile causes antibiotic-associated colitis in hospitalized patients — not typical traveler's diarrhea.
+
+Educational Objective: Traveler's diarrhea = ETEC (most common). Watery diarrhea, cramps. Management: oral rehydration, azithromycin or fluoroquinolones if severe.`
+        },
+        {
+          id: 'p43',
+          text: `What is the typical appearance of stool in cholera?`,
+          options: [`Bloody stool`, `Anchovy sauce stool`, `Rice water stool`, `Apple jelly stool`],
+          correct: 2,
+          explanation: `Classic stool descriptions in infectious diarrhea are important for diagnosis.
+
+Choice A: Bloody stool suggests invasive colitis (Shigella, Salmonella, E. coli O157, C. difficile) or inflammatory bowel disease.
+Choice B: Anchovy sauce stool is the classic description of amoebic liver abscess drainage or Entamoeba histolytica colitis.
+Choice C: Correct. Rice water stool is the pathognomonic description of cholera (Vibrio cholerae). It is a profuse, watery, odorless stool containing mucus flecks — resembling water in which rice has been washed. The cholera toxin causes massive secretory diarrhea without mucosal invasion.
+Choice D: Apple jelly (red currant jelly) stool is the classic description of intussusception or amoebic colitis.
+
+Educational Objective: Cholera = rice water stools. Amoeba = anchovy sauce. Intussusception = red currant jelly. These descriptors are clinically important for rapid diagnosis.`
+        },
+        {
+          id: 'p44',
+          text: `Which of the following is an alarming feature for careful evaluation of acute diarrhea?`,
+          options: [`Associated with mucus`, `Associated with undigested food`, `Watery diarrhea`, `Bloody diarrhea`],
+          correct: 3,
+          explanation: `Recognizing alarming features in diarrhea helps identify serious pathology requiring urgent evaluation.
+
+Choice A: Mucus in stool can be normal or indicate irritable bowel syndrome — not an alarming feature per se.
+Choice B: Undigested food in stool may suggest malabsorption or rapid transit — not an alarming 'red flag' feature.
+Choice C: Watery diarrhea alone is usually secretory and self-limiting (viral gastroenteritis) — not an alarming feature.
+Choice D: Correct. Bloody diarrhea (dysentery) is an alarming feature indicating invasive infection (Shigella, Salmonella, EHEC, Campylobacter, C. difficile), inflammatory bowel disease, or ischemic colitis. It requires prompt investigation and may need antibiotic therapy.
+
+Educational Objective: Red flags in acute diarrhea: bloody stool, fever >38.5°C, >6 stools/day, dehydration, age >70, immunosuppression, recent hospitalization/antibiotics.`
+        },
+        {
+          id: 'p45',
+          text: `A 35-year-old woman develops GI symptoms 1 day after a picnic where egg-salad sandwiches were eaten. Others at the picnic are affected. Which microorganism is most likely responsible?`,
+          options: [`Staphylococcal aureus`, `Clostridium botulinum`, `Salmonella species`, `Clostridium perfringens`],
+          correct: 2,
+          explanation: `The key clue is the 1-day incubation period and the specific food (egg salad).
+
+Choice A: Staphylococcal food poisoning has a very short incubation (1-6 hours) due to preformed toxin — presenting primarily with vomiting rather than diarrhea. Egg salad is a risk food, but the 1-day incubation is too long.
+Choice B: Clostridium botulinum causes neurological symptoms (descending paralysis), not typical GI illness — and food is usually canned/preserved.
+Choice C: Correct. Salmonella species have an incubation period of 6-72 hours (typically ~24 hours) and are classically associated with poultry, eggs, and egg products. They cause inflammatory gastroenteritis (fever, diarrhea, abdominal cramps). Egg salad + group outbreak + ~1 day incubation = Salmonella.
+Choice D: Clostridium perfringens has an 8-24 hour incubation causing watery diarrhea from cooked meat left at room temperature — not typically egg salad.
+
+Educational Objective: Egg/poultry + 6-72h incubation + group outbreak = Salmonella food poisoning. Usually self-limiting; antibiotics only if severe/bacteremia.`
+        },
+        {
+          id: 'p46',
+          text: `Which primary immunodeficiency is due to mutation in CD40 ligand?`,
+          options: [`Selective IgA deficiency`, `Hyper IgM syndrome`],
+          correct: 1,
+          explanation: `CD40L-CD40 interaction is essential for B cell class-switch recombination.
+
+Choice A: Selective IgA deficiency is the most common primary immunodeficiency but results from failure of IgA class switching — the mechanism is not CD40L mutation.
+Choice B: Correct. Hyper-IgM syndrome (X-linked) is caused by mutation in the CD40 ligand (CD40L/CD154) gene on T cells. Without CD40L-CD40 interaction, B cells cannot undergo class-switch recombination (from IgM to IgG/IgA/IgE). Result: elevated IgM with absent IgG/IgA/IgE. Patients are susceptible to Pneumocystis jirovecii (CD40L also needed for macrophage activation).
+
+Educational Objective: Hyper-IgM syndrome = CD40L mutation → failure of class switching → high IgM, absent IgG/IgA/IgE. Susceptible to Pneumocystis and other opportunistic infections.`
+        },
+        {
+          id: 'p47',
+          text: `Severe neutropenia occurs when the neutrophil count is:`,
+          options: [`Less than 1.5×10⁹/L`, `Less than 0.5×10⁹/L`, `Less than 2.5×10⁹/L`],
+          correct: 1,
+          alert: true,
+          explanation: `Neutropenia thresholds are clinically important for infection risk stratification.
+
+Choice A: A neutrophil count <1.5×10⁹/L defines neutropenia (mild-to-moderate), but not SEVERE neutropenia.
+Choice B: Correct. SEVERE neutropenia is defined as absolute neutrophil count (ANC) <0.5×10⁹/L (500 cells/μL). At this level, the risk of life-threatening bacterial and fungal infections is very high. Patients require neutropenic precautions, prophylactic antibiotics/antifungals, and urgent treatment of any fever.
+Choice C: <2.5×10⁹/L is within the lower range of normal — this threshold does not define neutropenia.
+
+Note: The source PDF had duplicate option labels — values have been standardized.
+
+Educational Objective: Neutropenia: ANC <1.5×10⁹/L. Severe neutropenia: ANC <0.5×10⁹/L. Fever + severe neutropenia = medical emergency requiring immediate broad-spectrum antibiotics.`
+        },
+        {
+          id: 'p48',
+          text: `A 43-year-old HIV patient presents with reduced visual acuity. Histopathology shows 'pizza pie' appearance. The diagnosis is:`,
+          options: [`Miliary TB`, `Cytomegalovirus retinitis`, `Toxoplasmosis retinitis`],
+          correct: 1,
+          explanation: `The 'pizza pie' fundoscopic appearance is pathognomonic for a specific opportunistic infection in HIV.
+
+Choice A: Miliary TB can affect the eye (choroidal tubercles) but presents as white/yellow choroidal lesions — not the pizza pie appearance.
+Choice B: Correct. Cytomegalovirus (CMV) retinitis is the classic cause of 'pizza pie' or 'scrambled eggs and ketchup' appearance on fundoscopy — representing areas of hemorrhage and white exudates following retinal vessels. It occurs when CD4 count <50 cells/μL and is the most common cause of blindness in AIDS. Treatment: ganciclovir.
+Choice C: Toxoplasma retinochoroiditis causes white/yellow fluffy retinal infiltrates with vitritis — not the pizza pie pattern.
+
+Educational Objective: CMV retinitis in AIDS = 'pizza pie' fundal appearance (hemorrhages + white exudates). CD4 <50. Treatment: ganciclovir or valganciclovir.`
+        },
+        {
+          id: 'p49',
+          text: `Which of the following conditions causes secondary hypogammaglobulinemia?`,
+          options: [`Hemophilia`, `Idiopathic thrombocytopenic purpura`, `Multiple myeloma`, `Sickle cell anemia`],
+          correct: 2,
+          explanation: `Secondary hypogammaglobulinemia can result from increased immunoglobulin loss or impaired production despite having normal B cells.
+
+Choice A: Hemophilia is a coagulation factor deficiency — unrelated to immunoglobulin levels.
+Choice B: ITP involves autoantibody-mediated platelet destruction — not associated with hypogammaglobulinemia.
+Choice C: Correct. Multiple myeloma causes secondary hypogammaglobulinemia through: (1) suppression of normal plasma cell function by malignant plasma cells, (2) production of non-functional monoclonal immunoglobulin (paraprotein) while reducing normal immunoglobulin. Despite high total protein, patients are functionally immunodeficient with recurrent bacterial infections.
+Choice D: Sickle cell anemia causes functional asplenia (increased susceptibility to encapsulated bacteria) but not hypogammaglobulinemia.
+
+Educational Objective: Multiple myeloma = secondary hypogammaglobulinemia. Malignant plasma cells suppress normal B cell function. Recurrent pneumococcal/H. influenzae infections.`
+        },
+        {
+          id: 'p50',
+          text: `A 30-year-old pregnant HIV-positive female needs antiretroviral therapy. Which drug is NOT a safe option?`,
+          options: [`Zidovudine`, `Nevirapine`, `Efavirenz`],
+          correct: 2,
+          explanation: `Some antiretrovirals are teratogenic and must be avoided in pregnancy.
+
+Choice A: Zidovudine (AZT) is safe in pregnancy and is used specifically to reduce mother-to-child transmission of HIV. It is given to the mother antenatally and intrapartum, and to the neonate after birth.
+Choice B: Nevirapine is an NNRTI that is generally acceptable in pregnancy, especially for prevention of vertical transmission (single-dose nevirapine at delivery).
+Choice C: Correct. Efavirenz (an NNRTI) is CONTRAINDICATED in the first trimester due to proven teratogenicity in animal studies (neural tube defects). It should be avoided in the first trimester and in women of childbearing potential who might become pregnant.
+
+Educational Objective: Efavirenz = CONTRAINDICATED in pregnancy (teratogenic — neural tube defects). Safe options for pregnant HIV patients include zidovudine, lamivudine, and tenofovir-based regimens.`
+        },
+        {
+          id: 'p51',
+          text: `A 32-year-old patient complains of nausea, vomiting, headache and lactic acidosis. These are adverse effects of which drug group?`,
+          options: [`NRTIs`, `Fusion inhibitors`],
+          correct: 0,
+          explanation: `Lactic acidosis is a key side effect associated with a specific class of antiretroviral drugs.
+
+Choice A: Correct. NRTIs (Nucleoside/Nucleotide Reverse Transcriptase Inhibitors) — such as zidovudine, stavudine, didanosine — cause lactic acidosis with hepatic steatosis through mitochondrial toxicity. They inhibit mitochondrial DNA polymerase gamma, impairing oxidative phosphorylation and causing anaerobic lactate production. This is a potentially life-threatening adverse effect.
+Choice B: Fusion inhibitors (e.g., enfuvirtide/T-20) work by blocking HIV envelope fusion with CD4 cells. Their main side effects are injection site reactions — not lactic acidosis.
+
+Educational Objective: NRTIs → mitochondrial toxicity → lactic acidosis + hepatic steatosis. Worst with stavudine and didanosine (now largely abandoned). Zidovudine also causes anemia/bone marrow suppression.`
+        },
+        {
+          id: 'p52',
+          text: `An HIV patient with productive cough, hemoptysis and night sweats has acid-fast bacilli on sputum smear. What is the first-line TB management?`,
+          options: [`Rifampicin, isoniazid, pyrazinamide and ethambutol (RIPE)`],
+          correct: 0,
+          explanation: `First-line TB treatment follows a standardized international regimen.
+
+Choice A: Correct. Standard first-line TB treatment uses the RIPE regimen: Rifampicin (R) + Isoniazid (I) + Pyrazinamide (P) + Ethambutol (E) for 2 months (intensive phase), followed by Rifampicin + Isoniazid for 4 months (continuation phase) = 6 months total. This four-drug regimen prevents emergence of drug resistance. WHO-recommended for drug-sensitive TB.
+
+Educational Objective: First-line TB = RIPE ×2 months, then RI ×4 months (total 6 months). Always use combination therapy to prevent resistance. Pyridoxine (B6) added with isoniazid to prevent peripheral neuropathy.`
+        },
+        {
+          id: 'p53',
+          text: `Which reason is most important for using combination chemotherapy in tuberculosis?`,
+          options: [`To prevent development of drug resistance`, `To obtain bactericidal effect`, `To broaden the spectrum`, `To reduce adverse effects`],
+          correct: 0,
+          explanation: `The rationale for combination therapy in TB is fundamental to tuberculosis management.
+
+Choice A: Correct. The PRIMARY reason for combination therapy in TB is to PREVENT DRUG RESISTANCE. TB bacilli exist in large numbers with natural mutants resistant to any single drug. Using multiple drugs ensures that mutants resistant to one drug are killed by the other drugs in the regimen, preventing the selection and amplification of resistant strains.
+Choice B: Individual TB drugs are already bactericidal (rifampicin, isoniazid) — bactericidal effect is not the main reason for combination.
+Choice C: All standard TB drugs target only M. tuberculosis — broadening spectrum is not the goal.
+Choice D: Combinations generally increase adverse effects — this is not the rationale.
+
+Educational Objective: TB combination therapy = primarily to PREVENT resistance emergence. Any single drug would select for naturally resistant mutants in a large bacillary population.`
+        },
+        {
+          id: 'p54',
+          text: `Which of the following is NOT a first-line anti-tuberculosis drug?`,
+          options: [`Rifampicin`, `Pyrazinamide`, `Ethambutol`, `Ciprofloxacin`],
+          correct: 3,
+          explanation: `Knowing the first-line TB drugs is essential for clinical management.
+
+Choice A: Rifampicin IS a first-line drug — inhibits RNA polymerase; most potent sterilizing agent.
+Choice B: Pyrazinamide IS a first-line drug — active in acidic intracellular environments; targets dormant bacilli.
+Choice C: Ethambutol IS a first-line drug — inhibits arabinosyl transferase (cell wall); used to prevent resistance.
+Choice D: Correct. Ciprofloxacin is NOT a first-line TB drug. It is a fluoroquinolone used as a SECOND-LINE agent in drug-resistant TB (MDR-TB). Levofloxacin and moxifloxacin are the preferred fluoroquinolones for TB when needed.
+
+Educational Objective: First-line TB: Rifampicin, Isoniazid, Pyrazinamide, Ethambutol (RIPE). Ciprofloxacin = second-line (MDR-TB only). Isoniazid = most potent bactericidal for actively replicating bacilli.`
+        },
+        {
+          id: 'p55',
+          text: `Which factor plays an important role in innate immune mechanisms in the respiratory system?`,
+          options: [`Cytokines`, `Lysozyme`, `Granzyme`],
+          correct: 1,
+          explanation: `The respiratory tract has specific innate defense mechanisms.
+
+Choice A: Cytokines are important mediators of immune responses but are not specific to the innate respiratory defense — they are involved in both innate and adaptive immunity broadly.
+Choice B: Correct. Lysozyme is an important enzyme of innate immunity in the respiratory tract. It is secreted in respiratory secretions (nasal, bronchial mucus, saliva) and cleaves peptidoglycan in bacterial cell walls, providing a direct bactericidal defense. It works alongside lactoferrin and secretory IgA.
+Choice C: Granzyme is a serine protease released by cytotoxic T lymphocytes (CTLs) and NK cells to induce apoptosis in virus-infected cells — this is an adaptive immune mechanism, not specifically an innate respiratory defense.
+
+Educational Objective: Innate respiratory defenses include: mucociliary escalator, lysozyme, lactoferrin, complement, defensins, and alveolar macrophages. Lysozyme provides enzymatic bactericidal activity in secretions.`
+        },
+        {
+          id: 'p56',
+          text: `Which lung disease shows 'caseous necrosis' on histopathology?`,
+          options: [`COPD`, `Pneumonia`, `TB`],
+          correct: 2,
+          explanation: `Caseous necrosis has a very specific pathological significance.
+
+Choice A: COPD shows destruction of alveolar walls (emphysema) and airway inflammation — not caseous necrosis.
+Choice B: Pneumonia shows inflammatory exudate (neutrophils, fibrin) in alveoli — not caseous necrosis. Lobar pneumonia goes through stages of congestion, red hepatization, gray hepatization, and resolution.
+Choice C: Correct. Caseous necrosis (cheese-like, amorphous, acellular necrosis) is the hallmark of tuberculosis granulomas. It results from the destructive activity of activated macrophages against M. tuberculosis. The center of TB granulomas undergoes caseation. This is highly characteristic and almost pathognomonic for TB.
+
+Educational Objective: Caseous necrosis = TB. Granuloma center with caseous necrosis surrounded by epithelioid macrophages, Langhans giant cells, and lymphocytes = classic TB histology.`
+        },
+        {
+          id: 'p57',
+          text: `The most common route of TB transmission from an active case to a susceptible host is:`,
+          options: [`Airborne droplet nuclei`, `Pasteurized milk consumption`, `Tick bite`, `Needle stick injury`],
+          correct: 0,
+          explanation: `TB transmission route is fundamental to infection control.
+
+Choice A: Correct. TB is transmitted primarily by AIRBORNE droplet nuclei — tiny particles (<5 μm) expelled when an infectious person coughs, sneezes, or speaks. These particles remain suspended in air for hours and reach the alveoli when inhaled. This is why respiratory isolation and N95 masks are required.
+Choice B: Unpasteurized milk can transmit M. bovis — a bovine TB species. Pasteurized milk is safe. Even so, M. tuberculosis (human TB) is not transmitted via milk.
+Choice C: Tick bite does not transmit TB.
+Choice D: Needle stick injury could theoretically transmit TB but this is extremely rare and not the primary route.
+
+Educational Objective: TB = airborne droplet nuclei transmission. Infection control: negative pressure isolation rooms, N95 respirators, UV germicidal irradiation.`
+        },
+        {
+          id: 'p58',
+          text: `A lung lesion with central caseation involving lymphatic vessels and regional lymph node involvement in pulmonary TB is called:`,
+          options: [`Ghon focus`, `Ghon complex`, `Ranke complex`, `Avium complex`],
+          correct: 1,
+          explanation: `The progressive primary TB lesion has specific nomenclature.
+
+Choice A: Ghon focus is the primary parenchymal lesion only (subpleural focus of caseating granuloma) — WITHOUT lymph node involvement.
+Choice B: Correct. Ghon complex = Ghon focus + lymphangitis + hilar lymphadenopathy. It represents the complete primary TB lesion including the parenchymal focus, the draining lymphatics, and the regional (hilar) lymph nodes.
+Choice C: Ranke complex is the HEALED/calcified Ghon complex (calcified focus + calcified lymph nodes) — seen on X-ray as calcifications.
+Choice D: Avium complex refers to Mycobacterium avium complex (MAC) — an atypical mycobacterium causing opportunistic infection in AIDS.
+
+Educational Objective: Primary TB: Ghon focus (parenchymal) → Ghon complex (+ lymphatics + hilar nodes) → Ranke complex (calcified, healed). Know the progression.`
+        },
+        {
+          id: 'p59',
+          text: `Autopsy reveals caseous granulomas in lung, perihilar nodes, liver, spleen and bone marrow. What is the most accurate interpretation?`,
+          options: [`Cavitary TB`, `Ghon complex`, `Healed TB`, `Miliary TB`],
+          correct: 3,
+          explanation: `Multi-organ caseous granulomas indicate hematogenous dissemination of TB.
+
+Choice A: Cavitary TB is a post-primary lung disease with cavity formation — not the multi-organ dissemination pattern described.
+Choice B: Ghon complex is the primary lung complex (parenchymal focus + hilar nodes) — not involving liver, spleen, and bone marrow.
+Choice C: Healed TB would show fibrosis and calcification — not active caseous granulomas.
+Choice D: Correct. Miliary TB results from hematogenous dissemination of M. tuberculosis seeds throughout the body, causing tiny (millet seed-sized) granulomas in multiple organs simultaneously — lungs, liver, spleen, bone marrow, meninges. Seen in immunocompromised patients or after primary infection breakdown.
+
+Educational Objective: Miliary TB = hematogenous dissemination → multiple organ caseous granulomas. Seen in immunocompromised. CXR shows 'millet seed' pattern. High mortality if untreated.`
+        },
+        {
+          id: 'p60',
+          text: `Regarding lymph node TB, which statement is correct?`,
+          options: [`Lymph node TB is the commonest overall site of TB`, `It is the commonest extrathoracic site for TB`, `Lymph nodes in TB are usually hard and tender`, `Skin overlying tuberculous nodes is always normal`],
+          correct: 1,
+          explanation: `Extrapulmonary TB manifestations are clinically important to recognize.
+
+Choice A: FALSE. The lungs are the commonest overall site of TB — pulmonary TB is by far the most frequent form.
+Choice B: Correct. Lymph node TB (tuberculous lymphadenitis / scrofula) is the most common EXTRAPULMONARY (extrathoracic) site of TB. Cervical lymph nodes (posterior triangle) are most commonly involved. Nodes are typically painless, matted, and non-tender.
+Choice C: TB lymph nodes are characteristically PAINLESS and non-tender (unless superinfected). Hard, tender nodes suggest another diagnosis (e.g., bacterial lymphadenitis).
+Choice D: The skin overlying tuberculous nodes can become involved — collar-stud abscess with skin breakdown (scrofuloderma) can occur.
+
+Educational Objective: Lymph node TB = most common extrapulmonary TB site. Cervical nodes most common. Painless, matted 'cold' nodes. May form collar-stud abscess (scrofuloderma).`
+        },
+        {
+          id: 'p61',
+          text: `A healthy patient given a PPD (tuberculin) on his forearm has a 15 mm induration after 48 hours. What is the diagnosis?`,
+          options: [`Active tuberculosis`, `Immune to tuberculosis`, `Advanced tuberculosis`, `Exposure to tuberculosis`],
+          correct: 3,
+          explanation: `Tuberculin skin test (TST/Mantoux) interpretation is crucial in TB medicine.
+
+Choice A: A positive TST alone does NOT diagnose active TB — it indicates immune response to TB antigens (past exposure, latent TB, or BCG vaccination), not necessarily active disease.
+Choice B: A positive TST does not mean the person is immune — it means they have been exposed/sensitized. TB can still reactivate.
+Choice C: Advanced TB is diagnosed by clinical, radiological, and microbiological findings — not TST alone.
+Choice D: Correct. A positive TST (≥10mm in standard risk, ≥15mm in low-risk individuals) indicates prior EXPOSURE to M. tuberculosis and immune sensitization (latent TB infection). To rule out active TB, a chest X-ray and clinical assessment are needed.
+
+Educational Objective: Positive TST = exposure to TB (latent infection). Does NOT diagnose active TB. CXR + sputum culture needed to confirm active disease. TST also positive after BCG vaccination.`
+        },
+        {
+          id: 'p62',
+          text: `A 35-year-old Egyptian patient has 2-month history of nocturnal fever, night sweats, weight loss, productive cough with bloody sputum. CXR shows right-sided consolidation with cavitation. Which step establishes the diagnosis?`,
+          options: [`Bronchoscopy and bronchoalveolar lavage`, `Interferon-Gamma Release Assays (IGRAs)`, `Sputum stain and culture for acid-fast bacilli`, `Tuberculin skin test`],
+          correct: 2,
+          explanation: `The clinical picture strongly suggests active pulmonary TB — the confirmatory test must be chosen correctly.
+
+Choice A: Bronchoscopy is reserved for patients who cannot produce adequate sputum or when the diagnosis remains unclear — it is not the first-line diagnostic step.
+Choice B: IGRAs (QuantiFERON-TB Gold) detect latent TB infection — they cannot distinguish active from latent TB and are not used to confirm active disease.
+Choice C: Correct. Sputum smear for acid-fast bacilli (AFB) AND sputum culture for M. tuberculosis is the gold standard for diagnosing active pulmonary TB. At least 3 sputum specimens (including one early morning sample) are needed. Culture confirms species and sensitivity.
+Choice D: Tuberculin skin test indicates exposure/latent TB — cannot confirm active disease.
+
+Educational Objective: Active pulmonary TB diagnosis = sputum AFB smear + culture (gold standard). At least 3 specimens. Cavitation on CXR = high bacillary load and infectivity.`
+        },
+        {
+          id: 'p63',
+          text: `The early stage of lobar pneumonia characterized by heavy, boggy lung with neutrophils in alveoli and engorged vessels is:`,
+          options: [`Congestion`, `Red hepatization`, `Gray hepatization`, `Resolution`],
+          correct: 0,
+          explanation: `The four stages of lobar pneumonia have specific pathological characteristics.
+
+Choice A: Correct. The CONGESTION stage (day 1-2) is the earliest stage: lungs are heavy, red and boggy due to vascular engorgement. Alveoli contain serous fluid, bacteria, and a few neutrophils. This precedes the full inflammatory consolidation.
+Choice B: Red hepatization (days 2-4): alveoli packed with red blood cells, neutrophils, and fibrin. Lung is firm, airless, liver-like. This is AFTER congestion.
+Choice C: Gray hepatization (days 4-8): RBCs lyse, leaving fibrin and neutrophils. Lung becomes gray. Still consolidated.
+Choice D: Resolution (days 8+): macrophages clear debris, lung architecture restores. Normal.
+
+Educational Objective: Lobar pneumonia stages: Congestion → Red hepatization → Gray hepatization → Resolution. Congestion = early engorged, boggy lung with few neutrophils.`
+        },
+        {
+          id: 'p64',
+          text: `An elderly patient hospitalized long-term on prolonged antibiotics is most likely to develop which type of pneumonia?`,
+          options: [`Community-acquired bacterial pneumonia`, `Community-acquired viral pneumonia`, `Hospital-acquired (nosocomial) pneumonia`, `Chronic pneumonia`],
+          correct: 2,
+          explanation: `The context of prolonged hospitalization determines the likely type of pneumonia.
+
+Choice A: Community-acquired pneumonia (CAP) develops in patients who have NOT been recently hospitalized — the main pathogens are Streptococcus pneumoniae, Haemophilus influenzae, Mycoplasma.
+Choice B: Community-acquired viral pneumonia is also not applicable to a hospitalized patient.
+Choice C: Correct. Hospital-acquired pneumonia (HAP/nosocomial) develops ≥48 hours after hospital admission in a patient NOT intubated at admission. Risk factors include prolonged hospitalization, ICU stay, mechanical ventilation, antibiotic use (disrupts normal flora), and aspiration. Pathogens: Pseudomonas, MRSA, Klebsiella (gram-negatives predominate).
+Choice D: Chronic pneumonia refers to slow-progressing, often atypical infections (TB, fungi) — not the expected complication here.
+
+Educational Objective: HAP = pneumonia ≥48h post-admission. Pathogens: Pseudomonas, MRSA, Klebsiella, Acinetobacter. Risk factors: ICU, mechanical ventilation, prolonged antibiotics, aspiration.`
+        },
+        {
+          id: 'p65',
+          text: `Patchy consolidation of the lung is seen in:`,
+          options: [`Interstitial pneumonia`, `Bronchopneumonia`, `Lobar pneumonia`, `Bronchial asthma`],
+          correct: 1,
+          explanation: `Different pneumonia types have characteristic radiological patterns.
+
+Choice A: Interstitial pneumonia (atypical pneumonia) causes diffuse bilateral 'ground-glass' or interstitial infiltrates — not patchy consolidation.
+Choice B: Correct. Bronchopneumonia causes PATCHY, multifocal consolidation centered around bronchioles and bronchi. It is characterized by foci of inflammation in multiple lobes, often bilaterally, producing an irregular patchy radiographic appearance. Common pathogens: Staph aureus, Klebsiella.
+Choice C: Lobar pneumonia causes complete consolidation of an entire lobe — homogeneous, not patchy.
+Choice D: Bronchial asthma causes hyperinflation and air trapping — not consolidation.
+
+Educational Objective: Bronchopneumonia = patchy, peribronchiolar consolidation in multiple lobes. Lobar pneumonia = complete lobar consolidation. Interstitial pneumonia = ground-glass/interstitial pattern.`
+        },
+        {
+          id: 'p66',
+          text: `A 34-year-old healthy male develops sore throat, productive cough and fever 38.5°C. Diagnosed with pneumonia. What type?`,
+          options: [`Community-acquired`, `Hospital-acquired`, `Ventilator-associated`, `Aspiration`],
+          correct: 0,
+          explanation: `Classification of pneumonia is based on where and how it was acquired.
+
+Choice A: Correct. Community-acquired pneumonia (CAP) occurs in a patient who has NOT been hospitalized or in a healthcare facility in the preceding 90 days. A young healthy male with typical symptoms developing in the community = CAP. Most common pathogen: Streptococcus pneumoniae.
+Choice B: Hospital-acquired pneumonia occurs ≥48 hours after hospitalization — this patient was not hospitalized.
+Choice C: Ventilator-associated pneumonia (VAP) occurs in intubated patients on mechanical ventilation — not applicable here.
+Choice D: Aspiration pneumonia occurs from aspiration of oropharyngeal or gastric contents — no history of aspiration given.
+
+Educational Objective: CAP = pneumonia acquired outside hospital. Most common pathogen: S. pneumoniae. CURB-65 score used to assess severity. Oral amoxicillin ± macrolide for outpatient CAP.`
+        },
+        {
+          id: 'p67',
+          text: `A 24-year-old woman returning from a cruise ship presents with Legionnaires disease. How did she acquire the infection?`,
+          options: [`Inhalation of infected aerosol`, `Person-to-person transmission`, `Ingestion of contaminated milk`],
+          correct: 0,
+          explanation: `Legionella pneumophila has a unique and specific mode of transmission.
+
+Choice A: Correct. Legionella is transmitted by INHALATION OF CONTAMINATED AEROSOLS from environmental water sources — cooling towers, air conditioning systems, hot tubs, and cruise ship water systems. The organism thrives in warm water reservoirs. There is NO person-to-person transmission.
+Choice B: Legionella does NOT spread person-to-person — each case is acquired independently from the environmental source.
+Choice C: Legionella is NOT transmitted through ingestion of contaminated food or milk.
+
+Educational Objective: Legionella = aerosol inhalation from contaminated water systems (cooling towers, AC, hot tubs, cruise ships). No person-to-person spread. Presents as 'atypical' pneumonia with hyponatremia and GI symptoms. Treat with azithromycin or levofloxacin.`
+        },
+        {
+          id: 'p68',
+          text: `A farmer presents with Q-fever. What is the most likely causative organism?`,
+          options: [`Coxiella burnetii`, `Klebsiella pneumoniae`],
+          correct: 0,
+          explanation: `Q-fever has a specific causative organism and is associated with animal contact.
+
+Choice A: Correct. Coxiella burnetii is the causative organism of Q-fever. It is an intracellular bacterium that infects livestock (cattle, sheep, goats) and is found in birthing fluids, placentas, feces, and milk. Humans are infected by inhaling infected aerosols or dust. Farmers and veterinarians are at risk. Presents as flu-like illness, pneumonia, or hepatitis. Treat with doxycycline.
+Choice B: Klebsiella pneumoniae causes community-acquired and nosocomial pneumonia — it is NOT the causative agent of Q-fever.
+
+Educational Objective: Q-fever = Coxiella burnetii. Risk: farmers, veterinarians (animal contact). Inhaled from livestock birthing products. 'Q' = Query (mysterious origin initially). Doxycycline is treatment of choice.`
+        },
+        {
+          id: 'p69',
+          text: `What is the causative organism of atypical pneumonia?`,
+          options: [`Mycoplasma pneumoniae`, `Klebsiella pneumoniae`, `Staphylococcus aureus`],
+          correct: 0,
+          explanation: `Atypical pneumonia has specific causative organisms that differ from typical bacterial pneumonia.
+
+Choice A: Correct. Mycoplasma pneumoniae is the most common cause of atypical (walking) pneumonia. It lacks a cell wall (hence resistant to beta-lactams), causes insidious onset of dry cough, low-grade fever, and bilateral interstitial infiltrates on CXR. Also a classic cause of cold agglutinins. Treat with macrolides, tetracyclines, or fluoroquinolones.
+Choice B: Klebsiella pneumoniae causes typical lobar pneumonia — often in alcoholics, with 'currant jelly' sputum and upper lobe involvement. Not atypical pneumonia.
+Choice C: Staphylococcus aureus causes typical pneumonia — often post-influenza, with cavitation and pneumatoceles.
+
+Educational Objective: Atypical pneumonia causes: Mycoplasma (most common), Legionella, Chlamydophila pneumoniae, Chlamydophila psittaci, Coxiella. All resist beta-lactams. Treat with macrolides or fluoroquinolones.`
+        },
+        {
+          id: 'p70',
+          text: `CURB-65 is used to assess severity of which respiratory disease?`,
+          options: [`Pneumonia`, `Obstructive sleep apnea`, `Bronchial asthma`, `Pulmonary embolism`],
+          correct: 0,
+          explanation: `CURB-65 is a widely used clinical scoring system in respiratory medicine.
+
+Choice A: Correct. CURB-65 is the pneumonia severity scoring system used to guide site-of-care decisions. Scoring: C=Confusion, U=Urea >7mmol/L, R=Respiratory rate ≥30/min, B=BP <90/60, 65=Age ≥65. Score 0-1 = low risk (home), 2 = moderate (hospital), 3-5 = severe (ICU consideration).
+Choice B: Obstructive sleep apnea is assessed using Epworth Sleepiness Scale and polysomnography.
+Choice C: Asthma severity is assessed by peak flow, FEV1, and clinical features — not CURB-65.
+Choice D: Pulmonary embolism severity is assessed by the Wells score, PESI score, and echocardiography.
+
+Educational Objective: CURB-65 = Pneumonia severity score. C-U-R-B-65 each = 1 point. Used to decide outpatient vs. inpatient vs. ICU management.`
+        },
+        {
+          id: 'p71',
+          text: `A 67-year-old smoker has right-sided chest pain, cough, shortness of breath, dull percussion with bronchial breath sounds, pleural rub, and central trachea. The diagnosis is:`,
+          options: [`Collapse`, `Consolidation`, `Effusion`, `None of them`],
+          correct: 1,
+          explanation: `The combination of findings must be carefully interpreted.
+
+Choice A: Collapse — trachea deviates TOWARD the collapsed side (not central), percussion dull, breath sounds reduced/absent.
+Choice B: Correct. Consolidation features: dull percussion (fluid-filled alveoli), BRONCHIAL breath sounds (sound transmitted through solid lung), pleural rub (pleuritis), and CENTRAL trachea (no mediastinal shift because airway remains patent). This matches the presentation.
+Choice C: Effusion — stony dull percussion, ABSENT breath sounds (fluid dampens transmission), trachea central or shifted AWAY from effusion.
+Choice D: The constellation of findings clearly points to consolidation.
+
+Educational Objective: Consolidation = dull percussion + bronchial breath sounds + central trachea + possible pleural rub. Collapse = dull + reduced sounds + trachea shifted toward. Effusion = stony dull + absent sounds + trachea shifted away.`
+        },
+        {
+          id: 'p72',
+          text: `Centrilobular emphysema predominantly affects:`,
+          options: [`Pre-terminal bronchioles`, `Respiratory bronchioles`, `Alveolar duct`, `Alveolus`],
+          correct: 1,
+          explanation: `Different types of emphysema affect different parts of the acinus.
+
+Choice A: Pre-terminal bronchioles are conducting airways — emphysema by definition involves airspace enlargement distal to the terminal bronchiole.
+Choice B: Correct. Centrilobular (centriacinar) emphysema affects the RESPIRATORY BRONCHIOLES (proximal acinus) and spares the distal alveoli. It is the most common type and strongly associated with cigarette smoking. Upper lobes are predominantly affected.
+Choice C: Alveolar ducts are affected in panacinar emphysema — associated with alpha-1 antitrypsin deficiency.
+Choice D: Alveoli are the end-stage target of panacinar emphysema, not the primary site of centrilobular emphysema.
+
+Educational Objective: Centrilobular emphysema = respiratory bronchioles, upper lobe predominance, caused by smoking. Panacinar emphysema = entire acinus (from respiratory bronchioles to alveoli), lower lobes, caused by alpha-1 antitrypsin deficiency.`
+        },
+        {
+          id: 'p73',
+          text: `A 23-year-old female has episodic wheezing, breathlessness, nocturnal cough, Charcot-Leyden crystals and Curschmann spirals. The diagnosis is:`,
+          options: [`Chronic bronchitis`, `Emphysema`, `Bronchiectasis`, `Bronchial asthma`],
+          correct: 3,
+          explanation: `The pathological markers Charcot-Leyden crystals and Curschmann spirals are specific diagnostic clues.
+
+Choice A: Chronic bronchitis presents with chronic productive cough ≥3 months/year for ≥2 years — no specific mention of these crystals.
+Choice B: Emphysema causes progressive breathlessness with loss of alveolar walls — no Curschmann spirals or Charcot-Leyden crystals.
+Choice C: Bronchiectasis features chronic productive purulent cough with dilated airways — different pathology.
+Choice D: Correct. Bronchial asthma is characterized by: Charcot-Leyden crystals (eosinophil granule protein crystallized in sputum), Curschmann spirals (mucus casts of bronchioles), and Creola bodies. These findings in sputum cytology confirm eosinophilic airway inflammation in asthma.
+
+Educational Objective: Asthma sputum markers: Charcot-Leyden crystals (eosinophil breakdown), Curschmann spirals (mucus plugs), Creola bodies (shed epithelium). These confirm eosinophilic airway inflammation.`
+        },
+        {
+          id: 'p74',
+          text: `A 36-year-old man has fever, productive mucopurulent foul-smelling cough especially in the morning, and hugely dilated airways. The diagnosis is:`,
+          options: [`Bronchial asthma`, `Emphysema`, `Bronchiectasis`, `Allergic rhinitis`],
+          correct: 2,
+          explanation: `Dilated airways with copious purulent morning sputum is the hallmark of one condition.
+
+Choice A: Bronchial asthma causes wheezing, reversible airway narrowing — not permanent airway dilation or mucopurulent feces-like sputum.
+Choice B: Emphysema causes destruction of alveolar walls with airspace enlargement — not dilated airways with purulent sputum.
+Choice C: Correct. Bronchiectasis is the PERMANENT and ABNORMAL dilation of bronchi. Classic features: chronic productive cough (copious mucopurulent sputum, worse in morning), foul-smelling sputum, recurrent respiratory infections, and hemoptysis. Caused by: post-infectious, CF, primary ciliary dyskinesia, hypogammaglobulinemia. CXR/CT: 'tram-track' or 'signet ring' sign.
+Choice D: Allergic rhinitis affects the upper airways — not associated with dilated bronchi or mucopurulent sputum.
+
+Educational Objective: Bronchiectasis = permanently dilated bronchi + chronic purulent sputum production + morning 'pot of sputum.' CT chest is gold standard. Common causes: CF, post-TB, post-infectious, immune deficiency.`
+        },
+        {
+          id: 'p75',
+          text: `A 23-year-old female has symptoms of asthma. Which additional feature suggests acute SEVERE asthma attack?`,
+          options: [`Blood pressure 120/80 mmHg`, `Inability to complete a sentence in one breath`, `Pulse rate 80 beats/min`, `Respiratory rate 18 breaths/min`],
+          correct: 1,
+          explanation: `Recognizing severe asthma requires knowledge of specific clinical criteria.
+
+Choice A: BP 120/80 is normal — not a feature of severe asthma.
+Choice B: Correct. Inability to complete a sentence in one breath is a feature of ACUTE SEVERE asthma. British guidelines (BTS) define acute severe asthma as: any ONE of: inability to complete sentences, RR ≥25/min, HR ≥110 bpm, PEF 33-50% predicted.
+Choice C: Pulse rate 80 bpm is normal. Severe asthma has HR ≥110 bpm.
+Choice D: RR 18/min is normal. Severe asthma requires RR ≥25/min.
+
+Educational Objective: Acute severe asthma criteria (BTS): cannot complete sentences, RR ≥25/min, HR ≥110 bpm, PEF 33-50% predicted. Life-threatening: PEF <33%, SpO2 <92%, silent chest, cyanosis, bradycardia, exhaustion.`
+        },
+        {
+          id: 'p76',
+          text: `Which investigation would STRONGLY suggest asthma in a patient with cough and chest tightness?`,
+          options: [`Allergen provocative test`, `Hyperinflation on chest radiograph`, `Improvement in FEV1 ≥12% following salbutamol inhalation`, `Reduced carbon monoxide transfer factor`],
+          correct: 2,
+          explanation: `Objective demonstration of reversible airflow obstruction is the key to asthma diagnosis.
+
+Choice A: Allergen provocative test (methacholine challenge) demonstrates airway hyperresponsiveness but is not specific for asthma and carries risks.
+Choice B: Hyperinflation on CXR suggests air trapping (COPD or severe asthma during attack) — it is not diagnostic of asthma as it may be absent between attacks.
+Choice C: Correct. A ≥12% (and ≥200mL) improvement in FEV1 after short-acting bronchodilator (salbutamol) = significant REVERSIBILITY — this is the key spirometric finding that strongly suggests asthma. It demonstrates the defining feature of asthma: reversible airflow obstruction.
+Choice D: Reduced TLCO (carbon monoxide transfer factor) suggests emphysema or interstitial lung disease — in asthma, TLCO is typically normal or elevated.
+
+Educational Objective: Asthma diagnosis: ≥12% (and ≥200mL) post-bronchodilator FEV1 improvement = reversibility = strongly suggests asthma. COPD shows <12% reversibility.`
+        },
+        {
+          id: 'p77',
+          text: `Which investigation result is diagnostic of cystic fibrosis?`,
+          options: [`Dilated bronchi on CXR`, `Dilated bronchi on CT`, `Diffuse fibrosis on CXR`, `High salt concentration in sweat`],
+          correct: 3,
+          explanation: `Cystic fibrosis has a specific diagnostic gold standard test.
+
+Choice A: Dilated bronchi on CXR suggests bronchiectasis (a complication of CF) — not diagnostic of CF itself.
+Choice B: CT showing dilated bronchi again suggests bronchiectasis, a feature of CF, but is not the diagnostic test.
+Choice C: Diffuse fibrosis on CXR is a feature of interstitial lung disease — not CF.
+Choice D: Correct. The Sweat Chloride Test (pilocarpine iontophoresis) is the GOLD STANDARD for diagnosing cystic fibrosis. A sweat chloride concentration ≥60 mmol/L on two separate occasions is diagnostic. CF is caused by CFTR protein dysfunction, leading to defective chloride transport and abnormally salty sweat.
+
+Educational Objective: Cystic fibrosis diagnosis = sweat chloride test. Chloride ≥60 mmol/L = diagnostic. CFTR gene mutations (ΔF508 most common). Multisystem disease: lungs, pancreas, liver, fertility.`
+        },
+        {
+          id: 'p78',
+          text: `Which of the following is a short-acting β2-agonist?`,
+          options: [`Salmeterol`, `Salbutamol`, `Ipratropium`],
+          correct: 1,
+          explanation: `Distinguishing short-acting from long-acting bronchodilators is important for asthma management.
+
+Choice A: Salmeterol is a LONG-acting β2-agonist (LABA) — duration 12 hours. Used as add-on therapy in persistent asthma with inhaled corticosteroids. NOT for acute relief.
+Choice B: Correct. Salbutamol (albuterol) is a SHORT-acting β2-agonist (SABA) — onset within minutes, duration 4-6 hours. It is the RELIEVER medication (rescue inhaler) for acute asthma symptoms. First-line for acute bronchospasm.
+Choice C: Ipratropium is a SHORT-acting anticholinergic (SAMA) — NOT a β2-agonist. It is a muscarinic antagonist used in COPD and as add-on in acute severe asthma.
+
+Educational Objective: SABA = Salbutamol (reliever/rescue). LABA = Salmeterol, Formoterol (controller — always with ICS). SABAs must not be used as sole long-term controller in asthma.`
+        },
+        {
+          id: 'p79',
+          text: `Which of the following is an adverse effect of beta-2 agonists?`,
+          options: [`Dry mouth`, `Increased bronchial secretion`, `Insomnia`, `Tremor`],
+          correct: 3,
+          explanation: `Beta-2 agonists have predictable adverse effects related to their adrenergic mechanism.
+
+Choice A: Dry mouth is a side effect of ANTICHOLINERGICS (ipratropium, tiotropium) — not beta-2 agonists.
+Choice B: Beta-2 agonists actually DECREASE bronchial secretion (anticholinergics dry secretions) — increased secretion is not a beta-2 agonist effect.
+Choice C: Insomnia is not a characteristic adverse effect of inhaled beta-2 agonists.
+Choice D: Correct. TREMOR (skeletal muscle tremor) is the most common adverse effect of beta-2 agonists, caused by stimulation of beta-2 receptors in skeletal muscle (enhancing contractility). Other effects: tachycardia, palpitations, hypokalemia (K+ shift into cells), hyperglycemia.
+
+Educational Objective: Beta-2 agonist adverse effects: tremor (most common), tachycardia, palpitations, hypokalemia. Dry mouth and urinary retention = anticholinergics. Ototoxicity = aminoglycosides.`
+        },
+        {
+          id: 'p80',
+          text: `[Question content unavailable in source material]`,
+          options: [`Not available — refer to lecture notes`],
+          correct: 0,
+          alert: true,
+          explanation: `This question was marked as 'Missed' in the source question bank — no content was provided.
+
+Choice A: This is a placeholder. The original question content was not included in the source document.
+
+Educational Objective: Please refer to your lecture notes or course materials for this question's content.`
+        },
+        {
+          id: 'p81',
+          text: `Oropharyngeal candidiasis is an adverse effect of long-term use of which drug?`,
+          options: [`Atropine`, `Beclometasone (inhaled corticosteroid)`],
+          correct: 1,
+          explanation: `Oropharyngeal candidiasis is a well-known complication of a specific class of inhaled drugs.
+
+Choice A: Atropine is an anticholinergic that causes dry mouth but does NOT suppress local immunity — it does not cause oropharyngeal candidiasis.
+Choice B: Correct. Inhaled corticosteroids (ICS) such as beclometasone, budesonide, and fluticasone cause local immunosuppression in the oropharynx, allowing overgrowth of Candida albicans. Prevention: rinse mouth after inhaler use, use spacer device. Treatment: nystatin or oral fluconazole.
+
+Educational Objective: ICS side effects: oropharyngeal candidiasis, dysphonia, cough. Prevention: rinse mouth after use + spacer device. Systemic ICS effects (at high doses): osteoporosis, adrenal suppression, hyperglycemia.`
+        },
+        {
+          id: 'p82',
+          text: `Which drug is given intravenously to treat acute severe asthma?`,
+          options: [`Hydrocortisone`, `Beclomethasone`, `Fluticasone`, `Prednisolone`],
+          correct: 0,
+          explanation: `Systemic corticosteroids are essential in acute severe asthma — the route matters.
+
+Choice A: Correct. Hydrocortisone is given INTRAVENOUSLY for acute severe asthma when the patient cannot take oral medication. IV corticosteroids reduce airway inflammation and accelerate recovery. Hydrocortisone 100-200mg IV every 6 hours is the standard regimen.
+Choice B: Beclomethasone is an INHALED corticosteroid (ICS) — not available or appropriate IV. It is for chronic maintenance therapy, not acute severe attacks.
+Choice C: Fluticasone is also an ICS — same as above; not given IV.
+Choice D: Prednisolone is an ORAL corticosteroid used when the patient can swallow — equivalent efficacy to IV hydrocortisone for mild-moderate exacerbations.
+
+Educational Objective: Acute severe asthma IV treatment: hydrocortisone (or methylprednisolone IV). When able to swallow: prednisolone orally. ICS (beclomethasone/fluticasone) are maintenance — NOT acute rescue.`
+        },
+        {
+          id: 'p83',
+          text: `All of the following are true about idiopathic pulmonary fibrosis EXCEPT:`,
+          options: [`Unknown etiology`, `Fibrogenic factors like TGF-β`, `Patchy interstitial lung fibrosis`, `Disorder affecting mainly children`],
+          correct: 3,
+          explanation: `Idiopathic pulmonary fibrosis (IPF) has specific clinical characteristics that must be known.
+
+Choice A: TRUE — IPF is by definition idiopathic (no known cause identified). This distinguishes it from other interstitial lung diseases with known causes.
+Choice B: TRUE — TGF-β (Transforming Growth Factor beta) is the key fibrogenic cytokine driving fibroblast activation and collagen deposition in IPF. Note: the question stem says 'TNF-β' which is equivalent to TGF-β in context.
+Choice C: TRUE — IPF shows patchy, subpleural, basal-predominant fibrosis with Usual Interstitial Pneumonia (UIP) pattern on HRCT.
+Choice D: Correct (EXCEPT answer). IPF is a disease of OLDER ADULTS — typically >60 years, male predominance, associated with smoking. It does NOT affect mainly children. Children's interstitial lung disease (chILD) is a separate entity.
+
+Educational Objective: IPF: >60 years, male, smoker. UIP pattern on HRCT. Unknown cause. Fibrogenic cytokine: TGF-β. Progressive, fatal. Treatment: pirfenidone, nintedanib.`
+        },
+        {
+          id: 'p84',
+          text: `Which inhaled substance shows nodular lesions and is highly associated with tuberculosis?`,
+          options: [`Asbestosis`, `Carbon dust`, `Silica`, `Sarcoidosis`],
+          correct: 2,
+          explanation: `Pneumoconioses have distinct pathological features and important disease associations.
+
+Choice A: Asbestosis is associated with interstitial fibrosis and mesothelioma — NOT tuberculosis.
+Choice B: Carbon dust (coal workers' pneumoconiosis) can cause simple or progressive massive fibrosis — not specifically associated with TB.
+Choice C: Correct. Silicosis (from inhalation of crystalline silica) causes silicotic nodules (concentric collagen rings) predominantly in upper lobes. Silicosis is strongly associated with tuberculosis (silico-tuberculosis) because silica impairs macrophage function and kills macrophages, compromising defense against M. tuberculosis. Risk occupations: miners, stone cutters, sandblasters.
+Choice D: Sarcoidosis is not an inhaled substance — it is a systemic granulomatous disease.
+
+Educational Objective: Silicosis = silicotic nodules + upper lobe predominance + STRONGLY associated with TB (impairs macrophage bactericidal function). Screen silica-exposed workers for TB.`
+        },
+        {
+          id: 'p85',
+          text: `Cigarette smoking is associated with lung cancer along with which occupational exposure?`,
+          options: [`Asbestos`, `Silica`, `Sarcoidosis`, `Coal workers' pneumoconiosis`],
+          correct: 0,
+          explanation: `Synergistic carcinogenic risk is important for lung cancer prevention.
+
+Choice A: Correct. Asbestos exposure combined with cigarette smoking has a SYNERGISTIC (multiplicative, not additive) effect on lung cancer risk. Asbestos alone increases lung cancer risk 5-fold; smoking alone increases risk 10-fold; together the risk is ~50-fold greater than non-exposed, non-smokers. Asbestos also causes mesothelioma (pleural/peritoneal), which is NOT smoking-related.
+Choice B: Silicosis is associated with TB but has a less dramatic synergistic relationship with lung cancer compared to asbestos.
+Choice C: Sarcoidosis is not associated with increased lung cancer risk.
+Choice D: Coal workers' pneumoconiosis is not as strongly linked to lung cancer as asbestos.
+
+Educational Objective: Asbestos + smoking = synergistic lung cancer risk (>>additive). Asbestos alone → mesothelioma (not smoking-related). 'Asbestos' is the key answer for asbestos-related malignancies.`
+        },
+        {
+          id: 'p86',
+          text: `Coal workers' pneumoconiosis results in all of the following EXCEPT:`,
+          options: [`Lung cancer`, `Lung fibrosis`],
+          correct: 0,
+          explanation: `Coal workers' pneumoconiosis (CWP) has specific pulmonary complications.
+
+Choice A: Correct (EXCEPT answer). Coal workers' pneumoconiosis is NOT significantly associated with increased lung cancer risk. This is in contrast to asbestosis (strongly linked to lung cancer) and silicosis (some association). CWP causes progressive massive fibrosis (PMF) but is not considered an independent lung cancer risk factor.
+Choice B: Lung fibrosis IS a complication of CWP — ranging from simple CWP (macules) to progressive massive fibrosis (PMF), a severe disabling fibrosis in the upper lobes.
+
+Educational Objective: CWP → lung fibrosis (PMF) — YES. CWP → lung cancer — NO (minimal association). Compare: Asbestosis → lung cancer + mesothelioma. Silicosis → some lung cancer association + TB. CWP → mainly fibrosis, NOT cancer.`
+        },
+        {
+          id: 'p87',
+          text: `A 58-year-old shipyard worker with asbestos exposure is at risk of developing which lung disease?`,
+          options: [`Mesothelioma`],
+          correct: 0,
+          explanation: `Asbestos exposure in shipbuilding is a classic occupational risk scenario.
+
+Choice A: Correct. Mesothelioma (malignant pleural mesothelioma) is the most important and characteristic malignancy associated with asbestos exposure. Shipyard workers, construction workers, insulation installers, and plumbers are at high risk. The latency period is very long (20-40 years). There is NO safe level of asbestos exposure. Mesothelioma is NOT related to smoking — this distinguishes it from asbestos-related lung carcinoma.
+
+Educational Objective: Asbestos → mesothelioma (pleural/peritoneal). Long latency (20-40 years). NOT smoking-related. Asbestos + smoking → lung carcinoma (synergistic). Shipyard workers are classic high-risk group.`
+        },
+        {
+          id: 'p88',
+          text: `A 34-year-old female has chronic cough, uveitis, shin rashes, bilateral hilar lymphadenopathy, elevated calcium and ESR, and non-necrotizing granulomas on biopsy. Diagnosis?`,
+          options: [`Silicosis`, `Sarcoidosis`, `Pulmonary fibrosis`],
+          correct: 1,
+          explanation: `The combination of findings points to a specific systemic granulomatous disease.
+
+Choice A: Silicosis causes silicotic nodules (concentric fibrosis) in a worker with silica exposure — no uveitis, no hypercalcemia pattern described.
+Choice B: Correct. Sarcoidosis is a multisystem non-caseating (non-necrotizing) granulomatous disease of unknown cause. Classic features: bilateral hilar lymphadenopathy, pulmonary infiltrates, uveitis, erythema nodosum (shin rashes), hypercalcemia (granulomas produce 1,25-OH Vit D), elevated ACE and ESR. Biopsy shows non-caseating granulomas — key distinction from TB.
+Choice C: Pulmonary fibrosis (IPF) causes basal fibrosis in elderly males — no uveitis, bilateral hilar adenopathy, or hypercalcemia.
+
+Educational Objective: Sarcoidosis: bilateral hilar lymphadenopathy + non-caseating granulomas + uveitis + erythema nodosum + hypercalcemia. ACE level elevated. Treat with corticosteroids.`
+        },
+        {
+          id: 'p89',
+          text: `A 55-year-old male has chronic dry cough for 6 months, fingertip clubbing and fine basal crackles. Which investigation confirms idiopathic pulmonary fibrosis?`,
+          options: [`Sputum analysis`, `Pulmonary function test`, `High-resolution CT scan`, `Bronchoscopy`],
+          correct: 2,
+          explanation: `Confirming IPF requires the appropriate radiological investigation.
+
+Choice A: Sputum analysis is not diagnostic for IPF — it is used for infections, malignancy (sputum cytology).
+Choice B: Pulmonary function tests in IPF show a RESTRICTIVE pattern (reduced TLC, FVC, FEV1, with preserved FEV1/FVC ratio) and reduced DLCO — supportive but not confirmatory.
+Choice C: Correct. High-Resolution CT (HRCT) of the chest is the gold standard for diagnosing IPF. It shows the Usual Interstitial Pneumonia (UIP) pattern: subpleural, basal-predominant, bilateral reticular opacities with honeycombing ± traction bronchiectasis. A typical UIP pattern on HRCT in appropriate clinical context avoids the need for surgical lung biopsy.
+Choice D: Bronchoscopy with BAL can exclude other diagnoses but is not confirmatory for IPF.
+
+Educational Objective: IPF diagnosis = HRCT showing UIP pattern (subpleural, basal honeycombing + reticulation). PFTs show restriction + reduced DLCO. Clubbing + bilateral basal fine crackles + dry cough in >60-year-old male smoker = classic IPF presentation.`
+        },
+        {
+          id: 'p90',
+          text: `A 65-year-old retired factory worker has chronic cough, hemoptysis, finger clubbing, ptosis and hoarseness of voice. What is the clinical diagnosis?`,
+          options: [`Bronchogenic carcinoma`, `Bronchiectasis`, `Lung fibrosis`],
+          correct: 0,
+          explanation: `The combination of symptoms points to a unifying diagnosis.
+
+Choice A: Correct. Bronchogenic carcinoma (lung cancer) explains ALL findings: chronic cough and hemoptysis (tumor in airways), finger clubbing (hypertrophic pulmonary osteoarthropathy — a paraneoplastic feature), ptosis (Horner syndrome from apical/Pancoast tumor invading sympathetic chain: ptosis + miosis + anhidrosis), and hoarseness (left recurrent laryngeal nerve compression by mediastinal/hilar tumor).
+Choice B: Bronchiectasis causes chronic productive cough with clubbing but does NOT cause ptosis or hoarseness.
+Choice C: Lung fibrosis causes dyspnea and clubbing — not hemoptysis, ptosis, or hoarseness.
+
+Educational Objective: Lung cancer red flags: hemoptysis + clubbing + ptosis (Horner) + hoarseness (recurrent laryngeal nerve palsy) + superior vena cava obstruction. Factory worker + smoking history = high risk for bronchogenic carcinoma.`
+        },
+        {
+          id: 'p91',
+          text: `Which of the following leads to TRANSUDATE pleural effusion?`,
+          options: [`Heart failure`, `Pneumonia`, `Tuberculosis`],
+          correct: 0,
+          explanation: `Pleural effusions are classified as transudate or exudate using Light's criteria.
+
+Choice A: Correct. Heart failure causes TRANSUDATE effusion — increased hydrostatic pressure (or decreased oncotic pressure in hypoalbuminemia) forces fluid into the pleural space without inflammation. Transudate: protein <30g/L, LDH <2/3 upper normal, pleural:serum protein ratio <0.5.
+Choice B: Pneumonia (parapneumonic effusion) causes EXUDATE — inflammatory process increases vascular permeability, allowing protein-rich fluid to leak. High protein, high LDH.
+Choice C: TB causes EXUDATE — granulomatous pleural inflammation with high lymphocytes, high protein, high LDH, low glucose.
+
+Educational Objective: Transudate = heart failure, hypoalbuminemia, nephrotic syndrome, cirrhosis. Exudate = infection, malignancy, TB, pulmonary embolism, pancreatitis. Light's criteria distinguishes them.`
+        },
+        {
+          id: 'p92',
+          text: `Which pleural fluid analysis characteristic is suggestive of an EXUDATE?`,
+          options: [`Low protein`, `High LDH`, `High glucose`, `Increased cholesterol`],
+          correct: 1,
+          explanation: `Light's criteria define exudative pleural effusions by specific laboratory parameters.
+
+Choice A: Low protein suggests TRANSUDATE — exudates have HIGH protein (>30g/L, or pleural:serum ratio >0.5).
+Choice B: Correct. High LDH (>2/3 upper limit of normal serum LDH, or pleural:serum LDH ratio >0.6) is one of Light's criteria for EXUDATE. High LDH reflects cellular breakdown and inflammation characteristic of exudative effusions.
+Choice C: High glucose suggests transudate; EXUDATES have LOW glucose (empyema, TB, RA, malignancy).
+Choice D: Increased cholesterol (>60mg/dL) suggests chylothorax or pseudochylothorax — a specific type of effusion, not the general exudate criterion.
+
+Educational Objective: Light's exudate criteria (ANY ONE): pleural protein/serum protein >0.5, pleural LDH/serum LDH >0.6, pleural LDH >2/3 upper normal serum LDH. Exudate if ANY criterion met.`
+        },
+        {
+          id: 'p93',
+          text: `A 28-year-old male has right-sided chest pain and dyspnea. Trachea deviated LEFT, BP 80/50, absent right lung markings on CXR, collapsed right lung. What is the immediate management?`,
+          options: [`Aspiration (needle decompression)`, `IV fluid resuscitation`],
+          correct: 0,
+          explanation: `This is a life-threatening emergency requiring immediate intervention.
+
+Choice A: Correct. The clinical picture describes TENSION PNEUMOTHORAX: absent right lung markings, trachea deviated AWAY (to left), hemodynamic compromise (BP 80/50), and collapsed lung. Tension pneumothorax is a CLINICAL EMERGENCY. Immediate management = needle decompression (14-16G IV cannula in 2nd intercostal space, midclavicular line, right side) — without waiting for imaging confirmation. This is followed by chest tube insertion (intercostal drain).
+Choice B: IV fluids may temporarily support BP but DO NOT treat the underlying tension pneumothorax — the positive pressure from trapped air must be released immediately.
+
+Educational Objective: Tension pneumothorax = tracheal deviation away + absent breath sounds + hemodynamic instability. EMERGENCY: immediate needle decompression (2nd ICS, MCL) then chest drain. Do NOT delay for CXR if clinical diagnosis is clear.`
+        },
+        {
+          id: 'p94',
+          text: `Which of the following is the correct treatment for a patient with empyema?`,
+          options: [`Chest tube insertion only`, `Antibiotics only`, `Chest tube insertion AND antibiotics`, `Observation only`],
+          correct: 2,
+          explanation: `Empyema requires a specific combined management approach.
+
+Choice A: Chest tube alone without antibiotics is inadequate — the underlying infection requires systemic antibiotic treatment.
+Choice B: Antibiotics alone without drainage are insufficient for empyema — the infected pleural fluid must be drained.
+Choice C: Correct. Empyema (infected pleural space with pus) requires BOTH: (1) Chest tube insertion (intercostal drain) for drainage of the infected fluid, AND (2) Systemic antibiotics targeting the causative organism. Without drainage, antibiotics alone cannot clear the infected collection. Large or complicated empyemas may require surgical intervention (VATS).
+Choice D: Observation is inappropriate — empyema is an active infection requiring treatment.
+
+Educational Objective: Empyema = chest tube drainage + systemic antibiotics. Frank pus/positive culture/pH <7.2 = drain. VATS for multiloculated empyema. Do not observe empyema — it will progress.`
+        },
+        {
+          id: 'p95',
+          text: `Which of the following is an indication for bronchoscopy?`,
+          options: [`Chronic cough`, `Hemoptysis`, `Green sputum`, `Chest pain`],
+          correct: 1,
+          explanation: `Bronchoscopy is an invasive procedure reserved for specific indications.
+
+Choice A: Chronic cough alone is not an absolute indication for bronchoscopy — it is initially evaluated with CXR, spirometry, and empirical treatment. Bronchoscopy is reserved if initial investigation is unrevealing.
+Choice B: Correct. Hemoptysis is a key indication for bronchoscopy. It allows direct visualization of the airway source of bleeding, can identify endobronchial lesions (tumors, foreign bodies), and enables biopsy, bronchoalveolar lavage, and therapeutic intervention (endobronchial hemostasis).
+Choice C: Green sputum alone (purulent sputum from infection) is managed with antibiotics — bronchoscopy is not indicated for routine respiratory infections.
+Choice D: Chest pain alone is not an indication for bronchoscopy.
+
+Educational Objective: Bronchoscopy indications: hemoptysis, suspected endobronchial malignancy, foreign body retrieval, atelectasis not resolving, BAL for diagnosis, central airway obstruction, lung biopsy.`
+        },
+        {
+          id: 'p96',
+          text: `A 45-year-old smoker has dyspnea. Trachea shifted LEFT, absent air entry RIGHT, stony dull percussion RIGHT. What is the diagnosis?`,
+          options: [`Right pleural effusion`, `Left pleural effusion`, `Left lung collapse`],
+          correct: 0,
+          explanation: `The clinical signs must be carefully analyzed for laterality.
+
+Choice A: Correct. Right pleural effusion: (1) Stony dull percussion on RIGHT (fluid is dense, attenuates percussion note maximally — 'stony dull'); (2) Absent air entry on RIGHT (fluid compresses and separates the lung from chest wall); (3) Trachea shifted to LEFT (large effusion pushes mediastinum away from the effusion side). All findings are consistent with right-sided pleural effusion.
+Choice B: Left pleural effusion would cause stony dull on LEFT — all signs would be on the LEFT side.
+Choice C: Left collapse would shift trachea to LEFT (toward the collapse) but percussion would be dull — however, absent RIGHT-sided air entry with RIGHT-sided dullness rules this out.
+
+Educational Objective: Right pleural effusion: right stony dull + absent right breath sounds + trachea deviated LEFT (away). Collapse: trachea toward the pathology. Tension pneumothorax: hyper-resonant + trachea away.`
+        },
+        {
+          id: 'p97',
+          text: `Which best describes arterial blood gas in Type 1 respiratory failure due to pulmonary embolism?`,
+          options: [`Only oxygen is decreased`, `Oxygen is decreased and CO2 is normal or low`, `Both oxygen and CO2 are low`, `Low oxygen and high CO2`],
+          correct: 1,
+          explanation: `Understanding blood gas patterns in different types of respiratory failure is essential.
+
+Choice A: 'Only oxygen decreased' is partially correct but incomplete — CO2 also changes characteristically in PE.
+Choice B: Correct. Pulmonary embolism causes Type 1 respiratory failure (hypoxemia without hypercapnia). The mechanism: V/Q mismatch and dead space increase → hypoxemia → hyperventilation to compensate → CO2 is washed out → low or normal CO2 (hypocapnia). ABG: LOW PaO2 + LOW or NORMAL PaCO2 (not elevated).
+Choice C: Both low — similar to Type 1 but specifying CO2 is 'low' (hypocapnia) due to compensatory hyperventilation is partially correct, but 'normal' is also possible.
+Choice D: Low oxygen + HIGH CO2 = Type 2 respiratory failure (hypercapnic), e.g., COPD exacerbation, neuromuscular disease — NOT pulmonary embolism.
+
+Educational Objective: PE → Type 1 RF: PaO2 low + PaCO2 low/normal (compensatory hyperventilation). Type 2 RF (COPD, NMD): PaO2 low + PaCO2 HIGH. The CO2 level is the key distinguisher.`
+        },
+        {
+          id: 'p98',
+          text: `Which of the following will favor the diagnosis of respiratory failure?`,
+          options: [`Respiratory rate 20/min`, `Intercostal recession`, `Crepitations on auscultation`, `Heart rate 90 bpm`],
+          correct: 1,
+          explanation: `Identifying signs of respiratory distress and failure requires clinical knowledge.
+
+Choice A: RR 20/min is upper end of normal (normal: 12-20). Alone it does not confirm respiratory failure.
+Choice B: Correct. Intercostal recession (use of accessory muscles, drawing in of intercostal spaces during inspiration) indicates significantly increased work of breathing — a sign of respiratory distress and impending respiratory failure. It reflects increased negative intrathoracic pressure needed to overcome increased airway resistance or reduced compliance.
+Choice C: Crepitations suggest pulmonary pathology (pneumonia, fibrosis, heart failure) but are not specific signs of respiratory failure.
+Choice D: HR 90 bpm is normal/near-normal — not diagnostic of respiratory failure.
+
+Educational Objective: Signs of respiratory failure: intercostal/subcostal recession, accessory muscle use, paradoxical breathing, cyanosis, altered consciousness, RR >30/min. Confirmed by ABG: PaO2 <8kPa (60mmHg).`
+        },
+        {
+          id: 'p99',
+          text: `What condition causes Type 2 Respiratory Failure?`,
+          options: [`Asthma`, `Myasthenia gravis`, `Pneumonia`, `Pulmonary edema`],
+          correct: 1,
+          explanation: `Type 2 respiratory failure (hypercapnic) has specific causes related to ventilatory pump failure.
+
+Choice A: Asthma causes Type 1 RF (hypoxemia) in most cases — Type 2 only in near-fatal asthma with exhaustion. Not the primary Type 2 cause.
+Choice B: Correct. Myasthenia gravis (neuromuscular disease) causes Type 2 respiratory failure (hypercapnia + hypoxemia) by weakening the respiratory muscles (diaphragm, intercostals). The ventilatory PUMP fails — CO2 cannot be expelled. Other Type 2 causes: COPD, obesity hypoventilation, GBS, phrenic nerve palsy, chest wall deformity.
+Choice C: Pneumonia causes Type 1 RF (V/Q mismatch → hypoxemia, CO2 usually normal or low due to hyperventilation).
+Choice D: Pulmonary edema causes Type 1 RF (alveolar flooding → diffusion impairment → hypoxemia).
+
+Educational Objective: Type 2 RF = ventilatory pump failure → CO2 retention. Causes: COPD, neuromuscular disease (MG, GBS), chest wall deformity, severe obesity. ABG: PaO2 low + PaCO2 >6kPa (45mmHg).`
+        },
+        {
+          id: 'p100',
+          text: `The Epworth Sleepiness Scale is used for which disease?`,
+          options: [`Obstructive sleep apnea`, `Asthma`],
+          correct: 0,
+          explanation: `The Epworth Sleepiness Scale is a specific clinical assessment tool.
+
+Choice A: Correct. The Epworth Sleepiness Scale (ESS) is an 8-item self-reported questionnaire assessing daytime sleepiness — used in the diagnosis and monitoring of Obstructive Sleep Apnea (OSA). A score >10 suggests excessive daytime sleepiness. OSA is characterized by recurrent upper airway collapse during sleep causing apneas, desaturation, and daytime somnolence. Confirmed by polysomnography.
+Choice B: Asthma severity is assessed with peak flow measurements, FEV1, and clinical symptom scores (e.g., ACQ, GINA classification) — not the Epworth Sleepiness Scale.
+
+Educational Objective: Epworth Sleepiness Scale = OSA screening/monitoring tool. Score >10 = excessive daytime sleepiness → investigate for OSA with sleep study. CURB-65 = pneumonia. Wells score = DVT/PE. GINA = asthma.`
+        }
+      ]
+    }
     ]
   }
 ];

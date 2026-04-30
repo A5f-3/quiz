@@ -580,7 +580,7 @@
   .mistake-card.mastered { border-color: var(--success); opacity: .65; }
   .mistake-card .mc-q { font-weight: 600; margin-bottom: 14px; font-size: 1rem; }
   .mistake-card .mc-ans { font-size: .9rem; margin-bottom: 6px; }
-  .mc-actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .mc-actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; align-items: center; }
 
   /* ══════════════════════════════
      PAGE: QUESTION BANK
@@ -1770,7 +1770,7 @@ function hideLoader() {
      PAGE: MAKE A QUIZ
 ══════════════════════════════════════ -->
 <div class="page" id="page-makeQuiz">
-  <div class="container-sm">
+  <div class="container-sm" id="makeQuizPageContent">
     <div class="dash-header">
       <div class="dash-back" onclick="showPage('dashboard')">←</div>
       <div class="dash-title">
@@ -1925,7 +1925,7 @@ function hideLoader() {
      PAGE: REVIEW MISTAKES
 ══════════════════════════════════════ -->
 <div class="page" id="page-mistakes">
-  <div class="container-sm">
+  <div class="container-sm" id="mistakesPageContent">
     <div class="dash-header">
       <div class="dash-back" onclick="showPage('dashboard')">←</div>
       <div class="dash-title"><h2>مراجعة الأخطاء</h2><p>تمرن على الأسئلة التي أخطأت فيها</p></div>
@@ -2090,7 +2090,7 @@ function hideLoader() {
      PAGE: FLAGGED QUESTIONS
 ══════════════════════════════════════ -->
 <div class="page" id="page-flagged">
-  <div class="container-sm">
+  <div class="container-sm" id="flaggedPageContent">
     <div class="dash-header">
       <div class="dash-back" onclick="showPage('dashboard')">←</div>
       <div class="dash-title">
@@ -6531,6 +6531,1076 @@ Choice D: Correct. Hospital-Acquired Pneumonia (HAP/nosocomial pneumonia) is def
 Educational Objective: HAP = pneumonia ≥48h post-admission, not intubated. VAP = ≥48-72h post-intubation. Pathogens: gram-negatives (Pseudomonas, Klebsiella, Acinetobacter), MRSA. More resistant than CAP — treat with broader-spectrum antibiotics.`
         }
       ]
+    },
+    {
+      id: 'final24_med218',
+      name: 'Med218 Final Exam Questions',
+      num: 7,
+      desc: 'Med218 Final Exam',
+      questions: [
+        {
+          id: "r1",
+          text: "Which one of the following typically describes the stool of patients with cholera?",
+          options: ["Apple jelly", "Anchovy sauce", "Rice water", "Bloody"],
+          correct: 2,
+          explanation: `Stool characteristics are classic teaching points for infectious diarrhea.
+
+Choice A: Apple jelly stools (blood-mucus mixture) are the hallmark of intussusception — NOT cholera.
+Choice B: Anchovy sauce appearance is classically associated with liver abscess aspirate (amebic) — NOT cholera stool.
+Choice C: Correct. Cholera produces profuse watery diarrhea described as "rice water" stools — pale, watery, with flecks of mucus resembling water in which rice has been washed. This results from Vibrio cholerae toxin activating adenylyl cyclase → ↑cAMP → massive Cl⁻ secretion and inhibition of Na⁺ absorption → isotonic fluid loss (up to 20 L/day). No blood or pus because the toxin is non-invasive.
+Choice D: Bloody stools suggest invasive or inflammatory causes (Shigella, Campylobacter, E. coli O157, IBD) — NOT cholera.
+
+Educational Objective: Stool appearance guide — Rice water = Cholera; Apple jelly = Intussusception; Anchovy sauce = Amebic liver abscess; Bloody/mucoid = Dysentery (Shigella, Entamoeba); Fatty/foul = Malabsorption.`
+        },
+        {
+          id: "r2",
+          text: "A patient using NSAIDs for chronic pain develops a gastric damage. What drug is designed to treat selectively this type of ulcers?",
+          options: ["Bismuth", "Celecoxib", "Famotidine", "Misoprostol"],
+          correct: 3,
+          explanation: `NSAIDs inhibit COX-1 → reduced prostaglandin E2 synthesis → loss of gastric mucosal protection (↓mucus, ↓bicarbonate, ↓blood flow).
+
+Choice A: Bismuth subcitrate has some cytoprotective and antibacterial properties (used in H. pylori regimens) but is NOT specifically designed to replace prostaglandins lost due to NSAIDs.
+Choice B: Celecoxib is a selective COX-2 inhibitor that PREVENTS NSAID-related GI damage by sparing COX-1 prostanoids — it's used to avoid the ulcer, not treat established damage in patients already on non-selective NSAIDs.
+Choice C: Famotidine is an H2-blocker that reduces acid but does not replace the cytoprotective prostaglandin that was lost — it partially helps but is not specifically designed for this mechanism.
+Choice D: Correct. Misoprostol is a synthetic prostaglandin E1 analogue that directly replaces the prostaglandins depleted by NSAIDs → restores mucus secretion, bicarbonate production, and mucosal blood flow. It is specifically indicated for prevention and treatment of NSAID-induced gastric ulcers.
+
+Educational Objective: Misoprostol = synthetic PGE1 analogue → directly counteracts the mechanism of NSAID-induced ulcers. Side effects: diarrhea, uterine contractions (contraindicated in pregnancy — also used as abortifacient).`
+        },
+        {
+          id: "r3",
+          text: "Which of the following is the responsible T-cell for producing cytokines in the pathogenesis of rheumatoid arthritis?",
+          options: ["CD8+", "CD7+", "CD3+", "CD4+"],
+          correct: 3,
+          explanation: `Rheumatoid arthritis is a T-cell mediated autoimmune disease.
+
+Choice A: CD8+ T-cells (cytotoxic T-cells) are primarily involved in killing infected or tumor cells — they play a minor role in RA pathogenesis.
+Choice B: CD7+ is a pan-T-cell marker expressed during early T-cell development — NOT specifically the effector cell in RA.
+Choice C: CD3+ is a universal T-cell marker present on ALL T-cells — not specific to the pathogenic subset in RA.
+Choice D: Correct. CD4+ T-helper cells (specifically Th1 and Th17 subsets) are the central drivers of RA. They infiltrate the synovium and produce pro-inflammatory cytokines: TNF-α, IL-1, IL-6, IL-17 → synovial fibroblast activation → pannus formation → cartilage and bone destruction. This is why anti-TNF biologics and IL-6 inhibitors (tocilizumab) are effective treatments.
+
+Educational Objective: RA immunopathology — CD4+ Th cells → cytokines (TNF-α, IL-1, IL-6, IL-17) → synovial inflammation → pannus → joint destruction. Key biologic targets: TNF-α (infliximab, etanercept), IL-6 (tocilizumab), CD20 (rituximab).`
+        },
+        {
+          id: "r4",
+          text: "Which one of the following tests is expected finding in patients with thrombotic thrombocytopenic purpura?",
+          options: ["Absence of ADAMTS13", "Direct Coombs test", "Osmotic fragility test", "Absence of CD55 & CD59"],
+          correct: 0,
+          explanation: `TTP is a thrombotic microangiopathy with a specific molecular defect.
+
+Choice A: Correct. TTP is caused by deficiency of ADAMTS13 (a disintegrin and metalloproteinase with thrombospondin motif 13) — the enzyme that cleaves ultra-large von Willebrand factor (vWF) multimers. Without ADAMTS13, ultra-large vWF accumulates → platelet aggregation in microvasculature → microthrombi → thrombocytopenia + microangiopathic hemolytic anemia. ADAMTS13 activity <10% confirms TTP.
+Choice B: Direct Coombs (DAT) is NEGATIVE in TTP — the hemolysis is mechanical (shearing of RBCs by fibrin/platelet thrombi), NOT immune-mediated. A positive DAT suggests AIHA or drug-induced hemolysis.
+Choice C: Osmotic fragility test is used for hereditary spherocytosis — measures RBC membrane fragility. Not relevant to TTP.
+Choice D: Absence of CD55 & CD59 (GPI-anchored complement regulatory proteins) is the diagnostic finding in Paroxysmal Nocturnal Hemoglobinuria (PNH) — a different condition presenting with hemolysis and thrombosis.
+
+Educational Objective: TTP pentad = thrombocytopenia + microangiopathic hemolytic anemia (MAHA) + neurologic symptoms + fever + renal impairment. Key: ADAMTS13 deficiency → ultra-large vWF → platelet thrombi. Treatment: plasma exchange (to remove antibodies + replenish ADAMTS13).`,
+          alert: "⚠️ Note: The PDF lists 'ADAMST13' — this is a typo for ADAMTS13 (a disintegrin and metalloproteinase with ThromboSpondin motifs 13)."
+        },
+        {
+          id: "r5",
+          text: "Which one of the following bowel diseases can present with obstipation?",
+          options: ["IBD", "Intussusception", "Lactose intolerance", "Cholera infection"],
+          correct: 1,
+          explanation: `Obstipation = absolute constipation — no passage of stool OR gas (complete mechanical obstruction).
+
+Choice A: IBD (Crohn's/UC) typically presents with diarrhea, rectal bleeding, and urgency — NOT obstipation. Crohn's can cause strictures but usually partial.
+Choice B: Correct. Intussusception (telescoping of one bowel segment into another) causes mechanical bowel obstruction → obstipation. The classic presentation: colicky abdominal pain, vomiting, "currant jelly" stools (blood-mucus), and palpable sausage-shaped mass. Complete obstruction → no stool or flatus passage = obstipation.
+Choice C: Lactose intolerance causes osmotic diarrhea, bloating, and flatulence — the OPPOSITE of obstipation.
+Choice D: Cholera causes massive secretory diarrhea (rice-water stools) — the OPPOSITE of obstipation.
+
+Educational Objective: Obstipation = COMPLETE obstruction (no stool + no flatus). Causes: intussusception, volvulus, strangulated hernia, adhesions, colonic carcinoma. "Currant jelly" stool + obstipation in a child = intussusception until proven otherwise.`
+        },
+        {
+          id: "r6",
+          text: "Which one of the following interleukins (IL) stimulates isotype switching of B-lymphocytes from IgM to IgE?",
+          options: ["IL-1", "IL-2", "IL-3", "IL-4"],
+          correct: 3,
+          explanation: `Isotype class switching is driven by specific cytokines from T-helper cells.
+
+Choice A: IL-1 is a pro-inflammatory cytokine (produced by macrophages) involved in fever, acute-phase response, and T-cell activation — NOT class switching to IgE.
+Choice B: IL-2 is the major T-cell growth factor — promotes T-cell proliferation and survival — NOT IgE class switching.
+Choice C: IL-3 supports hematopoiesis and mast cell growth — NOT IgE class switching.
+Choice D: Correct. IL-4 (produced by Th2 cells and mast cells) is the primary cytokine that drives B-cell class switching from IgM → IgE. This is central to allergic disease: Th2 response → IL-4 → IgE production → IgE binds mast cells → allergen cross-links IgE → degranulation → allergic reaction.
+
+Educational Objective: Cytokine → Ig class switch guide: IL-4 → IgE (allergy); IL-5 → IgA (mucosal); TGF-β → IgA; IL-13 → IgE (also). IgE mediates type I hypersensitivity (anaphylaxis, atopy). IL-4 + IL-13 blockade = Dupilumab (for atopic dermatitis, asthma).`
+        },
+        {
+          id: "r7",
+          text: "A 28-year-old female presented to the hospital with history of fatigue and tiredness. On examination, she looks pale. Her investigations showed Hb 9 g/dL, MCV 80 fL, Platelet count normal, Reticulocytes 8%. Direct Coombs test is positive. The blood film shows polychromasia and spherocytosis. What is the treatment of choice?",
+          options: ["Rituximab", "IV Ig", "Corticosteroid", "Splenectomy"],
+          correct: 2,
+          explanation: `This presentation is classic Warm Autoimmune Hemolytic Anemia (AIHA).
+
+Clinical analysis: Young woman + anemia + reticulocytosis (8% = ↑RBC production compensating for hemolysis) + positive Direct Coombs test (IgG autoantibodies coating RBCs) + spherocytes (RBC membrane removed by splenic macrophages) + polychromasia (reticulocytes) = Warm AIHA.
+
+Choice A: Rituximab (anti-CD20, depletes B-cells) is used as SECOND-LINE therapy for refractory AIHA after steroids fail — not first-line.
+Choice B: IV Immunoglobulin can be used in immune thrombocytopenic purpura (ITP) but is NOT first-line for warm AIHA. It has limited benefit in AIHA.
+Choice C: Correct. Corticosteroids (prednisolone 1 mg/kg/day) are the FIRST-LINE treatment for warm AIHA. They work by: (1) suppressing autoantibody production, (2) reducing splenic phagocytosis of antibody-coated RBCs, (3) reducing RBC-antibody binding. Response rate ~70-80%.
+Choice D: Splenectomy is SECOND-LINE after steroid failure or steroid dependence — the spleen is the main site of RBC destruction in warm AIHA, so removal helps, but surgery is reserved for refractory cases.
+
+Educational Objective: Warm AIHA (IgG, 37°C) → First-line = Steroids → Second-line = Rituximab or Splenectomy. Cold AIHA (IgM, complement) → avoid cold exposure, rituximab (steroids less effective). Positive DAT + spherocytes + reticulocytosis = hemolytic anemia.`
+        },
+        {
+          id: "r8",
+          text: "Which of the following is the correct treatment regimen for a newly diagnosed patient with pulmonary tuberculosis?",
+          options: ["8 months of Rifampicin, isoniazid and ethambutol", "2 months of streptomycin, Rifampicin, isoniazid, pyrazinamide and ethambutol followed by 4 months Rifampicin and isoniazid", "2 months of Rifampicin, isoniazid, pyrazinamide and ethambutol followed by 4 months Rifampicin and isoniazid", "6 months of Rifampicin, isoniazid, pyrazinamide and ethambutol"],
+          correct: 2,
+          explanation: `Standard TB treatment follows WHO/BTS guidelines with a 6-month regimen in two phases.
+
+Choice A: 8-month regimen with only 3 drugs is incorrect — this does not represent any standard regimen and lacks pyrazinamide in the initial phase.
+Choice B: This includes streptomycin — streptomycin is NOT part of the standard first-line regimen for new TB patients (it was used historically and in some re-treatment regimens). The standard 4-drug initial phase is RHZE (Rifampicin, Isoniazid, pyraZinamide, Ethambutol).
+Choice C: Correct. Standard first-line regimen for new pulmonary TB: Intensive phase: 2 months RHZE (Rifampicin + Isoniazid + pyraZinamide + Ethambutol) → kills rapidly dividing bacteria. Continuation phase: 4 months RH (Rifampicin + Isoniazid) → eliminates remaining dormant bacteria. Total = 6 months. This is the standard WHO-recommended regimen.
+Choice D: 6 months of all 4 drugs is excessive and increases toxicity without additional benefit.
+
+Educational Objective: New PTB treatment = 2RHZE + 4RH (6 months total). Mnemonics: RIPE or RHZE for initial phase. Side effects: Rifampicin = orange urine, hepatitis; Isoniazid = peripheral neuropathy (give pyridoxine B6); Pyrazinamide = hyperuricemia, hepatitis; Ethambutol = optic neuritis.`
+        },
+        {
+          id: "r9",
+          text: "Which of the following is an indication for narrow slice High-Resolution CT scan (HRCT)?",
+          options: ["Mediastinal mass", "Pulmonary fibrosis", "Bronchial carcinoma", "Pleural effusion"],
+          correct: 1,
+          explanation: `HRCT uses thin (0.5–1.5 mm) slices with high spatial frequency reconstruction algorithms to produce detailed images of lung parenchyma.
+
+Choice A: Mediastinal mass → best evaluated with standard CT with contrast (to assess vascularity, invasion, lymph nodes) — not narrow-slice HRCT which focuses on parenchyma.
+Choice B: Correct. HRCT is the gold standard for evaluating interstitial lung diseases (ILD) including pulmonary fibrosis, because it provides exquisite detail of lung parenchyma. Characteristic patterns on HRCT: Usual Interstitial Pneumonia (UIP) = honeycombing + traction bronchiectasis (basal-predominant); NSIP = ground-glass opacities; Hypersensitivity pneumonitis = centrilobular nodules. HRCT can replace surgical lung biopsy in classic UIP pattern.
+Choice C: Bronchial carcinoma → evaluated with standard CT chest (to assess tumor size, lymph nodes, metastases) — PET-CT for staging. HRCT not primarily used.
+Choice D: Pleural effusion → evaluated with standard CXR, ultrasound, or standard CT — not narrow-slice HRCT.
+
+Educational Objective: HRCT indications = interstitial/diffuse parenchymal lung disease (pulmonary fibrosis, sarcoidosis, hypersensitivity pneumonitis, bronchiectasis, emphysema pattern). NOT for masses, effusions, or mediastinal disease.`
+        },
+        {
+          id: "r10",
+          text: "Which one of the following is a habitual cause of hemorrhoids?",
+          options: ["Low fiber high fat diet", "Colonic malignancy", "Portal hypertension"],
+          correct: 0,
+          explanation: `Hemorrhoids are dilated vascular cushions in the anal canal.
+
+Choice A: Correct. Low fiber, high fat diet leads to hard stools and straining during defecation → ↑intra-abdominal pressure → engorgement of hemorrhoidal plexuses → hemorrhoids. This is the most common HABITUAL (lifestyle) cause — dietary habits directly contributing to chronic straining. Other lifestyle factors: prolonged sitting, low fluid intake.
+Choice B: Colonic malignancy can cause hemorrhoids by obstructing venous drainage, but this is a SECONDARY cause (disease-related), not a habitual/lifestyle cause.
+Choice C: Portal hypertension causes anorectal varices (which differ from true hemorrhoids) by increasing pressure in the inferior mesenteric → superior rectal venous system — again a SECONDARY/pathological cause, not habitual.
+
+Educational Objective: Habitual causes of hemorrhoids: low-fiber diet, chronic straining, prolonged sitting/standing, pregnancy. Hemorrhoids are classified as internal (above dentate line, painless bleeding) or external (below dentate line, painful, thrombosis possible). Treatment: increase fiber/fluids, sitz baths, topical agents, rubber band ligation, hemorrhoidectomy.`,
+          alert: "⚠️ Note: Question 10 in the PDF has only 3 options (a, b, c) — option d is missing from the source."
+        },
+        {
+          id: "r11",
+          text: "A 33-year-old female patient. Her husband complains of her loud snoring during sleep. On examination, her weight is 80 kg with height 164 cm. Her Epworth Sleepiness Scale score is 7. What is the most possible diagnosis?",
+          options: ["Mixed sleep apnea", "Simple snoring", "OSA", "Central sleep apnea"],
+          correct: 1,
+          explanation: `Sleep-disordered breathing requires careful interpretation of clinical findings.
+
+Clinical analysis: BMI = 80/(1.64²) = 29.7 kg/m² (overweight, not obese). Epworth Sleepiness Scale (ESS) score = 7 (NORMAL range: 0–10; excessive daytime sleepiness = ESS ≥ 11). No apneic episodes reported.
+
+Choice A: Mixed sleep apnea combines obstructive and central components — this requires polysomnography to diagnose. No evidence of mixed pattern here.
+Choice B: Correct. Simple (primary/benign) snoring: loud snoring WITHOUT significant apneic episodes, without excessive daytime sleepiness (ESS <10), and without oxygen desaturation. This patient snores but has a normal ESS (7) indicating no significant daytime sleepiness — a key distinguishing feature from OSA.
+Choice C: OSA (Obstructive Sleep Apnea) requires: AHI ≥ 5 events/hour on polysomnography + symptoms (ESS ≥ 10, witnessed apneas, nocturnal gasping/choking). The normal ESS of 7 argues against OSA as the diagnosis here.
+Choice D: Central sleep apnea involves cessation of respiratory effort (no snoring usually) — associated with heart failure, opioids, high altitude. Not consistent with this presentation.
+
+Educational Objective: Simple snoring vs OSA — Key differentiator = Epworth Sleepiness Scale. ESS <10 + snoring = simple snoring. ESS ≥10 + witnessed apneas + snoring = suspect OSA → refer for polysomnography. Risk factors for OSA: obesity (BMI >30), male sex, large neck (>40cm female, >43cm male), retrognathia.`
+        },
+        {
+          id: "r12",
+          text: "Which of the following substances is the most important chemical mediator involved in hereditary angioedema?",
+          options: ["Histamine", "Serotonin", "Bradykinin", "Substance P"],
+          correct: 2,
+          explanation: `Hereditary angioedema (HAE) is a genetic disorder with a unique mediator.
+
+Choice A: Histamine is the primary mediator of allergic/anaphylactic angioedema (IgE-mediated, urticaria present, responds to antihistamines/epinephrine). HAE does NOT respond to antihistamines, steroids, or epinephrine — a clinical clue that histamine is NOT the mediator.
+Choice B: Serotonin plays a role in carcinoid syndrome (flushing, diarrhea) — NOT in angioedema.
+Choice C: Correct. Hereditary angioedema is caused by C1-inhibitor deficiency (autosomal dominant) or dysfunction → unregulated activation of contact/complement system → ↑bradykinin production. Bradykinin binds B2 receptors on endothelium → ↑vascular permeability → subcutaneous/submucosal edema (face, extremities, larynx, GI tract). Critically: NO urticaria (distinguishes from allergic angioedema).
+Choice D: Substance P is a neuropeptide involved in pain transmission and some vasodilation — minor role in angioedema, NOT the primary mediator in HAE.
+
+Educational Objective: HAE = C1-inhibitor deficiency → ↑Bradykinin → angioedema (no urticaria, no response to antihistamines/steroids). Treatment: C1-inhibitor concentrate (icatibant = bradykinin B2 receptor antagonist, ecallantide = kallikrein inhibitor). Long-term prophylaxis: tranexamic acid or danazol.`
+        },
+        {
+          id: "r13",
+          text: "Which one of the following diseases causes secretory diarrhea?",
+          options: ["Bile salt malabsorption", "Hyperthyroidism", "Diabetes mellitus", "Lactase deficiency"],
+          correct: 0,
+          explanation: `Diarrhea mechanisms must be classified correctly to answer this question.
+
+Choice A: Correct. Bile salt malabsorption (e.g., after ileal resection, Crohn's disease of the terminal ileum) causes secretory diarrhea. Normally bile salts are reabsorbed in the terminal ileum; when they reach the colon, they stimulate active Cl⁻ secretion → secretory diarrhea. Key feature: persists despite fasting (unlike osmotic diarrhea). Treatment: cholestyramine (bile acid sequestrant).
+Choice B: Hyperthyroidism causes MOTILITY diarrhea — excess thyroid hormone speeds up GI transit time → less time for absorption → loose stools. Not secretory.
+Choice C: Diabetes mellitus can cause diabetic diarrhea (autonomic neuropathy → altered motility) — this is MOTILITY type, not secretory. Also osmotic if with sugar alcohols (sorbitol in diabetic foods).
+Choice D: Lactase deficiency causes OSMOTIC diarrhea — undigested lactose in colon osmotically draws water → diarrhea + bloating + flatulence. Resolves with fasting.
+
+Educational Objective: Secretory diarrhea — persists with fasting, large volume, osmotic gap <50 mOsm/kg. Causes: cholera (cAMP ↑), VIPoma, carcinoid, bile salt malabsorption, microscopic colitis. Osmotic diarrhea — resolves with fasting, osmotic gap >125 mOsm/kg. Causes: lactase deficiency, sorbitol, lactulose.`
+        },
+        {
+          id: "r14",
+          text: "Which of the following drugs is a mast cell stabilizer?",
+          options: ["Zafirlukast", "Cromolyn sodium", "Salmeterol", "Aminophylline"],
+          correct: 1,
+          explanation: `Asthma drugs have distinct mechanisms that must be memorized.
+
+Choice A: Zafirlukast is a leukotriene receptor antagonist (LTRA) — blocks CysLT1 receptors, preventing leukotriene-mediated bronchoconstriction and inflammation. NOT a mast cell stabilizer.
+Choice B: Correct. Cromolyn sodium (sodium cromoglicate) is a mast cell stabilizer — it prevents degranulation of mast cells by blocking chloride channels, preventing calcium influx needed for degranulation. Used prophylactically (not for acute attacks). Also used for allergic rhinitis and conjunctivitis. Nedocromil is similar.
+Choice C: Salmeterol is a long-acting β2-agonist (LABA) — causes bronchodilation by relaxing airway smooth muscle. NOT a mast cell stabilizer.
+Choice D: Aminophylline is a methylxanthine (theophylline derivative) — inhibits phosphodiesterase → ↑cAMP → bronchodilation. Also has anti-inflammatory properties. NOT a mast cell stabilizer.
+
+Educational Objective: Mast cell stabilizers = Cromolyn sodium + Nedocromil. Mechanism: prevent mast cell degranulation (block Cl⁻ channels → no Ca²⁺ influx). Used prophylactically — no role in acute asthma attacks. Other drug class mechanisms: β2-agonists = bronchodilation; ICS = anti-inflammatory; LTRA = leukotriene blockade; Anti-IgE (omalizumab) = prevents IgE-mast cell binding.`
+        },
+        {
+          id: "r15",
+          text: "Which one of the following statements is INCORRECT regarding management of urinary tract infection in pregnancy?",
+          options: ["Asymptomatic bacteriuria must always be treated", "Nitrofurantoin is contraindicated in the first trimester", "Acute pyelonephritis requires parenteral antibiotics", "Tetracycline is contraindicated in pregnancy"],
+          correct: 1,
+          explanation: `The question asks for the INCORRECT statement — identify the false one.
+
+Choice A (CORRECT statement): Asymptomatic bacteriuria in pregnancy MUST be treated — untreated bacteriuria progresses to pyelonephritis in ~40% of pregnant women (due to physiologic urinary stasis from progesterone relaxation and uterine compression). Treatment prevents preterm labor and low birth weight.
+Choice B (INCORRECT statement — this is the ANSWER): Nitrofurantoin is NOT contraindicated in the first trimester. It is actually commonly used in the 1st and 2nd trimesters. However, it IS contraindicated in the THIRD TRIMESTER (especially near term/38+ weeks) due to risk of neonatal hemolytic anemia (immature glutathione pathways). Some guidelines also advise caution at 38+ weeks — NOT first trimester.
+Choice C (CORRECT statement): Acute pyelonephritis in pregnancy requires IV/parenteral antibiotics due to risk of preterm labor, sepsis, and maternal/fetal complications.
+Choice D (CORRECT statement): Tetracyclines are absolutely contraindicated in pregnancy — they chelate calcium → incorporated into developing bones and teeth → dental discoloration, inhibited bone growth (Pregnancy category D/X).
+
+Educational Objective: UTI in pregnancy safe antibiotics: Nitrofurantoin (1st & 2nd trimester only), Cefalexin, Amoxicillin-clavulanate. Contraindicated: Tetracyclines (teeth/bones), Fluoroquinolones (cartilage), Trimethoprim (folate antagonist, 1st trimester), Nitrofurantoin near term.`
+        },
+        {
+          id: "r16",
+          text: "What is the mechanism of action of the antibiotic Gentamicin?",
+          options: ["Inhibition of protein synthesis", "Inhibition of nucleic acid transcription and replication", "Inhibition of metabolic enzyme", "Inhibition of cell wall synthesis"],
+          correct: 0,
+          explanation: `Gentamicin is an aminoglycoside antibiotic with a specific bacterial target.
+
+Choice A: Correct. Gentamicin (aminoglycoside) inhibits bacterial protein synthesis by binding irreversibly to the 30S ribosomal subunit → causes misreading of mRNA → incorporation of wrong amino acids → abnormal/nonfunctional proteins → bactericidal effect. Importantly, aminoglycosides require oxygen-dependent active transport into bacteria (ineffective against anaerobes).
+Choice B: Inhibition of nucleic acid transcription = Rifampicin (RNA polymerase), Fluoroquinolones (DNA gyrase/topoisomerase IV). NOT aminoglycosides.
+Choice C: Inhibition of metabolic enzyme = Sulfonamides and Trimethoprim (inhibit folate synthesis pathway). NOT aminoglycosides.
+Choice D: Inhibition of cell wall synthesis = Beta-lactams (penicillins, cephalosporins, carbapenems), Vancomycin, Glycopeptides. NOT aminoglycosides.
+
+Educational Objective: Antibiotic MOA — Protein synthesis inhibitors (30S): Aminoglycosides, Tetracyclines. Protein synthesis inhibitors (50S): Macrolides, Chloramphenicol, Clindamycin, Linezolid. Cell wall inhibitors: β-lactams, Vancomycin. Nucleic acid inhibitors: Fluoroquinolones, Rifampicin. Metabolic: Sulfonamides, Trimethoprim. Membrane: Polymyxins.`
+        },
+        {
+          id: "r17",
+          text: "Regarding primary tuberculosis, the usual site of the Ghon's focus is:",
+          options: ["Upper part of upper lobe", "Upper part of lower lobe", "Lower part of lower lobe", "No specific site for it"],
+          correct: 1,
+          explanation: `Primary TB has a characteristic pattern of lung involvement.
+
+Choice A: Upper part of the upper lobe is the characteristic site of REACTIVATION (secondary/post-primary) TB — high oxygen tension favors M. tuberculosis replication. NOT the Ghon's focus.
+Choice B: Correct. The Ghon's focus (primary focus) is typically located in the LOWER PART OF THE UPPER LOBE or UPPER PART OF THE LOWER LOBE — the mid-lung zones. This is because inhaled droplet nuclei travel to well-ventilated (but less immunosurveilled in non-immune hosts) areas. The Ghon's complex = Ghon's focus + ipsilateral hilar lymph node enlargement.
+Choice C: Lower part of the lower lobe has poor ventilation and is not the typical site.
+Choice D: The Ghon's focus does have a characteristic site — mid-lung zones (lower upper lobe or upper lower lobe).
+
+Educational Objective: Primary TB = Ghon's focus (mid-lung zone) + hilar lymphadenopathy = Ghon's complex. Usually heals and calcifies → Ranke complex. Reactivation TB = apical/posterior upper lobes (high O₂). Miliary TB = hematogenous dissemination → millet-seed nodules throughout both lungs.`
+        },
+        {
+          id: "r18",
+          text: "Regarding latent tuberculosis, which one of the following statements is correct?",
+          options: ["Infectious to others", "Sputum culture positive", "Chest x-ray normal"],
+          correct: 2,
+          explanation: `Latent TB infection (LTBI) must be distinguished from active TB disease.
+
+Choice A (INCORRECT): Latent TB is NOT infectious to others. M. tuberculosis is contained within granulomas by the immune system — no active replication or shedding. Only active TB (pulmonary especially) is infectious via respiratory droplets.
+Choice B (INCORRECT): Sputum culture is NEGATIVE in latent TB — there is no active bacterial replication or expectoration of organisms. Positive sputum culture confirms ACTIVE TB disease.
+Choice C: Correct. The chest X-ray is NORMAL in latent TB (or may show only healed calcified lesions/Ranke complex). This is a key feature: LTBI = positive TST/IGRA + normal CXR + NO symptoms + NOT infectious. Occasionally old healed lesions may be seen.
+
+Educational Objective: LTBI vs Active TB — LTBI: TST/IGRA positive, CXR normal (or healed lesions), no symptoms, NOT infectious, sputum negative. Active TB: symptoms (cough >3 weeks, hemoptysis, night sweats, weight loss), CXR abnormal, sputum positive. LTBI treatment: Isoniazid 6–9 months (preventive therapy) or 3HR/3HP regimens.`,
+          alert: "⚠️ Note: Question 18 in the PDF has only 3 options (a, b, c) — option d is missing from the source."
+        },
+        {
+          id: "r19",
+          text: "Enteric fistulae are common presenting features seen in which one of the following inflammatory bowel conditions?",
+          options: ["Collagenous colitis", "Crohn's disease", "Lymphocytic colitis", "Ulcerative colitis"],
+          correct: 1,
+          explanation: `Fistula formation is a specific complication tied to the transmural nature of one IBD type.
+
+Choice A: Collagenous colitis is a form of microscopic colitis (collagen band >10μm subepithelially) — presents with chronic watery diarrhea, normal colonoscopy appearance. No fistulae (mucosal disease only).
+Choice B: Correct. Crohn's disease causes TRANSMURAL inflammation (full thickness of bowel wall) → leads to fistula formation. Types: enteroenteric, enterocutaneous, enterovesical (pneumaturia), rectovaginal, perianal. Fistulae are a hallmark complication of Crohn's disease because the deep, transmural inflammation can penetrate through the bowel wall into adjacent structures.
+Choice C: Lymphocytic colitis is another microscopic colitis — mucosal disease, watery diarrhea, no fistulae.
+Choice D: Ulcerative colitis causes MUCOSAL inflammation (limited to mucosa/submucosa) — does NOT cause fistulae. Complications: toxic megacolon, bleeding, perforation, stricture, malignancy — but NOT fistulae.
+
+Educational Objective: Crohn's vs UC comparison — Crohn's: transmural, any GI tract (mouth-to-anus), skip lesions, cobblestoning, fistulae, strictures, perianal disease, non-caseating granulomas. UC: mucosal, colon only, continuous from rectum, pseudopolyps, crypt abscesses, higher colon cancer risk.`
+        },
+        {
+          id: "r20",
+          text: "Which one of the following is an important environmental factor in the pathogenesis of systemic lupus erythematosus (SLE)?",
+          options: ["Atmospheric pollution", "Viral infections", "Alcohol consumption", "UV radiation"],
+          correct: 3,
+          explanation: `SLE is a multifactorial disease with genetic and environmental triggers.
+
+Choice A: Atmospheric pollution has not been established as a major trigger for SLE — while some air pollutants may have pro-inflammatory effects, this is not a well-recognized SLE trigger.
+Choice B: Viral infections (notably EBV — Epstein-Barr Virus) have been implicated in molecular mimicry in SLE, but EBV is considered a potential genetic/immunologic trigger rather than a primary environmental one. Viral infections can trigger flares but are not the MOST IMPORTANT environmental factor.
+Choice C: Alcohol consumption is NOT a recognized important environmental factor in SLE pathogenesis.
+Choice D: Correct. UV radiation (sunlight — particularly UV-B) is the most important environmental trigger for SLE. UV light → keratinocyte apoptosis → release of nuclear antigens (dsDNA, Ro/SSA, La/SSB) → immune activation → anti-nuclear antibodies → immune complex deposition → organ damage. Clinical: photosensitivity rash (malar/butterfly rash worsens with sun exposure) is a diagnostic criterion for SLE.
+
+Educational Objective: SLE triggers — UV radiation (most important environmental trigger), drugs (hydralazine, procainamide, isoniazid → drug-induced lupus), infections (EBV), hormones (estrogen → female preponderance 9:1). Photosensitivity = diagnostic criterion + avoid sun exposure in management.`
+        },
+        {
+          id: "r21",
+          text: "Which one of the following types of anemia is characterized by impaired DNA synthesis?",
+          options: ["Thalassemia", "Iron deficiency", "Sickle cell", "Megaloblastic"],
+          correct: 3,
+          explanation: `The mechanism of anemia differs fundamentally across types.
+
+Choice A: Thalassemia is caused by impaired globin chain SYNTHESIS (genetic mutations → reduced α or β globin production → imbalanced chains → hemolytic anemia). DNA synthesis is intact.
+Choice B: Iron deficiency anemia is caused by reduced hemoglobin synthesis (iron is needed for heme production → microcytic, hypochromic anemia). DNA synthesis is intact.
+Choice C: Sickle cell anemia is caused by a point mutation (Glu→Val at position 6 of β-globin) → abnormal HbS → sickling under hypoxia → hemolytic anemia. DNA synthesis is intact.
+Choice D: Correct. Megaloblastic anemia results from impaired DNA SYNTHESIS due to deficiency of Vitamin B12 or Folate. Both are essential cofactors for thymidylate synthesis and DNA replication. Rapidly dividing cells (hematopoietic precursors) are most affected → large, immature cells (megaloblasts) that cannot divide properly → macrocytic anemia (↑MCV). Hypersegmented neutrophils (>5 lobes) are pathognomonic.
+
+Educational Objective: Megaloblastic anemia = impaired DNA synthesis (↑MCV, hypersegmented neutrophils, pancytopenia). Causes: B12 deficiency (strict vegans, pernicious anemia, terminal ileal disease, gastric surgery) or Folate deficiency (poor diet, pregnancy demands, methotrexate, phenytoin). Remember: B12 also causes subacute combined degeneration of spinal cord (posterior and lateral columns).`
+        },
+        {
+          id: "r22",
+          text: "Which one of the following substances enhances iron absorption?",
+          options: ["Ferric form", "Heme iron", "Phytates", "Phosphate"],
+          correct: 1,
+          explanation: `Iron absorption from the duodenum is influenced by the form and co-ingested substances.
+
+Choice A: Ferric iron (Fe³⁺) is POORLY absorbed — it must first be reduced to ferrous form (Fe²⁺) by ferroreductase (duodenal cytochrome b) and gastric acid before absorption via DMT-1 transporter. The ferric form itself does NOT enhance absorption.
+Choice B: Correct. Heme iron (from hemoglobin/myoglobin in meat) is absorbed 2–3× more efficiently than non-heme iron via a separate heme transporter (HCP-1). Heme iron does not require reduction to Fe²⁺ and is not inhibited by dietary inhibitors like phytates or phosphates. This is why iron deficiency is more common in vegetarians.
+Choice C: Phytates (in cereals, legumes) INHIBIT iron absorption — they chelate iron forming insoluble complexes, preventing absorption.
+Choice D: Phosphates INHIBIT iron absorption — form insoluble iron phosphate complexes.
+
+Educational Objective: Iron absorption enhancers: Heme iron (meat), Vitamin C (reduces Fe³⁺→Fe²⁺, acidic medium), Ferrous form (Fe²⁺). Inhibitors: Phytates (grains), Tannins (tea, coffee), Calcium, Phosphates, Antacids (↑pH), Tetracyclines. Iron absorbed in duodenum and upper jejunum in ferrous form via DMT-1.`
+        },
+        {
+          id: "r23",
+          text: "A 45-year-old female patient is suspected to have Legionnaires' disease. Regarding this diagnosis, which one of the following media can be used?",
+          options: ["MacConkey agar", "Buffered charcoal yeast extract agar", "Mannitol agar", "Nutrient agar"],
+          correct: 1,
+          explanation: `Legionella pneumophila has fastidious growth requirements that necessitate specific culture media.
+
+Choice A: MacConkey agar is selective for gram-negative enteric bacteria (differentiates lactose fermenters from non-fermenters) — Legionella does NOT grow on MacConkey agar.
+Choice B: Correct. Buffered Charcoal Yeast Extract (BCYE) agar is the gold standard medium for Legionella culture. It contains: L-cysteine (essential amino acid for Legionella growth), iron (ferric pyrophosphate), yeast extract (nutrients), charcoal (neutralizes toxic metabolites), and ACES buffer. Legionella appears as grey-white colonies after 3–5 days at 35°C. It is the ONLY organism requiring BCYE for culture.
+Choice C: Mannitol salt agar is used for Staphylococcus species (mannitol fermentation differentiates S. aureus from coagulase-negative staph). Not for Legionella.
+Choice D: Nutrient agar is a general-purpose medium for non-fastidious organisms — Legionella cannot grow on it due to its requirement for L-cysteine and iron supplementation.
+
+Educational Objective: Legionella pneumophila — gram-negative rod, causes atypical pneumonia (Legionnaires' disease) via aerosolized water sources (cooling towers, AC systems). Diagnosis: BCYE culture (gold standard), urinary antigen test (rapid, detects L. pneumophila serogroup 1 only), DFA staining. Treatment: Fluoroquinolones or Macrolides.`
+        },
+        {
+          id: "r24",
+          text: "The characteristic radiological picture of psoriatic arthritis is:",
+          options: ["Erosive arthritis", "Punched out arthritis", "Pencil in cup arthritis", "Presence of osteophytes"],
+          correct: 2,
+          explanation: `Psoriatic arthritis has a distinctive radiological appearance that differentiates it from other arthropathies.
+
+Choice A: Erosive arthritis is a general term seen in RA, gout, and psoriatic arthritis — but not the CHARACTERISTIC distinguishing feature of psoriatic arthritis.
+Choice B: Punched-out erosions are characteristic of GOUT — urate crystals deposited in periarticular bone create well-defined "punched-out" lesions with overhanging edges (Martel sign). NOT psoriatic arthritis.
+Choice C: Correct. "Pencil-in-cup" deformity is the CLASSIC radiological sign of psoriatic arthritis — severe destruction of the distal end of one bone (pointed/pencil-like) articulating with a widened proximal end of the adjacent bone (cup-shaped). This results from severe erosive bone resorption combined with periosteal new bone formation, characteristic of psoriatic arthropathy (especially DIP joints).
+Choice D: Osteophytes are bony spurs seen in OSTEOARTHRITIS (degenerative joint disease) — not psoriatic arthritis.
+
+Educational Objective: Radiological arthritis patterns — Pencil-in-cup = Psoriatic arthritis (DIP); Punched-out erosions = Gout; Periarticular osteopenia + erosions = RA; Osteophytes + joint space narrowing = Osteoarthritis; Sacroiliitis (bilateral symmetric) = Ankylosing spondylitis; Sacroiliitis (asymmetric) = Psoriatic/Reactive arthritis.`
+        },
+        {
+          id: "r25",
+          text: "Which one of the following conditions is inherited as an X-linked disease?",
+          options: ["G6PD deficiency", "Alpha thalassemia", "Sickle cell disease", "Hereditary spherocytosis"],
+          correct: 0,
+          explanation: `Inheritance patterns of hemolytic anemias are frequently tested.
+
+Choice A: Correct. G6PD (Glucose-6-Phosphate Dehydrogenase) deficiency is X-linked RECESSIVE — the gene is on the X chromosome. Males (XY) are affected when they carry one mutant allele; females (XX) are carriers and usually unaffected (but can be affected if homozygous). G6PD protects RBCs from oxidative damage — deficiency → oxidative stress triggers (infections, drugs like primaquine, dapsone, fava beans) → Heinz body formation → hemolytic anemia.
+Choice B: Alpha thalassemia is AUTOSOMAL (chromosome 16 — α-globin genes). NOT X-linked.
+Choice C: Sickle cell disease is AUTOSOMAL RECESSIVE — HBB gene on chromosome 11. NOT X-linked.
+Choice D: Hereditary spherocytosis is primarily AUTOSOMAL DOMINANT (spectrin, ankyrin, band 3 defects) — NOT X-linked. Rare autosomal recessive forms exist.
+
+Educational Objective: X-linked recessive conditions: G6PD deficiency, Hemophilia A (Factor VIII) and B (Factor IX), Bruton's agammaglobulinemia, Wiskott-Aldrich syndrome, Fabry disease, Duchenne/Becker muscular dystrophy. Key: X-linked = males affected, females carriers (skip generations in pedigree).`
+        },
+        {
+          id: "r26",
+          text: "Which of the following primary immune deficiency is characterized by thymic hypoplasia?",
+          options: ["DiGeorge syndrome", "Ataxia telangiectasia", "Chediak-Higashi syndrome", "Wiskott-Aldrich syndrome"],
+          correct: 0,
+          explanation: `Primary immunodeficiencies have distinct pathological mechanisms.
+
+Choice A: Correct. DiGeorge syndrome (22q11.2 deletion) is characterized by thymic hypoplasia/aplasia → failure of T-cell development → T-cell immunodeficiency. The thymus develops from the 3rd pharyngeal pouch — 22q11 deletion disrupts this → aplastic thymus → no T-cell maturation. Associated features (CATCH-22): Cardiac defects, Abnormal facies, Thymic hypoplasia, Cleft palate, Hypocalcemia (absent parathyroid glands → hypoparathyroidism → hypocalcemia → neonatal tetany).
+Choice B: Ataxia telangiectasia (ATM gene mutation) — combined B + T cell defect, cerebellar ataxia, oculocutaneous telangiectasias, ↑AFP, radiation sensitivity, ↑cancer risk. NOT primarily thymic hypoplasia.
+Choice C: Chediak-Higashi syndrome (LYST gene) — neutrophil dysfunction (giant granules, failed phagosome-lysosome fusion → recurrent pyogenic infections), partial albinism, neuropathy. NOT thymic defect.
+Choice D: Wiskott-Aldrich syndrome (X-linked, WASp gene) — triad: thrombocytopenia + eczema + recurrent infections (combined B+T cell defect). NOT thymic hypoplasia primarily.
+
+Educational Objective: DiGeorge = thymic hypoplasia (T-cell deficiency) + hypoparathyroidism (hypocalcemia) + conotruncal cardiac defects = 22q11 deletion. Mnemonic CATCH-22. Investigations: absent thymic shadow on CXR, ↓CD3+CD4+/CD8+ T cells, normal or ↑B cells.`
+        },
+        {
+          id: "r27",
+          text: "Which of the following intervertebral joints of the spine are commonly involved in rheumatoid arthritis?",
+          options: ["Lumbar", "Sacral", "Cervical", "Thoracic"],
+          correct: 2,
+          explanation: `Spinal involvement in RA has a specific predilection site.
+
+Choice A: Lumbar spine involvement is characteristic of ANKYLOSING SPONDYLITIS (ascending from sacroiliac joints upward) and OSTEOARTHRITIS — NOT RA. RA spares the lumbar spine.
+Choice B: Sacral/Sacroiliac involvement is the hallmark of ANKYLOSING SPONDYLITIS and SERONEGATIVE SPONDYLOARTHROPATHIES — NOT RA.
+Choice C: Correct. The CERVICAL SPINE (particularly C1-C2, the atlantoaxial joint) is the most commonly involved spinal segment in RA. Synovitis of the atlantoaxial joint → erosion of the transverse ligament of the atlas → atlantoaxial subluxation (C1 slips on C2) → potentially compressing the spinal cord or brainstem → myelopathy, quadriplegia, sudden death. This is why RA patients need cervical spine X-rays before general anesthesia and intubation.
+Choice D: Thoracic spine involvement is rare in RA — not the characteristic site.
+
+Educational Objective: RA spinal involvement = C1-C2 (atlantoaxial subluxation). Warning signs: neck pain radiating to occiput, Lhermitte's sign, upper motor neuron signs, bowel/bladder dysfunction. Ankylosing spondylitis = lumbar/sacroiliac (ascending). Psoriatic arthritis = skip lesions in spine (parasyndesmophytes).`
+        },
+        {
+          id: "r28",
+          text: "Which one of the following types of diarrhea is characterized by unabsorbed luminal solutes and can resolve by fasting?",
+          options: ["Motility", "Secretory", "Osmotic", "Inflammatory"],
+          correct: 2,
+          explanation: `Understanding diarrhea mechanisms is essential for differential diagnosis.
+
+Choice A: Motility diarrhea — caused by rapid transit (hyperthyroidism, post-vagotomy, IBS-D) or slow transit → bacterial overgrowth. Does NOT necessarily resolve with fasting (hyperthyroidism continues regardless).
+Choice B: Secretory diarrhea — active secretion of ions/water by gut epithelium (cholera, VIPoma, carcinoid, bile salt malabsorption). Key feature: PERSISTS WITH FASTING (not osmotically driven, continues even without luminal contents). Osmotic gap <50 mOsm/kg.
+Choice C: Correct. Osmotic diarrhea is caused by unabsorbed, osmotically active solutes in the intestinal lumen drawing water into the gut. Examples: lactase deficiency (unabsorbed lactose), lactulose, sorbitol, magnesium antacids. KEY FEATURE: RESOLVES WITH FASTING — when the offending solute is removed from the diet, the osmotic drive disappears and diarrhea stops. Osmotic gap >125 mOsm/kg.
+Choice D: Inflammatory diarrhea — mucosal damage by invasive pathogens or IBD → exudation of blood, pus, mucus. Does not resolve with fasting.
+
+Educational Objective: Osmotic diarrhea = resolves with fasting, high osmotic gap (>125). Secretory diarrhea = persists with fasting, low osmotic gap (<50). Osmotic gap = stool osmolality − 2(Na⁺ + K⁺). Normal osmolality ~290 mOsm/kg.`
+        },
+        {
+          id: "r29",
+          text: "A 4-year-old child presented with a history of paroxysms of sneezing, runny nose and occasional itching in the eyes with exacerbation during the summer months. Which one of the following conditions is this child suffering from?",
+          options: ["Asthma", "Allergic rhinitis", "Atopic dermatitis"],
+          correct: 1,
+          explanation: `Seasonal upper respiratory allergic symptoms in a child point to a specific diagnosis.
+
+Choice A: Asthma presents with recurrent wheezing, shortness of breath, chest tightness, and cough (especially nocturnal/exercise-induced). Nasal symptoms and eye itching are NOT typical of asthma alone. The child has NO lower respiratory symptoms.
+Choice B: Correct. Allergic rhinitis (hay fever) — paroxysmal sneezing + watery rhinorrhea + nasal congestion + ocular itching/watering (allergic conjunctivitis). SEASONAL exacerbation in summer = pollens (grass, tree, weed pollen). This is classic seasonal allergic rhinitis with associated allergic conjunctivitis (the "itching in the eyes"). Type I hypersensitivity (IgE-mediated).
+Choice C: Atopic dermatitis presents with pruritic eczematous skin rash (flexural areas — antecubital, popliteal fossa, face in infants) — NOT with sneezing, rhinorrhea, or eye symptoms.
+
+Educational Objective: Allergic rhinitis — seasonal (pollen) vs perennial (dust mites, animal dander). Symptoms: sneezing, rhinorrhea, nasal congestion, itchy eyes. Treatment: intranasal corticosteroids (first-line), antihistamines (second-line), allergen immunotherapy. The atopic triad: allergic rhinitis + asthma + atopic dermatitis (often coexist).`,
+          alert: "⚠️ Note: Question 29 in the PDF has only 3 options (a, b, c) — option d is missing from the source."
+        },
+        {
+          id: "r30",
+          text: "Which one of the following conditions is an indication for exchange transfusion in a patient with sickle cell anemia?",
+          options: ["Acute chest infection", "Painful vaso-occlusive crisis", "Sequestration crisis", "Hemolytic crisis"],
+          correct: 0,
+          explanation: `Exchange transfusion in sickle cell has specific indications based on severity.
+
+Choice A: Correct. Acute Chest Syndrome (ACS) — pulmonary vaso-occlusion causing fever, chest pain, hypoxia, new pulmonary infiltrate — is one of the MAJOR indications for exchange transfusion in sickle cell disease when severe. ACS is life-threatening; exchange transfusion rapidly reduces HbS% to <30% while maintaining total Hb, preventing recurrence of sickling. Other indications: acute stroke, priapism (>4 hours), multi-organ failure, pre-operative (major surgery).
+Choice B: Painful vaso-occlusive crisis (VOC) is treated conservatively: IV fluids, analgesia (NSAIDs, opioids), oxygen — exchange transfusion is NOT indicated for uncomplicated VOC.
+Choice C: Sequestration crisis (splenomegaly, acute Hb drop from splenic trapping) → treated with simple transfusion (NOT exchange) to restore volume/Hb. Splenectomy for recurrent cases.
+Choice D: Hemolytic crisis — treated with simple transfusion, steroids, folic acid, treat precipitant. NOT exchange transfusion.
+
+Educational Objective: Sickle cell exchange transfusion indications: Acute stroke, Severe Acute Chest Syndrome, Priapism (>4h), Multi-organ failure, Pre-major surgery. Simple transfusion: sequestration crisis, aplastic crisis (parvovirus B19), severe hemolytic crisis. Hydroxyurea: ↑HbF → reduces sickling frequency.`
+        },
+        {
+          id: "r31",
+          text: "Which one of the following pathologic mechanisms is responsible for airway obstruction in bronchial asthma?",
+          options: ["Mast cell cytokines", "Smooth muscle relaxation", "TH1 activation", "Smooth muscle hyperactivity"],
+          correct: 3,
+          explanation: `Asthma pathophysiology involves multiple components, but one is primarily responsible for airway obstruction.
+
+Choice A: Mast cell cytokines (IL-4, IL-5, IL-13, histamine, leukotrienes) are important mediators of inflammation and bronchospasm initiation, but they are TRIGGERS/MEDIATORS rather than the direct mechanical cause of airway obstruction — the obstruction results from the downstream smooth muscle effect.
+Choice B: Smooth muscle RELAXATION would OPEN the airways (this is what bronchodilators do — β2-agonists relax smooth muscle). Relaxation is the TREATMENT, not the mechanism of obstruction.
+Choice C: TH1 activation is associated with delayed-type hypersensitivity (contact dermatitis) and protection against intracellular pathogens. Asthma is a TH2-driven disease — TH2 cells produce IL-4, IL-5, IL-13 → IgE switching, eosinophil recruitment, mucus production. TH1 is NOT responsible for asthma obstruction.
+Choice D: Correct. Smooth muscle HYPERACTIVITY (bronchial hyperresponsiveness) is the PRIMARY mechanism of airway obstruction in asthma. Airway smooth muscle contracts excessively in response to triggers → bronchoconstriction → narrowed lumen → obstruction. Combined with: mucus hypersecretion + mucosal edema + inflammatory cell infiltration.
+
+Educational Objective: Asthma triple mechanism of obstruction: (1) Smooth muscle hyperactivity/bronchoconstriction, (2) Mucosal edema, (3) Mucus hypersecretion. Underlying immunology: TH2 → IL-4/IL-13 (IgE), IL-5 (eosinophilia). Bronchodilators relax smooth muscle (β2-agonists, anticholinergics); ICS reduce inflammation.`
+        },
+        {
+          id: "r32",
+          text: "A 55-year-old female presents with a group of vesicles just below her left breast. She says the lesions are extremely painful and itchy. The lesions have dermatomal distribution. Which of the following diagnoses is most likely?",
+          options: ["Chicken pox", "Smallpox", "Roseola infantum", "Shingles"],
+          correct: 3,
+          explanation: `The combination of dermatomal distribution + painful vesicles in an adult is pathognomonic.
+
+Choice A: Chickenpox (Varicella) — primarily in children, centripetal distribution (starts on trunk, spreads), vesicles in ALL stages simultaneously (papules + vesicles + crusts), usually NOT dermatomal, generalized rash. In adults it's more severe but still generalized.
+Choice B: Smallpox (Variola) — eradicated since 1980, centrifugal rash (face and extremities more affected), all lesions in same stage, deep pustules. Not a realistic clinical diagnosis.
+Choice C: Roseola infantum (HHV-6) — disease of infants/toddlers: high fever for 3–5 days → fever breaks → rose-colored maculopapular rash on trunk. NOT vesicular, NOT dermatomal, NOT in adults.
+Choice D: Correct. Shingles (Herpes Zoster) = reactivation of varicella-zoster virus (VZV) from dorsal root ganglia. Classic presentation: painful, pruritic, DERMATOMAL vesicular rash (does not cross midline). Common locations: thoracic, trigeminal (ophthalmic branch → eye involvement), lumbar. Complications: postherpetic neuralgia, herpes zoster ophthalmicus. Treatment: oral acyclovir/valaciclovir (within 72h of rash).
+
+Educational Objective: Shingles = VZV reactivation → unilateral dermatomal painful vesicular rash. Risk factors: immunosuppression, age >50, stress. Ramsay Hunt syndrome = facial nerve involvement (ear pain + facial palsy + ear vesicles). Prevention: Shingrix vaccine (recombinant, 2-dose, preferred).`
+        },
+        {
+          id: "r33",
+          text: "A 65-year-old man is found to have a restrictive defect on his pulmonary function tests. Which of the following may be the cause?",
+          options: ["Idiopathic pulmonary fibrosis", "Chronic bronchitis", "Allergic rhinitis", "Emphysema"],
+          correct: 0,
+          explanation: `Restrictive defect on PFTs = ↓TLC, ↓FVC, ↓FEV1, FEV1/FVC NORMAL or ↑ (both reduced but ratio preserved).
+
+Choice A: Correct. Idiopathic Pulmonary Fibrosis (IPF) causes RESTRICTIVE defect — fibrosis makes lungs stiff → reduced compliance → ↓lung volumes (↓TLC, ↓FVC, ↓RV) → ↑FEV1/FVC ratio. PFT pattern: ↓FVC, ↓TLC, ↓DLCO (gas transfer), normal/↑ FEV1/FVC. CXR/HRCT: basal honeycombing, traction bronchiectasis.
+Choice B: Chronic bronchitis causes OBSTRUCTIVE defect — airway narrowing from mucus + inflammation → ↓FEV1, ↓FVC, ↓FEV1/FVC (<70%), ↑TLC (air trapping). Part of COPD.
+Choice C: Allergic rhinitis is an upper airway disease — does NOT significantly affect PFTs (may have mild airway hyper-reactivity if coexists with asthma). NOT a restrictive defect.
+Choice D: Emphysema causes OBSTRUCTIVE defect — destruction of alveolar walls → ↓elastic recoil → air trapping → ↑TLC, ↑RV, ↓FEV1/FVC. The OPPOSITE of restrictive.
+
+Educational Objective: Restrictive defects = ↓TLC, ↓FVC, FEV1/FVC ≥70%. Causes: Intrinsic lung (IPF, sarcoidosis, pneumoconiosis, hypersensitivity pneumonitis) or Extrinsic (obesity, kyphoscoliosis, neuromuscular disease). Obstructive defects = ↓FEV1/FVC <70%, ↑TLC. Causes: COPD, asthma, bronchiectasis.`
+        },
+        {
+          id: "r34",
+          text: "A 49-year-old male complains of dyspnea associated with cough and wheezy chest. By spirometry, he has FEV1/FVC less than 70%, after inhalation of bronchodilator, his FEV1 improved >15%. What is the possible diagnosis?",
+          options: ["COPD", "IPF", "Bronchiectasis", "Bronchial asthma"],
+          correct: 3,
+          explanation: `Spirometry with bronchodilator reversibility testing distinguishes asthma from COPD.
+
+Key data: FEV1/FVC <70% = OBSTRUCTIVE pattern. FEV1 improved >15% post-bronchodilator = SIGNIFICANT REVERSIBILITY.
+
+Choice A: COPD — also shows FEV1/FVC <70%, but reversibility is MINIMAL (<12% or <200mL) — airflow limitation is not fully reversible due to permanent structural changes (emphysema, airway remodeling). The >15% reversibility argues AGAINST COPD.
+Choice B: IPF (Idiopathic Pulmonary Fibrosis) causes RESTRICTIVE pattern (↓FVC, ↓TLC, FEV1/FVC normal/↑) — NOT obstructive. Completely inconsistent with FEV1/FVC <70%.
+Choice C: Bronchiectasis — shows obstructive pattern, but bronchodilator reversibility is generally not significant. Also typically presents with chronic productive cough, recurrent infections, and characteristic HRCT findings (dilated bronchi).
+Choice D: Correct. Bronchial asthma — obstructive pattern (↓FEV1/FVC) + SIGNIFICANT REVERSIBILITY (>12%, ideally >15-20%, improvement in FEV1 after short-acting bronchodilator). This reversibility is the KEY distinguishing feature from COPD. Asthma = reversible obstructive disease.
+
+Educational Objective: Bronchodilator reversibility test — Positive (asthma): ≥12% AND ≥200mL improvement in FEV1. The >15% improvement here strongly favors asthma. COPD = irreversible/minimally reversible obstruction. Spirometry: FEV1/FVC <70% = obstruction; ↓TLC = restriction; DLCO ↓ = emphysema/ILD.`
+        },
+        {
+          id: "r35",
+          text: "Which one of the following microorganisms can cause pneumonia with myocarditis and pericarditis?",
+          options: ["Staphylococcus aureus", "Klebsiella pneumonia", "Pseudomonas aeruginosa", "Mycoplasma pneumonia"],
+          correct: 3,
+          explanation: `Extrapulmonary manifestations of pneumonia are characteristic of specific pathogens.
+
+Choice A: Staphylococcus aureus pneumonia — causes severe necrotizing pneumonia with cavitation, empyema, pneumatocele (especially post-influenza). Complications are mainly PULMONARY. Rare cardiac involvement (endocarditis if bacteremic).
+Choice B: Klebsiella pneumoniae — causes "currant jelly" sputum (bloody, mucoid), lobar consolidation (especially upper lobe in alcoholics/diabetics), cavitation, abscess. Mainly pulmonary complications. NOT known for myocarditis/pericarditis.
+Choice C: Pseudomonas aeruginosa — opportunistic pathogen in immunocompromised/cystic fibrosis/ICU patients, causes necrotizing pneumonia, bacteremia. Not specifically associated with myocarditis/pericarditis.
+Choice D: Correct. Mycoplasma pneumoniae (atypical pneumonia pathogen) causes pneumonia PLUS multiple extrapulmonary manifestations: cardiac (myocarditis, pericarditis, arrhythmias), neurological (encephalitis, Guillain-Barré, transverse myelitis), dermatological (erythema multiforme, Stevens-Johnson syndrome), hematological (cold agglutinin hemolytic anemia). This is because Mycoplasma can directly invade extrapulmonary tissues and trigger immune-mediated damage.
+
+Educational Objective: Mycoplasma pneumoniae extrapulmonary complications: Cardiac (myocarditis, pericarditis), CNS (encephalitis, aseptic meningitis, GBS), Skin (erythema multiforme, SJS), Blood (cold agglutinin AIHA). Diagnosis: cold agglutinins, Mycoplasma IgM serology, PCR. Treatment: Macrolides (azithromycin) or Doxycycline (NOT beta-lactams — no cell wall).`
+        }
+      ]
+    }
+,
+    {
+      id: "final24_med217_cb",
+      name: "Med217 Closed Book Questions",
+      num: 8,
+      desc: "Med217 Closed Book",
+      questions: [
+        {
+          id: "s1",
+          text: "A 50-year-old male complains of fever, dry cough, and vomiting. It is suspected he has Legionella. Which test is best used to confirm this diagnosis?",
+          options: ["Urine antigen test", "Serological test", "Gram staining", "MacConkey medium culture"],
+          correct: 0,
+          explanation: `Legionella pneumophila has specific diagnostic methods with varying utility.
+
+Choice A: Correct. The Legionella urinary antigen test is the best rapid diagnostic tool — it detects Legionella pneumophila serogroup 1 (responsible for ~70–80% of cases) antigen in urine. Advantages: rapid result (within hours), non-invasive, high sensitivity (70–80%) and specificity (>99%), remains positive for weeks even after antibiotics started. This is the test of choice in clinical practice.
+Choice B: Serological testing (antibody detection) requires paired acute and convalescent sera 3–6 weeks apart — not useful for rapid diagnosis during acute illness.
+Choice C: Gram staining of sputum is typically unremarkable for Legionella — it is a poorly staining gram-negative rod that does not show well on standard Gram stain (intracellular organism).
+Choice D: MacConkey medium does NOT support Legionella growth — it requires BCYE (Buffered Charcoal Yeast Extract) agar with L-cysteine and iron.
+
+Educational Objective: Legionella diagnosis — Urinary antigen (rapid, detects sg1 only), BCYE culture (gold standard, slow 3–5 days), DFA staining, PCR. Treat with fluoroquinolones or macrolides. Source: contaminated water aerosols (cooling towers, hospital water systems).`
+        },
+        {
+          id: "s2",
+          text: "According to Rome III criteria for IBS, all of the following criteria should be present EXCEPT:",
+          options: ["Improvement with defecation", "Onset associated with a change in stool frequency", "Onset associated with a change in stool form", "Dysentery"],
+          correct: 3,
+          explanation: `The Rome III criteria define IBS based on symptom pattern — not inflammatory findings.
+
+Choice A (IS a criterion): Improvement with defecation is one of the Rome III criteria — abdominal pain/discomfort relieved by defecation is characteristic of IBS.
+Choice B (IS a criterion): Onset associated with change in stool frequency is a Rome III criterion — IBS alters bowel habits.
+Choice C (IS a criterion): Onset associated with change in stool form (consistency) is a Rome III criterion — Bristol Stool Chart helps classify IBS subtypes.
+Choice D: Correct — DYSENTERY is NOT part of IBS criteria. Dysentery (bloody/mucoid stool with tenesmus) indicates INFLAMMATORY bowel disease, infection, or colitis — conditions that EXCLUDE IBS. Rome III requires: recurrent abdominal pain/discomfort ≥3 days/month for the last 3 months, associated with ≥2 of: improvement with defecation, change in stool frequency, change in stool form. NO blood, NO fever, NO alarm symptoms.
+
+Educational Objective: IBS = functional bowel disorder (no structural/biochemical abnormality). Subtypes: IBS-C (constipation), IBS-D (diarrhea), IBS-M (mixed). Alarm features (RED FLAGS) that EXCLUDE IBS: rectal bleeding, nocturnal symptoms, weight loss, family history of IBD/cancer, age >50 at onset.`
+        },
+        {
+          id: "s3",
+          text: "Which of the following serological markers helps in diagnosing Crohn's disease?",
+          options: ["Anti-nuclear antibodies (ANA)", "Anti-mitochondrial antibodies (AMA)", "Anti-neutrophil cytoplasmic antibodies (ANCA)", "Anti-Saccharomyces cerevisiae antibodies (ASCA)"],
+          correct: 3,
+          explanation: `Serological markers can help differentiate Crohn's disease from ulcerative colitis.
+
+Choice A: ANA (anti-nuclear antibodies) are associated with SLE, drug-induced lupus, and other autoimmune diseases — NOT specifically Crohn's disease.
+Choice B: AMA (anti-mitochondrial antibodies) are the hallmark of Primary Biliary Cholangitis (PBC) — NOT Crohn's disease.
+Choice C: ANCA (specifically pANCA — perinuclear pattern) is associated with ULCERATIVE COLITIS (not Crohn's). pANCA is found in ~60–70% of UC cases.
+Choice D: Correct. ASCA (Anti-Saccharomyces cerevisiae antibodies — IgA and IgG) are associated with CROHN'S DISEASE (~60–70% sensitivity). The ASCA+/pANCA− serological pattern favors Crohn's, while ASCA−/pANCA+ favors UC. Useful when histology/endoscopy is inconclusive.
+
+Educational Objective: IBD serology — Crohn's: ASCA+, pANCA−, anti-OmpC, anti-CBir1. UC: pANCA+, ASCA−. These markers support diagnosis but do not replace endoscopy/histology. Remember: Saccharomyces = yeast = Crohn's (Crohn's often involves ileum where yeast antigens enter).`
+        },
+        {
+          id: "s4",
+          text: "Anal fissure can be classified as type 2 (chronic) when there is:",
+          options: ["A long history of anorectal discomfort", "Clinical symptoms for the 7th time", "Pain with defecation", "No internal sphincter hypertrophy"],
+          correct: 0,
+          explanation: `Anal fissures are classified based on duration and associated features.
+
+Choice A: Correct. Type 2 (chronic) anal fissure is defined by a LONG HISTORY (>6–8 weeks) of anorectal discomfort/pain. Chronic fissures develop additional features: sentinel skin tag (external), hypertrophied anal papilla (internal), and internal sphincter fibers visible at the fissure base due to sphincter hypertrophy from sustained spasm.
+Choice B: Number of episodes does not define chronic vs. acute classification — duration is the key criterion.
+Choice C: Pain with defecation occurs in BOTH acute and chronic fissures — not specific to type 2.
+Choice D: Chronic (type 2) fissures characteristically HAVE internal sphincter hypertrophy (from prolonged spasm/ischemia) — NOT "no hypertrophy." The hypertrophy contributes to poor healing by reducing blood supply.
+
+Educational Objective: Acute fissure (type 1) = <6 weeks, fresh tear, heals with conservative treatment (stool softeners, sitz baths, topical anesthetics). Chronic fissure (type 2) = >6–8 weeks, sentinel tag + hypertrophied papilla + exposed sphincter. Treatment: topical GTN or calcium channel blockers (relax sphincter) → botulinum toxin → lateral internal sphincterotomy.`
+        },
+        {
+          id: "s5",
+          text: "Which antimicrobial agent has the same spectrum as penicillin and can substitute it for penicillin-sensitive patients?",
+          options: ["Aminoglycosides", "Cephalosporins", "Macrolides", "Sulfonamides"],
+          correct: 2,
+          explanation: `Penicillin allergy is common — knowing safe alternatives is clinically essential.
+
+Choice A: Aminoglycosides cover gram-negative aerobes (Pseudomonas, Enterobacteriaceae) — very different spectrum from penicillin. NOT a substitute for penicillin in gram-positive coverage.
+Choice B: Cephalosporins have a similar spectrum to penicillin but share a beta-lactam ring — there is a 1–2% cross-reactivity in penicillin-ALLERGIC patients. Not the safest first-choice substitute for penicillin-SENSITIVE (allergic) patients.
+Choice C: Correct. Macrolides (erythromycin, azithromycin, clarithromycin) have a similar spectrum to penicillin covering gram-positive cocci (Streptococcus, Staphylococcus) and some atypicals — they are the recommended alternative for penicillin-ALLERGIC patients for conditions like streptococcal pharyngitis, community-acquired pneumonia, and skin infections. No cross-allergy with penicillin.
+Choice D: Sulfonamides cover gram-negatives and some gram-positives but have a completely different mechanism and spectrum — not equivalent substitutes for penicillin.
+
+Educational Objective: Penicillin allergy alternatives — Macrolides (similar gram+ spectrum, safe), Clindamycin (gram+ anaerobes, safe), Vancomycin (severe cases). Cephalosporins: use with caution (<2% cross-reactivity, mostly with 1st generation). Carbapenems: also cross-react rarely.`
+        },
+        {
+          id: "s6",
+          text: "A 30-year-old woman with ITP has platelets of 30,000. She requires urgent surgery but platelets must be ≥50,000. What is the best management?",
+          options: ["Platelet transfusion", "Corticosteroids", "Rituximab", "IV Immunoglobulin"],
+          correct: 3,
+          explanation: `ITP management before urgent surgery requires rapid platelet count elevation.
+
+Choice A: Platelet transfusion in ITP is generally ineffective because infused platelets are rapidly destroyed by the same autoantibodies — transfused platelets survive only minutes. Platelet transfusion is reserved as a temporizing measure in life-threatening bleeding combined with other therapies.
+Choice B: Corticosteroids (prednisolone) are FIRST-LINE for ITP but work slowly (days to weeks) — NOT suitable for urgent pre-operative platelet rise needed within hours.
+Choice C: Rituximab (anti-CD20) is second/third-line therapy for refractory ITP — takes weeks to months to work. Not appropriate for emergency situations.
+Choice D: Correct. IV Immunoglobulin (IVIG) provides the FASTEST platelet rise in ITP — typically within 24–48 hours. Mechanism: saturates Fc receptors on splenic macrophages → prevents them from destroying antibody-coated platelets → rapid temporary ↑platelet count. This is the treatment of choice when rapid platelet elevation is needed (pre-surgery, severe bleeding). Effect lasts 3–4 weeks.
+
+Educational Objective: ITP management — Chronic/mild: observation (platelets >30K, no bleeding). First-line: Corticosteroids (slow). Rapid response needed: IVIG (24–48h) or anti-D (in Rh+). Refractory: Rituximab, Thrombopoietin agonists (eltrombopag, romiplostim), Splenectomy.`
+        },
+        {
+          id: "s7",
+          text: "Which of the following DMARDs is the cause of ocular toxicity?",
+          options: ["Chloroquine/Hydroxychloroquine"],
+          correct: 0,
+          explanation: `DMARDs have characteristic toxicity profiles that guide monitoring.
+
+Choice A: Correct. Chloroquine and Hydroxychloroquine (antimalarial DMARDs used in RA, SLE, and other rheumatic diseases) cause OCULAR TOXICITY specifically RETINOPATHY — toxic maculopathy with "bull's-eye" maculopathy pattern leading to irreversible visual loss if not detected early. Risk increases with cumulative dose (>5 mg/kg/day of hydroxychloroquine) and duration (>5 years). Screening: baseline ophthalmology exam, then annual eye exams with Humphrey visual field testing and OCT (optical coherence tomography).
+
+Other DMARD toxicities: Methotrexate → hepatotoxicity, pulmonary toxicity, myelosuppression; Sulfasalazine → GI upset, oligospermia; Leflunomide → hepatotoxicity, teratogenicity; Gold salts → proteinuria, dermatitis; Penicillamine → proteinuria, thrombocytopenia.
+
+Educational Objective: Hydroxychloroquine ocular toxicity = retinopathy (bull's-eye maculopathy) → monitor with annual ophthalmology review, Humphrey visual fields, and OCT. Hydroxychloroquine is generally the safest DMARD (used in pregnancy for lupus). Chloroquine has higher retinal toxicity than hydroxychloroquine.`,
+          alert: "⚠️ Note: Question 7 in the source PDF has only one option listed (Chloroquine, spelled 'Qloroquine'). The answer is clearly Chloroquine/Hydroxychloroquine — the only antimalarial DMARD with established ocular toxicity."
+        },
+        {
+          id: "s8",
+          text: "A 30-year-old with sickle cell disease presents with one-week fever, productive cough, and O₂ saturation of 89%. CXR shows right lower lung infiltrate. CBC: Hb 10, WBC 14,000. He was treated with antibiotics but is worsening. What is the best next step?",
+          options: ["Simple blood transfusion", "Exchange blood transfusion", "Hydroxyurea", "Mechanical ventilation"],
+          correct: 1,
+          explanation: `This patient has Acute Chest Syndrome (ACS) — a life-threatening complication of sickle cell disease.
+
+ACS = new pulmonary infiltrate + fever + respiratory symptoms ± hypoxia in sickle cell disease. Pathophysiology: in-situ sickling in pulmonary microvasculature + fat embolism from infarcted bone marrow + infection → vicious cycle → respiratory failure.
+
+Choice A: Simple transfusion would increase total Hb but does NOT reduce HbS% sufficiently or rapidly — in ACS with worsening course, simple transfusion is inadequate.
+Choice B: Correct. Exchange blood transfusion (erythrocytapheresis) is the treatment of choice for severe/worsening ACS. It simultaneously removes HbS-containing RBCs and replaces them with normal HbA RBCs → rapidly reduces HbS% to <30% while maintaining appropriate Hb level → reverses sickling in pulmonary vasculature → halts progression.
+Choice C: Hydroxyurea (↑HbF) is PREVENTIVE therapy — used for long-term prevention of crises. It takes months to work and has no role in acute management.
+Choice D: Mechanical ventilation supports oxygenation but does not address the underlying cause (HbS sickling) — considered if respiratory failure occurs but should not be the NEXT STEP before exchange transfusion.
+
+Educational Objective: ACS management — Mild: simple transfusion + antibiotics + analgesia + bronchodilators + incentive spirometry. Severe/Worsening: EXCHANGE transfusion (reduces HbS% rapidly). Prevent with hydroxyurea (↑HbF). ACS is the leading cause of death in adult sickle cell disease.`
+        },
+        {
+          id: "s9",
+          text: "Which drug is given to prevent bone deformities in rheumatoid arthritis?",
+          options: ["Methotrexate", "Prednisolone"],
+          correct: 0,
+          explanation: `RA management must address both symptoms AND structural damage prevention.
+
+Choice A: Correct. Methotrexate is the ANCHOR DMARD (Disease-Modifying Anti-Rheumatic Drug) for RA and is the first-line drug to prevent joint and bone deformities. It works by: inhibiting dihydrofolate reductase → ↓purine synthesis → ↓lymphocyte proliferation → reduces synovial inflammation → prevents cartilage degradation and bone erosion. Methotrexate is taken weekly (not daily) with folic acid supplementation to reduce side effects. It significantly slows radiological progression of joint destruction.
+Choice B: Prednisolone (corticosteroid) provides rapid symptom relief and has some disease-modifying effects at higher doses, but long-term steroid use causes significant side effects (osteoporosis, diabetes, Cushing's) and does NOT prevent bone deformities as effectively as DMARDs. Used as a bridge while DMARDs take effect (weeks to months).
+
+Educational Objective: RA treatment pyramid — NSAIDs/steroids (symptom control) → conventional DMARDs (methotrexate FIRST, ± hydroxychloroquine, sulfasalazine, leflunomide) → biologic DMARDs (anti-TNF: adalimumab, etanercept; anti-IL-6: tocilizumab; anti-CD20: rituximab) → JAK inhibitors. Target: remission or low disease activity to prevent joint damage.`,
+          alert: "⚠️ Note: Question 9 in the source PDF has only two options listed. The full answer set would typically include other options such as NSAIDs and biologics."
+        },
+        {
+          id: "s10",
+          text: "Which one of the following is a seronegative spondyloarthropathy?",
+          options: ["Rheumatoid arthritis", "Psoriatic arthritis", "SLE"],
+          correct: 1,
+          explanation: `Seronegative spondyloarthropathies are a group of diseases linked by HLA-B27 and RF negativity.
+
+Choice A: Rheumatoid arthritis is SEROPOSITIVE — characterized by Rheumatoid Factor (RF, IgM anti-IgG) and anti-CCP antibodies. It is NOT a spondyloarthropathy. It primarily affects small joints symmetrically and does not characteristically involve the sacroiliac joints.
+Choice B: Correct. Psoriatic arthritis IS a seronegative spondyloarthropathy — RF NEGATIVE, HLA-B27 associated (especially with spinal involvement), associated with psoriasis skin disease, involves DIP joints (unlike RA), asymmetric oligoarthritis pattern, sacroiliitis possible (asymmetric). It belongs to the group: Ankylosing spondylitis, Psoriatic arthritis, Reactive arthritis, IBD-associated arthritis, Undifferentiated SpA.
+Choice C: SLE is a systemic autoimmune disease characterized by ANA, anti-dsDNA, anti-Smith antibodies — it is NOT classified as a spondyloarthropathy.
+
+Educational Objective: Seronegative spondyloarthropathies (PAIR): Psoriatic arthritis, Ankylosing spondylitis, Inflammatory bowel disease arthritis, Reactive arthritis. Common features: RF-negative, HLA-B27 associated, sacroiliitis/spondylitis, enthesitis, asymmetric oligoarthritis, uveitis, mucocutaneous features.`,
+          alert: "⚠️ Note: Question 10 in the source PDF has only three options listed (RA, Psoriatic arthritis, SLE)."
+        },
+        {
+          id: "s11",
+          text: "Which one of the following pathological mechanisms is responsible for Graves' disease?",
+          options: ["Opsonization and phagocytosis", "Inflammation", "Cellular dysfunction"],
+          correct: 2,
+          explanation: `Graves' disease is a classic example of a specific type II hypersensitivity mechanism.
+
+Choice A: Opsonization and phagocytosis is a type II hypersensitivity mechanism where antibodies coat cells → complement activation or phagocytosis → cell destruction (e.g., autoimmune hemolytic anemia, ITP). In Graves' disease, antibodies do NOT destroy the thyroid — they STIMULATE it.
+Choice B: Inflammation as a general mechanism applies to many diseases but is not the specific mechanism distinguishing Graves' disease.
+Choice C: Correct. Graves' disease is caused by CELLULAR DYSFUNCTION — a type II hypersensitivity mechanism where autoantibodies (TSI = Thyroid-Stimulating Immunoglobulins/TRAb) bind to and ACTIVATE TSH receptors on thyroid cells → mimics TSH action → continuous thyroid stimulation → hyperthyroidism + goiter + thyroid-associated orbitopathy. The antibodies don't destroy the cell — they alter its function (stimulation = cellular dysfunction). This is the "antibody-mediated cellular dysfunction" subtype of type II hypersensitivity.
+
+Educational Objective: Type II hypersensitivity subtypes: (1) Complement-mediated cell lysis (transfusion reactions), (2) Opsonization/phagocytosis (AIHA, ITP), (3) Cellular dysfunction — Stimulatory (Graves' disease: TSI → TSH receptor activation) or Inhibitory (Myasthenia gravis: anti-AChR blocks neuromuscular transmission).`,
+          alert: "⚠️ Note: Question 11 in the source PDF has only three options listed and the correct answer (c) was marked with ✔ in the original."
+        },
+        {
+          id: "s12",
+          text: "A 35-year-old male, nonsmoker, deaf-mute, with a brother reporting a history of cough with large amounts of purulent sputum and blood-streaked hemoptysis since childhood. Examination reveals clubbing and bilateral basal coarse crackles. What is the diagnosis?",
+          options: ["Bronchial asthma", "COPD", "Bronchopneumonia", "Bronchiectasis"],
+          correct: 3,
+          explanation: `This clinical presentation points to a specific chronic suppurative lung disease.
+
+Key features: young nonsmoker + childhood onset + large purulent sputum (hallmark) + hemoptysis + bilateral basal crackles + clubbing + deaf-mute (suggesting a genetic syndrome like Usher syndrome or Pendred syndrome associated with bronchiectasis through PCD).
+
+Choice A: Bronchial asthma presents with episodic wheeze, dyspnea, and dry cough — NOT large amounts of purulent sputum or hemoptysis from childhood. No clubbing.
+Choice B: COPD occurs in smokers (age >40) — this patient is a young nonsmoker with childhood symptoms.
+Choice C: Bronchopneumonia is an acute infection — not a diagnosis explaining lifelong recurrent productive cough since childhood.
+Choice D: Correct. BRONCHIECTASIS — permanent abnormal dilation of bronchi due to chronic infection/inflammation → pooling of secretions → further infection → purulent sputum (large volumes, classically postural drainage worsens it), hemoptysis, bilateral basal crackles, clubbing. Childhood onset + deafness suggests Primary Ciliary Dyskinesia (Kartagener's syndrome if + situs inversus) or congenital cause.
+
+Educational Objective: Bronchiectasis causes (FACTS): Fibrosis (CF), Allergic bronchopulmonary aspergillosis, Childhood infections (whooping cough, measles), TB/NTM, Structural defects (PCD, Kartagener's), Immune deficiency. Diagnosis: HRCT (gold standard — "signet ring" sign). Treatment: postural drainage, antibiotics, mucolytics.`
+        },
+        {
+          id: "s13",
+          text: "Which one of the following antibody classes binds to phagocytic Fc receptors?",
+          options: ["IgA", "IgG", "IgM", "IgE"],
+          correct: 1,
+          explanation: `Phagocytes express Fc receptors that recognize specific immunoglobulin classes to enhance opsonization.
+
+Choice A: IgA has Fc receptors (FcαRI) on neutrophils, monocytes, and eosinophils — but is primarily a mucosal antibody and plays a minor role in phagocytic opsonization compared to IgG.
+Choice B: Correct. IgG is the PRIMARY antibody class that binds to phagocytic FcγR (Fc gamma receptors) on neutrophils, monocytes, and macrophages. IgG opsonizes bacteria → FcγR on phagocytes recognize IgG Fc region → triggers phagocytosis and killing. This is why IgG is the dominant antibody in secondary immune responses and provides the main defense against extracellular bacteria. FcγRI (CD64), FcγRII (CD32), FcγRIII (CD16) are the three main types.
+Choice C: IgM is the first antibody produced (primary response) — it is an excellent complement activator but does NOT bind phagocytic Fc receptors efficiently (too large, pentameric structure). Phagocytes have no significant FcμR for IgM.
+Choice D: IgE binds FcεRI on MAST CELLS and BASOPHILS (not phagocytes) — triggers degranulation in type I hypersensitivity. FcεRII on eosinophils is involved in ADCC (antibody-dependent cellular cytotoxicity) against parasites.
+
+Educational Objective: Fc receptor binding — IgG → FcγR on phagocytes (opsonization) + NK cells (ADCC). IgE → FcεRI on mast cells/basophils. IgA → FcαRI on neutrophils (mucosal). IgG is the workhorse of adaptive humoral immunity — 4 subclasses (IgG1-4), crosses the placenta.`
+        },
+        {
+          id: "s14",
+          text: "Which subtype of TB occurs in an unexposed and unsensitized patient?",
+          options: ["Primary TB", "Latent TB", "Progressive primary TB", "Secondary TB"],
+          correct: 0,
+          explanation: `Understanding TB subtypes requires knowing the patient's prior exposure history and immune status.
+
+Choice A: Correct. PRIMARY TB is the initial infection in a person with NO PRIOR EXPOSURE to M. tuberculosis (unsensitized, immunologically naive). The organism is inhaled → deposited in mid-lung zones → infects alveolar macrophages → Ghon's focus forms → spreads to hilar lymph nodes (Ghon's complex). Usually self-limiting and contained by cell-mediated immunity in immunocompetent individuals.
+Choice B: Latent TB occurs AFTER primary infection — the immune system has contained (but not eliminated) the organism. The patient has been EXPOSED and sensitized (TST/IGRA positive) but has no active disease. Not the initial unexposed state.
+Choice C: Progressive primary TB occurs when primary TB fails to be contained (usually immunocompromised) → direct progression to active disease from the primary lesion without a latent phase.
+Choice D: Secondary (reactivation) TB occurs in previously sensitized individuals when latent TB reactivates (due to immunosuppression, malnutrition, diabetes, HIV) — patient has been exposed previously.
+
+Educational Objective: TB progression: Exposure → Primary TB (Ghon's complex in naive host) → either: (1) Contained → Latent TB (TST+, CXR normal/healed) → Reactivation if immunosuppressed = Secondary TB, OR (2) Progressive primary TB (failed containment). Reactivation preferentially in upper lobes (high O₂).`
+        },
+        {
+          id: "s15",
+          text: "Which one of the following is grouped as COPD?",
+          options: ["Emphysema and chronic bronchitis"],
+          correct: 0,
+          explanation: `COPD is an umbrella term encompassing specific chronic obstructive conditions.
+
+Choice A: Correct. COPD (Chronic Obstructive Pulmonary Disease) classically includes EMPHYSEMA and CHRONIC BRONCHITIS as its two main components. Most COPD patients have features of both:
+- Emphysema: permanent enlargement of airspaces distal to terminal bronchioles due to destruction of alveolar walls (without fibrosis) → loss of elastic recoil → air trapping → barrel chest → "pink puffer."
+- Chronic bronchitis: productive cough for ≥3 months per year for ≥2 consecutive years → mucus hypersecretion + small airway inflammation → "blue bloater."
+Both cause obstructive airflow limitation (FEV1/FVC <70%) that is not fully reversible.
+
+Educational Objective: COPD = emphysema + chronic bronchitis. Main cause: cigarette smoking (>90%). Pathology: inflammation → protease-antiprotease imbalance → tissue destruction (emphysema) + goblet cell hyperplasia + mucous gland hypertrophy (bronchitis). PFTs: ↓FEV1/FVC, ↑TLC, ↑RV, ↓DLCO. GOLD staging by FEV1% predicted. Treatment: smoking cessation, bronchodilators (SABA, LABA, LAMA), ICS, pulmonary rehabilitation.`,
+          alert: "⚠️ Note: Question 15 in the source PDF has only one option listed. The full answer set would include conditions like asthma and bronchiectasis as distractors."
+        },
+        {
+          id: "s16",
+          text: "A 5-year-old boy presents with itchy, reddish, oozy, raised lesions with crusting. He has an extra fold in the lower eyelid (Dennie-Morgan line). His mother had similar symptoms in childhood. Which type of hypersensitivity is this?",
+          options: ["Type 1 hypersensitivity", "Type 2 hypersensitivity", "Type 3 hypersensitivity", "Type 4 hypersensitivity"],
+          correct: 0,
+          explanation: `This presentation is classic atopic dermatitis (eczema) — an allergic condition.
+
+Clinical features: itchy, oozy, crusting rash in a child + Dennie-Morgan lines (infra-orbital skin folds, sign of chronic atopy) + family history (atopic tendency is inherited). This is atopic dermatitis, part of the atopic triad.
+
+Choice A: Correct. Atopic dermatitis is TYPE 1 HYPERSENSITIVITY (IgE-mediated immediate hypersensitivity). Mechanism: allergen exposure → Th2 response → IL-4/IL-13 stimulate IgE production → IgE binds mast cells → re-exposure → cross-linking of IgE → mast cell degranulation → histamine + leukotrienes → inflammation and itch. Elevated total and specific IgE levels are characteristic. It is the first disease in the "atopic march": eczema → food allergy → allergic rhinitis → asthma.
+Choice B: Type 2 = antibody-mediated cytotoxicity (AIHA, ITP, Goodpasture's) — NOT eczema.
+Choice C: Type 3 = immune complex-mediated (SLE, serum sickness, vasculitis) — NOT eczema.
+Choice D: Type 4 = delayed/cell-mediated hypersensitivity (contact dermatitis from nickel/poison ivy, tuberculin test, transplant rejection) — eczema has a type 4 component (chronic phase) but the PRIMARY mechanism is type 1.
+
+Educational Objective: Atopic triad = Atopic dermatitis (Type 1) + Allergic rhinitis + Asthma. All IgE-mediated. Dennie-Morgan folds + allergic shiners are physical signs of atopy. Treatment: emollients (cornerstone), topical steroids, topical calcineurin inhibitors, dupilumab (IL-4/IL-13 blocker).`
+        },
+        {
+          id: "s17",
+          text: "Which type of T-cell is cytokine-mediated in type 4 hypersensitivity?",
+          options: ["CD4+", "CD4−", "CD8+", "CD8−"],
+          correct: 0,
+          explanation: `Type 4 hypersensitivity (delayed-type hypersensitivity, DTH) is a T-cell mediated reaction.
+
+Choice A: Correct. CD4+ T-helper cells (specifically Th1 subset) are the PRIMARY mediators of type 4 hypersensitivity. Mechanism: antigen processed by APCs → presented on MHC class II → recognized by CD4+ Th1 cells → sensitization (first exposure). On re-exposure: CD4+ Th1 cells release cytokines (IFN-γ, TNF, IL-2) → activate macrophages → tissue damage and inflammation. This is "cytokine-mediated" hypersensitivity. Examples: tuberculin skin test, contact dermatitis (nickel, poison ivy), granulomatous disease (TB, sarcoidosis), transplant rejection.
+Choice B: CD4− T-cells are not a defined functional population involved in DTH.
+Choice C: CD8+ cytotoxic T-cells are involved in type 4 hypersensitivity as a SECONDARY component (direct killing of target cells — seen in contact dermatitis and viral killing) but are NOT the PRIMARY cytokine-mediated cell. CD8+ cells interact with MHC class I.
+Choice D: CD8− is not a clinically relevant defined cell population in this context.
+
+Educational Objective: Type 4 hypersensitivity — CD4+ Th1 cells → IFN-γ → macrophage activation → inflammation (core mechanism). Onset: 48–72 hours (DELAYED). Examples: PPD skin test, contact dermatitis, graft rejection, sarcoidosis, Crohn's granulomas, leprosy. Note: CD8+ cytotoxic T-cells also contribute in some type 4 reactions (direct killing).`
+        },
+        {
+          id: "s18",
+          text: "Which of the following primary immune deficiencies affects development of BOTH B and T lymphocytes?",
+          options: ["DiGeorge syndrome", "Severe combined immunodeficiency (SCID)", "X-Linked Agammaglobulinemia (XLA)"],
+          correct: 1,
+          explanation: `Primary immunodeficiencies are classified by the affected cell lineage.
+
+Choice A: DiGeorge syndrome (22q11 deletion, thymic aplasia) affects ONLY T-cells — failure of thymic development → absent T-cells, but B-cells are present (though non-functional without T-cell help). NOT both.
+Choice B: Correct. SCID (Severe Combined Immunodeficiency) affects BOTH B AND T lymphocytes — a complete failure of adaptive immunity. Causes: ADA deficiency (most common, adenosine deaminase), IL-2Rγ chain mutation (X-linked SCID, most common X-linked), RAG1/RAG2 mutations (no V(D)J recombination). Result: absent T-cells AND B-cells → no adaptive immunity → fatal infections in infancy without treatment (PCP, CMV, fungal). Treatment: HSCT (hematopoietic stem cell transplant) or gene therapy.
+Choice C: XLA (Bruton's agammaglobulinemia, BTK mutation) affects ONLY B-cells — B-cell maturation arrested at pre-B stage → absent B-cells + absent immunoglobulins, but T-cells are NORMAL.
+
+Educational Objective: Immunodeficiency by affected lineage — T-cell only: DiGeorge. B-cell only: XLA (Bruton's). Both B+T: SCID. Combined with other features: Wiskott-Aldrich (WASp), Ataxia-telangiectasia (ATM). Phagocyte defects: CGD (respiratory burst absent), Chediak-Higashi.`,
+          alert: "⚠️ Note: Question 18 in the source PDF has only three options listed."
+        },
+        {
+          id: "s19",
+          text: "Which of the following is the commonly detected immunoglobulin in Rheumatoid Factor?",
+          options: ["IgG", "IgA", "IgM"],
+          correct: 2,
+          explanation: `Rheumatoid Factor (RF) is an autoantibody with a specific immunoglobulin class.
+
+Choice A: IgG is the TARGET antigen (the Fc portion of IgG) that RF recognizes — not the class of RF itself. Self-aggregated IgG complexes form in inflamed joints, stimulating RF production.
+Choice B: IgA-RF exists and can be measured — it is associated with more severe/erosive disease, but it is NOT the most commonly detected class by standard clinical tests.
+Choice C: Correct. The vast majority (>80%) of standard RF tests measure IgM-RF — IgM antibodies directed against the Fc portion of IgG. This is why standard latex agglutination and nephelometry RF tests detect IgM-RF. IgM is the first antibody class produced and forms large complexes. RF is positive in ~70–80% of RA patients, but also in other conditions (Sjögren's, SLE, hepatitis, TB, normal elderly individuals).
+
+Educational Objective: RF = IgM antibody against Fc of IgG. Seropositive RA = RF positive AND/OR anti-CCP positive. Anti-CCP (anti-cyclic citrullinated peptide antibodies) is more specific (>95%) for RA than RF (~85%). RF is also positive in: Sjögren's (~70%), SLE (~25%), hepatitis C (cryoglobulinemia), bacterial endocarditis, 5% normal population.`,
+          alert: "⚠️ Note: Question 19 in the source PDF has only three options listed."
+        },
+        {
+          id: "s20",
+          text: "A 10-year-old presents with sneezing and runny nose, occasional itching in the eyes, worsening in summer. What is the diagnosis?",
+          options: ["Asthma", "Allergic rhinitis", "Atopic dermatitis"],
+          correct: 1,
+          explanation: `Seasonal upper respiratory and ocular symptoms in a child indicate a specific diagnosis.
+
+Choice A: Asthma presents with recurrent wheeze, shortness of breath, chest tightness, and cough (especially nocturnal/post-exercise). This child has NO lower respiratory symptoms (no wheeze, no dyspnea). Asthma alone does not cause sneezing, runny nose, or eye itching.
+Choice B: Correct. ALLERGIC RHINITIS (Hay fever) — paroxysmal sneezing + watery rhinorrhea + nasal congestion + OCULAR SYMPTOMS (itching, tearing = allergic conjunctivitis). Seasonal pattern in SUMMER = pollen allergy (grass, trees, weeds). IgE-mediated type 1 hypersensitivity. In children, allergic rhinitis is often the second step of the atopic march (after eczema, before asthma).
+Choice C: Atopic dermatitis presents with pruritic, oozy, crusting skin rash in flexural areas — NOT with sneezing, rhinorrhea, or eye symptoms.
+
+Educational Objective: Allergic rhinitis diagnosis = clinical (seasonal/perennial symptoms + nasal eosinophilia on smear + positive skin prick test or specific IgE). Treatment: intranasal corticosteroids (FIRST-LINE — most effective), oral antihistamines (H1 blockers), intranasal antihistamines, allergen immunotherapy (long-term cure). Saline irrigation as adjunct.`,
+          alert: "⚠️ Note: Question 20 in the source PDF has only three options listed."
+        },
+        {
+          id: "s21",
+          text: "A 50-year-old female presents with recurrent angioedema WITHOUT urticaria. Her father and sister had similar symptoms. Which is the ideal treatment for an acute episode in this patient?",
+          options: ["Oral prednisone", "Oral cetirizine", "C1 esterase inhibitor infusion"],
+          correct: 2,
+          explanation: `Hereditary angioedema (HAE) has a specific diagnosis and treatment distinct from allergic angioedema.
+
+Clinical clues: RECURRENT angioedema + NO URTICARIA (distinguishes from allergic angioedema) + FAMILY HISTORY (autosomal dominant) = Hereditary angioedema (HAE — Type I: C1-INH deficiency, most common).
+
+Choice A: Oral prednisone (corticosteroids) are INEFFECTIVE in HAE — the mechanism is bradykinin-mediated (NOT histamine), so anti-inflammatory steroids do not block the bradykinin pathway. This is a key clinical pearl: HAE does NOT respond to steroids, antihistamines, or epinephrine.
+Choice B: Oral antihistamines (cetirizine) are for HISTAMINE-mediated urticaria/angioedema — ineffective in HAE (which is bradykinin-mediated). The absence of urticaria confirms this is NOT allergic.
+Choice C: Correct. C1 esterase inhibitor (C1-INH) CONCENTRATE infusion is the FIRST-LINE treatment for acute HAE attacks. It directly replaces the deficient protein → restores control of the complement/contact system → reduces bradykinin production → resolves angioedema. Alternative acute treatments: Icatibant (bradykinin B2 receptor antagonist), Ecallantide (plasma kallikrein inhibitor).
+
+Educational Objective: HAE acute treatment: C1-INH concentrate OR icatibant (B2 antagonist) OR ecallantide (kallikrein inhibitor). Long-term prophylaxis: tranexamic acid, danazol (attenuated androgen), or subcutaneous C1-INH. Key: HAE = bradykinin-mediated — NOT histamine. DOES NOT respond to adrenaline/antihistamines/steroids.`,
+          alert: "⚠️ Note: Question 21 in the source PDF has only three options listed."
+        },
+        {
+          id: "s22",
+          text: "In which of the following conditions will you find hypersegmented neutrophils?",
+          options: ["Autoimmune hemolytic anemia", "Pernicious anemia", "G6PD deficiency", "Sickle cell disease"],
+          correct: 1,
+          explanation: `Hypersegmented neutrophils (>5 lobes in >5% of neutrophils, or any neutrophil with ≥6 lobes) are a pathognomonic finding of a specific deficiency.
+
+Choice A: Autoimmune hemolytic anemia (AIHA) — blood film shows: spherocytes, polychromasia, reticulocytosis, positive DAT. NO hypersegmented neutrophils — neutrophil DNA synthesis is unaffected.
+Choice B: Correct. PERNICIOUS ANEMIA (Vitamin B12 deficiency due to intrinsic factor deficiency) → impaired DNA synthesis → megaloblastic changes in all rapidly dividing cells → macro-ovalocytes + HYPERSEGMENTED NEUTROPHILS (the pathognomonic finding — ≥5 lobes is abnormal, ≥6 lobes is diagnostic). Hypersegmented neutrophils appear because nuclear maturation lags behind cytoplasmic growth. Also seen in folate deficiency (the other cause of megaloblastic anemia).
+Choice C: G6PD deficiency — blood film shows: Heinz bodies (oxidized Hb precipitates), bite cells (degmacytes), blister cells. NO hypersegmented neutrophils.
+Choice D: Sickle cell disease — blood film shows: sickle cells, target cells, Howell-Jolly bodies (hyposplenism), reticulocytosis. NO hypersegmented neutrophils.
+
+Educational Objective: Hypersegmented neutrophils = Megaloblastic anemia (B12 or Folate deficiency) → impaired DNA synthesis → nuclear hypersegmentation. Other blood film findings in megaloblastic anemia: macro-ovalocytes, pancytopenia (in severe cases). Pernicious anemia = B12 deficiency + autoimmune gastritis + absent intrinsic factor → anti-IF antibodies (specific), anti-parietal cell antibodies.`
+        },
+        {
+          id: "s23",
+          text: "What is the action of IL-13 in asthma?",
+          options: ["Stimulate mucus secretion", "Stimulate B lymphocytes to produce IgE", "Stimulate eosinophils"],
+          correct: 0,
+          explanation: `IL-13 is a key Th2 cytokine with specific roles in asthma pathophysiology.
+
+Choice A: Correct. IL-13 is the PRIMARY cytokine responsible for MUCUS HYPERSECRETION in asthma — it stimulates goblet cell hyperplasia and mucous gland hypertrophy in the airway epithelium → excessive mucus production → airway plugging. IL-13 also causes smooth muscle hyperresponsiveness and subepithelial fibrosis (airway remodeling).
+Choice B: B lymphocyte IgE class switching is primarily driven by IL-4 (and IL-13 contributes but is secondary to IL-4 for this function). IL-4 is the dominant cytokine for IgE isotype switching. Dupilumab blocks both IL-4Rα and IL-13 (shared receptor component).
+Choice C: Eosinophil stimulation and survival is primarily driven by IL-5 — the cytokine that promotes eosinophil differentiation, activation, and chemotaxis to the lung. Mepolizumab (anti-IL-5) reduces eosinophilia in severe asthma.
+
+Educational Objective: Asthma cytokine guide — IL-4: IgE class switching (B-cells) + Th2 polarization. IL-5: eosinophil activation (target: mepolizumab, benralizumab). IL-13: mucus secretion + airway hyperresponsiveness + subepithelial fibrosis. IL-4+IL-13: blocked by dupilumab (shared IL-4Rα). IgE: blocked by omalizumab.`,
+          alert: "⚠️ Note: Question 23 in the source PDF has only three options listed."
+        },
+        {
+          id: "s24",
+          text: "Asthma is which type of hypersensitivity reaction?",
+          options: ["Antibody mediated", "T cell mediated", "Immediate", "Delayed"],
+          correct: 2,
+          explanation: `Asthma involves a specific type of hypersensitivity reaction as its primary immunological mechanism.
+
+Choice A: "Antibody-mediated" could refer to type 2 hypersensitivity (cytotoxic) which involves IgG/IgM destroying cells — this is not the primary mechanism in asthma.
+Choice B: T-cell mediated = type 4 (delayed) hypersensitivity — important in chronic asthma airway inflammation (Th2 cells drive the process), but the clinical presentation (acute bronchoconstriction within minutes of allergen exposure) is NOT delayed.
+Choice C: Correct. Asthma (allergic/atopic asthma) is TYPE 1 HYPERSENSITIVITY — IMMEDIATE hypersensitivity. Early phase reaction (within minutes): allergen → cross-links IgE on mast cells → immediate degranulation → histamine, prostaglandins, leukotrienes → bronchoconstriction, edema. Late phase reaction (4–8 hours later): eosinophils, T-cells → sustained inflammation.
+Choice D: Delayed (type 4) hypersensitivity occurs 48–72 hours after exposure — not the characteristic timing of asthmatic bronchoconstriction.
+
+Educational Objective: Asthma hypersensitivity = Type 1 (IgE-mediated, immediate) with a late-phase component. Early phase: mast cell degranulation (histamine, LTs, PGs) → bronchoconstriction (minutes). Late phase: eosinophil/T-cell infiltration → sustained inflammation (hours). Chronic: airway remodeling (subepithelial fibrosis, smooth muscle hypertrophy).`
+        },
+        {
+          id: "s25",
+          text: "Which of the following drugs acts to block muscarinic receptors?",
+          options: ["Ipratropium bromide", "Salbutamol", "Theophylline", "Cromolyn sodium"],
+          correct: 0,
+          explanation: `Muscarinic receptor blockers (anticholinergics) are an important class of bronchodilators.
+
+Choice A: Correct. Ipratropium bromide (and tiotropium, umeclidinium, glycopyrronium) are ANTICHOLINERGIC/ANTIMUSCARINIC bronchodilators — they block M3 muscarinic receptors on airway smooth muscle → prevent acetylcholine-mediated bronchoconstriction → bronchodilation + reduced mucus secretion. They are particularly effective in COPD (vagal tone is the dominant bronchoconstrictive mechanism in COPD). Also used as add-on in asthma.
+Choice B: Salbutamol (albuterol) is a SHORT-ACTING β2-AGONIST (SABA) — stimulates β2 receptors → ↑cAMP → bronchodilation. NOT anticholinergic.
+Choice C: Theophylline is a methylxanthine — inhibits phosphodiesterase → ↑cAMP + adenosine receptor antagonism → bronchodilation. NOT anticholinergic.
+Choice D: Cromolyn sodium is a MAST CELL STABILIZER — prevents degranulation. NOT anticholinergic.
+
+Educational Objective: Muscarinic blocker bronchodilators: Short-acting = Ipratropium (SAMA). Long-acting = Tiotropium, Umeclidinium, Glycopyrronium (LAMA). LAMAs are first-line bronchodilators in COPD. In asthma: combined SABA + SAMA (ipratropium) for acute severe asthma in ED. Anticholinergic side effects: dry mouth, urinary retention, constipation, blurred vision, tachycardia.`,
+          alert: "⚠️ Note: Question 25 in the source PDF has NO options listed — all options above are reconstructed based on standard pharmacology curricula."
+        },
+        {
+          id: "s26",
+          text: "Which of the following is an important environmental factor in the pathogenesis of SLE?",
+          options: ["UV radiation", "Alcohol consumption", "Atmospheric pollution", "Viral infection"],
+          correct: 0,
+          explanation: `SLE is triggered by environmental factors in genetically predisposed individuals.
+
+Choice A: Correct. UV RADIATION (particularly UV-B from sunlight) is the most important environmental trigger for SLE. UV light → keratinocyte apoptosis → release of intracellular nuclear antigens (dsDNA, Ro/SSA, La/SSB) to the cell surface → immune recognition → anti-nuclear antibody production → immune complex deposition → organ damage. Clinically: photosensitivity malar (butterfly) rash is a classic diagnostic criterion, and sun exposure triggers SLE flares.
+Choice B: Alcohol consumption is NOT a recognized major environmental trigger for SLE.
+Choice C: Atmospheric pollution has limited evidence as an SLE trigger in clinical practice.
+Choice D: Viral infections (particularly EBV) can trigger SLE through molecular mimicry (EBV antigens resemble Ro/La autoantigens), but UV radiation is the most important and best-established environmental factor.
+
+Educational Objective: SLE triggers: UV radiation (most important environmental trigger), Drugs (hydralazine → drug-induced lupus with anti-histone antibodies, procainamide, isoniazid, methyldopa), Hormones (estrogen — explains 9:1 female-to-male ratio), EBV (molecular mimicry). Management includes sun protection (SPF 50+) as a routine measure.`
+        },
+        {
+          id: "s27",
+          text: "A 35-year-old female recovering from M. pneumoniae develops fatigue. Hb 9 g/dL, MCV 110 fL, WBC 14,000, platelets 450,000, reticulocytes 3%, peripheral blood smear shows RBC agglutination. What is the most likely diagnosis?",
+          options: ["Warm hemolytic anemia", "Cold hemolytic anemia", "Paroxysmal nocturnal hemoglobinuria", "G6PD deficiency"],
+          correct: 1,
+          explanation: `This presentation following Mycoplasma pneumoniae infection has a classic immunological cause.
+
+Key findings: post-Mycoplasma infection + macrocytic anemia (MCV 110) + reticulocytosis (3%) + RBC AGGLUTINATION on blood smear = cold agglutinin disease.
+
+Choice A: Warm AIHA (IgG-mediated, 37°C) — blood film shows spherocytes (NOT agglutination), positive DAT for IgG, no MCV change (normocytic usually). NOT associated with Mycoplasma.
+Choice B: Correct. COLD HEMOLYTIC ANEMIA (Cold Agglutinin Disease) — caused by IgM autoantibodies (cold agglutinins) that bind I-antigen on RBCs at cold temperatures → agglutination visible on blood smear → complement activation → extravascular hemolysis. Mycoplasma pneumoniae is the CLASSIC cause of cold agglutinin disease (anti-I antibodies). Macrocytic picture from reticulocytosis (↑MCV due to reticulocytes). RBC agglutination on smear is the key finding.
+Choice C: PNH — hemolysis triggered by complement activation, thrombosis, cytopenias — diagnosed by flow cytometry (absent CD55/CD59). NOT related to Mycoplasma.
+Choice D: G6PD deficiency — oxidative stress triggers hemolysis (Heinz bodies, bite cells). NOT related to Mycoplasma and no agglutination.
+
+Educational Objective: Cold agglutinin disease — IgM anti-I antibodies + cold exposure → RBC agglutination + complement-mediated hemolysis. Classic causes: Mycoplasma pneumoniae (anti-I), EBV/infectious mononucleosis (anti-i). Treatment: keep warm, treat underlying cause, rituximab for severe cases. DAT positive for C3d (complement), negative for IgG.`
+        },
+        {
+          id: "s28",
+          text: "Which of the following statements is TRUE regarding hemoglobin?",
+          options: ["It is found in the nuclei of red blood cells", "It is composed of polypeptide protein combined with iron", "It only combines with oxygen", "Its color turns blue when it binds to oxygen and red when deoxidized"],
+          correct: 1,
+          explanation: `Hemoglobin structure and function are fundamental biochemistry.
+
+Choice A: FALSE. Mature red blood cells have NO NUCLEUS — they lose it during maturation (reticulocyte stage). Hemoglobin is found in the CYTOPLASM of RBCs, not in nuclei. In fact, nucleated RBCs (normoblasts) in peripheral blood indicate pathology (severe hemolytic anemia, extramedullary hematopoiesis).
+Choice B: Correct. TRUE. Hemoglobin = 4 polypeptide GLOBIN chains (protein) + 4 HEME groups, each heme containing one IRON (Fe²⁺) atom at its center. Normal adult HbA = 2α + 2β globin chains. The iron in heme reversibly binds O₂ (must stay as Fe²⁺ — oxidation to Fe³⁺ = methemoglobin, cannot carry O₂).
+Choice C: FALSE. Hemoglobin combines with multiple substances: O₂ (oxyhemoglobin), CO (carboxyhemoglobin — tight binding, 200× affinity over O₂), CO₂ (carbaminohemoglobin, ~23% CO₂ transport), H⁺ (Bohr effect buffer), NO. It does NOT "only" combine with oxygen.
+Choice D: FALSE. This is REVERSED. Oxyhemoglobin (bound to O₂) = BRIGHT RED. Deoxyhemoglobin = DARK BLUE-RED (the blue-purple appearance of cyanotic patients). CO₂-bound hemoglobin = slightly darker.
+
+Educational Objective: HbA = 2α + 2β chains. Fetal HbF = 2α + 2γ (higher O₂ affinity — left-shifted curve). HbA2 = 2α + 2δ (elevated in β-thalassemia trait). Methemoglobin = Fe³⁺ form (cannot carry O₂) — treated with methylene blue.`
+        }
+      ]
+    },
+    {
+      id: "final24_med217_ob",
+      name: "Med217 Open Book Questions",
+      num: 9,
+      desc: "Med217 Open Book",
+      questions: [
+        {
+          id: "t1",
+          text: "In low-income countries, two infections remain the most common cause of mortality, being the 6th and 8th most common causes of death. What are these infections?",
+          options: ["TB & Malaria", "Measles & Chickenpox"],
+          correct: 0,
+          explanation: `Infectious disease burden in low-income countries disproportionately reflects preventable/treatable conditions.
+
+Choice A: Correct. TUBERCULOSIS and MALARIA are the two major infectious killers that remain among the top causes of death in low-income countries. TB (caused by M. tuberculosis) kills approximately 1.5–1.6 million people annually worldwide — almost exclusively in low/middle-income countries. Malaria (Plasmodium falciparum predominantly) kills approximately 600,000+ annually, predominantly in sub-Saharan Africa. Both rank consistently in WHO's top 10 causes of death in low-income regions. HIV is also in this group.
+Choice B: Measles (preventable by vaccination) and Chickenpox are significant but do not rank as high as TB and Malaria in the global mortality burden for low-income countries.
+
+Educational Objective: Global infectious disease mortality — TB: ~1.5M deaths/year (ranks 2nd infectious killer after COVID historically, now 1st again post-COVID). Malaria: ~600K deaths/year (mostly children <5 in Africa). HIV/AIDS: ~650K deaths/year. Lower respiratory infections: #1 infectious cause overall. Prevention: TB vaccination (BCG), Malaria prophylaxis (ACTs, bed nets), RTS,S malaria vaccine.`,
+          alert: "⚠️ Note: Question 1 in the open book section has only two options listed in the source PDF."
+        },
+        {
+          id: "t2",
+          text: "Which one of the following is NOT correct regarding Giardiasis?",
+          options: ["Negative stool examination can exclude the diagnosis"],
+          correct: 0,
+          explanation: `Giardia lamblia is a protozoan parasite with specific diagnostic challenges.
+
+Choice A: Correct (this IS the incorrect statement, making it the answer). "Negative stool examination CAN EXCLUDE the diagnosis" is FALSE — this statement is INCORRECT. Giardia cysts are shed INTERMITTENTLY in stool (not with every stool) → a single negative stool examination does NOT exclude giardiasis. The correct approach requires examining THREE stool samples collected on different days (sensitivity of a single sample is only ~75%; three samples increase sensitivity to ~95%). Alternatively, stool antigen tests (ELISA or immunochromatographic) or PCR are more reliable single-sample tests.
+
+Key facts about Giardiasis: Transmission = fecal-oral, contaminated water (backpacker's diarrhea, beaver fever). Presentation: watery diarrhea → then fatty/greasy stool (malabsorption), bloating, flatulence, no blood/pus. Diagnosis: stool microscopy (cysts or trophozoites, x3 samples), stool antigen, duodenal aspirate/biopsy. Treatment: Metronidazole or Tinidazole.
+
+Educational Objective: Giardia diagnostic pearls: Intermittent cyst shedding → send 3 stool samples on different days. Stool antigen test (ELISA) is most sensitive single test. Trophozoites have "face-like" appearance (two nuclei = eyes). Risk groups: travelers, daycare centers, immunodeficient (IgA deficiency → recurrent Giardia).`,
+          alert: "⚠️ Note: Question 2 in the open book section has only one option listed in the source PDF."
+        },
+        {
+          id: "t3",
+          text: "A patient is being evaluated for allergic asthma by skin prick testing. He is currently using steroids, antihistamine, and salbutamol inhaler. Which one should be discontinued at least 48 hours prior to the test?",
+          options: ["Salbutamol", "Anti-histamine", "Oral steroids"],
+          correct: 1,
+          explanation: `Skin prick testing (SPT) is the gold standard for demonstrating IgE-mediated sensitization to allergens.
+
+Mechanism of SPT: Allergen is introduced into the skin → mast cells with bound IgE degranulate → histamine release → wheal and flare response. Any drug that SUPPRESSES this histamine response will cause FALSE NEGATIVE results.
+
+Choice A: Salbutamol (β2-agonist bronchodilator) does NOT affect mast cell degranulation or histamine-mediated skin response — it relaxes smooth muscle but does not interfere with the wheal-and-flare reaction. No need to stop before SPT.
+Choice B: Correct. ANTIHISTAMINES (H1-blockers) suppress the histamine-mediated wheal response → will cause FALSE NEGATIVE SPT results. Must be discontinued: First-generation antihistamines = 48–72 hours before; Second-generation antihistamines (cetirizine, loratadine) = 3–7 days before; Hydroxyzine = 7 days before.
+Choice C: Oral steroids: Short-term/low-dose systemic steroids have minimal effect on immediate SPT reactions (IgE-mast cell mechanism is relatively steroid-resistant in the short term). Inhaled corticosteroids do NOT significantly affect SPT. Long-term immunosuppressive doses may affect results — generally a concern only with prolonged high-dose steroids.
+
+Educational Objective: Before skin prick testing, STOP: Antihistamines (H1-blockers — most important, 48h–7 days depending on agent), Tricyclic antidepressants (antihistamine properties, 7 days), Omalizumab (4–6 weeks). Continue: Inhaled/nasal steroids, Leukotriene antagonists, β2-agonists (don't affect skin test).`
+        },
+        {
+          id: "t4",
+          text: "Exposure to which one of the following substances in a patient with a history of cigarette smoking increases the risk of bronchial carcinoma fivefold?",
+          options: ["Silica dust", "Asbestos", "Coal dust", "Cotton wool"],
+          correct: 1,
+          explanation: `Occupational exposures have synergistic effects with cigarette smoking on lung cancer risk.
+
+Choice A: Silica dust causes silicosis (progressive fibrosis) and increases lung cancer risk, but the synergistic multiplier effect with smoking is not characteristically "fivefold."
+Choice B: Correct. ASBESTOS combined with cigarette smoking creates a synergistic 50-fold increase in lung cancer risk. Asbestos ALONE increases lung cancer risk approximately 5-fold compared to non-exposed non-smokers. Smoking ALONE increases risk approximately 10-fold. Together (asbestos + smoking) = synergistic → approximately 50-fold increase. The question likely refers to asbestos alone causing a ~5-fold increase as the occupational risk factor. Additionally, asbestos causes mesothelioma (pleural), asbestosis (fibrosis), pleural plaques.
+Choice C: Coal dust causes coal workers' pneumoconiosis (progressive massive fibrosis) — some increased lung cancer risk, but not specifically fivefold synergistic with smoking.
+Choice D: Cotton wool/dust causes byssinosis (occupational asthma-like condition) — NOT associated with significant lung cancer risk increase.
+
+Educational Objective: Lung cancer risk factors: Smoking (#1 cause, 85% of cases), Asbestos (synergistic with smoking — 50×), Radon gas (second leading cause in never-smokers), Arsenic, Chromium, Nickel, PAHs. Asbestos also causes: mesothelioma (latency 20–40 years, not smoking-related), asbestosis, pleural plaques/effusion/thickening.`
+        },
+        {
+          id: "t5",
+          text: "A 12-year-old girl presents with itchy reddish oozy raised lesions on cubital fossae and palms, hyper-linear palms, dry skin, and seasonal sneezing/runny nose in summer. Which antibody is elevated in this patient?",
+          options: ["IgA", "IgG", "IgE", "IgM"],
+          correct: 2,
+          explanation: `This presentation combines skin and respiratory atopic features pointing to a specific immunological profile.
+
+Clinical features: flexural eczema (cubital fossae = classic atopic dermatitis distribution) + hyper-linear palms (skin marker of atopy) + dry skin (xerosis = atopic skin) + seasonal rhinitis. This is the ATOPIC MARCH in action — atopic dermatitis + allergic rhinitis.
+
+Choice A: IgA is the mucosal antibody (secretory IgA in tears, saliva, gut) — not specifically elevated in atopy. IgA deficiency is associated with recurrent infections and Giardiasis.
+Choice B: IgG is the main serum antibody for opsonization and long-term immunity — elevated in infections and some autoimmune conditions. Not specifically elevated in atopy.
+Choice C: Correct. IgE is dramatically elevated in ATOPIC DISEASES — atopic dermatitis + allergic rhinitis + asthma all involve IgE-mediated (type 1) hypersensitivity. IgE binds FcεRI on mast cells → allergen cross-links IgE → degranulation → allergic symptoms. Elevated total IgE + elevated allergen-specific IgE (RAST/ImmunoCAP) confirm atopic sensitization. Dupilumab (anti-IL-4Rα) reduces IgE by blocking the IL-4/IL-13 pathway.
+Choice D: IgM is the first antibody produced (primary response) — elevated in acute infections. Not specifically elevated in atopy.
+
+Educational Objective: Atopic march: Atopic dermatitis → Food allergy → Allergic rhinitis → Asthma. All IgE-mediated (Type 1 hypersensitivity). Elevated total IgE + specific IgE = atopy. Physical signs of atopy: Dennie-Morgan folds, hyperlinear palms, allergic shiners, Hertoghe's sign (lateral eyebrow thinning).`
+        },
+        {
+          id: "t6",
+          text: "Penicillin's action is terminated by which mechanism?",
+          options: ["Enzyme hydrolysis", "Bile secretion", "Tubular secretion"],
+          correct: 0,
+          explanation: `Penicillin resistance and drug inactivation occur through a specific enzymatic mechanism.
+
+Choice A: Correct. Penicillin's activity is terminated primarily by ENZYME HYDROLYSIS — specifically by β-LACTAMASES (penicillinases). These bacterial enzymes hydrolyze the β-lactam ring, which is the essential structural component for penicillin's antibacterial activity. Hydrolysis of the β-lactam ring → penicilloic acid (inactive) → penicillin can no longer inhibit transpeptidase (PBP) → no cell wall inhibition → resistance. This is the primary mechanism of penicillin RESISTANCE in bacteria (S. aureus, H. influenzae, N. gonorrhoeae, E. coli).
+Choice B: Bile secretion is a route of ELIMINATION for some drugs (like rifampicin, ceftriaxone) — NOT the mechanism that terminates penicillin's antibacterial action.
+Choice C: Tubular secretion is a renal elimination pathway for penicillin (explains its short half-life — probenecid blocks tubular secretion to prolong penicillin levels). This eliminates penicillin from the body but is not what "terminates its action" in the context of antibacterial effectiveness against bacteria.
+
+Educational Objective: β-lactamase resistance mechanisms — β-lactamase hydrolysis (most common), altered PBPs (MRSA — mecA gene), reduced outer membrane permeability (gram-negatives), efflux pumps. Counter measures: β-lactamase inhibitors (clavulanate, sulbactam, tazobactam) combined with penicillins. Extended-spectrum β-lactamases (ESBLs) inactivate most β-lactams.`,
+          alert: "⚠️ Note: Question 6 in the open book section has only three options listed in the source PDF."
+        },
+        {
+          id: "t7",
+          text: "A patient has a recurrent history of lip edema and difficulty breathing. There are no wheals. Which investigation finding is most likely to be seen?",
+          options: ["Increased IgE level", "Reduced complement C4 level", "Leukopenia", "Thrombocytosis"],
+          correct: 1,
+          explanation: `Recurrent angioedema WITHOUT urticaria (no wheals) has a specific biochemical signature.
+
+Clinical clues: Recurrent lip edema + airway involvement (difficulty breathing) + NO WHEALS = Hereditary Angioedema (HAE) until proven otherwise. HAE = autosomal dominant C1-inhibitor deficiency/dysfunction.
+
+Choice A: Increased IgE indicates ALLERGIC angioedema (IgE-mediated, mast cell degranulation → histamine → urticaria + angioedema). The ABSENCE of wheals/urticaria argues strongly AGAINST allergic etiology → IgE level would be NORMAL in HAE.
+Choice B: Correct. REDUCED COMPLEMENT C4 level is the hallmark laboratory finding in HAE. C1-INH deficiency → uncontrolled activation of C1 → consumption of C4 and C2 → LOW C4 (persistently low even between attacks, unlike C3 which is usually normal). Low C1-INH functional activity + Low C4 = diagnostic of HAE. C4 is the most sensitive marker (low even during remission).
+Choice C: Leukopenia is associated with SLE, bone marrow failure, viral infections — NOT HAE.
+Choice D: Thrombocytosis is a reactive response to inflammation/infection or essential thrombocythemia — NOT characteristic of HAE.
+
+Educational Objective: HAE diagnosis: Low C4 (always low) + Low C1-INH level (Type I, 85%) or low C1-INH function with normal level (Type II, 15%). C3 = normal. C1q = normal (unlike acquired C1-INH deficiency where C1q is low). Bradykinin-mediated (NOT histamine). No response to antihistamines/epinephrine/steroids.`
+        },
+        {
+          id: "t8",
+          text: "In IgM hypergammaglobulinemia (Hyper-IgM syndrome), the gene defect is in:",
+          options: ["CD40L (CD154)", "CD40"],
+          correct: 0,
+          explanation: `Hyper-IgM syndrome is a primary immunodeficiency with a specific signaling defect preventing immunoglobulin class switching.
+
+Normal class switching: Th-cell CD40L (CD154) binds B-cell CD40 → activates B-cell + provides signal for class switching from IgM to IgG, IgA, IgE.
+
+Choice A: Correct. The most common form of Hyper-IgM syndrome (Type 1, X-linked) is caused by a mutation in CD40L (CD154) on T-cells. Without functional CD40L on T-cells: T-cell/B-cell interaction is broken → B-cells cannot receive the class-switching signal → B-cells remain locked in IgM production → markedly elevated IgM + absent/very low IgG, IgA, IgE. Also: impaired macrophage activation → susceptibility to intracellular pathogens (Pneumocystis jirovecii, Cryptosporidium, CMV).
+Choice B: CD40 mutation on B-cells causes Type 3 Hyper-IgM syndrome (autosomal recessive) — rarer form. Same phenotype: elevated IgM, absent IgG/IgA/IgE.
+
+Educational Objective: Hyper-IgM syndrome — Elevated IgM + absent IgG/IgA/IgE = failure of class-switch recombination. Type 1 (most common, X-linked): CD40L mutation (T-cell defect). Type 3: CD40 mutation (B-cell defect). Type 2: AID mutation (activation-induced cytidine deaminase — B-cell intrinsic). Clinical: PCP pneumonia in infancy, Cryptosporidium cholangiopathy, neutropenia. Treatment: IVIG replacement + PCP prophylaxis → consider HSCT.`,
+          alert: "⚠️ Note: Question 8 in the open book section has only two options listed in the source PDF."
+        },
+        {
+          id: "t9",
+          text: "In primary TB, what is the cell primarily involved in its pathogenesis?",
+          options: ["Macrophage"],
+          correct: 0,
+          explanation: `The pathogenesis of primary tuberculosis centers on the interaction between M. tuberculosis and a specific innate immune cell.
+
+Choice A: Correct. MACROPHAGES are the central cells in TB pathogenesis. Sequence of events: M. tuberculosis inhaled as droplet nuclei → deposited in alveoli → phagocytosed by ALVEOLAR MACROPHAGES → M. tuberculosis survives inside macrophages by inhibiting phagosome-lysosome fusion (using ESX/type VII secretion system, ESAT-6) → intracellular multiplication → macrophage activation by CD4+ T-cells (via IFN-γ) → GRANULOMA formation (collection of activated macrophages/epithelioid cells → Langerhans giant cells + lymphocytes) → central caseous necrosis. If immunity is adequate → granuloma walls off the infection = latent TB. If immunity fails → progressive disease.
+
+Educational Objective: TB pathogenesis — M. tb → alveolar macrophage (phagocytosis but survives) → macrophage presents antigen on MHC II → CD4+ T-cells (Th1) → IFN-γ → macrophage activation → granuloma. Granuloma = host's attempt to contain infection. Central figure: MACROPHAGE (both innate phagocyte AND antigen-presenting cell). Key virulence: inhibition of phagosome-lysosome fusion.`,
+          alert: "⚠️ Note: Question 9 in the open book section has only one option listed in the source PDF."
+        },
+        {
+          id: "t10",
+          text: "A 40-year-old male with Beta-Thalassemia major complicated by diabetes mellitus and bronzed skin (due to regular blood transfusions) is on desferrioxamine for secondary hemochromatosis. Which approach best assesses response to iron chelation?",
+          options: ["Ferritin alone", "Ferritin and hepatic MRI", "Ferritin and CT scan", "Ferritin and hepatic CT scan"],
+          correct: 1,
+          explanation: `Monitoring iron chelation therapy requires accurate assessment of total body iron stores.
+
+Context: Beta-thalassemia major + regular transfusions → transfusional iron overload (secondary hemochromatosis) → iron deposition in liver, heart, pancreas, pituitary → diabetes + bronzed skin (hemosiderosis). Desferrioxamine chelates iron for excretion.
+
+Choice A: Ferritin alone is INADEQUATE — serum ferritin is influenced by inflammation, infection, and liver disease (acute phase reactant) → not reliably reflects hepatic iron concentration. Useful for trends but insufficient as the sole monitoring tool.
+Choice B: Correct. FERRITIN + HEPATIC MRI is the gold standard combination for monitoring iron chelation. Hepatic MRI (T2* or R2* sequences) directly measures hepatic iron concentration (HIC) non-invasively and with excellent accuracy — it has replaced liver biopsy as the gold standard for iron quantification. Cardiac MRI T2* (≤20ms = cardiac iron overload) is also used. Ferritin provides an indirect trend marker.
+Choice C: Ferritin + CT scan — CT cannot quantify hepatic iron stores accurately (poor sensitivity/specificity for iron quantification compared to MRI) and involves radiation.
+Choice D: Ferritin + hepatic CT scan — same limitation as C; CT is inferior to MRI for iron assessment.
+
+Educational Objective: Monitoring iron overload in thalassemia: Serum ferritin (target <1000 μg/L), Hepatic MRI T2* (liver iron concentration, gold standard for hepatic iron), Cardiac MRI T2* (target >20ms for cardiac safety). Iron chelators: Desferrioxamine (SC/IV infusion), Deferasirox (oral), Deferiprone (oral, best cardiac iron removal).`
+        }
+      ]
     }
     ]
   }
@@ -6599,8 +7669,9 @@ function showPage(name) {
     return;
   }
 
-  // Stop quiz timer when leaving quiz page
+  // Stop quiz timer when leaving quiz page, and save progress first
   if (name !== 'quiz' && name !== 'fcstudy' && timerInterval) {
+    autoSaveQuiz(); // capture latest elapsed time before timer stops
     clearInterval(timerInterval);
     timerInterval = null;
   }
@@ -6722,11 +7793,41 @@ function renderDashboard() {
 //  MAKE A QUIZ
 // ═══════════════════════════════════════════════════
 
-function resumeIncompleteQuiz() {
+// ── Incomplete quiz helpers (supports up to 5 saved quizzes per subject) ──
+
+function getIncompleteList(d, subject) {
+  if (!d.incompleteQuizzes) return [];
+  const val = d.incompleteQuizzes[subject];
+  if (!val) return [];
+  // Migrate old single-object format to array
+  const arr = Array.isArray(val) ? val : [val];
+  // Assign stable quizId to any entry missing one (created before quizId was added)
+  let needsSave = false;
+  arr.forEach(e => {
+    if (!e.quizId) {
+      e.quizId = 'q' + (e.savedAt || Date.now()) + Math.random().toString(36).slice(2, 5);
+      needsSave = true;
+    }
+  });
+  if (needsSave) {
+    d.incompleteQuizzes[subject] = arr;
+    saveData(d); // persist the fixed ids silently
+  }
+  return arr;
+}
+
+function setIncompleteList(d, subject, list) {
+  if (!d.incompleteQuizzes) d.incompleteQuizzes = {};
+  // Sort newest first, cap at 5
+  list.sort((a, b) => b.savedAt - a.savedAt);
+  d.incompleteQuizzes[subject] = list.slice(0, 5);
+}
+
+function resumeIncompleteQuiz(quizId) {
   const d = getData();
-  const saved = d.incompleteQuizzes && d.incompleteQuizzes[currentSubject];
-  if (!saved) return;
-  // Build question map from all lectures
+  const list = getIncompleteList(d, currentSubject);
+  const saved = list.find(e => e.quizId === quizId);
+  if (!saved) { toast('لا يمكن استعادة الاختبار', 'error'); return; }
   const qMap = {};
   currentSubjectData.lectures.forEach(lec => {
     lec.questions.forEach(q => qMap[q.id] = { ...q, lecId: lec.id, lecName: lec.name });
@@ -6742,18 +7843,83 @@ function resumeIncompleteQuiz() {
     flags: saved.flags || {},
     startTime: Date.now() - (saved.elapsed || 0),
     elapsed: saved.elapsed || 0,
-    submitted: false
+    submitted: false,
+    quizType: saved.quizType || 'regular',
+    quizId: saved.quizId
   };
   showPage('quiz');
   renderQuizQuestion();
   startTimer();
 }
 
-function dismissIncompleteQuiz() {
+function dismissIncompleteById(quizId) {
   const d = getData();
-  if (d.incompleteQuizzes) delete d.incompleteQuizzes[currentSubject];
+  const list = getIncompleteList(d, currentSubject); // this also fixes missing quizIds
+  const entry = list.find(e => e.quizId === quizId);
+  if (!entry) {
+    // quizId not found — re-render to at least refresh banners with fixed ids
+    toast('تم تحديث القائمة', 'success');
+    renderMakeQuiz();
+    return;
+  }
+  setIncompleteList(d, currentSubject, list.filter(e => e.quizId !== quizId));
   saveData(d);
-  renderMakeQuiz();
+  toast('تم حذف الاختبار', 'success');
+  if (entry.quizType === 'mistakes') renderMistakes();
+  else if (entry.quizType === 'flagged') renderFlaggedList();
+  else renderMakeQuiz();
+}
+
+// Legacy aliases kept for safety
+function dismissIncompleteQuiz() { renderMakeQuiz(); }
+
+function buildResumeBanner(list, containerId) {
+  // Remove all existing banners in this container
+  document.querySelectorAll('.incomplete-resume-banner').forEach(el => el.remove());
+  if (!list || !list.length) return;
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const header = container.querySelector('.dash-header');
+
+  // Insert newest-first: iterate reversed so the newest ends up at top
+  [...list].reverse().forEach(saved => {
+    const mins = Math.round((Date.now() - saved.savedAt) / 60000);
+    const timeAgo = mins < 60
+      ? `منذ ${mins} دقيقة`
+      : mins < 1440
+        ? `منذ ${Math.round(mins / 60)} ساعة`
+        : `منذ ${Math.round(mins / 1440)} يوم`;
+    const elapsedSec = Math.floor((saved.elapsed || 0) / 1000);
+    const mm = String(Math.floor(elapsedSec / 60)).padStart(2, '0');
+    const ss = String(elapsedSec % 60).padStart(2, '0');
+    const typeLabel = saved.quizType === 'mistakes' ? '📋 تدريب على الأخطاء'
+      : saved.quizType === 'flagged' ? '🚩 تدريب على المميزات'
+      : '📝 اختبار';
+
+    const banner = document.createElement('div');
+    banner.className = 'card incomplete-resume-banner';
+    banner.style.cssText = 'border-right:4px solid var(--warning);margin-bottom:12px;';
+    banner.innerHTML = `
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+        <span style="font-size:1.4rem">⏸️</span>
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:700;font-size:.95rem">${typeLabel} — غير مكتمل</div>
+          <div style="color:var(--text2);font-size:.82rem;margin-top:2px">
+            ${timeAgo} &nbsp;•&nbsp; ${saved.answeredCount} / ${saved.totalQ} سؤال &nbsp;•&nbsp; ${mm}:${ss}
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn btn-primary btn-sm" onclick="resumeIncompleteQuiz('${saved.quizId}')">▶ استمر</button>
+        <button class="btn btn-danger btn-sm" onclick="dismissIncompleteById('${saved.quizId}')">🗑 تجاهل</button>
+      </div>
+    `;
+    if (header && header.nextSibling) {
+      container.insertBefore(banner, header.nextSibling);
+    } else {
+      container.insertBefore(banner, container.firstChild);
+    }
+  });
 }
 
 function renderMakeQuiz() {
@@ -6765,43 +7931,8 @@ function renderMakeQuiz() {
 
   const d = getData();
 
-  // ── Incomplete quiz banner ──
-  const setup = document.querySelector('.quiz-setup');
-  const existingBanner = document.getElementById('incompleteQuizBanner');
-  if (existingBanner) existingBanner.remove();
-
-  const saved = d.incompleteQuizzes && d.incompleteQuizzes[currentSubject];
-  if (saved) {
-    const savedDate = new Date(saved.savedAt);
-    const timeAgo = (() => {
-      const mins = Math.round((Date.now() - saved.savedAt) / 60000);
-      if (mins < 60) return `منذ ${mins} دقيقة`;
-      const hrs = Math.round(mins / 60);
-      if (hrs < 24) return `منذ ${hrs} ساعة`;
-      return `منذ ${Math.round(hrs/24)} يوم`;
-    })();
-    const elapsedSec = Math.floor((saved.elapsed || 0) / 1000);
-    const mm = String(Math.floor(elapsedSec / 60)).padStart(2,'0');
-    const ss = String(elapsedSec % 60).padStart(2,'0');
-    const banner = document.createElement('div');
-    banner.id = 'incompleteQuizBanner';
-    banner.className = 'card';
-    banner.style.cssText = 'border-right: 4px solid var(--warning); margin-bottom: 0;';
-    banner.innerHTML = `
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-        <span style="font-size:1.5rem">⏸️</span>
-        <div>
-          <div style="font-weight:700;font-size:1rem">اختبار غير مكتمل</div>
-          <div style="color:var(--text2);font-size:.85rem">${timeAgo} • أجبت على ${saved.answeredCount} من ${saved.totalQ} سؤال • الوقت المنقضي: ${mm}:${ss}</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn btn-primary btn-sm" onclick="resumeIncompleteQuiz()">▶ استمر من حيث توقفت</button>
-        <button class="btn btn-danger btn-sm" onclick="dismissIncompleteQuiz()">🗑 تجاهل</button>
-      </div>
-    `;
-    setup.insertBefore(banner, setup.firstChild);
-  }
+  // ── Incomplete quiz banners (all types shown here) ──
+  buildResumeBanner(getIncompleteList(d, currentSubject), 'makeQuizPageContent');
 
   const list = document.getElementById('lectureList');
   list.innerHTML = currentSubjectData.lectures.map(lec => {
@@ -6902,7 +8033,7 @@ function startQuiz() {
   initQuiz(qs);
 }
 
-function initQuiz(qs) {
+function initQuiz(qs, quizType = 'regular') {
   if (!qs || !qs.length) { toast('لا توجد أسئلة للاختبار', 'error'); return; }
   clearInterval(timerInterval);
   quizState = {
@@ -6912,7 +8043,9 @@ function initQuiz(qs) {
     flags: {},
     startTime: Date.now(),
     elapsed: 0,
-    submitted: false
+    submitted: false,
+    quizType,
+    quizId: Date.now().toString(36) + Math.random().toString(36).slice(2, 6)
   };
   showPage('quiz');
   renderQuizQuestion();
@@ -7136,8 +8269,9 @@ function selectAnswer(i) {
 function autoSaveQuiz() {
   if (!quizState || quizState.submitted || !currentSubject) return;
   const d = getData();
-  if (!d.incompleteQuizzes) d.incompleteQuizzes = {};
-  d.incompleteQuizzes[currentSubject] = {
+  const list = getIncompleteList(d, currentSubject);
+  const entry = {
+    quizId: quizState.quizId,
     questionIds: quizState.questions.map(q => q.id),
     current: quizState.current,
     answers: { ...quizState.answers },
@@ -7145,8 +8279,13 @@ function autoSaveQuiz() {
     elapsed: quizState.elapsed || 0,
     savedAt: Date.now(),
     totalQ: quizState.questions.length,
-    answeredCount: Object.keys(quizState.answers).length
+    answeredCount: Object.keys(quizState.answers).length,
+    quizType: quizState.quizType || 'regular'
   };
+  const idx = list.findIndex(e => e.quizId === quizState.quizId);
+  if (idx >= 0) list[idx] = entry;
+  else list.push(entry);
+  setIncompleteList(d, currentSubject, list);
   saveData(d);
 }
 
@@ -7242,10 +8381,9 @@ function finalSubmit() {
     d.lecPerf[lid].correct += lecGroups[lid].correct;
   });
 
-  // Clear incomplete quiz on submit
-  if (d.incompleteQuizzes && d.incompleteQuizzes[currentSubject]) {
-    delete d.incompleteQuizzes[currentSubject];
-  }
+  // Remove this specific quiz from the incomplete list on submit
+  const remainingList = getIncompleteList(d, currentSubject).filter(e => e.quizId !== quizState.quizId);
+  setIncompleteList(d, currentSubject, remainingList);
 
   saveData(d);
   renderQuizQuestion();
@@ -7255,22 +8393,7 @@ function finalSubmit() {
 function exitQuiz() {
   showModal('الخروج من الاختبار', 'هل تريد الخروج؟ سيتم حفظ تقدمك لتتمكن من الاستمرار لاحقاً.', () => {
     clearInterval(timerInterval);
-    // Save incomplete quiz if user answered at least one question
-    if (!quizState.submitted && Object.keys(quizState.answers).length > 0) {
-      const d = getData();
-      if (!d.incompleteQuizzes) d.incompleteQuizzes = {};
-      d.incompleteQuizzes[currentSubject] = {
-        questionIds: quizState.questions.map(q => q.id),
-        current: quizState.current,
-        answers: quizState.answers,
-        flags: quizState.flags || {},
-        elapsed: quizState.elapsed || 0,
-        savedAt: Date.now(),
-        totalQ: quizState.questions.length,
-        answeredCount: Object.keys(quizState.answers).length
-      };
-      saveData(d);
-    }
+    autoSaveQuiz(); // save current progress (already handles quizId + list)
     closeModal();
     showPage('dashboard');
   });
@@ -7377,12 +8500,13 @@ function drawScoreRing(pct) {
 }
 
 function retryQuiz(wrongOnly) {
+  const prevType = quizState ? (quizState.quizType || 'regular') : 'regular';
   if (wrongOnly) {
     const wrongQs = quizState.questions.filter((q, i) => quizState.answers[i] !== q.correct);
     if (!wrongQs.length) { toast('لا توجد أسئلة خاطئة!', 'error'); return; }
-    initQuiz(wrongQs);
+    initQuiz(wrongQs, prevType);
   } else {
-    initQuiz(lastQuizQuestions);
+    initQuiz(lastQuizQuestions, prevType);
   }
 }
 
@@ -7470,6 +8594,10 @@ function renderMistakes() {
 
   // Close practice panel on re-render (subject may have changed)
   document.getElementById('practiceSelectorPanel').style.display = 'none';
+
+  // Show resume banners for incomplete mistakes quizzes
+  const mistakesList = getIncompleteList(d, currentSubject).filter(e => e.quizType === 'mistakes');
+  buildResumeBanner(mistakesList, 'mistakesPageContent');
 
   // populate filter — preserve existing selection
   const sel = document.getElementById('mistakeFilter');
@@ -7602,7 +8730,7 @@ function startSelectedPractice() {
   if (!qs.length) { toast('لا توجد أخطاء في المحاضرات المختارة', 'error'); return; }
   document.getElementById('practiceSelectorPanel').style.display = 'none';
   lastQuizQuestions = qs;
-  initQuiz(qs);
+  initQuiz(qs, 'mistakes');
 }
 
 function practiceAllMistakes() {
@@ -7619,7 +8747,7 @@ function practiceAllMistakes() {
     .filter(Boolean);
   if (!qs.length) { toast('لا توجد أخطاء للتدريب عليها', 'error'); return; }
   lastQuizQuestions = qs;
-  initQuiz(qs);
+  initQuiz(qs, 'mistakes');
 }
 
 // ═══════════════════════════════════════════════════
@@ -8176,6 +9304,10 @@ function renderFlaggedList() {
   const opts = isEn ? ['A','B','C','D'] : ['أ','ب','ج','د'];
   const container = document.getElementById('flaggedList');
 
+  // Show resume banners for incomplete flagged quizzes
+  const flaggedIncList = getIncompleteList(d, currentSubject).filter(e => e.quizType === 'flagged');
+  buildResumeBanner(flaggedIncList, 'flaggedPageContent');
+
   // Collect all flagged questions
   const flaggedQs = [];
   currentSubjectData.lectures.forEach(lec => {
@@ -8269,7 +9401,7 @@ function practiceFlaged() {
   });
   if (!qs.length) { toast('لا توجد أسئلة مميزة', 'error'); return; }
   lastQuizQuestions = qs;
-  initQuiz(qs);
+  initQuiz(qs, 'flagged');
 }
 
 // Auth is handled by Firebase onAuthStateChanged above

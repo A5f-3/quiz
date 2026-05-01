@@ -433,7 +433,17 @@
     color: var(--text2);
   }
   .expl-choice-correct .expl-choice-label { color: var(--success); }
+  .expl-opt-text {
+    font-weight: 600; font-style: italic;
+    margin-left: 4px; color: inherit; opacity: 0.85;
+  }
   .expl-choice-body { flex: 1; }
+  .expl-disclaimer {
+    margin-top: 8px; padding: 6px 12px;
+    background: rgba(255,190,0,0.09); border-left: 3px solid #f0a500;
+    border-radius: 0 6px 6px 0; font-size: 0.8rem;
+    color: var(--text2); opacity: 0.85; line-height: 1.4;
+  }
   .expl-edu {
     margin-top: 10px; padding: 9px 14px;
     background: rgba(79,142,247,0.09); border-left: 3px solid var(--accent);
@@ -8545,7 +8555,7 @@ function textDir(str) {
   return latin > arabic ? 'dir="ltr" style="text-align:left"' : '';
 }
 
-function formatExplanation(text, correct) {
+function formatExplanation(text, correct, opts) {
   if (!text) return '';
   // Only apply structured formatting to English explanations with "Choice X" markers
   if (!/\bChoice\s+[A-E]\b/.test(text)) return text;
@@ -8574,16 +8584,23 @@ function formatExplanation(text, correct) {
       const content = body.replace(/^\s*(?:\([^)]*\))?\s*:?\s*/, '').trim();
       const isCrt   = (idx === correct);
       const labelTxt = isCrt ? '✓ ' + letter + '.' : letter + '.';
+      // Append option text from the question's options array if available
+      const optText = (opts && opts[idx] != null) ? '<span class="expl-opt-text">' + opts[idx] + '</span>' : '';
       choicesHTML += '<div class="expl-choice' + (isCrt ? ' expl-choice-correct' : '') + '">'
-        + '<span class="expl-choice-label">' + labelTxt + '</span>'
+        + '<span class="expl-choice-label">' + labelTxt + optText + '</span>'
         + '<span class="expl-choice-body">' + content + '</span>'
         + '</div>';
     }
   }
 
+  const disclaimerHTML = opts
+    ? '<div class="expl-disclaimer">⚠️ This is an AI-generated explanation and may contain mistakes.</div>'
+    : '';
+
   return (mainText ? '<div class="expl-main">' + mainText + '</div>' : '')
        + (choicesHTML ? '<div class="expl-choices">' + choicesHTML + '</div>' : '')
-       + eduHTML;
+       + eduHTML
+       + disclaimerHTML;
 }
 
 function renderQuizQuestion() {
@@ -8652,7 +8669,7 @@ function renderQuizQuestion() {
     // For English subjects: show "Show Explanation" button instead of auto-showing
     let expHTML = '';
     if (q.explanation) {
-      const fmtExpl = formatExplanation(q.explanation, q.correct);
+      const fmtExpl = formatExplanation(q.explanation, q.correct, q.options);
       if (isEnglish) {
         expHTML = '<button class="show-exp-btn" onclick="toggleExplanation(this,\''+q.id+'\')">💡 Show Explanation</button>' +
           '<div class="explanation-box hidden" id="expBox_'+q.id+'" dir="ltr" style="margin-top:10px;text-align:left"><div class="expl-header">💡 Explanation</div>' + fmtExpl + '</div>';
@@ -8678,7 +8695,7 @@ function renderQuizQuestion() {
   let explanationHTML = '';
   if (submitted && q.explanation && !isAnswered) {
     const explDir = isEnglish ? 'dir="ltr" style="text-align:left"' : '';
-    explanationHTML = '<div class="explanation-box" '+explDir+'><div class="expl-header">💡 ' + (isEnglish ? 'Explanation' : 'التفسير') + '</div>' + formatExplanation(q.explanation, q.correct) + '</div>';
+    explanationHTML = '<div class="explanation-box" '+explDir+'><div class="expl-header">💡 ' + (isEnglish ? 'Explanation' : 'التفسير') + '</div>' + formatExplanation(q.explanation, q.correct, q.options) + '</div>';
   }
 
   const flagged = quizState.flags[quizState.current];
@@ -9106,7 +9123,7 @@ function renderMistakes() {
       <div class="mc-q">${q.text}</div>
       ${yourAns !== undefined ? `<div class="mc-ans" style="color:var(--danger)">✗ ${isEn ? 'Your answer' : 'إجابتك'}: ${opts[yourAns]}. ${q.options[yourAns]}</div>` : ''}
       <div class="mc-ans" style="color:var(--success)">✓ ${isEn ? 'Correct' : 'الصواب'}: ${opts[q.correct]}. ${q.options[q.correct]}</div>
-      ${q.explanation ? `<div class="explanation-box" ${explDirAttr}><div class="expl-header">${explHeader}</div>${formatExplanation(q.explanation, q.correct)}</div>` : ''}
+      ${q.explanation ? `<div class="explanation-box" ${explDirAttr}><div class="expl-header">${explHeader}</div>${formatExplanation(q.explanation, q.correct, q.options)}</div>` : ''}
       <div class="mc-actions">
         ${!mastered ? `<button class="btn btn-success btn-sm" onclick="markMastered('${qid}')">${masteredLabel}</button>` : `<span class="badge badge-success">${masteredLabel}</span>`}
         <span class="badge badge-accent">${q.lecName}</span>
@@ -9828,7 +9845,7 @@ function renderFlaggedList() {
             ${opts[i]}. ${opt} ${i === q.correct ? '✓' : ''}
           </div>`).join('')}
       </div>
-      ${q.explanation ? `<div class="explanation-box" ${explDir}><div class="expl-header">${explHeader}</div>${formatExplanation(q.explanation, q.correct)}</div>` : ''}
+      ${q.explanation ? `<div class="explanation-box" ${explDir}><div class="expl-header">${explHeader}</div>${formatExplanation(q.explanation, q.correct, q.options)}</div>` : ''}
       <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
         ${isAnswered ? `<span class="badge badge-success">${answeredLabel}</span>` : `<span class="badge" style="background:var(--surface3);color:var(--text3)">${unansweredLabel}</span>`}
         ${isMistake ? `<span class="badge badge-danger">${mistakeLabel}</span>` : ''}
